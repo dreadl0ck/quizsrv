@@ -128,3 +128,12 @@
 - question: Define KSK
   answer: |
     Used to sign or verify a domains / zones keys.
+
+- question: Where in the zone is the NSEC3PARAM RR defined?
+  answer: Apex
+
+- question: Why is there no NSECPARAM RR type?
+  answer: NSEC does not use a salt and does not sign empty non terminals.
+
+- question: What kind of protection does DNSSEC offer with respect to confidentiality, integrity and authenticity?
+  answer: Integrity and Authenticity

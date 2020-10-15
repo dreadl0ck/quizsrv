@@ -47,3 +47,21 @@
   answer: Domain-based Message Authentication, Reporting and Conformance
 - question: What does the abbrevation DKIM mean?
   answer: Domain Keys Identified Mail
+
+- question: How is the end of line in the message body used? As a terminator, initiator or separator?
+  answer: Separator
+
+- question: Name three important differences between postfix and sendmail
+  answer: |
+    Postfix:
+    1. was designed to mitigate sendmail's vulnerabilities.
+    2. runs as postdrop or postfix user, sendmail always as root.
+    3. has higher queuing speed than Sendmail.
+
+- question: Name the five postfix queues
+  answer: |
+    - incoming
+    - active
+    - deferred
+    - corrupt
+    - hold
