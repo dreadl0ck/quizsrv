@@ -291,3 +291,8 @@
 - question: Which are the attributes shared by a resource record set?
   answer: |
     same owner, class, type, ttl
+
+- question: Whats the difference between a CNAME and DNAME?
+  answer: |
+    A CNAME (canonical name) record defines an alias.
+    A DNAME is used for non-terminal DNS Name Redirection.

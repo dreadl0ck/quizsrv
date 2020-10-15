@@ -30,3 +30,20 @@
     The decision was made to avoid wraparounds for better readability.
 - question: What does EHLO stand for?
   answer: Extended Hello
+
+- question: Protocol used to send mail?
+  answer: SMTP
+- question: Protocols to retrieve mail?
+  answer: POP3 and IMAP
+- question: What does POP stand for?
+  answer: Post Office Protocol
+- question: What does IMAP stand for?
+  answer: Internet Message Access Protocol
+
+- question: What does PGP stand for?
+  answer: Pretty Good Privacy
+
+- question: What does the abbrevation DMARC mean?
+  answer: Domain-based Message Authentication, Reporting and Conformance
+- question: What does the abbrevation DKIM mean?
+  answer: Domain Keys Identified Mail

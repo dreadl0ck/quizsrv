@@ -123,11 +123,12 @@
   answer: |
     _start
     crt is the c runtime.
-- question: What are the steps involved in compilation?
+- question: What are the 4 steps involved in compilation?
   answer: |
     1. Preprocessing
-    2. Assembly Generation
-    3. Linking
+    2. Compilation (=AST generation)
+    3. Assembly Generation
+    4. Linking
 - question: The vDSO is part of what?
   answer: |
     It's part of the auxiliary vector.
@@ -140,3 +141,34 @@
     - register direct / indirect
     - memory direct / indirect
     - indexed
+
+- question: What does MBR stand for?
+  answer: Master Boot Record
+
+- question: What is the size of the MBR in bytes?
+  answer: 512
+
+- question: Name the signature in the last two bytes of the MBR in hex
+  answer: 0xAA55
+
+- question: What are the last 4 bits of the MBR?
+  answer: 1010
+
+- question: What system call does the shell use to ensure the executed command wont end up as a zombie?
+  answer: wait
+
+- question: How is a process called that is reclaimed by init after the parent exited?
+  answer: Orphan
+- question: How is a process called that exited without the parent process reading its exit status?
+  answer: Zombie
+
+- question: What new register was introduced in the Intel 8080, compared to the 8008?
+  answer: The internal 7-level push-down call stack of the 8008 was replaced by a dedicated 16-bit stack-pointer (SP) register.
+
+- question: What is PSE?
+  answer: A feature of x86 processors that extends the physical memory addressing capabilities from 32 bits to 36 bits, allowing addressing to up to 64 GB of memory.
+
+- question: How much physical memory can be adressed with PAE, but without PSE?
+  answer: |
+    PAE allows for page table entries of 64 bits each instead of 32.
+    Therefore 2^64 bytes of physical memory can be addressed.

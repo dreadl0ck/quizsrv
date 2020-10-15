@@ -19,3 +19,86 @@
 - question: What does CGI stand for?
   answer: Common Gateway Interface
 
+- question: What is used to indicate an EOL in HTTP/1.1?
+  answer: CRLF
+
+- question: Name 5 common HTTP/1.1 response headers
+  answer: |
+    - Content-Type
+    - Content-Length
+    - Last-Modified
+    - Set-Cookie
+    - Location
+
+- question: Name 5 common HTTP/1.1 request headers
+  answer: |
+    - User-Agent
+    - Host
+    - Cookie
+    - Date
+    - Authorization
+
+- question: What specifications are JavaScript and JScript implementations of?
+  answer: ECMAScript
+
+- question: Name two protocols that add multiple full-duplex connections to web protocols
+  answer: |
+    WebSockets
+    TCP/IP
+    HTTP Streaming, HTTP Long Polling, HTTP pipelining
+
+- question: What is the name of the organisation with standardizing web technology?
+  answer: W3C
+
+- question: What is a URI?
+  answer: |
+    Uniform Resource Identifier
+
+- question: What is a URL?
+  answer: |
+    A URL (Uniform Resource Locator), such as www.nu.nl.
+    Identifies the location and access mechanism of the resource.
+
+- question: What is a URN?
+  answer: |
+    A URN (Uniform Resource Name) such as urn:isbn:0-97-606188-0.
+    Gives a name to a resource in a certain namespace.
+
+- question: Explain how URI, URN, and URL relate to each other
+  answer: |
+    A URI can have two forms: URL or URN.
+
+- question: What was invented by Douglas Engelbart?
+  answer: |
+    Douglas Engelbart was the inventor of the computer mouse.
+    The development of hypertext, networked computers and precursors to graphical user interfaces.
+    
+- question: Which message agents are not defined in the RFC?
+  answer: |
+    Message Access Agent
+    Message Retrieval Agent
+
+- question: Which popular web server is also a popular reverse proxy?
+  answer: Nginx
+
+- question: Name three improvements of HTTP/2 over HTTP/1.1
+  answer: |
+    - Connection multiplexing
+    - Improved header compression
+    - Server push feature
+
+- question: What is different between HTTP/3 and HTTP/2?
+  answer: |
+    HTTP/3 uses QUIC (UDP based) as a transport protocol.
+    It is faster and more secure than TCP.
+
+- question: Name two server side dynamic web page technologies
+  answer: |
+    - PHP
+    - ASP.NET
+
+- question: Name three client side dynamic web page technologies
+  answer: |
+    - ECMA script
+    - HTML5
+    - Document Object Model

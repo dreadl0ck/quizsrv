@@ -73,6 +73,7 @@ var quotes = map[string]string{
 	"UNIX is not so much an operating system as a way of thinking.": "Unknown",
 	"UNIX was not designed to stop its users from doing stupid things, as that would also stop them from doing clever things.": "Unknown",
 	"One of my most productive days was throwing away 1,000 lines of code.": "Ken Thompson",
+	"Be conservative in what you send, and liberal in what you accept": "John Postel",
 }
 
 func quiz(w http.ResponseWriter, r *http.Request) {
