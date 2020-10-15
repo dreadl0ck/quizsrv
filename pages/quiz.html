@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html style="height:100%;width:100%;">
+  <head>
+    <meta charset="utf-8" />
+    <script src="/cia/files/quiz.js"></script>
+  </head>
+
+  <style>
+    @font-face {
+      font-family: "SF Pro Text Regular";
+      src: url("/cia/files/FontsFree-Net-SFProText-Regular.ttf") format("truetype");
+    }
+    * { font-family: "SF Pro Text Regular", sans-serif }
+    html, body {
+      overflow: hidden; /* Hide scrollbars */
+      color: lawngreen;
+      background-color: black;
+    }
+    p {
+      text-align:center;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+
+  <style>
+    .red {
+      color: red !important;
+    }
+    .box {
+      font-size: 50px;
+      position: relative;
+      top: 40%;
+      transform: translateY(-50%);
+      margin-left: 20%;
+      margin-right: 20%;
+    }
+    .index {
+      position: absolute;
+      left: 35px;
+      bottom: 35px;
+      font-size: 35px;
+    }
+    .noselect {
+      -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+      -khtml-user-select: none; /* Konqueror HTML */
+      -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+      user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+    }
+    .version {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      font-family: monospace;
+      font-size: 35px;
+    }
+    .menu {
+      font-size: 35px;
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      z-index: 9999999999;
+    }
+    .category {
+      font-size: 35px;
+      position: absolute;
+      bottom: 25px;
+      right: 25px;
+    }
+    /*dont block the view on the category*/
+    #ghostery-box {
+      display: none;
+    }
+  </style>
+  <body style="height:100%;width:100%;">
+
+    <div id="menu" class="menu noselect"><a href="/cia">MENU</a></div>
+    <div id="category" class="category noselect">{{ .Category }}</div>
+    <div id="output" class="box noselect">
+
+    </div>
+    <div id="index" class="index noselect"></div>
+    <div id="version" class="version noselect">{{.Version}}</div>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html style="height:100vh;width:100vh;">
+  <head>
+    <meta charset="utf-8" />
+  </head>
+
+  <style>
+    @font-face {
+      font-family: "SF Pro Text Regular";
+      src: url("/cia/files/FontsFree-Net-SFProText-Regular.ttf") format("truetype");
+    }
+    * { font-family: "SF Pro Text Regular", sans-serif }
+    html, body {
+      overflow: hidden; /* Hide scrollbars */
+      color: lawngreen;
+      background-color: black;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+
+  <body style="height:100vh;width:100vh;">
+  <object data="/cia/files/{{.}}.pdf#page=1&view=FitBH&scrollbar=1&toolbar=1&statusbar=0&messages=0&navpanes=0&zoom=scale&viewrect=left,top,wd,ht"
+          type="application/pdf"
+          width="100%"
+          height="100%">
+    <div class="pdf-fallback">
+      Hi! This is the fallback content!
+    </div>
+
+  </object>
+  </body>
+</html>

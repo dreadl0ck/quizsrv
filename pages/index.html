@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <style>
+    @font-face {
+      font-family: "SF Pro Text Regular";
+      src: url("/cia/files/FontsFree-Net-SFProText-Regular.ttf") format("truetype");
+    }
+    * { font-family: "SF Pro Text Regular", sans-serif }
+    html, body {
+      overflow-x: hidden; /* Hide scrollbars */
+      color: lawngreen;
+      background-color: black;
+      font-size: 20px;
+      text-align: center;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    pre {
+      font-family: monospace;
+    }
+    .version {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      font-family: monospace;
+      font-size: 35px;
+    }
+    .nocenter {
+      text-align: initial !important;
+    }
+    .logo {
+      margin-left: auto;
+      margin-right: auto;
+      width: 400px;
+    }
+    .list {
+      font-size: 30px;
+    }
+    .box {
+      background: gray;
+      border-radius: 10px;
+      border: 3px darkgray solid;
+      margin-left: 20%;
+      margin-right: 20%;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .quotes {
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+  </style>
+  <body>
+
+    <pre class="nocenter logo">
+    ______   __    __  ________
+   /      \ /  \  /  |/        |
+  /$$$$$$  |$$  \ $$ |$$$$$$$$/
+  $$ \__$$/ $$$  \$$ |$$ |__
+  $$      \ $$$$  $$ |$$    |
+   $$$$$$  |$$ $$ $$ |$$$$$/
+  /  \__$$ |$$ |$$$$ |$$ |_____
+  $$    $$/ $$ | $$$ |$$       |
+   $$$$$$/  $$/   $$/ $$$$$$$$/
+
+  Security & Network Engineering
+     University of Amsterdam
+    </pre>
+
+    <h1>Welcome to the <br>Classical Internet Applications <br> quiz!</h1>
+
+    <p class="quotes">
+        "{{ .Quote }}" <br>- {{ .QuoteAuthor }}
+    </p>
+
+    <div class="box">
+      <p>
+        Use the arrow right key or click the mouse to iterate through the questions.
+      </p>
+      <p>
+        The order of questions is randomized every run, currently there are {{ .Total }} questions in the database.
+      </p>
+      <p>
+        Select a category below to start.
+      </p>
+    </div>
+
+    <ul style="list-style-type:none;" class="list">
+      {{ range $name, $elems := .Categories }}
+        <li> <a href="/cia/{{ $name }}">
+            <span style="text-transform:uppercase">{{ $name }}</span> ({{ $elems }})</a>
+        </li>
+      {{ end }}
+      {{ range $val := .Slides }}
+        <li> <a href="/cia/{{ $val }}">
+            <span style="text-transform:uppercase">
+            {{ $val }}
+            </span>
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+    <div id="version" class="version">{{.Version}}</div>
+
+  </body>
+</html>

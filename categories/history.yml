@@ -1,0 +1,456 @@
+- question: Which organization has two root servers?
+  answer: |
+    Verisign
+- question: What is the anycast mechanism used for?
+  answer: |
+    Anycast allows overloading of an IP address.
+    It's used in DNS to replicate the 13 root server IPs to over thousand physical servers.
+    The client will be routed to the nearest instance via BGP.
+
+- question: Who invented DNS, in which year and which was the first RFC?
+  answer: |
+    Paul Mockapetris, 1984, RFC 882
+- question: What is NNTP?
+  answer: |
+    The Network News Transfer Protocol allowed the transfer of news over the internet.
+    It was created in 1986 and specified in RFC #977.
+- question: What was the role of the IPTO?
+  answer: |
+    The Information Processing Techniques Office was responsible for the ARPANET project.
+
+- question: In which year was the first ever TELNET connection?
+  answer: |
+    1969
+- question: What were the contents of the first ever TELNET connection?
+  answer: |
+    LO - then the connection crashed.
+- question: Which universities were involved in the first ever TELNET connection?
+  answer: |
+    UCLA and SRI
+- question: Which researchers were involved in the first ever TELNET connection?
+  answer: |
+    Leonard Kleinrock (UCLA) and Douglas Engelbart (SRI)
+
+- question: What important thing happended in 1984?
+  answer: DNS was created by Paul Mockapetris.
+- question: What was System V?
+  answer: |
+    "System Five" was a commercial, proprietary Unix from AT&T.
+- question: Who invented the C programming language?
+  answer: |
+    Dennis Ritchie, 1972-1973 @ Bell Labs.
+- question: Who sent the first email?
+  answer: |
+    Ray Tomlinson
+- question: Which program was used to send the first email?
+  answer: SNDMSG (MTA)
+- question: Which program was used to receive the first email?
+  answer: READMAIL (MUA)
+- question: Name a few common Unix v1 commands
+  answer: |
+    - chmod, chown, chdir, cmp
+    - date, cp, mv
+    - db, du, ld, ln
+
+- question: When and in which version was Unix rewritten to C?
+  answer: 1973 by Ken Thompson, Unix v4
+- question: TCP / IP RFC number?
+  answer: |
+    RFC #675
+- question: What important event happended in 1975?
+  answer: |
+    Unix and ARPANET developments came together.
+- question: Explain "Unix on the Net"
+  answer: Unix was running on many nodes in the ARPANET, widespread use.
+- question: Explain "The Net on Unix"
+  answer: Networking functionality implemented on Linux.
+
+
+- question: What was debatable about the Unix v6 release?
+  answer: Included the full source code with unclear licensing.
+- question: In which year was the Unix v6 release?
+  answer: 1975
+
+- question: When did mailing lists appear?
+  answer: 1976
+- question: What happened in 1977?
+  answer: The great controversy
+- question: What were the issues surrounding the great controversy?
+  answer: |
+    - TCP/IP vs ISO-OSI
+    - Theory vs Practice
+- question: When was Unix v7 released?
+  answer: 1979
+- question: Name two important features of the 1969 Unics release?
+  answer: |
+    1.) Interactive access via terminals
+    2.) Time sharing (multitasking)
+- question: When did the Unics software appear?
+  answer: 1969
+- question: Where did the Unics software appear?
+  answer: |
+    @ Bell Labs
+- question: Which system suffered from the second system effect?
+  answer: The Multics OS.
+- question: Whats the meaning of "Multics"?
+  answer: Multiplexed Information and Computing Service
+- question: Explain the term "Unics"
+  answer: |
+    (Un for Uniplexed) + influence by:
+    1. CTSS
+    2. Multics
+- question: Whats the meaning of "CTSS"?
+  answer: Compatible Time Sharing System
+- question: When was 3BSD released?
+  answer: 1979
+- question: Which year was Unix ported to the VAX?
+  answer: 1979
+- question: What was the fourth killer app?
+  answer: NEWS
+
+- question: Who founded UUNET?
+  answer: Rick Adams
+- question: When was TCP/IP support implemented in BSD?
+  answer: 1983
+- question: What are the r-progs on 4.2 BSD used for?
+  answer: |
+    r = remote.
+    File transfer, networking.
+    All unencrypted.
+- question: In which year was NSFNET upgraded to T3?
+  answer: 1992
+
+- question: Who are the authors of the TCP/IP specification?
+  answer: |
+    Vincent Cerf and Bob Kahn
+- question: In which year was ISOC founded?
+  answer: 1992
+- question: In which year was Unix v7 released?
+  answer: 1979
+- question: Who implemented TCP/IP on UNIX?
+  answer: Steve Holmgren
+- question: In which year was SMTP specified?
+  answer: 1982
+- question: What was the year and author of the very first RFC?
+  answer: |
+    Steve Crocker, April 1969
+    "Host Software" - RFC #0001
+- question: Who is considered the father of the internet?
+  answer: Vinton Cerf
+- question: Who is considered the father of UNIX?
+  answer: Ken Thompson
+- question: In which year was the great controversy?
+  answer: 1977
+- question: What was the great controvery about?
+  answer: TCP/IP vs ISO-OSI
+- question: How much did the address space increase after the great switch?
+  answer: |
+    NCP used 1 byte addresses.
+    IPv4 has 4 byte addresses, so it was increased by 2^(32-8) = 2^24.
+- question: In which year was the first email sent?
+  answer: 1971
+- question: In which year have the MX records been specified?
+  answer: 1986
+- question: Name a major event related to Unix from 1993?
+  answer: 4.4 BSD released
+- question: What is NNTP and when was it specified?
+  answer: |
+    Network News Transfer Protocol
+    1986, Brian Kantor, RFC #977
+- question: Which software first implemented NNTP?
+  answer: C NEWS
+- question: What was the size of an Intel 8080 ISA instruction?
+  answer: |
+    1 byte.
+    (But it was possible to address 16 bits of memory by combining two instructions)
+- question: What is a vDSO?
+  answer: |
+    Virtual Dynamic Shared Object.
+    Used to get direct access to system calls (without switching to kernel mode), mapped into process memory space.
+- question: When was Leonard Kleinrock's Phd thesis on message switching?
+  answer: 1963
+- question: Who invented "message blocks" and when?
+  answer: Paul Baran, 1964
+- question: Who invented the term "packet"?
+  answer: Donald Davies
+- question: When was TCP/IP invented?
+  answer: 1974
+- question: What were the fist protocols on the ARPANET?
+  answer: TELNET and FTP
+- question: How many Mbps is a T3 line?
+  answer: 45 Mbps
+- question: Whats the bitsize of the VAX?
+  answer: 32-bit
+- question: What was included in 4.2 BSD?
+  answer: TCP/IP stack
+- question: When was XMPP specified?
+  answer: 1999
+- question: Which year was considered the "Death of the Net" and why?
+  answer: |
+    1995, reasons:
+    - commercialization
+    - legacy
+    - lack of security and privacy
+
+- question: Which protocols have been involved during the great switch?
+  answer: |
+    NCP was replaced with TCP/IP.
+
+- question: When was the first release without AT&T software?
+  answer: 1988
+- question: What was the exact date of the great switch?
+  answer: |
+    1 January 1983
+- question: When was the hosts.txt file replaced with DNS?
+  answer: 1984
+- question: When was the world wide web invented and introduced?
+  answer: 1990-1992
+- question: What was included into 4.3 BSD?
+  answer: |
+    A DNS implementation.
+- question: In which year did Unixs include a DNS implementation?
+  answer: 1986
+- question: When was SMTP specified?
+  answer: |
+    1982, RFC #821
+
+- question: When was the ARPANET project born?
+  answer: 1967
+
+- question: When was the ARPANET integrated in Unix?
+  answer: |
+    1975, RFC #681
+
+- question: When were the OSI model specs published?
+  answer: 1977
+
+- question: When was NSFNET upgraded to T1?
+  answer: 1988
+- question: When was the ARPANET shutdown?
+  answer: 1989
+- question: With which version have pipes been introduced in Unix?
+  answer: Version 3
+
+- question: In what year did Unix and ARPANET come together?
+  answer: 1975
+- question: When did the term "second system effect" come up?
+  answer: 1969
+
+- question: When was Unix v4 released?
+  answer: 1973 (written in C)
+
+- question: Which year was TCP/IP integrated into Unix?
+  answer: 1975, Unix v6
+
+- question: In which year was the Usenet integrated into Unix?
+  answer: 1979
+- question: In which version was the Usenet integrated into Unix?
+  answer: Unix v7
+
+- question: What were the 4 killer apps?
+  answer: TELNET, FTP, EMAIL, NEWS
+
+- question: What is a ccTLD?
+  answer: Country Code Top Level Domain
+
+- question: What does VAX stand for?
+  answer: |
+    Virtual Address Extension.
+    One of the most successful minicomputers in the world.
+
+- question: When was the VAX created?
+  answer: 1977
+
+- question: When did the Dot.com bubble take place?
+  answer: 2000-2002
+- question: What were the problems during the Dot.com bubble?
+  answer: |
+    Hard times for many internet startups, due to heavy fluctuation of stock prizes.
+
+- question: Who is considered the inventor of the world wide web?
+  answer: Tim Berners Lee (CERN)
+
+- question: In which year did graphical web browsing take off?
+  answer: 1995
+
+- question: Name and year of the Browser?
+  answer: 1993, Mosaic
+
+- question: What was the Gopher systems purpose?
+  answer: |
+    Forerunner of the world wide web.
+    A menu based system to explore the internet.
+
+- question: Who is the author of sendmail?
+  answer: Eric Allman
+
+- question: When was the System V released?
+  answer: 1983
+
+- question: What is the meaning of SUS?
+  answer: Single UNIX Specification
+
+- question: Which system was considered the starting point for the SUS?
+  answer: System V, 1983
+
+
+- question: Name the year and the reason for the "Unix Wars"?
+  answer: 1983, BSD (open) vs System V (proprietary)
+- question: What happened in 1979?
+  answer: Unix v7 release
+
+- question: Which new features were introduced in the Unix v7 release?
+  answer: |
+    - UUCP (Unix to Unix Copy)
+    - Usenet / Netnews
+- question: Who invented the early protocol to transfer files (UUCP)?
+  answer: Mike Lesk @ Bell Labs
+- question: Which version of Unix was free of proprietary software?
+  answer: 4.3-Tahoe, with BSD style license
+
+- question: In which year was Unix freed from proprietary software?
+  answer: 1988
+
+- question: Who invented IRC?
+  answer: Jarkko Oikarinen
+
+- question: What was the start year of SURFNET in NL?
+  answer: 1988
+
+- question: Which year have MX records been introduced into DNS?
+  answer: 1986
+
+- question: What happened during the great renaming?
+  answer: |
+    Usenet newsgroups have been renamed,
+    from fa.*, mod.* and net.*,
+    to misc.*, news.* etc
+
+- question: When did the great renaming take place?
+  answer: 1987
+
+- question: Which person is considered the father of the ARPANET?
+  answer: Larry Roberts
+
+- question: Which universities were involved in the early 4 node ARPANET?
+  answer: Los Angeles, Berkeley, Utah, Stanford
+- question: Who was the 4th director of the IPTO?
+  answer: Larry Roberts
+
+- question: Which universities were part of the first ever connection?
+  answer: UCLA, SRI
+
+- question: Describe the theoretical buildups of message transferring
+  answer: |
+    - '63: Leonard Kleinrock: message switching
+    - '64: Paul Baran: message blocks
+    - '65: Donald Davies: packets
+
+- question: Name a disadvantage of decentralized systems
+  answer: If an interconnection fails, it can affect the connectivity to other parts of the network.
+
+- question: Who suggested the use of minicomputers for packet switching?
+  answer: Wesley Clark (MIT)
+- question: When was the use of minicomputers for packet switching suggested?
+  answer: 1967
+
+- question: Who connected the first IMP?
+  answer: Leonard Kleinrock (UCLA)
+- question: When was the first IMP connected?
+  answer: 1969, as an ARPANET node.
+
+- question: Who was on the other side of the first connection on ARPANET?
+  answer: Douglas Engelbart (SRI)
+
+- question: Who is considered the father of RFCs?
+  answer: Steve Crocker
+
+- question: What hard- and software was the ARPANET based on?
+  answer: |
+    IMPs (routers)
+    NCP (Network Control Program)
+
+- question: What does NCP stand for?
+  answer: Network Control Program
+
+- question: Who invented the B programming language?
+  answer: Ken Thompson and Dennis Ritchie
+
+- question: What is the difference between Unix and UNIX?
+  answer: |
+    Unix is the name of the open source operating system.
+    UNIX is what the lawyers made of it (they thought Unix was an acronym - it wasn't).
+
+
+- question: What does IMP stand for?
+  answer: Interface Message Processor
+
+- question: What was the purpose of an IMP?
+  answer: Routing messages over the network.
+
+- question: When was the first IMP connected?
+  answer: 1967 @ ARPANET
+
+- question: What were the contents of the first message ever sent over the ARPANET?
+  answer: LO - then the system at Stanford crashed.
+
+- question: What does ARPA stand for?
+  answer: Advanced Research Projects Agency
+
+- question: What does PDP stand for?
+  answer: |
+    Programmed Data Processor.
+    Minicomputers ('57 - '90), with the size of a fridge.
+
+- question: What does VMS stand for?
+  answer: |
+    Virtual Memory System (= VAX).
+    Sucessor of PDP.
+
+- question: What does DEC stand for?
+  answer: Digital Equipment Corporation (creators of the PDP)
+
+- question: What does OSI stand for?
+  answer: Open Systems Interconnect
+
+- question: When was the OSI model specified?
+  answer: 1977, by ISO
+
+- question: How were emails transported before the creation of SMTP?
+  answer: via FTP
+
+- question: Explain the difference between the spelling "internet" vs "Internet"
+  answer: |
+    internet: any network of networks
+    Internet: the global TCP/IP network
+
+- question: Where did the advanced rewrite system appear?
+  answer: In sendmail.
+- question: What does the 'vm' term refer to?
+  answer: virtual memory
+- question: When was the launch of SPUTNIK?
+  answer: 1957
+- question: What was the name of the creator of the bourne shell?
+  answer: Stephen Bourne
+- question: Mail addressing in ARPANET used which symbol?
+  answer: |
+    @
+- question: Mail addressing in UUCP used which symbol?
+  answer: |
+    !
+- question: What does modem stand for?
+  answer: modulator / demodulator
+- question: When was Linux 1.0 released?
+  answer: 1994
+- question: What year was ARPANET shut down?
+  answer: 1989
+- question: What does IRC stand for?
+  answer: Internet Relay Chat
+- question: Whats the length of an NCP address?
+  answer: 1 byte
+
+- question: Who authored the DNS specification?
+  answer: Paul Mockapetris
+
+- question: What is the standardization identifier for DNS?
+  answer: STD-13

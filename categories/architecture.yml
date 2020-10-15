@@ -1,0 +1,142 @@
+- question: Explain indexed memory addressing
+  answer: |
+    Operand is a base memory address to which the value in the index register is added.
+    Example: LD A 500+X
+- question: Explain immidiate memory addressing
+  answer: |
+    Operand is a value.
+    Example: LD A #5
+- question: Explain relative memory addressing
+  answer: |
+    Operand is a memory address relative to the address in the program counter.
+    Example: BR +3
+- question: Explain direct memory addressing
+  answer: |
+    Operand is an effective memory address.
+    Example: LD A 500
+- question: Explain register indirect memory addressing
+  answer: |
+    Operand is a CPU register that contains a memory address.
+    Example: LD A (R1)
+- question: Explain register direct memory addressing
+  answer: |
+    Operand is a CPU register that contains a value.
+    Example: LD A R1
+- question: Explain indirect memory addressing
+  answer: |
+    Operand is a memory address that contains the effective memory address.
+    Example: LD A (501)
+- question: What does the ret instruction do?
+  answer: |
+    Pops the return address (pc = program counter) from the stack.
+- question: What does the call instruction do?
+  answer: |
+    Pushes the return (pc = program counter) address onto the stack
+    and then jumps to the specified address.
+- question: What does paging do?
+  answer: |
+    Translates linear (physical) to logical (virtual) addresses.
+- question: What does segmentation do?
+  answer: |
+    Translates logical (virtual) to linear (physical) addresses.
+    Deprecated in x86.
+- question: Which command can be used to follow library calls?
+  answer: |
+    ltrace
+- question: Which command can be used to follow system calls?
+  answer: |
+    strace
+- question: Which architecture introduced the syscall instruction?
+  answer: |
+    x86_64
+- question: First teletyper model without punchcards?
+  answer: |
+    v33
+- question: Maximum level of recursion for an interpreter in Linux?
+  answer: |
+    4
+- question: What is the purpose of the .interp ELF section?
+  answer: |
+    The .interp section contains the DLLs.
+- question: Whats the entry point of an ELF executable?
+  answer: |
+    _start
+- question: The x86 ISA does not make use of which addressing mode?
+  answer: |
+    The memory indirect addressing.
+    Using pointers to pointers is inffecient,
+    because it leads to two fetch operations for a single instruction.
+- question: When compiling on a 64bit machine for 32bit architecture, the use of %rax in assembly causes?
+  answer: |
+    Compilation will fail, %rax does not exists on 32bit.
+- question: What does pty stand for?
+  answer: |
+    pseudo terminal
+- question: Starting an SSH session in an xterm window involves how many ptys?
+  answer: |
+    2 - one local and one remote pseudo terminal.
+- question: Which system call is considered a quick hack?
+  answer: |
+    vfork - fork is computationally expensive because it copies all resources.
+    clone is the proper replacement.
+- question: Which step is not part of compilation?
+  answer: |
+    Loading of dynamic libraries - happens at runtime.
+- question: What parts of an ELF file are used during runtime?
+  answer: |
+    Segments
+- question: Whats the name of the executable file format used by Linux?
+  answer: |
+    ELF
+
+- question: How many Microsoft engineers does it take to screw in a light bulb?
+  answer: None. They just define darkness as an industry standard.
+- question: How many Macintosh engineers does it take to screw in a light bulb?
+  answer: None - it has to be done by a local authorized dealer.
+
+- question: Name the syscalls used by a shell that executes a command in correct order.
+  answer: |
+    stat, fork, execve
+- question: Name the path for the first device corresponding to the slave side of a pseudo terminal.
+  answer: |
+    /dev/pts/0
+- question: Whats the master side of a pseudo terminal?
+  answer: |
+    /dev/ptmx
+- question: Physical Address Extension (PAE) extends the possible memory space to?
+  answer: |
+    64 GiB
+- question: Intel 8086 Segmentation can address?
+  answer: |
+    0x10FFF0 memory addresses.
+    0x10FFEF (max addr space) + 1 (counting starts at zero).
+- question: The ARM architecture belongs to the category?
+  answer: |
+    RISC (Reduced Instruction Set Computer)
+- question: When the kernel starts an application, which values are pushed to the stack?
+  answer: |
+    1. Argument Vector
+    2. Environment
+    3. Auxiliary Vector
+    TODO: verify order, Karst said things are pushed in reverse order?
+- question: Whats the entrypoint in crt1.o of an ELF executable?
+  answer: |
+    _start
+    crt is the c runtime.
+- question: What are the steps involved in compilation?
+  answer: |
+    1. Preprocessing
+    2. Assembly Generation
+    3. Linking
+- question: The vDSO is part of what?
+  answer: |
+    It's part of the auxiliary vector.
+- question: When was the x86 instruction set created?
+  answer: |
+    2003 by AMD
+- question: What are the different memory addressing modes?
+  answer: |
+    - immidiate
+    - register direct / indirect
+    - memory direct / indirect
+    - indexed

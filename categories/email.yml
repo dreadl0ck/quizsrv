@@ -1,0 +1,32 @@
+- question: What indicates the end of line in SMTP?
+  answer: |
+    CRLF - Carriage Return (CR) and Line Feed (LF).
+- question: Whats the maximum line length including the end of lines in SMTP?
+  answer: |
+    998 is the hard limit + 2 chars for the EOL = 1000.
+- question: Whats the recommended line length excluding the EOL in SMTP?
+  answer: |
+    78 characters.
+- question: Whats the port number for smtps / ssmtp?
+  answer: |
+    465 for TLS only,
+    587 plain text, then upgrade with STARTTLS (insecure, MitM can force downgrade!)
+- question: What does SPF use for its checks?
+  answer: |
+    The 'MAIL FROM' SMTP command.
+- question: What does DMARC use for its checks?
+  answer: |
+    The 'From' header,
+    because it is presented to the user.
+- question: Which message agents do not talk directly to each other?
+  answer: |
+    MDA (Mail Delivery Agent) and MUA (Mail User Agent)
+- question: The DNS record DKIM uses for example.com. is?
+  answer: |
+    <selector>._domainkey.example.com.  TXT
+- question: Why is the line limit in the ABNF message format 78 chars?
+  answer: |
+    At the time, 80 char wide terminals were common.
+    The decision was made to avoid wraparounds for better readability.
+- question: What does EHLO stand for?
+  answer: Extended Hello

@@ -1,0 +1,21 @@
+- question: What are servlets?
+  answer: Server side java applications
+- question: Whats an advantage of SSI?
+  answer: Process reuse.
+- question: What does SSI stand for?
+  answer: Server Side Includes
+
+- question: What are the layers in the 3 tier model?
+  answer: |
+    1.) User Tier (frontend)
+    2.) Business Tier (backend)
+    3.) Data Tier (database)
+- question: What does LAMP stand for?
+  answer: Linux Apache MySQL PHP
+- question: Who invented the world wide web?
+  answer: Tim Berners Lee (CERN)
+- question: Whats a drawback of CGI?
+  answer: One process per request
+- question: What does CGI stand for?
+  answer: Common Gateway Interface
+

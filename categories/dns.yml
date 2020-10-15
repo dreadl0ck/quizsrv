@@ -1,0 +1,293 @@
+- question: Why are there only 13 DNS root servers?
+  answer: |
+    The UDP maximum packet size of 512 bytes did not allow for more in the early days of the internet.
+    To fit all 13 addresses in the packet, compression is used.
+- question: Describe a recursive DNS query
+  answer: |
+    "Give me what I need and ask everyone you want"
+- question: Describe an iterative DNS query
+  answer: |
+    "Give me what you know but ask no one else"
+- question: When do wildcards not apply?
+  answer: |
+    When the query is in another zone.
+    Delegation cancels the wildcard defaults.
+- question: Whats the value for the label type of a compressed label?
+  answer: |
+    11.
+    The first two bits of the length bytes contain the label type.
+- question: Explain how label compression works
+  answer: |
+    Label type: 11.
+    6+8 bits used as pointer from DNS packet offset to domain.
+    Saves space if a domain name appears more than once.
+- question: What happens if the QDCOUNT is > 1?
+  answer: |
+    It is undefined behavior.
+- question: Name all DNS header fields
+  answer: |
+    - TransactionID
+    - Flags
+    - QDCOUNT (num questions)
+    - ANCOUNT (num answers)
+    - NSCOUNT (num NS records)
+    - ARCOUNT (num additional records)
+- question: Explain the situation of a bailiwick loop
+  answer: |
+    NS record with name, but no IP addr given.
+    This makes it impossible to find the server.
+    Solution: glue records.
+- question: Explain 'Query Name Minimisation'
+  answer: |
+    To improve privacy, only the relevant part of a query is sent to the root servers.
+- question: How many instances are deployed in the root server system?
+  answer: |
+    1018 instances operated by the 12 independent operators.
+    12 operators, 13-1 because Verisign owns to.
+- question: Whats the op code for a standard DNS query?
+  answer: |
+    0
+- question: Whats the op code for DSO?
+  answer: |
+    6
+- question: Whats the DSO op code used for?
+  answer: |
+    DNS Stateful Operation.
+    Used to indicate that statekeeping is possible because the session is established over TCP.
+- question: Whats the DNS result code for a ServFail?
+  answer: |
+    2
+- question: Whats the result code for NXDOMAIN?
+  answer: |
+    3
+- question: How many possible values are there for the QTYPE field?
+  answer: |
+    2 byte field
+    => 2^16 = 65.536 possible values.
+- question: Name the three parts of a DNS query
+  answer: |
+    - QNAME
+    - QTYPE (2 bytes)
+    - QCLASS (2 bytes)
+- question: Whats the value of the QCLASS 'IN' after being encoded?
+  answer: 1
+- question: Whats the bit position of the RA flag in the DNS header?
+  answer: |
+    The Recursion Available Flag is the 8th bit in the DNS header.
+- question: Whats the answer if there was no error but also an empty set of answers?
+  answer: |
+    NODATA
+- question: Whats the QTYPE for a slave initiated zone transfer (pull)?
+  answer: |
+    AXFR
+- question: Whats the QTYPE for a master initiated zone transfer (push)?
+  answer: |
+    NOTIFY
+- question: Whats the op code for "dynamic update"?
+  answer: 5
+- question: Whats the ASCII value of * (asterisk label)?
+  answer: 42
+- question: Define the source of synthesis (SOS)
+  answer: |
+    The source of synthesis of a query name,
+    is the domain name "*.<closest encloser>",
+    which may or may not exist.
+- question: Define closest encloser (CLE)
+  answer: |
+    The closest encloser of a query name,
+    is the longest (matching) ancestor that exists.
+- question: How does one recognize a delegation in a DNS reply?
+  answer: |
+    - NOERROR
+    - NS records in authority section
+- question: Which result if no CLE and no SOS?
+  answer: NXDOMAIN
+- question: Whats the bit position of the RD flag in the DNS header?
+  answer: |
+    The Recursion Desired Flag is the 7th bit in the DNS header.
+- question: What are the parameters of an SOA record?
+  answer: |
+    - serial
+    - refresh
+    - retry
+    - expire
+    - minimum
+- question: What does MX stand for?
+  answer: |
+    Mail eXchange resouce records.
+- question: What does DNAME stand for?
+  answer: |
+    Delegation Name, defined in RFC #6672.
+
+- question: What is the architecture of DNS?
+  answer: |
+    Decentralised, but hierarchical.
+- question: Which component does only send iterative queries?
+  answer: |
+    A resolver.
+- question: Which component does only answer queries?
+  answer: |
+    A name server.
+- question: Which component sends only recursive queries?
+  answer: |
+    A stub resolver.
+- question: Whats the primary use of DNS?
+  answer: |
+    Looking up IP addresses
+- question: In BIND syntax (owner ttl class type data) which components are optional?
+  answer: |
+    ttl and class both have defaults.
+    The default class is 'IN'.
+- question: |
+    Which system does not use TCP?
+    a) DNS Crypt
+    b) DOD
+    c) DoH
+    d) DoT
+  answer: |
+    b) DNS over DTLS (DOD) uses UDP as transport protocol.
+- question: The UDP message size in an OPT record is encoded in the?
+  answer: |
+    CLASS field.
+    (The pseudo record OPT abuses the CLASS field for this)
+- question: |
+    Which one of the following is not a valid domain?
+    a) *.example.com
+    b) *.*.com
+    c) *.*.*.
+    d) this.*.wildcard.
+  answer: |
+    d) wildcards must not be prefixed by a label
+
+- question: Whats the maximum offset when using a compressed label?
+  answer: |
+    14 bits are available for storage, so:
+    2^14 - 1 (for empty root label) = 16.383 bytes
+- question: |
+    Whats the encoding of 112.nl in hex?
+    Hint: The ascii value of . is 0x2e
+  answer: |
+    0x03 0x31 0x31 0x32 0x02 0x6e 0x6c 0x00
+       3    1    1    2    2    n    l    0
+- question: A zone change notification by the master server uses which DNS op code?
+  answer: |
+    4 - NOTIFY
+- question: How many sections does a reply contain? (without empty sections)
+  answer: |
+    4 - Header, Answer, Authority, Additional
+- question: How many sections does a reply contain? (with empty sections)
+  answer: 5
+- question: How many sections does a query contain? (without empty sections)
+  answer: |
+    2 - Header and Question
+- question: How many sections does a query contain? (with empty sections)
+  answer: 5
+- question: In which year was DNS invented?
+  answer: 1983 (RFC was published '84)
+- question: What should be the value of QDCOUNT?
+  answer: 1
+- question: |
+    A validating resolver answers to dig www.os3.nl
+    Which flags are set?
+  answer: AD, but not AA
+- question: Whats the full name of the AA flag?
+  answer: Authoritative Answer
+- question: Whats the full name of the CD flag?
+  answer: Checking Disabled
+- question: Do NSEC chains touch?
+  answer: Yes
+- question: Do NSEC3 chains touch?
+  answer: No
+- question: What happens if two key tags are the same?
+  answer: |
+    One public key works, the other not.
+    Both need to be tried.
+- question: The digest in the text representation of a DS record uses which encoding?
+  answer: |
+    Hex encoding
+- question: Whats the full name of the DO flag?
+  answer: |
+    DNSSEC OK
+- question: With empty caches, a lookup of www.os3.nl will consist of?
+  answer: |
+    1 recursive (www.os3.nl)
+    and 3 iterative queries (root, nl, os3)
+- question: A DNS server that is listed as server but does not act as such is called?
+  answer: |
+    Lame
+- question: How many root server IPv4 addresses are there?
+  answer: |
+    13
+- question: |
+    Which domain is usually an empty non terminal?
+    a) _sip._tcp.example.com.
+    b) _tcp.example.com.
+    c) example.com.
+    d) com.
+    e) .
+  answer: |
+    b) is non terminal because there is still something below (SRV record for application layer protocol), but empty because it contains no info in itself.
+- question: The current meaning of the "Minimum" field in the SOA?
+  answer: |
+    The negative caching TTL.
+    (= how long to wait before asking again for a non existent domain)
+- question: A cut in the domain name space is given by?
+  answer: |
+    A NS record in the parent zone.
+- question: Does a PTR record always have to point to a domain name for which an A record exists?
+  answer: |
+    No - a PTR record may point anywhere in the tree.
+- question: A NS record set is signed by which entity?
+  answer: |
+    The child.
+- question: A DS record is signed by which entity?
+  answer: |
+    The parent.
+- question: A DS record contains a hash of what?
+  answer: |
+    A DNSKEY record.
+- question: Which proposal for DNS RR types "made it"?
+  answer: |
+    MX records.
+- question: |
+    Which domain name is illegal, but would have been useful to indicate the child side of a delegation?
+    a) .os3.nl
+    b) .os3.nl.
+    c) os3.nl
+    d) .os3.nl.
+  answer: |
+    a) and b) are illegal because they start with a dot.
+    This leads to an empty label on the left side.
+- question: A slash is used as a separator in file pathnames from _ to _?
+  answer: |
+    From node to edge.
+- question: Organisation responsible for address allocation and root zone managament?
+  answer: |
+    IANA (Suborg of ICANN)
+- question: The forgotten top level domain in RFC 920 was?
+  answer: |
+    .net
+- question: Delegation in DNS happens for _ subdomains and _?
+  answer: |
+    For some subdomains and in-band (= in the database).
+- question: Architecture of the ARPANET?
+  answer: |
+    Distributed
+- question: In which year have TLDs been specified?
+  answer: |
+    1984
+- question: In which year and rfc has the hosts.txt been specified?
+  answer: |
+    1973 - RFC #606
+- question: First ccTLDs?
+  answer: |
+    .com, .mil, .au, .gb, .nl, .jp
+- question: Max length of a label?
+  answer: |
+    63 bytes
+- question: Max length of a domain?
+  answer: |
+    254 bytes
+- question: Which are the attributes shared by a resource record set?
+  answer: |
+    same owner, class, type, ttl

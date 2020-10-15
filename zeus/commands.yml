@@ -1,0 +1,51 @@
+# ________ ____  __ __  ______     
+#  \___   // __ \|  |  \/  ___/    
+#   /    /\  ___/|  |  /\___ \    
+#  /_____ \\___  >____//____  >  
+#        \/    \/           \/  
+#                    Build System
+#                          v0.8.5
+#
+
+
+
+# default language
+language: bash
+
+# globals for all commands
+globals:
+    VERSION: v0.1
+
+# command data
+commands:
+    
+    # build the binary
+    build:
+        description: build project
+        dependencies:
+            - clean
+        buildNumber: true
+        exec: |
+            go build -o bin/quizsrv
+
+    run-local:
+        description: run the server locally
+        exec: go run server.go
+
+    # clean up the mess
+    clean:
+        description: clean up to prepare for build
+        exec: rm -rf bin/*
+
+    build-docker:
+        dependencies:
+            - clean
+        description: build docker container
+        exec: |
+            cp -rf categories files pages docker
+            GOARCH=amd64 GOOS=linux CGO_ENABLED=0 go build -ldflags "-X main.Version=${VERSION}" -o docker/quizsrv server.go
+            docker build -t dreadl0ck/quizsrv:${VERSION} docker
+            rm -vf docker/quizsrv
+    push-docker:
+        exec: |
+            docker push dreadl0ck/quizsrv

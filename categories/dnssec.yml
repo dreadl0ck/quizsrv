@@ -1,0 +1,130 @@
+- question: Define the NEC
+  answer: |
+    The next closer is the child of the closest encloser on the graph
+    to the non existing domain.
+- question: Explain the security implications of using NSEC wildcards
+  answer: |
+    Invalidates NSEC semantics.
+    Example: *.example.com. has an NSEC to anything.example.com.
+    Wildcard synthesis would generate an NSEC record:
+    !.example.com -> anything.example.com.
+- question: Which RFC discusses wildcard semantics?
+  answer: |
+    RFC #4592
+- question: Is it allowed to use a DNAME record in combination with a wildcard?
+  answer: |
+    No. According to RFC #4592 this is uncoherent and to be avoided.
+- question: Is it allowed to use a CNAME record in combination with a wildcard?
+  answer: |
+    Yes. According to RFC #4592 this is allowed.
+- question: Is it allowed to use a SOA record in combination with a wildcard?
+  answer: |
+    Allowed, but strange according to RFC #4592.
+- question: What are the different security statuses of RRs?
+  answer: |
+    1. secure
+    2. insecure
+    3. bogus
+    4. indeterminate
+- question: What does the AD flag indicate?
+  answer: |
+    Authentic Data.
+    Set from recursive name server to stub resolver,
+    to indicate the response data has been verified successfully.
+    However, client implementations usually verify the result themselves.
+- question: What does the CD flag indicate?
+  answer: |
+    Checking Disabled.
+    Set from the stub resolver to the recursive name server,
+    to indicate that the client wants to do the checking by itself.
+- question: What does the DO flag indicate?
+  answer: |
+    DNSSEC OK.
+    Indicates that the client want to retrieve all DNSSEC related information:
+    RRSIG and NSEC(3) records etc...
+- question: Which wildcard types should not be synthesized?
+  answer: |
+    - SOA
+    - NS
+    - DNAME
+    - NSEC
+- question: What is the maximum value for QDCOUNT and why?
+  answer: |
+    There is only a single response code in the DNS protocol header.
+    That makes it unclear how to correctly answer queries for multiple domains.
+- question: The digest in the text representation of a DS record uses which encoding?
+  answer: |
+    Hex encoding
+- question: What information is signed with the KSK?
+  answer: |
+    The DNSKEYs.
+- question: What information is signed with the ZSK?
+  answer: |
+    All resource record sets except the DNSKEYs.
+- question: A NS record is signed by whom?
+  answer: |
+    The child.
+- question: A DS record set is signed by whom?
+  answer: |
+    The parent.
+- question: The label in an NSEC3 record encoded in what encoding and why?
+  answer: |
+    Base32, because of case sensitivity.
+    It is shorter than base16 (hex) but longer than base64.
+- question: Denial of Existence needs at most how many NSEC records?
+  answer: |
+    1 without wildcards.
+    2 with wildcards.
+- question: Whats the role of the CLE when querying for a non-existent domain?
+  answer: |
+    The CLE is the parent of both NEC and SOS.
+- question: Which records apart from NSEC and RRSIG are present at a delegation point?
+  answer: |
+    DS record
+    NS record (even for insecure delegations)
+- question: |
+    Which list is in lexicographic ordering?
+    a) *a, a, ~a
+    b) *a, ~a, a
+    c) a, *a, ~a
+    d) a, ~a, *a
+    e) ~a, *a, a
+  answer: |
+    a) because:
+    * is placed before letters
+    ~ is placed after letters
+    in the ASCII table.
+- question: Denial of Existence needs at most how many NSEC3 records?
+  answer: |
+    2 normally,
+    3 in some cases.
+- question: The Type in an NSEC resource record applies to?
+  answer: |
+    The owner of the NSEC resource record (aka the source).
+- question: What is the meaning of the DS resource record?
+  answer: |
+    The Delegation Signer record is used to secure DNSSEC delegations.
+    It contains the hash of the KSK from the sub-delegated zone.
+- question: A ZSK signs?
+  answer: |
+    All RR sets.
+- question: A KSK signs?
+  answer: |
+    The DNSKEYs.
+
+- question: How often should KSKs be replaced?
+  answer: |
+    Annually.
+- question: How often should ZSKs be replaced?
+  answer: |
+    Quarterly.
+- question: Explain the contents of the DS record
+  answer: |
+    Delegation Signer.
+    Contains a hash of the public KSK.
+- question: Define ZSK
+  answer: |
+    Used to sign or verify a domains / zones non-key records.
+- question: Define KSK
+  answer: |
+    Used to sign or verify a domains / zones keys.
