@@ -26,19 +26,19 @@
   answer: |
     Operand is a memory address that contains the effective memory address.
     Example: LD A (501)
-- question: What does the ret instruction do?
+- question: What does the _ret_ instruction do?
   answer: |
     Pops the return address (pc = program counter) from the stack.
-- question: What does the call instruction do?
+- question: What does the _call_ instruction do?
   answer: |
     Pushes the return (pc = program counter) address onto the stack
     and then jumps to the specified address.
 - question: What does paging do?
   answer: |
-    Translates linear (physical) to logical (virtual) addresses.
+    Translates _linear_ (physical) to _logical_ (virtual) addresses.
 - question: What does segmentation do?
   answer: |
-    Translates logical (virtual) to linear (physical) addresses.
+    Translates _logical_ (virtual) to _linear_ (physical) addresses.
     Deprecated in x86.
 - question: Which command can be used to follow library calls?
   answer: |
@@ -55,9 +55,9 @@
 - question: Maximum level of recursion for an interpreter in Linux?
   answer: |
     4
-- question: What is the purpose of the .interp ELF section?
+- question: What is the purpose of the _.interp_ ELF section?
   answer: |
-    The .interp section contains the DLLs.
+    The _.interp_ section contains the DLLs.
 - question: Whats the entry point of an ELF executable?
   answer: |
     _start
@@ -66,9 +66,9 @@
     The memory indirect addressing.
     Using pointers to pointers is inffecient,
     because it leads to two fetch operations for a single instruction.
-- question: When compiling on a 64bit machine for 32bit architecture, the use of %rax in assembly causes?
+- question: When compiling on a 64 bit machine for 32 bit architecture, the use of _%rax_ in assembly causes?
   answer: |
-    Compilation will fail, %rax does not exists on 32bit.
+    Compilation will fail, _%rax_ does not exists on 32 bit.
 - question: What does pty stand for?
   answer: |
     pseudo terminal
@@ -77,8 +77,9 @@
     2 - one local and one remote pseudo terminal.
 - question: Which system call is considered a quick hack?
   answer: |
-    vfork - fork is computationally expensive because it copies all resources.
-    clone is the proper replacement.
+    _vfork_
+    _fork_ is computationally expensive because it copies all resources.
+    _clone_ is the proper replacement.
 - question: Which step is not part of compilation?
   answer: |
     Loading of dynamic libraries - happens at runtime.
@@ -94,9 +95,9 @@
 - question: How many Macintosh engineers does it take to screw in a light bulb?
   answer: None - it has to be done by a local authorized dealer.
 
-- question: Name the syscalls used by a shell that executes a command in correct order.
+- question: Name the syscalls in correct order that are used by a shell that executes a command
   answer: |
-    stat, fork, execve
+    _stat_, _fork_, _execve_
 - question: Name the path for the first device corresponding to the slave side of a pseudo terminal.
   answer: |
     /dev/pts/0
@@ -121,8 +122,8 @@
     TODO: verify order, Karst said things are pushed in reverse order?
 - question: Whats the entrypoint in crt1.o of an ELF executable?
   answer: |
-    _start
-    crt is the c runtime.
+    *_start*
+    crt is the C runtime.
 - question: What are the 4 steps involved in compilation?
   answer: |
     1. Preprocessing
@@ -155,7 +156,7 @@
   answer: 1010
 
 - question: What system call does the shell use to ensure the executed command wont end up as a zombie?
-  answer: wait
+  answer: _wait_
 
 - question: How is a process called that is reclaimed by init after the parent exited?
   answer: Orphan
