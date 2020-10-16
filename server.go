@@ -12,6 +12,7 @@ import (
 	"fmt"
 	"github.com/foomo/simplecert"
 	"github.com/foomo/tlsconfig"
+	"github.com/russross/blackfriday/v2"
 	"gopkg.in/yaml.v3"
 	"html/template"
 	"io/ioutil"
@@ -115,12 +116,13 @@ func connect(w http.ResponseWriter, r *http.Request) {
 		category = data.Categories[filepath.Base(string(location))]
 		done []int
 		current = rand.Intn(len(category))
+		previousIndex int
 	)
 
 	c.WriteMessage(websocket.TextMessage, []byte("total="+strconv.Itoa(len(category))))
 
 	fmt.Println(len(category), filepath.Base(string(location)), string(location))
-	c.WriteMessage(websocket.TextMessage, []byte("Q: " + category[current].Question))
+	c.WriteMessage(websocket.TextMessage, blackfriday.Run([]byte(category[current].Question)))
 
 	for {
 		_, message, err := c.ReadMessage()
@@ -140,18 +142,58 @@ func connect(w http.ResponseWriter, r *http.Request) {
 		switch string(message) {
 			case "next":
 
-				for {
-					current = rand.Intn(len(category))
-					if !hasBeenAsked(current, done) {
-						break
+				if previousIndex == 0 {
+					done = append(done, current)
+
+					if len(done) == len(category) {
+						fmt.Println("client DONE", r.RemoteAddr)
+						c.WriteMessage(websocket.TextMessage, []byte("congrats you are done! reload to restart"))
+						c.Close()
+						return
 					}
 				}
 
-				c.WriteMessage(websocket.TextMessage, []byte("Q: " + category[current].Question))
+				if previousIndex > 0 {
+
+					previousIndex--
+
+					if previousIndex == 0 {
+						for {
+							current = rand.Intn(len(category))
+							if !hasBeenAsked(current, done) {
+								break
+							}
+						}
+					} else {
+						current = done[len(done)-previousIndex]
+					}
+
+				} else {
+					for {
+						current = rand.Intn(len(category))
+						if !hasBeenAsked(current, done) {
+							break
+						}
+					}
+				}
+
+				c.WriteMessage(websocket.TextMessage, blackfriday.Run([]byte(category[current].Question)))
 
 			case "answer":
-				c.WriteMessage(websocket.TextMessage, []byte(category[current].Answer))
-				done = append(done, current)
+				c.WriteMessage(websocket.TextMessage, blackfriday.Run([]byte(category[current].Answer)))
+
+			case "previous":
+
+				if len(done)-previousIndex+1 >= 0 {
+
+					previousIndex++
+
+					// last entry in done was the previous question
+					current = done[len(done)-previousIndex]
+
+					c.WriteMessage(websocket.TextMessage, blackfriday.Run([]byte(category[current].Question)))
+				}
+
 		}
 	}
 }

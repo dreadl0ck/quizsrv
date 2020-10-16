@@ -2,16 +2,38 @@ window.addEventListener("load", function (evt) {
     var output = document.getElementById("output");
     var input = document.getElementById("input");
     var ws;
-    ws = new WebSocket("wss://" + location.host + "/cia/connect");
+    var waitingForAnswer = true
+    var current = 0;
+    var total = 1;
+    var count = 1;
+    var previousQuestion = false;
+
+    console.log("protocol", location.protocol);
+
+    if (location.protocol == "https:") {
+        ws = new WebSocket("wss://" + location.host + "/cia/connect");
+    } else {
+        ws = new WebSocket("ws://" + location.host + "/cia/connect");
+    }
+
     ws.onopen = function (evt) {
       ws.send(window.location);
     };
 
     document.onkeydown = checkKey;
 
-    var waitingForAnswer = true
+    var previous = function() {
+        if (current == 1) {
+            return;
+        }
+        if (ws) {
+            previousQuestion = true;
+            ws.send("previous")
+        }
+    }
 
     var next = function() {
+        previousQuestion = false;
         if (waitingForAnswer) {
             if (ws) {
                 ws.send("answer")
@@ -37,16 +59,13 @@ window.addEventListener("load", function (evt) {
         }
         else if (e.keyCode == '37') {
            // left arrow
+           previous();
         }
         else if (e.keyCode == '39') {
            // right arrow
            next();
         }
     }
-
-    var current = 0;
-    var total = 1;
-    var count = 1;
 
     ws.onclose = function (evt) {
       ws = null;
@@ -56,12 +75,29 @@ window.addEventListener("load", function (evt) {
         total = evt.data.replace("total=", "");
         document.getElementById("index").innerHTML = current + "/" + total
       } else {
-        count++;
-        if (count % 2 == 0 && current < total) {
-          current++;
-          document.getElementById("index").innerHTML = current + "/" + total
-        }
-        print(evt.data);
+          if (previousQuestion) {
+
+              flush();
+              if (waitingForAnswer) {
+                  count -= 2;
+              } else {
+                  count -= 3;
+              }
+
+              waitingForAnswer = true;
+
+              if (count % 2 == 0 && current <= total) {
+                  current--;
+                  document.getElementById("index").innerHTML = current + "/" + total
+              }
+          } else {
+              count++;
+              if (count % 2 == 0 && current < total) {
+                  current++;
+                  document.getElementById("index").innerHTML = current + "/" + total
+              }
+          }
+          print(evt.data);
       }
     };
     ws.onerror = function (evt) {
@@ -88,7 +124,8 @@ window.addEventListener("load", function (evt) {
               d.className = "red";
           }
 
-          d.textContent = lines[i];
+          //d.textContent = lines[i];
+          d.innerHTML = lines[i];
 
           target.appendChild(d);
         }
