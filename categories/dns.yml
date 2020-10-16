@@ -89,9 +89,9 @@
   answer: 42
 - question: Define the source of synthesis (SOS)
   answer: |
-    The source of synthesis of a query name,
+    ```The source of synthesis of a query name,
     is the domain name "*.<closest encloser>",
-    which may or may not exist.
+    which may or may not exist.```
 - question: Define closest encloser (CLE)
   answer: |
     The closest encloser of a query name,
