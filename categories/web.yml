@@ -112,10 +112,12 @@
   answer: HEADER
 
 - question: Name 5 new tags introduced with HTML5
-  answer: <div>, <nav>, <span>, <video>, <figure>
+  answer: |
+    `<div>, <nav>, <span>, <video>, <figure>`
 
 - question: How is a HTTP request formatted?
-  answer: <method><path><HTTP-version>
+  answer: |
+    `<method><path><HTTP-version>`
 
 - question: What TLS extension is used to enable the virtual hosting for and https-based site?
   answer: |
