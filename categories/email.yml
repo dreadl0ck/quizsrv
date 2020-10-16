@@ -58,6 +58,163 @@
     2. runs as postdrop or postfix user, sendmail always as root.
     3. has higher queuing speed than Sendmail.
 
+- question: What 5 lines can you find in a normal (E)SMTP session?
+  answer: |
+    - EHLO
+    - MAIL FROM:
+    - RCPT TO:
+    - DATA
+    - QUIT
+
+- question: What does SMTP use as a presentation layer?
+  answer: Network Virtual Terminal (NVT) described in the TELNET RFC 854
+
+- question: What are the two main "sections" that make up an email?
+  answer: The content & the envelope
+
+- question: | 
+    What are the RFC numbers for:
+      Mail Transfer?
+      Mail Format?
+      Mail Agents & Stores?
+  answer: |
+    Mail Transfer: 5321
+    Mail Format: 5322
+    Mail Agents & Stores: 5598
+
+- question: | 
+    In the early days of the internet what sybol would you use to send mail through:
+      ARPANET?
+      UUCP?
+      Berknet?
+  answer: |
+    ARPANET: @
+    UUCP: !
+    Berknet: :
+
+- question: In what year was the first email sent?
+  answer: 1971
+
+- question: What programs was the first email based on?
+  answer: CPYNET & SNDMSG
+
+- question: Approximately how many email are sent every day?
+  answer: 350 billion
+
+- question: What percentage of daily email is spam?
+  answer: 85%
+
+- question: What is the path to the MTA-STS configuration file? Use example.com as the apex.
+  answer: https://mta-sts.example.com/.well-known/mta-sts.txt
+
+- question: What are some of the benefits of MTA-STS over DANE?
+  answer: |
+    - MTA-STS doesn't require DNSSEC
+    - MTA-STS allows you to set a policy for failed checks
+    - MTA-STS can be deployed alongside DNSSEC & DANE
+
+- question: What information does the MTA-STS policy file contain?
+  answer: |
+    - version
+    - mx
+    - max_age
+    - mode (one of none, testing, or enforce)
+
+- question: In what year was MTA-STS created? In what RFC?
+  answer: In 2018, RFC 8461
+
+- question: In a DANE TLSA record, how is the certificate data encoded?
+  answer: base64
+
+- question: In a DANE TLSA record, what are the possible values of selector? And matching type?
+  answer: |
+    - selector can take:
+      0: use entire certificate
+      1:  use only the public key
+    - matching type:
+      0: use all data in the certficiate
+      1: use SHA256 of certificate
+      2: use SHA512 of certificate
+
+- question: What are the possible values of the "certificate usage" field in a DANE TLSA record?
+  answer: |
+    0: PKIX-TA
+    1: PKIX-EE
+    2: DANE-TA
+    3: DANE-ee
+
+- question: How is a DANE TLSA record formatted?
+  answer: _port._protocol.hostname
+
+- question: What fields does a DANE TLSA record contain?
+  answer: |
+    Certificate usage
+    Selector
+    Matching type
+    Certficiate data
+
+- question: In what year was DANE created? In what RFC?
+  answer: 2012 & RFC 6698
+
+- question: What are the available DMARC policies in the p tag?
+  answer: none, quarantine, reject
+
+- question: What email header does DMARC check?
+  answer: From header
+
+- question: What is the format of the DMARC TXT RR for the apex example.com?
+  answer: _dmarc.example.com
+
+- question: Describe the fields in a DKIM domainkey DNS TXT record
+  answer: |
+    h: hash
+    k: key
+    p: public
+    v: version
+
+- question: How is the body hash of a DKIM-Signature header encoded?
+  answer: base64
+
+- question: Given apex example.com, what is the format of a DKIM TXT record?
+  answer: <selector>._domainkey.example.com
+
+- question: What are the 4 SPF filters and what do they mean?
+  answer: |
+    + pass
+    - fail
+    ~ soft fail
+    ? neutral
+
+- question: How would you enforce TLS if DNSSEC is not availalbe?
+  answer: Use MTA-STS
+
+- question: How would you protect your email content from end to end?
+  answer: Use encryption with PGP or SMIME
+
+- question: Is it possible to use Unicode in an email header?
+  answer: Yes UTf-8 Unicode is supported by the SMTP extension in RFC 6531
+
+- question: Which M?A adds a Received header to every email?
+  answer: Mail Transfer Agent (MTA)
+
+- question: Is the BCC header left in the email headears that are sent out to other recipients?
+  answer: No
+
+- question: In email, describe the header format
+  answer: |
+    <field name>:<field body>
+      where <field name> consists of printable US-Ascii (33-126) excluding space " " and colon ":"
+      <field body> consists of US-Ascii (1-127) without CR & LF
+
+- question: List 5 possible email line delimiters
+  answer: CR, LF, CRLF, LFCR, NEL, LS, RS, PS
+
+- question: What are the possible encodings for email format?
+  answer: Ascii (7-bit) which can be extended to MIME (8-bit)
+
+- question: What is the line length recommendation of an email? Why?
+  answer: Max width is 80 characters including CRLF because of old terminal width
+
 - question: Name the five postfix queues
   answer: |
     - incoming
