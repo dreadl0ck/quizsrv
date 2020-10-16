@@ -137,3 +137,33 @@
 
 - question: What kind of protection does DNSSEC offer with respect to confidentiality, integrity and authenticity?
   answer: Integrity and Authenticity
+
+- question: What is the name of the attack on DNS where the DNS transactions IDs are guessed?
+  answer: Kaminsky attack
+
+- question: When does a domain name exist?
+  answer:  A domain name exists if the name itslef or any of its descendants have a least 1 RR
+
+- question: How would you define an ENT in NSEC terms?
+  answer: A domain name D that is covered by some NSEC records with source S and target T is an ENT iif D is an ancestor of T in the domain name tree
+
+- question: How would you prove NoData for an ENT with NSEC?
+  answer: if the domain has an ancestor with an TON NSEC record that covers it
+
+- question: Why doesn't an NSEC3 record contain NSEC3 in its type list?
+  answer: because the types refer to the original (non-hashed) domain name
+
+- question: Does an NSEC record contain the NSEC in its type bitmap?
+  answer: yes!
+
+- question: What hashing algorithms can be used in a DS record digest?
+  answer: SHA1 & SHA256
+
+- question: What RRsets are not signed by RRSIGS?
+  answer: Glue RRsets & NS RRsets at delegation points
+
+- question: Even with DNSSEC, what can you spoof?
+  answer: DNS flags & response codes
+
+- question: When was DNSSEC created? In what RFC?
+  answer: 1997 & RFC 2065
