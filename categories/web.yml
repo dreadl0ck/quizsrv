@@ -145,3 +145,41 @@
 
 - question: What is DHTML?
   answer: Dynamic HyperText Markup Language.
+
+- question: Which popular web server can also be used as a load balancer?
+  answer: Nginx
+
+- question: Name three different ECMAScript engines
+  answer: |
+    - V8 (Google Chrome)
+    - Chakra (Microsoft Browsers)
+    - SpiderMonkey (Firefox)
+
+- question: Which HTTP header is used by a websocket to establish a connection?
+  answer: Upgrade
+
+- question: Which protocol scheme is used for websockets?
+  answer: |
+    - ws:// (HTTP)
+    - wss:// (HTTPS)
+
+- question: What does WHATWG stand for?
+  answer: Web Hypertext Application Technology Working Group
+
+- question: What is XHTML?
+  answer: XML specification of HTML, which still needs a DTD
+
+- question: What does DTD stand for?
+  answer: Document Type Definition
+
+- question: What does SGML stand for?
+  answer: Standard Generalized Markup Language
+
+- question: What does XHR stand for?
+  answer: XMLHttpRequest
+
+- question: What is XHR used for?
+  answer: Javascript API to send request to servers
+
+- question: What does JSON stand for?
+  answer: JavaScript Object Notation
