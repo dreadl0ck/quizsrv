@@ -23,7 +23,8 @@
     MDA (Mail Delivery Agent) and MUA (Mail User Agent)
 - question: The DNS record DKIM uses for example.com. is?
   answer: |
-    <selector>._domainkey.example.com.  TXT
+    ```<selector>._domainkey.example.com.```
+    TXT
 - question: Why is the line limit in the ABNF message format 78 chars?
   answer: |
     At the time, 80 char wide terminals were common.
