@@ -145,13 +145,13 @@
   answer: A domain name D that is covered by some NSEC records with source S and target T is an ENT iif D is an ancestor of T in the domain name tree
 
 - question: How would you prove NoData for an ENT with NSEC?
-  answer: if the domain has an ancestor with an TON NSEC record that covers it
+  answer: If the domain has an ancestor with an TON NSEC record that covers it
 
 - question: Why doesn't an NSEC3 record contain NSEC3 in its type list?
   answer: because the types refer to the original (non-hashed) domain name
 
 - question: Does an NSEC record contain the NSEC in its type bitmap?
-  answer: yes!
+  answer: Yes!
 
 - question: What hashing algorithms can be used in a DS record digest?
   answer: SHA1 & SHA256
