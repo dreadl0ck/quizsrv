@@ -121,10 +121,10 @@
     RISC (Reduced Instruction Set Computer)
 - question: When the kernel starts an application, which values are pushed to the stack?
   answer: |
-    1. Argument Vector
-    2. Environment
-    3. Auxiliary Vector
-    TODO: verify order, Karst said things are pushed in reverse order?
+    1. Auxiliary Vector
+    2. Environment Vector
+    3. Argument Vector
+
 - question: Whats the entrypoint in crt1.o of an ELF executable?
   answer: |
     *_start*
