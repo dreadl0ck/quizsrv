@@ -103,7 +103,9 @@
   answer: 350 billion
 
 - question: What percentage of daily email is spam?
-  answer: 85%
+  answer: |
+    ```~85%```
+    according to Cisco Talos Intelligenve Group, SEPTEMBER 2020
 
 - question: What is the path to the MTA-STS configuration file? Use example.com as the apex.
   answer: https://mta-sts.example.com/.well-known/mta-sts.txt
