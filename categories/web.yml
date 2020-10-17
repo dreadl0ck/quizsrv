@@ -204,3 +204,6 @@
 
 - question: Where does the name Apache come from?
   answer: In the early days, the web server used to crash a lot so the developers called it "a patchy" system because of the large number of patches
+
+- question: What does ALPN stand for?
+  answer: Application-Layer Protocol Negotiation
