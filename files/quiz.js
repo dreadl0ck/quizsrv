@@ -46,19 +46,6 @@ window.addEventListener("load", function (evt) {
         }
     }, false);
 
-    // hook flag toggling to flag button
-    document.getElementById("flagButton").onclick = function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        if (flagged != null) {
-            if (!flagged.includes(currentServerIndex)) {
-                flag(currentServerIndex);
-            } else {
-                unflag(currentServerIndex);
-            }
-        }
-    };
-
     document.onkeydown = checkKey;
 
     var previous = function() {
@@ -71,20 +58,20 @@ window.addEventListener("load", function (evt) {
         }
     }
 
-    var flag = function(index) {
+    var flag = function() {
         console.log("flagged", flagged);
 
-        if (!flagged.includes(index)) {
+        if (!flagged.includes(currentServerIndex)) {
 
-            flagged.push(index);
+            flagged.push(currentServerIndex);
             localStorage.setItem(location.pathname.replaceAll("/cia/", ""), JSON.stringify(flagged));
-            addFlag(index);
-            console.log("flagged", index);
+            addFlag(currentServerIndex);
+            console.log("flagged", currentServerIndex);
         }
     }
 
-    var addFlag = function(index) {
-        console.log("addFlag", index)
+    var addFlag = function() {
+        console.log("addFlag", currentServerIndex)
         var elem = document.getElementById("flag");
         if (elem == null) {
             var d = document.createElement("div");
@@ -98,23 +85,23 @@ window.addEventListener("load", function (evt) {
         return array.filter(el => el !== element);
     }
 
-    var unflag = function(index) {
+    var unflag = function() {
         console.log("flagged before unflag", flagged);
 
-        if (flagged.includes(index)) {
+        if (flagged.includes(currentServerIndex)) {
 
-            flagged = remove(flagged, index)
+            flagged = remove(flagged, currentServerIndex)
 
             localStorage.setItem(location.pathname.replaceAll("/cia/", ""), JSON.stringify(flagged));
-            clearFlag(index);
-            console.log("unflagged", index);
+            clearFlag();
+            console.log("unflagged", currentServerIndex);
         }
 
         console.log("flagged after unflag", flagged);
     }
 
-    var clearFlag = function(index) {
-        console.log("clearFlag", index)
+    var clearFlag = function() {
+        console.log("clearFlag", currentServerIndex)
         var elem = document.getElementById("flag");
         if (elem != null) {
             console.log(elem);
@@ -204,9 +191,9 @@ window.addEventListener("load", function (evt) {
               // if the current server index is flagged, add the dot
               // if not: remove it
               if (flagged.includes(currentServerIndex)) {
-                  addFlag(currentServerIndex)
+                  addFlag()
               } else {
-                  clearFlag(currentServerIndex);
+                  clearFlag();
               }
           }
 
@@ -227,6 +214,8 @@ window.addEventListener("load", function (evt) {
 
     document.addEventListener('swiped-right', previous);
     document.addEventListener('swiped-left', next);
+    document.addEventListener('swiped-up', flag);
+    document.addEventListener('swiped-down', unflag);
 
     document.touchmove = function(e)
     {
