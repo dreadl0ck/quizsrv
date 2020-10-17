@@ -123,32 +123,6 @@
         "{{ .Quote }}" <br>- {{ .QuoteAuthor }}
     </p>
 
-    <div class="box">
-      <p>
-        Use the arrow right key or click the mouse to iterate through the questions.
-        On touch devices, swipe left or right.
-      </p>
-        <p>
-            New feature: flag questions and only repeat the flagged ones in subsequent runs, to train the questions you failed to answer.
-            The number of flagged questions will appear in the menu in red next to the number of successfully answered questions,
-            hit the X button to reset the flagged questions for the selected category.
-        </p>
-        <p>
-            While in a question session, use the arrow up key to flag a question and the arrow down to unflag.
-            Alternatively, you can also use a right click to flag or unflag.
-            To flag on mobile devices with a touch display, swipe up or down.
-        </p>
-        <p>
-            To indicate a question is flagged a red circle will appear next to the current index.
-        </p>
-      <p>
-        The order of questions is randomized every run, currently there are {{ .Total }} questions in the database.
-      </p>
-      <p>
-        Select a category below to start.
-      </p>
-    </div>
-
     <ul style="list-style-type:none;" class="list" id="list">
       {{ range $name, $elems := .Categories }}
         <li>
@@ -166,6 +140,33 @@
         </li>
       {{ end }}
     </ul>
+
+    <div class="box">
+        <p>
+            Use the arrow right key or click the mouse to iterate through the questions.
+            On touch devices, swipe left or right.
+        </p>
+        <p>
+            New feature: flag questions and only repeat the flagged ones in subsequent runs, to train the questions you failed to answer.
+            The number of flagged questions will appear in the menu in red next to the number of successfully answered questions,
+            hit the X button to reset the flagged questions for the selected category.
+        </p>
+        <p>
+            While in a question session, use the arrow up key to flag a question and the arrow down to unflag.
+            Alternatively, you can also use a right click to flag or unflag.
+            To flag on mobile devices with a touch display, swipe up or down.
+        </p>
+        <p>
+            To indicate a question is flagged a red circle will appear next to the current index.
+        </p>
+        <p>
+            The order of questions is randomized every run, currently there are {{ .Total }} questions in the database.
+        </p>
+        <p>
+            Select a category below to start.
+        </p>
+    </div>
+
     <div id="version" class="version">{{.Version}}</div>
 
   </body>

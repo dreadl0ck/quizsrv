@@ -1,17 +1,11 @@
 #!/bin/bash
 #
 # ZEUS Error Dump
-# Timestamp: [Sat Oct 17 18:11:02 2020]
+# Timestamp: [Sat Oct 17 20:04:46 2020]
 # Error: exit status 1
 # StdErr: 
 # recv: answer
-# recv: next
-# recv: answer
-# recv: next
-# recv: answer
-# recv: next
-# recv: answer
-# recv: next
+# read: websocket: close 1001 (going away)
 # signal: interrupt
 # 
 

@@ -185,7 +185,8 @@
   answer: 5
 - question: How many sections does a query contain? (without empty sections)
   answer: |
-    2 - Header and Question
+    2.
+    Header and Question section.
 - question: How many sections does a query contain? (with empty sections)
   answer: 5
 - question: In which year was DNS invented?
