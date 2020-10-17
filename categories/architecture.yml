@@ -31,8 +31,7 @@
     Pops the return address (pc = program counter) from the stack.
 - question: What does the _call_ instruction do?
   answer: |
-    Pushes the return (pc = program counter) address onto the stack
-    and then jumps to the specified address.
+    Pushes the return (pc = program counter) address onto the stack and then jumps to the specified address.
 - question: What does paging do?
   answer: |
     Translates _linear_ to _logical_ addresses.
@@ -237,7 +236,7 @@
 - question: How many bits is the Intel 8086 architecture made up of?
   answer: 16 bits
 
-- question: In what year was the Intel 8008 made? Hoe many bits is its Program counter?
+- question: In what year was the Intel 8008 made? How many bits is its Program counter?
   answer: |
     1972
     6 + 8 = 14 bits which can be used for addressing
