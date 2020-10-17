@@ -2,7 +2,7 @@
   answer: |
     Operand is a base memory address to which the value in the index register is added.
     Example: LD A 500+X
-- question: Explain immidiate memory addressing
+- question: Explain immediate memory addressing
   answer: |
     Operand is a value.
     Example: LD A #5
@@ -273,7 +273,7 @@
   answer: Objdump can dissassemble
 
 - question: Why do shared objects have a Position Independent Code (PIC) ?
-  answer: Because shared objects have a fixed place in physical memeory but a different place in virtual memory per process
+  answer: Because shared objects have a fixed place in physical memory but a different place in virtual memory per process
 
 - question: Are shared objects loaded eagerly or lazily during runtime?
   answer: Lazily

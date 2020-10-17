@@ -38,7 +38,11 @@
       font-family: "SF Pro Text Regular";
       src: url("/cia/files/FontsFree-Net-SFProText-Regular.ttf") format("truetype");
     }
-    * { font-family: "SF Pro Text Regular", sans-serif }
+    * {
+        font-family: "SF Pro Text Regular", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
     html, body {
       overflow-x: hidden; /* Hide scrollbars */
       color: lawngreen;
