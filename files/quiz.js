@@ -146,6 +146,41 @@ window.addEventListener("load", function (evt) {
         }
     }
 
+    var autoplayActive = false;
+    var autoplay = {};
+
+    function invokeNext() {
+        console.log("invokeNext");
+        autoplay = setTimeout(function() {
+            next();
+            invokeNext();
+        }, 5000);
+    }
+
+    var toggleAutoplay = function (ev) {
+
+        console.log("toggleAutoplay");
+
+        if (autoplayActive) {
+            document.getElementById("play").className = "button";
+        } else {
+            document.getElementById("play").className = "button paused";
+        }
+
+        ev.preventDefault();
+        ev.stopPropagation();
+
+       if (autoplayActive) {
+           clearTimeout(autoplay);
+           autoplayActive = false;
+       } else {
+           invokeNext();
+           autoplayActive = true;
+       }
+    }
+
+    document.getElementById("play").onclick = toggleAutoplay;
+
     ws.onclose = function (evt) {
       ws = null;
     };

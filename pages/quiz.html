@@ -33,6 +33,34 @@
       text-decoration: none;
       color: inherit;
     }
+
+    .button {
+      float: right;
+      top: 10rem;
+      right: 3rem;
+      position: absolute;
+      z-index: 9999999999;
+      border: 0;
+      background: transparent;
+      box-sizing: border-box;
+      width: 0;
+      height: 74px;
+      border-color: transparent transparent transparent lawngreen;
+      transition: 100ms all ease;
+      cursor: pointer;
+      border-style: solid;
+      opacity: 0.5;
+      border-width: 37px 0 37px 60px;
+    }
+    .button.paused {
+      border-style: double;
+      border-width: 0px 0 0px 60px;
+    }
+    .button:hover {
+      opacity: 0.8;
+      border-color: transparent transparent transparent lawngreen;
+    }
+
   </style>
 
   <style>
@@ -353,4 +381,5 @@
     <div id="index" class="index noselect"></div>
     <div id="version" class="version noselect">{{.Version}}</div>
   </body>
+  <button class='button' id="play"></button>
 </html>
