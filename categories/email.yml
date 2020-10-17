@@ -176,8 +176,9 @@
 - question: How is the body hash of a DKIM-Signature header encoded?
   answer: base64
 
-- question: Given apex example.com, what is the format of a DKIM TXT record?
-  answer: <selector>._domainkey.example.com
+- question: Given apex asdf.com, what is the format of a DKIM TXT record?
+  answer: |
+    ```<selector>._domainkey.asdf.com.```
 
 - question: What are the 4 SPF filters and what do they mean?
   answer: |
