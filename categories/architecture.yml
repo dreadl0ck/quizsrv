@@ -35,10 +35,10 @@
     and then jumps to the specified address.
 - question: What does paging do?
   answer: |
-    Translates _linear_ (physical) to _logical_ (virtual) addresses.
+    Translates _linear_ to _logical_ addresses.
 - question: What does segmentation do?
   answer: |
-    Translates _logical_ (virtual) to _linear_ (physical) addresses.
+    Translates _logical_ to _linear_ addresses.
     Deprecated in x86.
 - question: Which command can be used to follow library calls?
   answer: |

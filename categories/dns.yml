@@ -379,7 +379,7 @@
   answer: 1985
 
 - question: Who was the first to discus changes to DNS administration in the 80s to support international & non-military development?
-  answer: Vincent Cerf
+  answer: Vinton Cerf
 
 - question: In what year did the DNS *specification* come out? In what RFC?
   answer: 1987 in RFC 1034 and 1035

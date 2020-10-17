@@ -122,7 +122,7 @@
 
 - question: Who are the authors of the TCP/IP specification?
   answer: |
-    Vincent Cerf and Bob Kahn
+    Vinton Cerf and Bob Kahn
 - question: In which year was ISOC founded?
   answer: 1992
 - question: In which year was Unix v7 released?
@@ -311,6 +311,9 @@
 - question: In which year was Unix freed from proprietary software?
   answer: 1988
 
+- question: In which year was BSD freed from proprietary software?
+  answer: 1989
+
 - question: Who invented IRC?
   answer: Jarkko Oikarinen
 
@@ -387,9 +390,6 @@
 
 - question: What was the purpose of an IMP?
   answer: Routing messages over the network.
-
-- question: When was the first IMP connected?
-  answer: 1967 @ ARPANET
 
 - question: What were the contents of the first message ever sent over the ARPANET?
   answer: LO - then the system at Stanford crashed.
