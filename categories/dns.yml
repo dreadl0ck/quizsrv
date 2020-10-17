@@ -128,9 +128,13 @@
 - question: Which component does only answer queries?
   answer: |
     A name server.
-- question: Which component sends only recursive queries?
+- question: |
+    Which component sends only recursive queries?
+      a) a name server
+      b) stub resolver
+      c) a resolver
   answer: |
-    A stub resolver.
+    b) stub resolver.
 - question: Whats the primary use of DNS?
   answer: |
     Looking up IP addresses
@@ -152,10 +156,12 @@
     (The pseudo record OPT abuses the CLASS field for this)
 - question: |
     Which one of the following is not a valid domain?
+    ```
     a) *.example.com
     b) *.*.com
     c) *.*.*.
     d) this.*.wildcard.
+    ```
   answer: |
     d) wildcards must not be prefixed by a label
 
@@ -281,7 +287,11 @@
     1973 - RFC #606
 - question: First ccTLDs?
   answer: |
-    .com, .mil, .au, .gb, .nl, .jp
+    .us
+    .uk & .gb (United Kingdom)
+    .au (Australia)
+    .nl
+    .jp (Japan)
 - question: Max length of a label?
   answer: |
     63 bytes
@@ -294,8 +304,106 @@
 - question: Whats the difference between a CNAME and DNAME?
   answer: |
     A CNAME (canonical name) record defines an alias.
-    A DNAME is used for non-terminal DNS Name Redirection.
+    A DNAME (delegation name) is used for non-terminal DNS Name Redirection.
 - question: What is the max length of a label?
   answer: 63 Bytes
 - question: Are labels encoded as little-endian or big-endian?
   answer: big endian
+
+- question: What is the major issue with recursive DNS queries?
+  answer: They put too much load on the root servers
+
+- question: What is anycast and why is it useful in DNS?
+  answer: It allows overloading hosts for an IP address. Root servers can therefore be replicated all over the world (see INR for more details)
+
+- question: How does a resolver announce itself as a full-service (non-stub) resolver?
+  answer: It sets the Recursion Allowed (RA) flag
+
+- question: Why is .os3.nl illegal in DNS?
+  answer: Because it contains an empty label at the start
+
+- question: What information do you find in a resource record?
+  answer: owner, ttl, class, type, resource data
+
+- question: In a DNS RR, what are the available classes & what do the stand for?
+  answer: |
+    IN Internet
+    CH Chaosnet
+    HS Hesiod
+
+- question: If a parent and a child both have an NS record for the same domain, which one is authoritative?
+  answer: The child's
+
+- question: How would you implement delegation for 192.0.8.0/22? Is this possible for prefixes /24 to /32? Explain why.
+  answer: |
+    ```
+    $ORIGIN 0.192.in-addr-arpa.
+    8/22 NS ns.slack-22-holder.example.com
+    8 DNAME 8.8/22
+    9 DNAME 9.8/22
+    10 DNAME 10.8/22
+    11 DNAME 11.8/22
+
+    $ORIGIN 8/22.0.192.in-addr-arpa.
+    33.9 PTR somehost.slash-22-holder.example.com
+      ```
+
+    This isn't possible for /24 and /32 networks. We could use CNAMEs instead
+
+- question: What does SOA stand for? What does it do?
+  answer: A Start Of Authority record administrates important zone parameters
+
+- question: What's the purpose of the serial number in an SOA record?
+  answer: Usually formatted as YYYMMDDnn It allows for versioning of the data
+
+- question: Can a SOA have a 0 TTL?
+  answer: yes
+
+- question: What are the different interpretations of SOA's Minimum field?
+  answer: |
+    It meant the minimal TTL allowed but was never used this way, instead:
+      BIND8 uses it as the default TTL
+      BIND9 uses it as the TTL for caching negative replies
+
+- question: Do RRSIG RRs form a resource record set?
+  answer: No because all RRs in an RRSET must have the same TTL
+
+- question: |
+    Which one is used in DNS? Why is this an issue?
+    [!dns tree pic](./files/images/dnstree.png)
+  answer: |
+    node -> node is used
+    node -> edge would have made the parent/child delegation of authority easier
+
+- question: In what year where domain names commercialised?
+  answer: 1985
+
+- question: Who was the first to discus changes to DNS administration in the 80s to support international & non-military development?
+  answer: Vincent Cerf
+
+- question: In what year did the DNS *specification* come out? In what RFC?
+  answer: 1987 in RFC 1034 and 1035
+
+- question: What TLD was added in 1985?
+  answer: .net
+
+- question: Who was originally in charge of DNS?
+  answer: SRI & IANA
+
+- question: What were the intial generic Top Level Domains (gTLD) ? List all 5
+  answer: |
+    .gov
+    .edu
+    .mil
+    .com
+    .org
+
+- question: What are the 7 different types of name servers? List all 7
+  answer: |
+    master
+    slave
+    stealth
+    stub
+    lame
+    caching-only
+    forward-only

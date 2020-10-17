@@ -454,3 +454,15 @@
 
 - question: What is the standardization identifier for DNS?
   answer: STD-13
+
+- question: On what computer did Unix v1 run on?
+  answer: The PDP-7 & PDP-9
+
+- question: Who wrote Unics in 1969 @ Bell labs?
+  answer: Ken Thompson & Dennis Ritchie
+
+- question: Who wrote the first Mail Transfer Agent shortly after the SMTP RFC?
+  answer: Eric Allman
+
+- question: What version of Unix had published source code commentary & popularised it?
+  answer: Unix v6 had Lions commentary
