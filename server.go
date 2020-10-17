@@ -13,7 +13,7 @@ import (
 	"github.com/foomo/simplecert"
 	"github.com/foomo/tlsconfig"
 	"github.com/russross/blackfriday/v2"
-	"gopkg.in/yaml.v3"
+	"gopkg.in/yaml.v2"
 	"html/template"
 	"io/ioutil"
 	"log"
@@ -98,6 +98,51 @@ func hasBeenAsked(current int, done []int) bool {
 	return false
 }
 
+func writeQuestion(c *websocket.Conn, category []question, current int) {
+	c.WriteMessage(websocket.TextMessage, append([]byte("index=" + strconv.Itoa(current) + ":"), blackfriday.Run([]byte(category[current].Question))...))
+}
+
+func writeAnswer(c *websocket.Conn, category []question, current int) {
+	c.WriteMessage(websocket.TextMessage, append([]byte("index=" + strconv.Itoa(current) + ":"), blackfriday.Run([]byte(category[current].Answer))...))
+}
+
+func writeDone(c *websocket.Conn, r *http.Request) {
+	fmt.Println("client DONE", r.RemoteAddr)
+	c.WriteMessage(websocket.TextMessage, []byte("index=XXX:congrats you are done! reload to restart"))
+	c.Close()
+}
+
+func initDoneSlice(category []question, flagged []string) (out []int) {
+
+	if len(flagged) == 0 {
+		return []int{}
+	}
+
+	if flagged[0] == "" {
+		return []int{}
+	}
+
+	// init flagged map
+	var flaggedMap = make(map[int]struct{})
+	for _, f := range flagged {
+		i, err := strconv.Atoi(f)
+		if err != nil {
+			fmt.Println(i, err)
+			continue
+		}
+		flaggedMap[i] = struct{}{}
+	}
+
+	// populate out slice only with all indices that are NOT flagged
+	for i := range category {
+		if _, ok := flaggedMap[i]; !ok {
+			out = append(out, i)
+		}
+	}
+
+	return out
+}
+
 func connect(w http.ResponseWriter, r *http.Request) {
 	c, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
@@ -106,23 +151,37 @@ func connect(w http.ResponseWriter, r *http.Request) {
 	}
 	defer c.Close()
 
-	_, location, err := c.ReadMessage()
+	_, helloMsg, err := c.ReadMessage()
 	if err != nil {
 		log.Println("read:", err)
 		return
 	}
 
+	s := strings.Split(string(helloMsg), ";")
+	location := s[0]
+	flagged := strings.Split(s[1], ",")
+
+	fmt.Println("flagged", flagged)
+
 	var (
 		category = data.Categories[filepath.Base(string(location))]
-		done []int
-		current = rand.Intn(len(category))
+		done = initDoneSlice(category, flagged)
+		current int
 		previousIndex int
 	)
 
-	c.WriteMessage(websocket.TextMessage, []byte("total="+strconv.Itoa(len(category))))
+	c.WriteMessage(websocket.TextMessage, []byte("total="+strconv.Itoa(len(category)-len(done))))
 
 	fmt.Println(len(category), filepath.Base(string(location)), string(location))
-	c.WriteMessage(websocket.TextMessage, blackfriday.Run([]byte(category[current].Question)))
+
+	for {
+		current = rand.Intn(len(category))
+		if !hasBeenAsked(current, done) {
+			break
+		}
+	}
+
+	writeQuestion(c, category, current)
 
 	for {
 		_, message, err := c.ReadMessage()
@@ -133,9 +192,7 @@ func connect(w http.ResponseWriter, r *http.Request) {
 		log.Printf("recv: %s", message)
 
 		if len(done) == len(category) {
-			fmt.Println("client DONE", r.RemoteAddr)
-			c.WriteMessage(websocket.TextMessage, []byte("congrats you are done! reload to restart"))
-			c.Close()
+			writeDone(c, r)
 			return
 		}
 
@@ -146,9 +203,7 @@ func connect(w http.ResponseWriter, r *http.Request) {
 					done = append(done, current)
 
 					if len(done) == len(category) {
-						fmt.Println("client DONE", r.RemoteAddr)
-						c.WriteMessage(websocket.TextMessage, []byte("congrats you are done! reload to restart"))
-						c.Close()
+						writeDone(c, r)
 						return
 					}
 				}
@@ -177,10 +232,10 @@ func connect(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 
-				c.WriteMessage(websocket.TextMessage, blackfriday.Run([]byte(category[current].Question)))
+				writeQuestion(c, category, current)
 
 			case "answer":
-				c.WriteMessage(websocket.TextMessage, blackfriday.Run([]byte(category[current].Answer)))
+				writeAnswer(c, category, current)
 
 			case "previous":
 
@@ -191,9 +246,8 @@ func connect(w http.ResponseWriter, r *http.Request) {
 					// last entry in done was the previous question
 					current = done[len(done)-previousIndex]
 
-					c.WriteMessage(websocket.TextMessage, blackfriday.Run([]byte(category[current].Question)))
+					writeQuestion(c, category, current)
 				}
-
 		}
 	}
 }
@@ -276,7 +330,7 @@ func main() {
 
 			var questions []question
 
-			err = yaml.Unmarshal(c, &questions)
+			err = yaml.UnmarshalStrict(c, &questions)
 			if err != nil {
 				log.Fatal(err, " file: ", f.Name())
 			}

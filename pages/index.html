@@ -3,6 +3,36 @@
   <head>
     <meta charset="utf-8" />
   </head>
+  <script>
+      window.addEventListener("load", function (evt) {
+          var ul = document.getElementById("list");
+          var items = ul.getElementsByTagName("li");
+          for (var i = 0; i < items.length; ++i) {
+              var itm = items[i].getElementsByTagName("a")[0].getElementsByTagName("span")[1];
+              var cat = items[i].getElementsByTagName("a")[0].getElementsByTagName("span")[0];
+              var arr = JSON.parse(localStorage.getItem(cat.innerText.toLowerCase()));
+              console.log(cat.innerText, itm.innerText, arr);
+
+              if (arr != null) {
+                  var val = itm.innerText.slice(1,-1);
+                  console.log(val, parseInt(val), parseInt(val)-arr.length);
+                  itm.innerHTML = "(" + (parseInt(val)-arr.length).toString() + "/" + arr.length.toString().fontcolor("red") + ")";
+
+                  var clearBtn = document.createElement("div");
+                  let categoryName = cat.innerText.toLowerCase();
+
+                  clearBtn.onclick = function() {
+                      console.log("clear", categoryName);
+                      localStorage.setItem(categoryName, "[]");
+                      location.reload();
+                  };
+                  clearBtn.className = "clearButton";
+                  clearBtn.innerText = "X";
+                  items[i].appendChild(clearBtn)
+              }
+          }
+      });
+  </script>
   <style>
     @font-face {
       font-family: "SF Pro Text Regular";
@@ -54,6 +84,17 @@
         margin-left: 20%;
         margin-right: 20%;
     }
+    .clearButton {
+        color: red;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        margin-left: 5px;
+        cursor: pointer;
+    }
+    .clearButton:hover {
+        font-weight: bolder;
+    }
   </style>
   <body>
 
@@ -82,6 +123,19 @@
       <p>
         Use the arrow right key or click the mouse to iterate through the questions.
       </p>
+        <p>
+            New feature: flag questions and only repeat the flagged ones in subsequent runs, to train the questions you failed to answer.
+            The number of flagged questions will appear in the menu in red next to the number of successfully answered questions,
+            hit the X button to reset the flagged questions for the selected category.
+        </p>
+        <p>
+            While in a question session, use the arrow up key to flag a question and the arrow down to unflag.
+            Alternatively, you can also use a right click to flag or unflag.
+            To flag on mobile devices, simply click the X button in the upper right corner.
+        </p>
+        <p>
+            To indicate a question is flagged a red circle will appear next to the current index.
+        </p>
       <p>
         The order of questions is randomized every run, currently there are {{ .Total }} questions in the database.
       </p>
@@ -90,10 +144,12 @@
       </p>
     </div>
 
-    <ul style="list-style-type:none;" class="list">
+    <ul style="list-style-type:none;" class="list" id="list">
       {{ range $name, $elems := .Categories }}
-        <li> <a href="/cia/{{ $name }}">
-            <span style="text-transform:uppercase">{{ $name }}</span> ({{ $elems }})</a>
+        <li>
+            <a href="/cia/{{ $name }}">
+                <span style="text-transform:uppercase">{{ $name }}</span> <span>({{ $elems }})</span>
+            </a>
         </li>
       {{ end }}
       {{ range $val := .Slides }}
