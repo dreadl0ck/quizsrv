@@ -225,7 +225,13 @@ window.addEventListener("load", function (evt) {
       print("ERROR: " + evt.data);
     };
 
-    document.addEventListener("tap", next, false);
+    document.addEventListener('swiped-right', previous);
+    document.addEventListener('swiped-left', next);
+
+    document.touchmove = function(e)
+    {
+        e.preventDefault();
+    };
 
     var print = function (message) {
 

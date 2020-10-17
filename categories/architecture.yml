@@ -203,7 +203,7 @@
       mov $42, %edi
       syscall
 
-    Why does this program no compile in IA-32?
+    Why does this program not compile in IA-32?
   answer: The syscall instruction doesn't exist in IA-32 because it was added in x86
 
 - question: In what mode do all processors start?
@@ -228,7 +228,7 @@
 - question: Why are the registers renamed from AX in the 8086 to EAX in the 80386?
   answer: The E stands for Extended because the registers grew from 16 to 32 bits
 
-- question: Whih Intel architecture introduced the trap register for debugging?
+- question: Which Intel architecture introduced the trap register for debugging?
   answer: 8086
 
 - question: How many bits is the Intel 8086 architecture made up of?

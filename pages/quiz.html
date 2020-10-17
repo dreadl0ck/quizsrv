@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <script src="/cia/files/quiz.js"></script>
+    <script src="/cia/files/swiped-events.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   </head>
 
   <style>
@@ -10,12 +12,19 @@
       font-family: "SF Pro Text Regular";
       src: url("/cia/files/FontsFree-Net-SFProText-Regular.ttf") format("truetype");
     }
-    * { font-family: "SF Pro Text Regular", sans-serif }
+    * {
+      font-family: "SF Pro Text Regular", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
     html, body {
       overflow: hidden; /* Hide scrollbars */
+      max-width: 100%;
       color: lawngreen;
       background-color: black;
       z-index: 1;
+      -webkit-overflow-scrolling: touch;
+      -webkit-user-drag: none;
     }
     p {
       text-align:center;
@@ -28,31 +37,17 @@
 
   <style>
     .circle {
-      height: 25px;
-      width: 25px;
+      height: 3.6rem;
+      width: 3.6rem;
       background-color: red;
       border-radius: 50%;
       display: inline-block;
-
       position: relative;
-      margin-left: 15px;
+      margin-left: 3.6rem;
+      top: 7px;
     }
     .red {
       color: red !important;
-    }
-    .box {
-      font-size: 50px;
-      position: relative;
-      top: 40%;
-      transform: translateY(-50%);
-      margin-left: 20%;
-      margin-right: 20%;
-    }
-    .index {
-      position: absolute;
-      left: 35px;
-      bottom: 35px;
-      font-size: 35px;
     }
     .noselect {
       -webkit-touch-callout: none; /* iOS Safari */
@@ -63,38 +58,327 @@
       user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
     }
+    .index {
+      position: absolute;
+      left: 3.6rem;
+      bottom: 3.6rem;
+      font-size: 3.6rem;
+    }
     .version {
       position: absolute;
-      top: 25px;
-      right: 25px;
+      top: 3.6rem;
+      right: 3.6rem;
       font-family: monospace;
-      font-size: 35px;
+      font-size: 3.6rem;
     }
     .flagButton {
       position: absolute;
-      top: 100px;
-      right: 25px;
-      font-size: 55px;
+      top: 8rem;
+      right: 3.6rem;
+      font-size: 3.6rem;
       color: red;
       cursor: pointer;
       z-index: 99999999999;
     }
     .menu {
-      font-size: 35px;
+      font-size: 3.6rem;
       position: absolute;
-      top: 25px;
-      left: 25px;
+      top: 3.6rem;
+      left: 3.6rem;
       z-index: 9999999999;
     }
     .category {
-      font-size: 35px;
+      font-size: 3.6rem;
       position: absolute;
-      bottom: 25px;
-      right: 25px;
+      bottom: 3.6rem;
+      right: 3.6rem;
     }
     /*dont block the view on the category*/
     #ghostery-box {
       display: none;
+    }
+    .box {
+      font-size: 3.6rem;
+      position: relative;
+      top: 40%;
+      transform: translateY(-50%);
+      margin-left: 20%;
+      margin-right: 20%;
+    }
+    @media all and (max-width: 1690px) {
+      .box {
+        font-size: 3.5rem;
+        position: relative;
+        top: 40%;
+        transform: translateY(-50%);
+        margin-left: 20%;
+        margin-right: 20%;
+      }
+      .index {
+        position: absolute;
+        left: 3rem;
+        bottom: 3rem;
+        font-size: 3rem;
+      }
+      .version {
+        position: absolute;
+        top: 3rem;
+        right: 3rem;
+        font-family: monospace;
+        font-size: 3rem;
+      }
+      .flagButton {
+        position: absolute;
+        top: 8rem;
+        right: 3rem;
+        font-size: 3rem;
+        color: red;
+        cursor: pointer;
+        z-index: 99999999999;
+      }
+      .menu {
+        font-size: 3rem;
+        position: absolute;
+        top: 3rem;
+        left: 3rem;
+        z-index: 9999999999;
+      }
+      .category {
+        font-size: 3rem;
+        position: absolute;
+        bottom: 3rem;
+        right: 3rem;
+      }
+      .circle {
+        height: 3rem;
+        width: 3rem;
+        background-color: red;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        margin-left: 3rem;
+        top: 6px;
+      }
+    }
+    @media all and (max-width: 1280px) {
+      .box {
+        font-size: 3rem;
+        position: relative;
+        top: 40%;
+        transform: translateY(-50%);
+        margin-left: 20%;
+        margin-right: 20%;
+      }
+      .index {
+        position: absolute;
+        left: 3rem;
+        bottom: 3rem;
+        font-size: 3rem;
+      }
+      .version {
+        position: absolute;
+        top: 3rem;
+        right: 3rem;
+        font-family: monospace;
+        font-size: 3rem;
+      }
+      .flagButton {
+        position: absolute;
+        top: 7rem;
+        right: 3rem;
+        font-size: 4rem;
+        color: red;
+        cursor: pointer;
+        z-index: 99999999999;
+      }
+      .menu {
+        font-size: 3rem;
+        position: absolute;
+        top: 3rem;
+        left: 3rem;
+        z-index: 9999999999;
+      }
+      .category {
+        font-size: 3rem;
+        position: absolute;
+        bottom: 3rem;
+        right: 3rem;
+      }
+      .circle {
+        height: 3rem;
+        width: 3rem;
+        background-color: red;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        margin-left: 3rem;
+        top: 5px;
+      }
+    }
+    @media all and (max-width: 980px) {
+      .box {
+        font-size: 2.5rem;
+        position: relative;
+        top: 40%;
+        transform: translateY(-50%);
+        margin-left: 20%;
+        margin-right: 20%;
+      }
+      .index {
+        position: absolute;
+        left: 2.5rem;
+        bottom: 2.5rem;
+        font-size: 2.5rem;
+      }
+      .version {
+        position: absolute;
+        top: 2.5rem;
+        right: 2.5rem;
+        font-family: monospace;
+        font-size: 2.5rem;
+      }
+      .flagButton {
+        position: absolute;
+        top: 7rem;
+        right: 2.5rem;
+        font-size: 2.5rem;
+        color: red;
+        cursor: pointer;
+        z-index: 99999999999;
+      }
+      .menu {
+        font-size: 2.5rem;
+        position: absolute;
+        top: 2.5rem;
+        left: 2.5rem;
+        z-index: 9999999999;
+      }
+      .category {
+        font-size: 2.5rem;
+        position: absolute;
+        bottom: 2.5rem;
+        right: 2.5rem;
+      }
+      .circle {
+        height: 2.5rem;
+        width: 2.5rem;
+        background-color: red;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        margin-left: 2.5rem;
+        top: 5px;
+      }
+    }
+    @media all and (max-width: 736px) {
+      .box {
+        font-size: 2rem;
+        position: relative;
+        top: 40%;
+        transform: translateY(-50%);
+        margin-left: 20%;
+        margin-right: 20%;
+      }
+      .index {
+        position: absolute;
+        left: 2rem;
+        bottom: 2rem;
+        font-size: 2rem;
+      }
+      .version {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        font-family: monospace;
+        font-size: 2rem;
+      }
+      .flagButton {
+        position: absolute;
+        top: 4rem;
+        right: 2rem;
+        font-size: 2rem;
+        color: red;
+        cursor: pointer;
+        z-index: 99999999999;
+      }
+      .menu {
+        font-size: 2rem;
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        z-index: 9999999999;
+      }
+      .category {
+        font-size: 2rem;
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+      }
+      .circle {
+        height: 2rem;
+        width: 2rem;
+        background-color: red;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        margin-left: 2rem;
+        top: 4px;
+      }
+    }
+    @media all and (max-width: 480px) {
+      .box {
+        font-size: 1.5rem;
+        position: relative;
+        top: 40%;
+        transform: translateY(-50%);
+        margin-left: 20%;
+        margin-right: 20%;
+      }
+      .index {
+        position: absolute;
+        left: 1.5rem;
+        bottom: 1.5rem;
+        font-size: 1.5rem;
+      }
+      .version {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        font-family: monospace;
+        font-size: 1.5rem;
+      }
+      .flagButton {
+        position: absolute;
+        top: 5rem;
+        right: 1.5rem;
+        font-size: 1.5rem;
+        color: red;
+        cursor: pointer;
+        z-index: 99999999999;
+      }
+      .menu {
+        font-size: 1.5rem;
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+        z-index: 9999999999;
+      }
+      .category {
+        font-size: 1.5rem;
+        position: absolute;
+        bottom: 1.5rem;
+        right: 1.5rem;
+      }
+      .circle {
+        height: 1.5rem;
+        width: 1.5rem;
+        background-color: red;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        margin-left: 1.5rem;
+        top: 3px;
+      }
     }
   </style>
   <body style="height:100%;width:100%;">
