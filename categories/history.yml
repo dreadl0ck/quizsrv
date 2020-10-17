@@ -197,7 +197,8 @@
     NCP was replaced with TCP/IP.
 
 - question: When was the first release without AT&T software?
-  answer: 1988
+  answer: 1989
+
 - question: What was the exact date of the great switch?
   answer: |
     1 January 1983
@@ -309,9 +310,6 @@
   answer: 4.3-Tahoe, with BSD style license
 
 - question: In which year was Unix freed from proprietary software?
-  answer: 1988
-
-- question: In which year was BSD freed from proprietary software?
   answer: 1989
 
 - question: Who invented IRC?
