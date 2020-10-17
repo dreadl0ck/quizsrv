@@ -225,7 +225,7 @@ window.addEventListener("load", function (evt) {
       print("ERROR: " + evt.data);
     };
 
-    document.addEventListener("touchstart", next, false);
+    document.addEventListener("tap", next, false);
 
     var print = function (message) {
 
