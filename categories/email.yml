@@ -223,3 +223,8 @@
     - deferred
     - corrupt
     - hold
+
+- question: What is the response data type of an XMLHttpRequest?
+  answer: |
+    Can be configured to expect text, binary data or html nodes.
+    Usually: XML, JSON, HTML
