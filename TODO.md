@@ -7,3 +7,4 @@
 - add support to upload a PDF slidedeck
 - add autoplay button
 - make dark / light mode toggleable
+- show number of sessions on index page

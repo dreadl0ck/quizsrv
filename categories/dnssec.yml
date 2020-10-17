@@ -1,7 +1,6 @@
 - question: Define the NEC
   answer: |
-    The next closer is the child of the closest encloser on the graph
-    to the non existing domain.
+    The next closer is the child of the closest encloser on the graph to the non existing domain.
 - question: Explain the security implications of using NSEC wildcards
   answer: |
     Invalidates NSEC semantics.
@@ -29,14 +28,12 @@
 - question: What does the AD flag indicate?
   answer: |
     Authentic Data.
-    Set from recursive name server to stub resolver,
-    to indicate the response data has been verified successfully.
+    Set from recursive name server to stub resolver, to indicate the response data has been verified successfully.
     However, client implementations usually verify the result themselves.
 - question: What does the CD flag indicate?
   answer: |
     Checking Disabled.
-    Set from the stub resolver to the recursive name server,
-    to indicate that the client wants to do the checking by itself.
+    Set from the stub resolver to the recursive name server, to indicate that the client wants to do the checking by itself.
 - question: What does the DO flag indicate?
   answer: |
     DNSSEC OK.
