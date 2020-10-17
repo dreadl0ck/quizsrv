@@ -86,6 +86,11 @@
 - question: What parts of an ELF file are used during runtime?
   answer: |
     Segments
+- question: What parts of an ELF file are used during linking?
+  answer: |
+    Sections
+- question: In an ELF file, what are segments?
+  answer: Segments are a clustering of sections that are loaded into memory during runtime
 - question: Whats the name of the executable file format used by Linux?
   answer: |
     ELF
@@ -138,7 +143,7 @@
     2003 by AMD
 - question: What are the different memory addressing modes?
   answer: |
-    - immidiate
+    - immediate
     - register direct / indirect
     - memory direct / indirect
     - indexed
@@ -173,3 +178,114 @@
   answer: |
     PAE allows for page table entries of 64 bits each instead of 32.
     Therefore 2^64 bytes of physical memory can be addressed.
+
+- question: What meta information does the stat system call return (list 5)?
+  answer: device, inode nb, access mode, nb hard links, uid, guid, last modification time, access time
+
+- question: What is the signature of the stat system call?
+  answer: int stat(const char *pathname, struct stat *buf)
+
+- question: What is the signature of the execve system call?
+  answer: int execve(const char *filename, char *const argv[], char *const envp[])
+
+
+- question: What does the stat system call do?
+  answer: It displays a file or file system status
+
+- question: What was used before the teletype model 33 ASR?
+  answer: The model 32 which used 5-bit baudot code punchcards
+
+- question: |
+    .global _start
+    .text
+    _start:
+      mov $60, %eax
+      mov $42, %edi
+      syscall
+
+    Why does this program no compile in IA-32?
+  answer: The syscall instruction doesn't exist in IA-32 because it was added in x86
+
+- question: In what mode do all processors start?
+  answer: Real mode (32-bit)
+
+- question: In x86 how would you address the low order bits of the registers R8 to R15?
+  answer: |
+    Taking R8 as an example:
+      R8D Double word (32-bit)
+      R8W Word (16-bit)
+      R8B Byte (8-bit)
+
+- question: Which intel CPU introduces PAE?
+  answer: Intel Pentium Pro
+
+- question: When did the Intel 80386 come out?
+  answer: 1986
+
+- question: What did the Intel 80386 introduce?
+  answer: The 80386 introduces the IA-32 bit ISA known as i386
+
+- question: Why are the registers renamed from AX in the 8086 to EAX in the 80386?
+  answer: The E stands for Extended because the registers grew from 16 to 32 bits
+
+- question: Whih Intel architecture introduced the trap register for debugging?
+  answer: 8086
+
+- question: How many bits is the Intel 8086 architecture made up of?
+  answer: 16 bits
+
+- question: In what year was the Intel 8008 made? Hoe many bits is its Program counter?
+  answer: |
+    1972
+    6 + 8 = 14 bits which can be used for addressing
+
+- question: In a CPU, what does the MMU do?
+  answer: The Memory Management Unit does the translation between virtual and physical memory
+
+- question: List 5 components of a CPU
+  answer: |
+    Registers
+    Arithmetic Logic Unit (ALU)
+    CU (Control Unit)
+    Memory Management Unit (MMU)
+    Caches
+
+- question: What does a CPU do in a loop?
+  answer: Fetch, decode, and execute instructions
+
+- question: What gcc flag would you use to save all intermediary files?
+  answer: --save-temps
+
+- question: When running lsof on a shell process /dev/pts/0, why is the file /dev/pts/0 listed 3 times?
+  answer: stdin, stdout, stderr
+
+- question: What do the following commands do nm, strip, ldd & lsof? 
+  answer: |
+    nm - list symbols in an object file
+    strip - remove symbols in an object file
+    ldd - list dynamic dependencies
+    lsof - list open files
+
+- question: What flag does ldd set when opening a file?
+  answer: LD_TRACE_LOADED_OBJECTS
+
+- question: What's the difference between readelf & objdump?
+  answer: Objdump can dissassemble
+
+- question: Why do shared objects have a Position Independent Code (PIC) ?
+  answer: Because shared objects have a fixed place in physical memeory but a different place in virtual memory per process
+
+- question: Are shared objects loaded eagerly or lazily during runtime?
+  answer: Lazily
+
+- question: Is the dynamic linking loader ld.so linked statically or dynamically?
+  answer: statically
+
+- question: What are the 2 kinds of executable files?
+  answer: binary executables & interpreted scripts
+
+- question: What does ELF stand for?
+  answer: Executable and Linkable Format
+
+- question: What is the oldest linux exectuable format?
+  answer: a.out
