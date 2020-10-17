@@ -124,9 +124,47 @@ window.addEventListener("load", function (evt) {
         }
     }
 
+    /* Get the element you want displayed in fullscreen mode (a video in this example): */
+    var elem = document.getElementById("body");
+
+    /* When the openFullscreen() function is executed, open the video in fullscreen.
+    Note that we must include prefixes for different browsers, as they don't support the requestFullscreen method yet */
+    function openFullscreen() {
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { /* Firefox */
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE/Edge */
+            elem.msRequestFullscreen();
+        }
+    }
+
+    document.getElementById('fullscreen').onclick = openFullscreen;
+
     function checkKey(e) {
 
         e = e || window.event;
+
+        console.log(e.key);
+
+        if (e.keyCode == '70') {
+            openFullscreen();
+            return false;
+        }
+
+        if (e.keyCode == '32') {
+            // space
+            document.getElementById('play').click();
+            return false;
+        }
+
+        if(e.key === "Escape") {
+            console.log("MENU");
+            window.location =  "/cia";
+            return false;
+        }
 
         if (e.keyCode == '38') {
             // up arrow

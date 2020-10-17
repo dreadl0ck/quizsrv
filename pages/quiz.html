@@ -20,7 +20,7 @@
     html, body {
       overflow: hidden; /* Hide scrollbars */
       max-width: 100%;
-      color: lawngreen;
+      color: lime;
       background-color: black;
       z-index: 1;
       -webkit-overflow-scrolling: touch;
@@ -33,7 +33,6 @@
       text-decoration: none;
       color: inherit;
     }
-
     .button {
       float: right;
       top: 10rem;
@@ -45,7 +44,7 @@
       box-sizing: border-box;
       width: 0;
       height: 74px;
-      border-color: transparent transparent transparent lawngreen;
+      border-color: transparent transparent transparent lime;
       transition: 100ms all ease;
       cursor: pointer;
       border-style: solid;
@@ -58,7 +57,7 @@
     }
     .button:hover {
       opacity: 0.8;
-      border-color: transparent transparent transparent lawngreen;
+      border-color: transparent transparent transparent lime;
     }
 
   </style>
@@ -128,6 +127,23 @@
       width: 50%;
       height: 100%;
     }
+    .fullscreen {
+      background-color: lime;
+      -webkit-mask: url(/cia/files/fullscreen.svg) no-repeat center;
+      mask: url(/cia/files/fullscreen.svg) no-repeat center;
+      height: 50px;
+      width: 50px;
+      position: absolute;
+      right: 3.6rem;
+      bottom: 10rem;
+      opacity: 0.5;
+      -webkit-mask-size: 90px;
+      mask-size: 90px;
+    }
+    .fullscreen:hover {
+      opacity: 0.8;
+    }
+
     @media all and (max-width: 1690px) {
       img {
         width: 60%;
@@ -175,6 +191,12 @@
         position: relative;
         margin-left: 3rem;
         top: 6px;
+      }
+      .fullscreen {
+        right: 4rem;
+        bottom: 10rem;
+        opacity: 0.5;
+        -webkit-mask-size: 90px;
       }
     }
     @media all and (max-width: 1280px) {
@@ -224,6 +246,12 @@
         position: relative;
         margin-left: 3rem;
         top: 5px;
+      }
+      .fullscreen {
+        right: 4rem;
+        bottom: 10rem;
+        opacity: 0.5;
+        -webkit-mask-size: 90px;
       }
     }
     @media all and (max-width: 980px) {
@@ -277,6 +305,13 @@
       .button {
         top: 8rem;
         right: 2.5rem;
+      }
+      .fullscreen {
+        right: 3rem;
+        bottom: 8rem;
+        opacity: 0.5;
+        -webkit-mask-size: 90px;
+        mask-size: 90px;
       }
     }
     @media all and (max-width: 736px) {
@@ -337,6 +372,12 @@
         border-style: double;
         border-width: 0px 0 0px 32px;
       }
+      .fullscreen {
+        bottom: 5rem;
+        right: 1rem;
+        mask-size: 60px;
+        -webkit-mask-size: 60px;
+      }
     }
     @media all and (max-width: 480px) {
       .box {
@@ -393,9 +434,15 @@
         border-style: double;
         border-width: 0px 0 0px 32px;
       }
+      .fullscreen {
+        bottom: 5rem;
+        right: 1rem;
+        mask-size: 60px;
+        -webkit-mask-size: 60px;
+      }
     }
   </style>
-  <body style="height:100%;width:100%;">
+  <body id="body" style="height:100%;width:100%;">
 
     <div id="menu" class="menu noselect"><a href="/cia">MENU</a></div>
     <div id="category" class="category noselect">{{ .Category }}</div>
@@ -404,6 +451,8 @@
     </div>
     <div id="index" class="index noselect"></div>
     <div id="version" class="version noselect">{{.Version}}</div>
+{{/*    <img id="fullscreen" class="fullscreen noselect" src="/cia/files/fullscreen.svg" alt=""/>*/}}
+    <div class="fullscreen" id="fullscreen"></div>
   </body>
   <button class='button' id="play"></button>
 </html>
