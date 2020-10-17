@@ -164,3 +164,7 @@
 
 - question: When was DNSSEC created? In what RFC?
   answer: 1997 & RFC 2065
+
+- question: Draw a tree diagram with CLE, NEC, SOS and QDN
+  answer: |
+    ![](/cia/files/DNSSECTREE.png)

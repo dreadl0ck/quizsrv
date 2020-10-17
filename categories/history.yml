@@ -464,3 +464,16 @@
 
 - question: What version of Unix had published source code commentary & popularised it?
   answer: Unix v6 had Lions commentary
+
+- question: |
+    What network type is this?
+    ![](/cia/files/Decentralized.png)
+  answer: Decentralized
+- question: |
+    What network type is this?
+    ![](/cia/files/Distributed.png)
+  answer: Distributed
+
+- question: Draw the initial 4 node ARPANET
+  answer: |
+    ![](/cia/files/ARPANET.png)
