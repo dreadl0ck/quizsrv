@@ -90,7 +90,7 @@
 - question: What is different between HTTP/3 and HTTP/2?
   answer: |
     HTTP/3 uses QUIC (UDP based) as a transport protocol.
-    It is faster and more secure than TCP.
+    QUIC is faster and more secure than TCP.
 
 - question: Name two server side dynamic web page technologies
   answer: |
