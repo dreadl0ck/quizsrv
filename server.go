@@ -10,6 +10,7 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"github.com/dreadl0ck/cryptoutils"
 	"github.com/foomo/simplecert"
 	"github.com/foomo/tlsconfig"
 	"github.com/russross/blackfriday/v2"
@@ -20,6 +21,7 @@ import (
 	"math/rand"
 	"net/http"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -75,6 +77,143 @@ var quotes = map[string]string{
 	"UNIX was not designed to stop its users from doing stupid things, as that would also stop them from doing clever things.": "Unknown",
 	"One of my most productive days was throwing away 1,000 lines of code.": "Ken Thompson",
 	"Be conservative in what you send, and liberal in what you accept": "John Postel",
+}
+
+var exam = map[string]int{
+	"architecture": 20,
+	"dns": 10,
+	"dnssec": 10,
+	"email": 20,
+	"history": 19,
+	"web": 20,
+}
+
+func genExam(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		done []int
+		examQuestions string
+		examSolutions string
+		count int
+	)
+
+	// write header
+	examQuestions += "# CIA Test Exam" + "\n"
+	examSolutions += "# CIA Test Exam" + "\n"
+
+	for c, n := range exam {
+		var (
+			category = data.Categories[c]
+			current int
+		)
+
+		// write category
+		examQuestions += "### " + strings.ToUpper(c) + "\n"
+		examSolutions += "### " + strings.ToUpper(c) + "\n"
+
+		if c == "history" {
+			count++
+			// always add a quote for history part
+			for q, author := range quotes {
+				examQuestions += "#### " + strconv.Itoa(count) + ") Name the author of the following quote and explain his intentions:\n"
+				examQuestions += "\n"
+				examQuestions += "> " + q  + "\n"
+				examQuestions += "\n"
+
+				examSolutions += "#### " + strconv.Itoa(count) + ") Name the author of the following quote and explain his intentions:\n"
+				examSolutions += "\n"
+				examSolutions += "> " + q  + "\n"
+				examSolutions += "\n"
+				examSolutions += "    " + author  + "\n"
+				break
+			}
+		}
+
+		// write questions
+		for i := 0; i < n; i++ {
+
+			// pick a random one
+			for {
+				current = rand.Intn(len(category))
+				if !hasBeenAsked(current, done) {
+					break
+				}
+			}
+
+			count++
+
+			examQuestions += "#### " + strconv.Itoa(count) + ") " + category[current].Question + "\n"
+			examQuestions += "```\n"
+			examQuestions += "\n"
+			examQuestions += "\n"
+			examQuestions += "```\n"
+
+			examSolutions += "#### " + strconv.Itoa(count) + ") " + category[current].Question + "\n"
+
+			for _, line := range strings.Split(category[current].Answer, "\n") {
+				examSolutions += "    " + line + "\n"
+			}
+
+			done = append(done, i)
+		}
+	}
+
+	id, err := cryptoutils.RandomString(10)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var base string
+	if *tls {
+		base = filepath.Join("/etc/quizsrv", "files", id)
+	} else {
+		base = filepath.Join("files", id)
+	}
+	_ = os.Mkdir(base, 0777)
+
+	fq, err := os.Create(filepath.Join(base, "examQuestions.md"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	fq.WriteString(examQuestions)
+
+	fs, err := os.Create(filepath.Join(base, "examSolutions.md"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	fs.WriteString(examSolutions)
+
+	err = fq.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = fs.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var e string
+	if *tls {
+		e = "/usr/bin/mdtopdf"
+	} else {
+		e = "mdtopdf"
+	}
+
+	err = exec.Command(e, "-i", filepath.Join(base, "examSolutions.md") , "-o", filepath.Join(base, "examSolutions.pdf")).Run()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = exec.Command(e, "-i", filepath.Join(base, "examQuestions.md") , "-o", filepath.Join(base, "examQuestions.pdf")).Run()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("done!")
+
+	w.Write([]byte("<a target='_blank' href='/cia/files/" + id + "/examQuestions.pdf'>examQuestions.pdf</a><br><a target='_blank' href='/cia/files/" + id + "/examSolutions.pdf'>examSolutions.pdf</a>"))
+	w.WriteHeader(http.StatusOK)
 }
 
 func quiz(w http.ResponseWriter, r *http.Request) {
@@ -348,6 +487,7 @@ func main() {
 
 	log.SetFlags(0)
 
+	http.HandleFunc("/cia/mkexam", genExam)
 	http.HandleFunc("/cia/files/", http.StripPrefix("/cia/files/", http.FileServer(http.Dir(filepath.Join(*configFolder, "files")))).ServeHTTP)
 	http.HandleFunc("/cia/connect", connect)
 	http.HandleFunc("/cia", home)

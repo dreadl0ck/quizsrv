@@ -1,11 +1,12 @@
 #!/bin/bash
 #
 # ZEUS Error Dump
-# Timestamp: [Sun Oct 18 02:14:18 2020]
+# Timestamp: [Sun Oct 18 13:36:51 2020]
 # Error: exit status 1
 # StdErr: 
-# recv: answer
-# recv: next
+# http: superfluous response.WriteHeader call from main.genExam (server.go:204)
+# http: superfluous response.WriteHeader call from main.genExam (server.go:204)
+# http: superfluous response.WriteHeader call from main.genExam (server.go:204)
 # signal: interrupt
 # 
 

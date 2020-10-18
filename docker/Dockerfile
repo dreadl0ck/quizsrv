@@ -4,6 +4,7 @@ FROM scratch
 ENV ZONEINFO /zoneinfo.zip
 ADD static /zoneinfo.zip
 
+COPY mdtopdf /usr/bin/mdtopdf
 COPY quizsrv /usr/sbin/quizsrv
 COPY files /etc/quizsrv/files
 COPY pages /etc/quizsrv/pages
