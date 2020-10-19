@@ -159,17 +159,12 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 			count++
 
 			examQuestions += strconv.Itoa(count) + ". " + fixLinks(category[current].Question) + "  \n"
-			examQuestions += "\n\n"
-			examQuestions += "        "
-			examQuestions += "        "
-			examQuestions += "\n\n"
 
 			examSolutions += strconv.Itoa(count) + ". " + fixLinks(category[current].Question) + "  \n"
 
 			for _, line := range strings.Split(category[current].Answer, "\n") {
-				examSolutions += "\n\n"
+				examSolutions += "\n"
 				examSolutions += "        " + fixLinks(line) + "\n"
-				examSolutions += "\n\n"
 			}
 
 			done = append(done, current)
@@ -244,7 +239,7 @@ func fixLinks(in string) string {
 func quiz(w http.ResponseWriter, r *http.Request) {
 	homeTemplate := template.Must(template.ParseFiles(filepath.Join(*configFolder, "pages/quiz.html")))
 	err := homeTemplate.Execute(w, &TemplateData{
-		Host:       "ws://"+r.Host+"/cia/connect",
+		//Host:       "ws://"+r.Host+"/cia/connect", // TODO: unused
 		Version: Version,
 		Category: strings.ToUpper(filepath.Base(r.RequestURI)),
 	})
