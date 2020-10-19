@@ -84,10 +84,7 @@
     Mail Agents & Stores: 5598
 
 - question: | 
-    In the early days of the internet what sybol would you use to send mail through:
-      ARPANET?
-      UUCP?
-      Berknet?
+    In the early days of the internet what sybol would you use to send mail through ARPANET, UUCP and Berknet?
   answer: |
     ARPANET: @
     UUCP: !
@@ -99,13 +96,15 @@
 - question: What programs was the first email based on?
   answer: CPYNET & SNDMSG
 
-- question: Approximately how many email are sent every day?
-  answer: 350 billion
+- question: Approximately how many emails are sent every day?
+  answer: |
+        ~350 billion
+    according to Cisco Talos Intelligence Group, SEPTEMBER 2020
 
 - question: What percentage of daily email is spam?
   answer: |
-    ```~85%```
-    according to Cisco Talos Intelligenve Group, SEPTEMBER 2020
+        ~85%
+    according to Cisco Talos Intelligence Group, SEPTEMBER 2020
 
 - question: What is the path to the MTA-STS configuration file? Use example.com as the apex.
   answer: https://mta-sts.example.com/.well-known/mta-sts.txt
@@ -124,7 +123,8 @@
     - mode (one of none, testing, or enforce)
 
 - question: In what year was MTA-STS created? In what RFC?
-  answer: In 2018, RFC 8461
+  answer: |
+    In 2018, RFC #8461
 
 - question: In a DANE TLSA record, how is the certificate data encoded?
   answer: base64
@@ -157,9 +157,10 @@
     Certficiate data
 
 - question: In what year was DANE created? In what RFC?
-  answer: 2012 & RFC 6698
+  answer: |
+    2012 & RFC #6698
 
-- question: What are the available DMARC policies in the p tag?
+- question: What are the available DMARC policies in the _p_ tag?
   answer: none, quarantine, reject
 
 - question: What email header does DMARC check?
@@ -184,10 +185,10 @@
 
 - question: What are the 4 SPF filters and what do they mean?
   answer: |
-    + pass
-    - fail
-    ~ soft fail
-    ? neutral
+        + pass
+        - fail
+        ~ soft fail
+        ? neutral
 
 - question: How would you enforce TLS if DNSSEC is not availalbe?
   answer: Use MTA-STS
@@ -196,7 +197,7 @@
   answer: Use encryption with PGP or SMIME
 
 - question: Is it possible to use Unicode in an email header?
-  answer: Yes UTf-8 Unicode is supported by the SMTP extension in RFC 6531
+  answer: Yes UTF-8 Unicode is supported by the SMTP extension in RFC 6531
 
 - question: Which M?A adds a Received header to every email?
   answer: Mail Transfer Agent (MTA)
@@ -206,9 +207,9 @@
 
 - question: In email, describe the header format
   answer: |
-    ```<field name>:<field body>```
-    ```where <field name> consists of printable US-Ascii (33-126) excluding space " " and colon ":"```
-    ```<field body> consists of US-Ascii (1-127) without CR & LF```
+        <field name>:<field body>
+        where <field name> consists of printable US-Ascii (33-126) excluding space " " and colon ":"
+        <field body> consists of US-Ascii (1-127) without CR & LF
 
 - question: List 5 possible email line delimiters
   answer: CR, LF, CRLF, LFCR, NEL, LS, RS, PS

@@ -231,7 +231,6 @@
     b) _tcp.example.com.
     c) example.com.
     d) com.
-    e) .
   answer: |
     b) is non terminal because there is still something below (SRV record for application layer protocol), but empty because it contains no info in itself.
 - question: The current meaning of the "Minimum" field in the SOA?
@@ -271,7 +270,8 @@
 - question: Organisation responsible for address allocation and root zone managament?
   answer: |
     IANA (Suborg of ICANN)
-- question: The forgotten top level domain in RFC 920 was?
+- question: |
+    The forgotten top level domain in RFC #920 was?
   answer: |
     .net
 - question: Delegation in DNS happens for _ subdomains and _?
@@ -383,7 +383,8 @@
   answer: Vinton Cerf
 
 - question: In what year did the DNS *specification* come out? In what RFC?
-  answer: 1987 in RFC 1034 and 1035
+  answer: |
+    1987 in RFC #1034 and #1035
 
 - question: What TLD was added in 1985?
   answer: .net

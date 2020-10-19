@@ -47,7 +47,7 @@
     TCP/IP
     HTTP Streaming, HTTP Long Polling, HTTP pipelining
 
-- question: What is the name of the organisation with standardizing web technology?
+- question: What is the name of the organisation that standardizes web technologies?
   answer: W3C
 
 - question: What is a URI?
@@ -119,7 +119,7 @@
   answer: |
     `<method><path><HTTP-version>`
 
-- question: What TLS extension is used to enable the virtual hosting for and https-based site?
+- question: What TLS extension is used to enable the virtual hosting for a https-based site?
   answer: |
     - Use SNI (Server Name Indication) TLS extension (clear text)
     - Use ESNI (Encrypted Server Name Indication) TLS 1.3 extension

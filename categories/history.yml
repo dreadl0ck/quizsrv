@@ -9,7 +9,7 @@
 
 - question: Who invented DNS, in which year and which was the first RFC?
   answer: |
-    Paul Mockapetris, 1984, RFC 882
+    Paul Mockapetris, 1984, RFC #882
 - question: What is NNTP?
   answer: |
     The Network News Transfer Protocol allowed the transfer of news over the internet.
@@ -81,7 +81,7 @@
     - Theory vs Practice
 - question: When was Unix v7 released?
   answer: 1979
-- question: Name two important features of the 1969 Unics release?
+- question: Name two important features of the 1969 Unics release
   answer: |
     1.) Interactive access via terminals
     2.) Time sharing (multitasking)
@@ -274,7 +274,7 @@
 - question: In which year did graphical web browsing take off?
   answer: 1995
 
-- question: Name and year of the Browser?
+- question: Name and year of the first web browser?
   answer: 1993, Mosaic
 
 - question: What was the Gopher systems purpose?
@@ -334,7 +334,7 @@
   answer: Larry Roberts
 
 - question: Which universities were involved in the early 4 node ARPANET?
-  answer: Los Angeles, Berkeley, Utah, Stanford
+  answer: Los Angeles, UCSB, Utah, Stanford
 - question: Who was the 4th director of the IPTO?
   answer: Larry Roberts
 
@@ -380,7 +380,7 @@
 - question: What is the difference between Unix and UNIX?
   answer: |
     Unix is the name of the open source operating system.
-    UNIX is what the lawyers made of it (they thought Unix was an acronym - it wasn't).
+    UNIX is the trademark, what the lawyers made of it (they thought Unix was an acronym - it wasn't).
 
 
 - question: What does IMP stand for?
@@ -488,7 +488,6 @@
 
 - question: What was demonstrated during the mother of all demos?
   answer: |
-    The 90-minute presentation essentially demonstrated almost all the fundamental elements of modern personal computing.
     Windows, hypertext, graphics, efficient navigation and command input, video conferencing, the computer mouse, word processing, dynamic file linking, revision control, and a collaborative real-time editor.
 
 - question: Who created the '@' sign?
