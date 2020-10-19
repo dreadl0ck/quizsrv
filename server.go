@@ -127,6 +127,10 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 			count++
 			// always add a quote for history part
 			for q, author := range quotes {
+				// skip CIA joke for exam questions
+				if strings.HasPrefix(q, "CIA") {
+					continue
+				}
 				examQuestions += strconv.Itoa(count) + ". Name the author of the following quote and explain his intentions:  \n"
 				examQuestions += "\n"
 				examQuestions += "        " + q  + "\n"
