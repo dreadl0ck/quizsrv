@@ -206,7 +206,7 @@
       syscall
 
     Why does this program not compile in IA-32?
-  answer: The syscall instruction doesn't exist in IA-32 because it was added in x86
+  answer: The syscall instruction doesn't exist in IA-32 because it was added in x86_64
 
 - question: In what mode do all processors start?
   answer: Real mode (32-bit)
@@ -295,3 +295,10 @@
 - question: Draw a schematic of a SSH connection from client to server
   answer: |
     ![](/cia/files/img/SSH.png)
+- question: When was the x86 instruction set created?
+  answer: |
+    x86 is a family of instruction set architectures initially developed by Intel based on the Intel 8086 microprocessor and its 8088 variant.
+    The 8086 was introduced in 1978 as a fully 16-bit extension of Intel's 8-bit 8080 microprocessor.
+- question: When was the IA-32 / i386 instruction set created?
+  answer: |
+    Designed by Intel and first implemented in the 80386 microprocessor in 1985.
