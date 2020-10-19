@@ -98,12 +98,12 @@
 
 - question: Approximately how many emails are sent every day?
   answer: |
-        ~350 billion
+    ```~350 billion```
     according to Cisco Talos Intelligence Group, SEPTEMBER 2020
 
 - question: What percentage of daily email is spam?
   answer: |
-        ~85%
+    ```~85%```
     according to Cisco Talos Intelligence Group, SEPTEMBER 2020
 
 - question: What is the path to the MTA-STS configuration file? Use example.com as the apex.
