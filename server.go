@@ -98,9 +98,19 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 		count int
 	)
 
+	id, err := cryptoutils.RandomString(10)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	id = strings.TrimSuffix(id, "==")
+
 	// write header
 	examQuestions += "# CIA Test Exam" + "\n"
+	examQuestions += "> ID: " + id + "\n"
+
 	examSolutions += "# CIA Test Exam" + "\n"
+	examSolutions += "> ID: " + id + "\n"
 
 	for c, n := range exam {
 		var (
@@ -158,11 +168,6 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 
 			done = append(done, current)
 		}
-	}
-
-	id, err := cryptoutils.RandomString(10)
-	if err != nil {
-		log.Fatal(err)
 	}
 
 	var base string
