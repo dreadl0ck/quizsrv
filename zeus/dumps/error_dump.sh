@@ -1,10 +1,9 @@
 #!/bin/bash
 #
 # ZEUS Error Dump
-# Timestamp: [Mon Oct 19 14:24:22 2020]
-# Error: exit status 1
+# Timestamp: [Mon Oct 19 23:25:31 2020]
+# Error: exit status 255
 # StdErr: 
-# signal: interrupt
 # 
 
 
@@ -13,4 +12,4 @@ VERSION="v0.2.3"
 
 
 
-go run server.go
+docker push dreadl0ck/quizsrv

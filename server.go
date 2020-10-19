@@ -120,8 +120,8 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 		)
 
 		// write category
-		examQuestions += "### " + strings.ToUpper(c) + "\n"
-		examSolutions += "### " + strings.ToUpper(c) + "\n"
+		examQuestions += "\n### " + strings.ToUpper(c) + "\n"
+		examSolutions += "\n### " + strings.ToUpper(c) + "\n"
 
 		if c == "history" {
 			count++
@@ -134,13 +134,13 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 				examQuestions += strconv.Itoa(count) + ". Name the author of the following quote and explain his intentions:  \n"
 				examQuestions += "\n"
 				examQuestions += "        " + q  + "\n"
-				examQuestions += "\n"
+				examQuestions += "\n\n"
 
 				examSolutions += strconv.Itoa(count) + ". Name the author of the following quote and explain his intentions:  \n"
 				examSolutions += "\n"
 				examSolutions += "        " + q  + "\n"
 				examSolutions += "\n"
-				examSolutions += "    " + author  + "\n"
+				examSolutions += "    " + author  + "\n\n"
 				break
 			}
 		}

@@ -467,10 +467,12 @@
 
 - question: |
     What network type is this?
+
     ![](/cia/files/img/Decentralized.png)
   answer: Decentralized
 - question: |
     What network type is this?
+
     ![](/cia/files/img/Distributed.png)
   answer: Distributed
 
