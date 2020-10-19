@@ -232,7 +232,7 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 func fixLinks(in string) string {
 	var nl string
 	if strings.HasPrefix(in, "!") {
-		nl = "  \n\n"
+		nl = "  \n"
 	}
 	if *tls {
 		return nl + strings.ReplaceAll(in, "/cia/files/img/", "./etc/quizsrv/files/img/") + nl
