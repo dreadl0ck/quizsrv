@@ -16,8 +16,7 @@
     The 'MAIL FROM' SMTP command.
 - question: What does DMARC use for its checks?
   answer: |
-    The 'From' header,
-    because it is presented to the user.
+    The 'From' header, because it is presented to the user.
 - question: Which message agents do not talk directly to each other?
   answer: |
     MDA (Mail Delivery Agent) and MUA (Mail User Agent)
