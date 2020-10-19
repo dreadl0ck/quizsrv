@@ -156,7 +156,7 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 				examSolutions += "    " + fixLinks(line) + "\n"
 			}
 
-			done = append(done, i)
+			done = append(done, current)
 		}
 	}
 
