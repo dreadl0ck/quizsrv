@@ -492,3 +492,11 @@
 
 - question: Who created the '@' sign?
   answer: Ray Tomlinson
+
+- question: Which name was used first 'Unics' or 'Unix'?
+  answer: |
+    The first version of Unix, called UNICS (Uniplexed Operating and Computing System).
+    Although the operating system has changed, the name stuck and was eventually shortened to Unix.
+
+- question: What does the term 'Ancient unix' refer to?
+  answer: Unix versions leading to v7.
