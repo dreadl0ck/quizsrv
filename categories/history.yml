@@ -477,3 +477,17 @@
 - question: Draw the initial 4 node ARPANET
   answer: |
     ![](/cia/files/img/ARPANET.png)
+
+- question: What is the difference between Unix and unix?
+  answer: |
+    Unix: adheres to the Unix specification (SUS).
+    unix: Unix-like, but does not strictly adhere to spec.
+
+- question: Who did the mother of all demos?
+  answer: Douglas Engelbart
+
+- question: What was demonstrated during the mother of all demos?
+  answer: |
+    The 90-minute presentation essentially demonstrated almost all the fundamental elements of modern personal computing.
+    Windows, hypertext, graphics, efficient navigation and command input, video conferencing, the computer mouse, word processing, dynamic file linking, revision control, and a collaborative real-time editor.
+

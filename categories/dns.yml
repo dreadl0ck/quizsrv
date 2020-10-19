@@ -408,3 +408,6 @@
     lame
     caching-only
     forward-only
+
+- question: What the possible DNS error codes?
+  answer: NOERROR and NXDOMAIN

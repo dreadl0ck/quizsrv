@@ -302,3 +302,29 @@
 - question: When was the IA-32 / i386 instruction set created?
   answer: |
     Designed by Intel and first implemented in the 80386 microprocessor in 1985.
+
+- question: What type(s) of filesystem does UEFI support?
+  answer: The EFI firmware must support the FAT32, FAT16, and FAT12 variants of the EFI file system.
+
+- question: What does the GRUB boot loader have to do to load the kernel?
+  answer: |
+    1. Locate the partition where the filesystem is stored.
+    2. Locate the kernel to use.
+    3. Set the initrd file and boot the system.
+
+- question: What is the purpose of the GRUB boot loader in a UEFI system?
+  answer: After the OS loader has started the hardware, the bootloader loads configuration files and starts the OS kernel.
+
+- question: Name three fields of a GPT entry
+  answer: PartitionName, PartitionTypeGUID, UniquePartitionGUID
+
+- question: What does LBA stand for?
+  answer: Logical Block Addressing
+
+- question: Name five fields of a GPT header
+  answer:
+    signature (8 bytes)
+    revision (4 bytes)
+    header size (4 bytes)
+    header CRC32 checksum (4 bytes)
+    LBA of the header (8 bytes)

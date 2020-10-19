@@ -231,3 +231,6 @@
   answer: |
     Can be configured to expect text, binary data or html nodes.
     Usually: XML, JSON, HTML
+
+- question: How are mail queues implemented?
+  answer: Can be implemented in memory, using a file on disk or using a database.
