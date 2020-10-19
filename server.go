@@ -90,6 +90,8 @@ var exam = map[string]int{
 
 func genExam(w http.ResponseWriter, r *http.Request) {
 
+	rand.Seed(time.Now().UnixNano())
+
 	var (
 		done []int
 		examQuestions string
@@ -142,16 +144,16 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 
 			count++
 
-			examQuestions += "#### " + strconv.Itoa(count) + ") " + category[current].Question + "\n"
+			examQuestions += "#### " + strconv.Itoa(count) + ") " + fixLinks(category[current].Question) + "\n"
 			examQuestions += "```\n"
 			examQuestions += "\n"
 			examQuestions += "\n"
 			examQuestions += "```\n"
 
-			examSolutions += "#### " + strconv.Itoa(count) + ") " + category[current].Question + "\n"
+			examSolutions += "#### " + strconv.Itoa(count) + ") " + fixLinks(category[current].Question) + "\n"
 
 			for _, line := range strings.Split(category[current].Answer, "\n") {
-				examSolutions += "    " + line + "\n"
+				examSolutions += "    " + fixLinks(line) + "\n"
 			}
 
 			done = append(done, i)
@@ -210,10 +212,22 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	fmt.Println("done!")
+	fmt.Println("done! generated exam", id)
 
-	w.Write([]byte("<a target='_blank' href='/cia/files/" + id + "/examQuestions.pdf'>examQuestions.pdf</a><br><a target='_blank' href='/cia/files/" + id + "/examSolutions.pdf'>examSolutions.pdf</a>"))
 	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("<a target='_blank' href='/cia/files/" + id + "/examQuestions.pdf'>examQuestions.pdf</a><br><a target='_blank' href='/cia/files/" + id + "/examSolutions.pdf'>examSolutions.pdf</a>"))
+}
+
+func fixLinks(in string) string {
+	var nl string
+	if strings.HasPrefix(in, "!") {
+		nl = "\n"
+	}
+	if *tls {
+		return nl + strings.ReplaceAll(in, "/cia/files/img/", "./etc/quizsrv/files/img/") + nl
+	} else {
+		return nl + strings.ReplaceAll(in, "/cia/files/img/", "./files/img/") + nl
+	}
 }
 
 func quiz(w http.ResponseWriter, r *http.Request) {
