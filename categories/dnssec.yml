@@ -139,19 +139,19 @@
   answer: Kaminsky attack
 
 - question: When does a domain name exist?
-  answer:  A domain name exists if the name itslef or any of its descendants have a least 1 RR
+  answer: A domain name exists if the name itslef or any of its descendants have a least 1 RR
 
 - question: How would you define an ENT in NSEC terms?
-  answer: A domain name D that is covered by some NSEC records with source S and target T is an ENT iif D is an ancestor of T in the domain name tree
+  answer: A domain name D that is covered by some NSEC records with source S and target T, is an ENT if D is an ancestor of T in the domain name tree.
 
 - question: How would you prove NoData for an ENT with NSEC?
-  answer: If the domain has an ancestor with an TON NSEC record that covers it
+  answer: If the domain has an ancestor with an TON NSEC record that covers it.
 
 - question: Why doesn't an NSEC3 record contain NSEC3 in its type list?
-  answer: because the types refer to the original (non-hashed) domain name
+  answer: Because the types refer to the original (non-hashed) domain name.
 
 - question: Does an NSEC record contain the NSEC in its type bitmap?
-  answer: Yes!
+  answer: Yes.
 
 - question: What hashing algorithms can be used in a DS record digest?
   answer: SHA1 & SHA256
@@ -178,8 +178,9 @@
     ![](/cia/files/img/TREE-2017S.png)
 
 - question: |
+    Draw the NSEC chain for the following DNS tree:
+
     ![](/cia/files/img/TREE-2015.png)
-    Draw the NSEC chain for the following DNS tree.
   answer: |
     ![](/cia/files/img/TREE-2015S.png)
 
