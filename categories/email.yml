@@ -185,10 +185,12 @@
 
 - question: What are the 4 SPF filters and what do they mean?
   answer: |
-        + pass
-        - fail
-        ~ soft fail
-        ? neutral
+    ```
+    + pass
+    - fail
+    ~ soft fail
+    ? neutral
+    ```
 
 - question: How would you enforce TLS if DNSSEC is not availalbe?
   answer: Use MTA-STS
@@ -207,9 +209,11 @@
 
 - question: In email, describe the header format
   answer: |
-        <field name>:<field body>
-        where <field name> consists of printable US-Ascii (33-126) excluding space " " and colon ":"
-        <field body> consists of US-Ascii (1-127) without CR & LF
+    ```
+    <field name>:<field body>
+    where <field name> consists of printable US-Ascii (33-126) excluding space " " and colon ":"
+    <field body> consists of US-Ascii (1-127) without CR & LF
+    ```
 
 - question: List 5 possible email line delimiters
   answer: CR, LF, CRLF, LFCR, NEL, LS, RS, PS

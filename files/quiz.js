@@ -203,7 +203,7 @@ window.addEventListener("load", function (evt) {
         autoplay = setTimeout(function() {
             next();
             invokeNext();
-        }, 5000);
+        }, 7000);
     }
 
     var toggleAutoplay = function (ev) {
