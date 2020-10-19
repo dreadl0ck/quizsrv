@@ -107,10 +107,10 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 
 	// write header
 	examQuestions += "# CIA Test Exam" + "\n"
-	examQuestions += "> ID: " + id + "\n"
+	examQuestions += "\n> ID: " + id + "\n\n"
 
 	examSolutions += "# CIA Test Exam" + "\n"
-	examSolutions += "> ID: " + id + "\n"
+	examSolutions += "\n> ID: " + id + "\n\n"
 
 	for c, n := range exam {
 		var (
@@ -127,14 +127,14 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 			count++
 			// always add a quote for history part
 			for q, author := range quotes {
-				examQuestions += "#### " + strconv.Itoa(count) + ") Name the author of the following quote and explain his intentions:\n"
+				examQuestions += strconv.Itoa(count) + ". Name the author of the following quote and explain his intentions:  \n"
 				examQuestions += "\n"
-				examQuestions += "> " + q  + "\n"
+				examQuestions += "        " + q  + "\n"
 				examQuestions += "\n"
 
-				examSolutions += "#### " + strconv.Itoa(count) + ") Name the author of the following quote and explain his intentions:\n"
+				examSolutions += strconv.Itoa(count) + ". Name the author of the following quote and explain his intentions:  \n"
 				examSolutions += "\n"
-				examSolutions += "> " + q  + "\n"
+				examSolutions += "        " + q  + "\n"
 				examSolutions += "\n"
 				examSolutions += "    " + author  + "\n"
 				break
@@ -154,16 +154,18 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 
 			count++
 
-			examQuestions += "#### " + strconv.Itoa(count) + ") " + fixLinks(category[current].Question) + "\n"
-			examQuestions += "```\n"
-			examQuestions += "\n"
-			examQuestions += "\n"
-			examQuestions += "```\n"
+			examQuestions += strconv.Itoa(count) + ". " + fixLinks(category[current].Question) + "  \n"
+			examQuestions += "\n\n"
+			examQuestions += "        "
+			examQuestions += "        "
+			examQuestions += "\n\n"
 
-			examSolutions += "#### " + strconv.Itoa(count) + ") " + fixLinks(category[current].Question) + "\n"
+			examSolutions += strconv.Itoa(count) + ". " + fixLinks(category[current].Question) + "  \n"
 
 			for _, line := range strings.Split(category[current].Answer, "\n") {
-				examSolutions += "    " + fixLinks(line) + "\n"
+				examSolutions += "\n\n"
+				examSolutions += "        " + fixLinks(line) + "\n"
+				examSolutions += "\n\n"
 			}
 
 			done = append(done, current)
@@ -226,7 +228,7 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 func fixLinks(in string) string {
 	var nl string
 	if strings.HasPrefix(in, "!") {
-		nl = "\n"
+		nl = "  \n\n"
 	}
 	if *tls {
 		return nl + strings.ReplaceAll(in, "/cia/files/img/", "./etc/quizsrv/files/img/") + nl
