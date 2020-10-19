@@ -500,3 +500,11 @@
 
 - question: What does the term 'Ancient unix' refer to?
   answer: Unix versions leading to v7.
+
+- question: Draw a timeline with the most important Unix versions
+  answer: |
+    ![](/cia/files/img/UNIX.png)
+
+- question: Draw a timeline with the most important BSD versions
+  answer: |
+    ![](/cia/files/img/BSD.png)
