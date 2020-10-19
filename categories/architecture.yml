@@ -291,3 +291,7 @@
 
 - question: What is the oldest linux exectuable format?
   answer: a.out
+
+- question: Draw a schematic of a SSH connection from client to server
+  answer: |
+    ![](/cia/files/img/SSH.png)

@@ -167,4 +167,56 @@
 
 - question: Draw a tree diagram with CLE, NEC, SOS and QDN
   answer: |
-    ![](/cia/files/DNSSECTREE.png)
+    ![](/cia/files/img/TREE.png)
+
+- question: |
+    ![](/cia/files/img/TREE-2017.png)
+    Draw the NSEC chain for the following DNS tree.
+  answer: |
+    ![](/cia/files/img/TREE-2017S.png)
+
+- question: |
+    ![](/cia/files/img/TREE-2015.png)
+    Draw the NSEC chain for the following DNS tree.
+  answer: |
+    ![](/cia/files/img/TREE-2015S.png)
+
+- question: |
+    ![](/cia/files/img/RFC4592-1.png)
+  answer: |
+    A, B, E
+
+- question: |
+    ![](/cia/files/img/RFC4592-2.png)
+  answer: DNSKEY, RRSIG, NSEC
+
+- question: |
+    ![](/cia/files/img/RFC4592-3.png)
+  answer: None
+
+- question: |
+    ![](/cia/files/img/RFC4592-4.png)
+  answer: |
+    ```*.example.```
+
+- question: |
+    ![](/cia/files/img/RFC4592-5.png)
+  answer: |
+    ![](/cia/files/img/RFC4592-5A.png)
+
+- question: |
+    ![](/cia/files/img/RFC4592-6.png)
+  answer: |
+    ```_ssh._tcp.host1.example. NSEC```
+    ```_ssh._tcp.host2.example NSEC```
+    ```*.example. NSEC```
+    ```sub.*.example. TXT MX```
+
+- question: What are the four possible results of the security status of a RRset as determined by a validating resolver?
+  answer: Secure, Insecure, Bogus, Indeterminate
+
+- question: A query with the DO flag set always has ARCOUNT > 0. Explain why
+  answer: |
+    There is no DO flag in the classic DNS flags.
+    The pseudo opt type 41 has place in its TTL field for the DO flag.
+    see: https://tools.ietf.org/html/rfc6891

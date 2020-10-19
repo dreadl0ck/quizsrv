@@ -467,13 +467,13 @@
 
 - question: |
     What network type is this?
-    ![](/cia/files/Decentralized.png)
+    ![](/cia/files/img/Decentralized.png)
   answer: Decentralized
 - question: |
     What network type is this?
-    ![](/cia/files/Distributed.png)
+    ![](/cia/files/img/Distributed.png)
   answer: Distributed
 
 - question: Draw the initial 4 node ARPANET
   answer: |
-    ![](/cia/files/ARPANET.png)
+    ![](/cia/files/img/ARPANET.png)

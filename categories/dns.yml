@@ -371,7 +371,7 @@
 
 - question: |
     Which one is used in DNS? Why is this an issue?
-    [!dns tree pic](./files/images/dnstree.png)
+    ![](/cia/files/img/DNSTREE.png)
   answer: |
     node -> node is used
     node -> edge would have made the parent/child delegation of authority easier
