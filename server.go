@@ -93,7 +93,6 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 	rand.Seed(time.Now().UnixNano())
 
 	var (
-		done []int
 		examQuestions string
 		examSolutions string
 		count int
@@ -107,6 +106,7 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 		var (
 			category = data.Categories[c]
 			current int
+			done []int
 		)
 
 		// write category
