@@ -171,8 +171,9 @@
     ![](/cia/files/img/TREE.png)
 
 - question: |
+    Draw the NSEC chain for the following DNS tree:
+
     ![](/cia/files/img/TREE-2017.png)
-    Draw the NSEC chain for the following DNS tree.
   answer: |
     ![](/cia/files/img/TREE-2017S.png)
 
@@ -220,7 +221,6 @@
   answer: |
     There is no DO flag in the classic DNS flags.
     The pseudo opt type 41 has place in its TTL field for the DO flag.
-    see: https://tools.ietf.org/html/rfc6891
 
 - question: Why is NSEC3 using base32 encoding?
   answer: |

@@ -117,7 +117,7 @@
 
 - question: How is a HTTP request formatted?
   answer: |
-    `<method><path><HTTP-version>`
+    `<method><path><HTTP/version>`
 
 - question: What TLS extension is used to enable the virtual hosting for a https-based site?
   answer: |
@@ -167,7 +167,7 @@
   answer: Web Hypertext Application Technology Working Group
 
 - question: What is XHTML?
-  answer: XML specification of HTML, which still needs a DTD
+  answer: XML specification of HTML, which still needs a DTD.
 
 - question: What does DTD stand for?
   answer: Document Type Definition
@@ -185,7 +185,7 @@
   answer: JavaScript Object Notation
 
 - question: Why was Silverlight more secure than Flash?
-  answer: Because no one used it
+  answer: Because no one used it.
 
 - question: What were the problems with Flash?
   answer: Sandbox escapes
