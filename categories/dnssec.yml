@@ -225,3 +225,24 @@
   answer: |
     Because base32 is case insensitive.
     All ASCII based domain names are case insensitive as well.
+
+- question: In which order is the DNS tree traversed during NSEC validation?
+  answer: Lexicographic ordering
+
+- question: Which nodes of the tree are skipped during NSEC validation?
+  answer: Empty non terminals (ENTs)
+
+- question: What is a drawback of NSEC?
+  answer:
+    It allows for domain enumeration.
+    The entire tree can be walked through, yielding all available domain names.
+
+- question: When is a domain name _covered_?
+  answer: When it lies in between two NSEC records.
+
+- question: Explain the paradox situation when querying owner names of NSEC3 records
+  answer: |
+    To prove existence of a queried name, an NSEC3 record will be generated and the resulting hash added to the tree.
+    However, these new nodes below the apex are not treated as regular nodes in the DNS tree.
+    Treating them as regular nodes would require to hash them again, creating an infinite loop.
+    So NSEC3 records are outside of the original tree.

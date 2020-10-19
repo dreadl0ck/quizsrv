@@ -328,3 +328,27 @@
     header size (4 bytes)
     header CRC32 checksum (4 bytes)
     LBA of the header (8 bytes)
+
+- question: What does EFI stand for?
+  answer: Extensible Firmware Interface
+
+- question: How does EFI protect disks from legacy software?
+  answer: |
+    1. It uses the protective MBR
+    2. Prevents overwriting the MBR
+
+- question: Name three differences between EFI and MBR partitioning
+  answer: |
+    1. EFI supports more than 4 partitions
+    2. LBA addressing
+    3. Checksums
+    4. Header Backups
+
+- question: How many kilobyte are 1000 kibibyte?
+  answer: 1024 kilobyte
+
+- question: How many gibibyte are 1 tebibyte?
+  answer: 1024 gibibyte
+
+- question: How many Gigabit per hour are 125 MB/s?
+  answer: 3600 Gb/h

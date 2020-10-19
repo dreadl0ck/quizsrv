@@ -360,7 +360,7 @@
 - question: Can a SOA have a 0 TTL?
   answer: yes
 
-- question: What are the different interpretations of SOA's Minimum field?
+- question: What are the different interpretations of the SOA's 'minimum' field?
   answer: |
     It meant the minimal TTL allowed but was never used this way, instead:
       BIND8 uses it as the default TTL
@@ -411,3 +411,18 @@
 
 - question: What the possible DNS error codes?
   answer: NOERROR and NXDOMAIN
+
+- question: What is the current meaning of the SOA's 'minimum' field?
+  answer: TTL for caching of negative replies.
+
+- question: What was the original meaning of the SOA's 'minimum' field?
+  answer: It meant the minimal TTL allowed but was never used this way.
+
+- question: An authoritative only name server answers which kind of queries?
+  answer: Both iterative and recursive queries.
+
+- question: A node below a cut in the DNS tree, as seen from the _parent_, is called?
+  answer: Delegation Point
+
+- question: A node below a cut in the DNS tree, as seen from the _child_, is called?
+  answer: Start of Authority
