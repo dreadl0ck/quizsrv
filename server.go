@@ -151,7 +151,8 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 			// pick a random one
 			for {
 				current = rand.Intn(len(category))
-				if !hasBeenAsked(current, done) {
+				// exclude light bulb jokes
+				if !hasBeenAsked(current, done) && !strings.Contains(category[current].Question, "light bulb") {
 					break
 				}
 			}

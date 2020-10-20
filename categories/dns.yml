@@ -309,10 +309,10 @@
 - question: What is the max length of a label?
   answer: 63 Bytes
 - question: Are labels encoded as little-endian or big-endian?
-  answer: big endian
+  answer: Big endian.
 
 - question: What is the major issue with recursive DNS queries?
-  answer: They put too much load on the root servers
+  answer: They put too much load on the root servers.
 
 - question: What is anycast and why is it useful in DNS?
   answer: It allows overloading hosts for an IP address. Root servers can therefore be replicated all over the world (see INR for more details)

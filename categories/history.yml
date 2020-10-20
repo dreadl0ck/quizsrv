@@ -209,7 +209,7 @@
 - question: What was included into 4.3 BSD?
   answer: |
     A DNS implementation.
-- question: In which year did Unixs include a DNS implementation?
+- question: In which year did Unix include a DNS implementation?
   answer: 1986
 - question: When was SMTP specified?
   answer: |
