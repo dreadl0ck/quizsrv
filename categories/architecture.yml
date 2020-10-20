@@ -408,3 +408,15 @@
 - question: Draw a timeline of the most important Intel processor releases
   answer: |
     ![](/cia/files/img/Intel.png)
+
+- question: How would you exit your x86_64 program with exit code 0 using assembly?
+  answer: |
+    movq $60, %rax  ; use the `_exit` [fast] syscall
+    movq $0, %rdi   ; exit code 0
+    syscall         ; make syscall
+
+- question: How would you exit your IA-32 program with exit code 0 using assembly?
+  answer: |
+    mov $1, %eax  ; syscall #1 == exit
+    mov $0, %ebx  ; exit code 0
+    int $128      ; interrupt 128 == make syscall
