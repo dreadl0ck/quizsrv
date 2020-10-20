@@ -203,7 +203,7 @@
 - question: Which M?A adds a Received header to every email?
   answer: Mail Transfer Agent (MTA)
 
-- question: Is the BCC header left in the email headears that are sent out to other recipients?
+- question: Is the BCC header left in the email headers that are sent out to other recipients?
   answer: No
 
 - question: In email, describe the header format

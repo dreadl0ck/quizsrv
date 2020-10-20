@@ -3,8 +3,7 @@
     The next closer is the child of the closest encloser on the graph to the non existing domain.
 - question: Explain the security implications of using NSEC wildcards
   answer: |
-    Invalidates NSEC semantics.
-    Example: *.example.com. has an NSEC to anything.example.com.
+    Invalidates NSEC semantics, example: *.example.com. has an NSEC to anything.example.com.
     Wildcard synthesis would generate an NSEC record:
     !.example.com -> anything.example.com.
 - question: Which RFC discusses wildcard semantics?

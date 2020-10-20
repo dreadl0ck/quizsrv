@@ -352,3 +352,55 @@
 
 - question: How many Gigabit per hour are 125 MB/s?
   answer: 3600 Gb/h
+
+- question: What does DRAM stand for?
+  answer: Dynamic Random Access Memory
+
+- question: What does SRAM stand for?
+  answer: Static Random Access Memory
+
+- question: What does instruction prefetching do?
+  answer: |
+    It avoid stalling the CPU during a fetch, decode, execute cycle,
+    by fetching the next instruction as soon as the current one is being ready for decoding.
+
+- question: What does CPU stand for?
+  answer: Central Processing Unit
+
+- question: What does the term orthogonal means in regard to an instruction set?
+  answer: It means that all instruction types can use all addressing modes.
+
+- question: What does CISC stand for?
+  answer: Complex Instruction Set Computer
+
+- question: Why have CISC architectures been invented?
+  answer: |
+    To combat the major bottleneck of CPU operations: memory access.
+    Multiplication on RISC for example, requires a combination of multiple arithmetic operations, leading to multiple memory accesses.
+    CISC provides dedicated instructions to multiplication, allowing optmization on the CPU.
+
+- question: How many instructions are typically executed per clock cycle on a RISC architecture?
+  answer: 1
+
+- question: Name the design goals of a RISC instruction set
+  answer: |
+    - small, primitive instructions
+    - tightly structured
+    - quick decoding and execution
+
+- question: Name a drawback of RISC architectures
+  answer: |
+    The burden of complexity is placed on software.
+    For example, RISC did not provide an instruction for multiplication.
+    The operation had to be synthesized by software, combining multiple primitive operations.
+
+- question: Name a drawback of RISC architectures in regard to memory usage
+  answer: |
+    RISC architectures require more memory on average,
+    because operations that do not exist in the instruction set (e.g. multiplication) have to be synthesized by software.
+
+- question: Name the design goals of a CISC instruction set
+  answer: |
+    - less memory use
+    - more complex, but less instructions
+    - orthogonal instruction set
