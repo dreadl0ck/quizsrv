@@ -166,8 +166,14 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 			examSolutions += strconv.Itoa(count) + ") " + fixLinks(category[current].Question)
 			examSolutions += "    \n"
 
+			var res string
 			for _, line := range strings.Split(category[current].Answer, "\n") {
-				examSolutions += "    " + fixLinks(line)
+				res = fixLinks(line)
+				if strings.HasPrefix(res, "!") {
+					examSolutions += fixLinks(line)
+				} else {
+					examSolutions += "    " + fixLinks(line)
+				}
 			}
 
 			done = append(done, current)
