@@ -510,3 +510,24 @@
 - question: Draw a timeline with the most important BSD versions
   answer: |
     ![](/cia/files/img/BSD.png)
+
+- question: At which decimal value do capitals start in the ASCII table?
+  answer: 65
+
+- question: At which decimal value do lowercase letters start in the ASCII table?
+  answer: 97
+
+- question: At which decimal value do numbers start in the ASCII table?
+  answer: 48
+
+- question: At which decimal value is the asterisk symbol in the ASCII table?
+  answer: 42
+
+- question: At which decimal value is the asterisk symbol in the ASCII table?
+  answer: 42
+
+- question: What does ASCII stand for?
+  answer: American Standard Code for Information Interchange
+
+- question: Who did the first implementation of UTF-8?
+  answer: Ken Thompson and Rob Pike produced the first UTF-8 implementation for the Plan 9 operating system in September 1992.
