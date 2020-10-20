@@ -247,3 +247,15 @@
     However, these new nodes below the apex are not treated as regular nodes in the DNS tree.
     Treating them as regular nodes would require to hash them again, creating an infinite loop.
     So NSEC3 records are outside of the original tree.
+
+- question: Why does a.root-servers.net _not_ have a signature on its A and AAAA records?
+  answer: |
+    The root nameservers are inside the .net zone, which is delegated to other servers.
+    This means the .net zone has to delegate it back, which makes it an insecure delegation.
+
+- question: Name a signed RR set with A information of a root server
+  answer: |
+    Does not exist!
+    The root nameservers are inside the .net zone, which is delegated to other servers.
+    This means the .net zone has to delegate it back, which makes it an insecure delegation.
+
