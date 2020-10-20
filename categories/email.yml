@@ -128,15 +128,10 @@
 - question: In a DANE TLSA record, how is the certificate data encoded?
   answer: base64
 
-- question: In a DANE TLSA record, what are the possible values of selector? And matching type?
+- question: In a DANE TLSA record, what are the possible values of selector?
   answer: |
-    - selector can take:
-      0: use entire certificate
-      1:  use only the public key
-    - matching type:
-      0: use all data in the certficiate
-      1: use SHA256 of certificate
-      2: use SHA512 of certificate
+    0: use entire certificate
+    1: use only the public key
 
 - question: What are the possible values of the "certificate usage" field in a DANE TLSA record?
   answer: |
@@ -260,3 +255,12 @@
 
 - question: To what address is a bounce sent?
   answer: Back to the original sender address, the value of the 'From' header.
+
+- question: What are the three possible modes for MTA-STS?
+  answer: none, testing, or enforce
+
+- question: In a DANE TLSA record, what are the possible values of matching type?
+  answer: |
+    0: use all data in the certficiate
+    1: use SHA256 of certificate
+    2: use SHA512 of certificate

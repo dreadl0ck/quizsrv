@@ -293,10 +293,10 @@
     .au (Australia)
     .nl
     .jp (Japan)
-- question: Max length of a label?
+- question: Max length of a DNS label?
   answer: |
     63 bytes
-- question: Max length of a domain?
+- question: Max length of a DNS domain?
   answer: |
     254 bytes
 - question: Which are the attributes shared by a resource record set?
