@@ -238,3 +238,25 @@
 
 - question: How are mail queues implemented?
   answer: Can be implemented in memory, using a file on disk or using a database.
+
+- question: Name an SMTP command that can appear multiple times during a session?
+  answer: RCPT TO
+
+- question: Which ports are used by IMAP and IMAPS?
+  answer: IMAP uses port 143, but SSL/TLS encrypted IMAP uses port 993.
+
+- question: Which ports are used by POP3 and POP3S?
+  answer: POP uses port 110, but SSL/TLS encrypted POP uses port 995.
+
+- question: Which ports are used by SMTP and SMTPS?
+  answer: SMTP uses port 25, but SSL/TLS encrypted SMTP uses port 465.
+
+- question: What is LMTP and what is it used for?
+  answer: |
+    The Local Mail Transfer Protocol is designed as an alternative to normal SMTP for situations where the receiving side does not have a mail queue, such as a mail storage server acting as a Mail Delivery Agent (MDA).
+
+- question: To what address is a reply sent?
+  answer: To the address from the 'Reply-To' header.
+
+- question: To what address is a bounce sent?
+  answer: Back to the original sender address, the value of the 'From' header.

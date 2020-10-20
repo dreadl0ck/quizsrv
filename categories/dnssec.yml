@@ -259,3 +259,11 @@
     The root nameservers are inside the .net zone, which is delegated to other servers.
     This means the .net zone has to delegate it back, which makes it an insecure delegation.
 
+- question: Which records need to be created in order to sign a zone?
+  answer: NSEC and/or NSEC3 records.
+
+- question: In which order is the domain name tree traversed for the NSEC chain?
+  answer: In preorder.
+
+- question: Is the SOA signed by the ZSK?
+  answer: Yes.

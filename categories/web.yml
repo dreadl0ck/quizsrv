@@ -207,3 +207,6 @@
 
 - question: What does ALPN stand for?
   answer: Application-Layer Protocol Negotiation
+
+- question: Name a directory service that is based on LDAP
+  answer: Active Directory
