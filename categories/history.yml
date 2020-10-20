@@ -298,7 +298,7 @@
 - question: Name the year and the reason for the "Unix Wars"?
   answer: 1983, BSD (open) vs System V (proprietary)
 - question: What happened in 1979?
-  answer: Unix v7 release
+  answer: Unix v7 release, 3BSD release
 
 - question: Which new features were introduced in the Unix v7 release?
   answer: |

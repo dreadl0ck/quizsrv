@@ -209,10 +209,12 @@
 - question: |
     ![](/cia/files/img/RFC4592-6.png)
   answer: |
-    ```_ssh._tcp.host1.example. NSEC```
-    ```_ssh._tcp.host2.example NSEC```
-    ```*.example. NSEC```
-    ```sub.*.example. TXT MX```
+    ```
+    _ssh._tcp.host1.example. NSEC
+    _ssh._tcp.host2.example. NSEC
+    *.example. NSEC
+    sub.*.example. TXT MX
+    ```
 
 - question: What are the four possible results of the security status of a RRset as determined by a validating resolver?
   answer: Secure, Insecure, Bogus, Indeterminate
