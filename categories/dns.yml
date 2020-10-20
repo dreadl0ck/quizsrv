@@ -371,6 +371,7 @@
 
 - question: |
     Which one is used in DNS? Why is this an issue?
+
     ![](/cia/files/img/DNSTREE.png)
   answer: |
     node -> node is used
