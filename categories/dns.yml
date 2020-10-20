@@ -427,3 +427,21 @@
 
 - question: A node below a cut in the DNS tree, as seen from the _child_, is called?
   answer: Start of Authority
+
+- question: |
+    What happens if the domain name a.*.example.com is queried?
+
+    ![](/cia/files/WILDCARD-TREE.png)
+  answer: The TXT record of *.example.com is returned.
+
+- question: |
+    What happens if the domain name b.a.*.example.com is queried?
+
+    ![](/cia/files/WILDCARD-TREE.png)
+  answer: The TXT record of *.example.com is returned.
+
+- question: |
+    What happens if the domain name a.example.com is queried?
+
+    ![](/cia/files/WILDCARD-TREE.png)
+  answer: The TXT record of *.example.com is returned.
