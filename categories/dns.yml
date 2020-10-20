@@ -429,19 +429,19 @@
   answer: Start of Authority
 
 - question: |
-    What happens if the domain name a.*.example.com is queried?
+    What happens if the domain name _a.*.example.com_ is queried?
 
     ![](/cia/files/img/WILDCARD-TREE.png)
   answer: The TXT record of *.example.com is returned.
 
 - question: |
-    What happens if the domain name b.a.*.example.com is queried?
+    What happens if the domain name _a.b.*.example.com_ is queried?
 
     ![](/cia/files/img/WILDCARD-TREE.png)
   answer: The TXT record of *.example.com is returned.
 
 - question: |
-    What happens if the domain name a.example.com is queried?
+    What happens if the domain name _a.example.com_ is queried?
 
     ![](/cia/files/img/WILDCARD-TREE.png)
   answer: The TXT record of *.example.com is returned.
