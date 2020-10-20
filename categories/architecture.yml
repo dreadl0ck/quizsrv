@@ -161,7 +161,7 @@
   answer: 1010
 
 - question: What system call does the shell use to ensure the executed command wont end up as a zombie?
-  answer: _wait_
+  answer: wait
 
 - question: How is a process called that is reclaimed by init after the parent exited?
   answer: Orphan
@@ -198,14 +198,16 @@
   answer: The model 32 which used 5-bit baudot code punchcards
 
 - question: |
+    Why does this program not compile in IA-32?
+
+    ```
     .global _start
     .text
     _start:
       mov $60, %eax
       mov $42, %edi
       syscall
-
-    Why does this program not compile in IA-32?
+    ```
   answer: The syscall instruction doesn't exist in IA-32 because it was added in x86_64
 
 - question: In what mode do all processors start?

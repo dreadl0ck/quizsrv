@@ -33,19 +33,19 @@ import (
 var Version = "master"
 
 type TemplateData struct {
-	Host string
-	Categories map[string]int // name to num questions
-	Slides []string
-	Version string
-	Quote string
+	Host        string
+	Categories  map[string]int // name to num questions
+	Slides      []string
+	Version     string
+	Quote       string
 	QuoteAuthor string
-	Total int
-	Category string
+	Total       int
+	Category    string
 }
 
 type Data struct {
 	Categories map[string][]question
-	Slides map[string]string
+	Slides     map[string]string
 }
 
 type question struct {
@@ -54,38 +54,38 @@ type question struct {
 }
 
 var (
-	addr = flag.String("addr", "localhost:8080", "http service address")
+	addr         = flag.String("addr", "localhost:8080", "http service address")
 	configFolder = flag.String("c", "", "path to the configuration files")
-	tls = flag.Bool("tls", false, "use TLS")
+	tls          = flag.Bool("tls", false, "use TLS")
 
 	upgrader = websocket.Upgrader{}
-	data *Data
+	data     *Data
 )
 
 var quotes = map[string]string{
-	"We will never do this again": "John Postel",
-	"CIA next summer": "OS3 students that failed the exam",
-	"One week, one week, one week and we had Unix": "Ken Thompson",
+	"We will never do this again":                         "John Postel",
+	"CIA next summer":                                     "OS3 students that failed the exam",
+	"One week, one week, one week and we had Unix":        "Ken Thompson",
 	"If you can read assembly, everything is open source": "Unknown",
-	"UNIX is basically a simple operating system, but you have to be a genius to understand the simplicity.": "Dennis Ritchie",
-	"I think the major good idea in Unix was its clean and simple interface: open, close, read, and write.": "Ken Thompson",
+	"UNIX is basically a simple operating system, but you have to be a genius to understand the simplicity.":                                                                                "Dennis Ritchie",
+	"I think the major good idea in Unix was its clean and simple interface: open, close, read, and write.":                                                                                 "Ken Thompson",
 	"Pretty much everything on the web uses those two things: C and UNIX. The browsers are written in C. The UNIX kernel - that pretty much the entire Internet runs on - is written in C.": "Rob Pike",
-	"The one thing I stole was the hierarchical file system because it was a really good idea ...": "Ken Thompson",
-	"If you want to travel around the world and be invited to speak at a lot of different places, just write a Unix operating system.": "Linus Torvalds",
-	"Contrary to popular belief, Unix is user friendly. It just happens to be very selective about who it decides to make friends with.": "Unknown",
-	"UNIX is not so much an operating system as a way of thinking.": "Unknown",
-	"UNIX was not designed to stop its users from doing stupid things, as that would also stop them from doing clever things.": "Unknown",
-	"One of my most productive days was throwing away 1,000 lines of code.": "Ken Thompson",
-	"Be conservative in what you send, and liberal in what you accept": "John Postel",
+	"The one thing I stole was the hierarchical file system because it was a really good idea ...":                                                                                          "Ken Thompson",
+	"If you want to travel around the world and be invited to speak at a lot of different places, just write a Unix operating system.":                                                      "Linus Torvalds",
+	"Contrary to popular belief, Unix is user friendly. It just happens to be very selective about who it decides to make friends with.":                                                    "Unknown",
+	"UNIX is not so much an operating system as a way of thinking.":                                                                                                                         "Unknown",
+	"UNIX was not designed to stop its users from doing stupid things, as that would also stop them from doing clever things.":                                                              "Unknown",
+	"One of my most productive days was throwing away 1,000 lines of code.":                                                                                                                 "Ken Thompson",
+	"Be conservative in what you send, and liberal in what you accept":                                                                                                                      "John Postel",
 }
 
 var exam = map[string]int{
 	"architecture": 20,
-	"dns": 10,
-	"dnssec": 10,
-	"email": 20,
-	"history": 19,
-	"web": 20,
+	"dns":          10,
+	"dnssec":       10,
+	"email":        20,
+	"history":      19,
+	"web":          20,
 }
 
 func genExam(w http.ResponseWriter, r *http.Request) {
@@ -95,7 +95,7 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 	var (
 		examQuestions string
 		examSolutions string
-		count int
+		count         int
 	)
 
 	id, err := cryptoutils.RandomString(10)
@@ -115,8 +115,8 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 	for c, n := range exam {
 		var (
 			category = data.Categories[c]
-			current int
-			done []int
+			current  int
+			done     []int
 		)
 
 		// write category
@@ -131,16 +131,17 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 				if strings.HasPrefix(q, "CIA") {
 					continue
 				}
-				examQuestions += strconv.Itoa(count) + ". Name the author of the following quote and explain his intentions:  \n"
-				examQuestions += "\n"
-				examQuestions += "        " + q  + "\n"
-				examQuestions += "\n\n"
+				examQuestions += strconv.Itoa(count) + ") Name the author of the following quote and explain his intentions:  \n"
+				examQuestions += "    \n"
+				examQuestions += "    " + q + "\n"
+				examQuestions += "    \n\n"
 
-				examSolutions += strconv.Itoa(count) + ". Name the author of the following quote and explain his intentions:  \n"
-				examSolutions += "\n"
-				examSolutions += "        " + q  + "\n"
-				examSolutions += "\n"
-				examSolutions += "    " + author  + "\n\n"
+				examSolutions += strconv.Itoa(count) + ") Name the author of the following quote and explain his intentions:  \n"
+				examSolutions += "    \n"
+				examSolutions += "    " + q + "\n"
+				examSolutions += "    \n"
+				examSolutions += "    " + author
+				examSolutions += "    \n"
 				break
 			}
 		}
@@ -159,14 +160,14 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 
 			count++
 
-			examQuestions += strconv.Itoa(count) + ". " + fixLinks(category[current].Question) + "  \n"
-			examQuestions += "  \n\n"
+			examQuestions += strconv.Itoa(count) + ") " + fixLinks(category[current].Question)
+			examQuestions += "    \n"
 
-			examSolutions += strconv.Itoa(count) + ". " + fixLinks(category[current].Question) + "  \n"
-			examSolutions += "  \n\n"
+			examSolutions += strconv.Itoa(count) + ") " + fixLinks(category[current].Question)
+			examSolutions += "    \n"
 
 			for _, line := range strings.Split(category[current].Answer, "\n") {
-				examSolutions += "        " + fixLinks(line) + "\n"
+				examSolutions += "    " + fixLinks(line)
 			}
 
 			done = append(done, current)
@@ -210,12 +211,12 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 		e = "mdtopdf"
 	}
 
-	err = exec.Command(e, "-i", filepath.Join(base, "examSolutions.md") , "-o", filepath.Join(base, "examSolutions.pdf")).Run()
+	err = exec.Command(e, "-i", filepath.Join(base, "examSolutions.md"), "-o", filepath.Join(base, "examSolutions.pdf")).Run()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	err = exec.Command(e, "-i", filepath.Join(base, "examQuestions.md") , "-o", filepath.Join(base, "examQuestions.pdf")).Run()
+	err = exec.Command(e, "-i", filepath.Join(base, "examQuestions.md"), "-o", filepath.Join(base, "examQuestions.pdf")).Run()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -227,22 +228,35 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 }
 
 func fixLinks(in string) string {
-	var nl string
-	if strings.HasPrefix(in, "!") {
-		nl = "  \n"
+
+	var out string
+	for _, line := range strings.Split(in, "\n") {
+
+		if line == "" {
+			out += "    \n"
+			continue
+		}
+
+		if strings.HasPrefix(line, "!") {
+			if *tls {
+				out += strings.ReplaceAll(line, "/cia/files/img/", "./etc/quizsrv/files/img/") + "\n"
+			} else {
+				out += strings.ReplaceAll(line, "/cia/files/img/", "./files/img/")
+			}
+			continue
+		}
+
+		out += line + "\n"
 	}
-	if *tls {
-		return nl + strings.ReplaceAll(in, "/cia/files/img/", "./etc/quizsrv/files/img/") + nl
-	} else {
-		return nl + strings.ReplaceAll(in, "/cia/files/img/", "./files/img/") + nl
-	}
+
+	return out
 }
 
 func quiz(w http.ResponseWriter, r *http.Request) {
 	homeTemplate := template.Must(template.ParseFiles(filepath.Join(*configFolder, "pages/quiz.html")))
 	err := homeTemplate.Execute(w, &TemplateData{
 		//Host:       "ws://"+r.Host+"/cia/connect", // TODO: unused
-		Version: Version,
+		Version:  Version,
 		Category: strings.ToUpper(filepath.Base(r.RequestURI)),
 	})
 	if err != nil {
@@ -260,11 +274,11 @@ func hasBeenAsked(current int, done []int) bool {
 }
 
 func writeQuestion(c *websocket.Conn, category []question, current int) {
-	c.WriteMessage(websocket.TextMessage, append([]byte("index=" + strconv.Itoa(current) + ":"), blackfriday.Run([]byte(category[current].Question))...))
+	c.WriteMessage(websocket.TextMessage, append([]byte("index="+strconv.Itoa(current)+":"), blackfriday.Run([]byte(category[current].Question))...))
 }
 
 func writeAnswer(c *websocket.Conn, category []question, current int) {
-	c.WriteMessage(websocket.TextMessage, append([]byte("index=" + strconv.Itoa(current) + ":"), blackfriday.Run([]byte(category[current].Answer))...))
+	c.WriteMessage(websocket.TextMessage, append([]byte("index="+strconv.Itoa(current)+":"), blackfriday.Run([]byte(category[current].Answer))...))
 }
 
 func writeDone(c *websocket.Conn, r *http.Request) {
@@ -325,9 +339,9 @@ func connect(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("flagged", flagged)
 
 	var (
-		category = data.Categories[filepath.Base(string(location))]
-		done = initDoneSlice(category, flagged)
-		current int
+		category      = data.Categories[filepath.Base(string(location))]
+		done          = initDoneSlice(category, flagged)
+		current       int
 		previousIndex int
 	)
 
@@ -358,66 +372,66 @@ func connect(w http.ResponseWriter, r *http.Request) {
 		}
 
 		switch string(message) {
-			case "next":
+		case "next":
+
+			if previousIndex == 0 {
+				done = append(done, current)
+
+				if len(done) == len(category) {
+					writeDone(c, r)
+					return
+				}
+			}
+
+			if previousIndex > 0 {
+
+				previousIndex--
 
 				if previousIndex == 0 {
-					done = append(done, current)
-
-					if len(done) == len(category) {
-						writeDone(c, r)
-						return
-					}
-				}
-
-				if previousIndex > 0 {
-
-					previousIndex--
-
-					if previousIndex == 0 {
-						for {
-							current = rand.Intn(len(category))
-							if !hasBeenAsked(current, done) {
-								break
-							}
-						}
-					} else {
-						current = done[len(done)-previousIndex]
-					}
-
-				} else {
 					for {
 						current = rand.Intn(len(category))
 						if !hasBeenAsked(current, done) {
 							break
 						}
 					}
+				} else {
+					current = done[len(done)-previousIndex]
 				}
+
+			} else {
+				for {
+					current = rand.Intn(len(category))
+					if !hasBeenAsked(current, done) {
+						break
+					}
+				}
+			}
+
+			writeQuestion(c, category, current)
+
+		case "answer":
+			writeAnswer(c, category, current)
+
+		case "previous":
+
+			if len(done)-previousIndex+1 >= 0 {
+
+				previousIndex++
+
+				// last entry in done was the previous question
+				current = done[len(done)-previousIndex]
 
 				writeQuestion(c, category, current)
-
-			case "answer":
-				writeAnswer(c, category, current)
-
-			case "previous":
-
-				if len(done)-previousIndex+1 >= 0 {
-
-					previousIndex++
-
-					// last entry in done was the previous question
-					current = done[len(done)-previousIndex]
-
-					writeQuestion(c, category, current)
-				}
+			}
 		}
 	}
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
 	var (
-		slides []string
+		slides     []string
 		categories = make(map[string]int)
-		total int
+		total      int
 	)
 	for c := range data.Categories {
 		categories[c] = len(data.Categories[c])
@@ -434,12 +448,12 @@ func home(w http.ResponseWriter, r *http.Request) {
 	}
 	homeTemplate := template.Must(template.ParseFiles(filepath.Join(*configFolder, "pages/index.html")))
 	err := homeTemplate.Execute(w, &TemplateData{
-		Categories: categories,
-		Slides: slides,
-		Version: Version,
-		Quote: quote,
+		Categories:  categories,
+		Slides:      slides,
+		Version:     Version,
+		Quote:       quote,
 		QuoteAuthor: quoteAuthor,
-		Total: total,
+		Total:       total,
 	})
 	if err != nil {
 		log.Println(err)
@@ -522,7 +536,7 @@ func main() {
 
 		var (
 			certReloader *simplecert.CertReloader
-			numRenews   int
+			numRenews    int
 
 			ctx, cancel = context.WithCancel(context.Background())
 

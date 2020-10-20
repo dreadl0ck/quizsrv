@@ -156,6 +156,7 @@
     (The pseudo record OPT abuses the CLASS field for this)
 - question: |
     Which one of the following is not a valid domain?
+
     ```
     a) *.example.com
     b) *.*.com
@@ -347,7 +348,7 @@
 
     $ORIGIN 8/22.0.192.in-addr-arpa.
     33.9 PTR somehost.slash-22-holder.example.com
-      ```
+    ```
 
     This isn't possible for /24 and /32 networks. We could use CNAMEs instead
 
