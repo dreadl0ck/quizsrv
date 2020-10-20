@@ -404,3 +404,7 @@
     - less memory use
     - more complex, but less instructions
     - orthogonal instruction set
+
+- question: Draw a timeline of the most important Intel processor releases
+  answer: |
+    ![](/cia/files/img/Intel.png)
