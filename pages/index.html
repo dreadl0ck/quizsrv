@@ -29,6 +29,12 @@
                   clearBtn.className = "clearButton";
                   clearBtn.innerText = "X";
                   items[i].appendChild(clearBtn)
+
+                  if (i == 0 ) {
+                      document.getElementById('flaggedExam').href += "?" + categoryName + "=" + JSON.stringify(arr);
+                  } else {
+                      document.getElementById('flaggedExam').href += "&" + categoryName + "=" + JSON.stringify(arr);
+                  }
               }
           }
       });
@@ -168,7 +174,13 @@
         </p>
 
         <p>
-            Feeling ready? Generate a test exam with random questions from the DB <a href="/cia/mkexam" style="color: red;">here</a>.
+            Feeling ready? Generate a test exam with random questions from the DB <a target="_blank" href="/cia/mkexam" style="color: red;">here</a>.
+        </p>
+        <p>
+            Use <a target="_blank" id="flaggedExam" href="/cia/mkexam" style="color: red;">this</a> link to generate an exam using randomly chosen flagged questions of each category.
+        </p>
+        <p>
+            If a category has no flagged questions, they will be randomly chosen from the entire category as usual.
         </p>
     </div>
 

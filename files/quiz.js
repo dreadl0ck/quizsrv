@@ -61,6 +61,10 @@ window.addEventListener("load", function (evt) {
     var flag = function() {
         console.log("flagged", flagged);
 
+        if (currentServerIndex == "XXX") {
+            return;
+        }
+
         if (!flagged.includes(currentServerIndex)) {
 
             flagged.push(currentServerIndex);

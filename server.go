@@ -8,6 +8,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"github.com/dreadl0ck/cryptoutils"
@@ -112,12 +113,29 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 	examSolutions += "# CIA Test Exam" + "\n"
 	examSolutions += "\n> ID: " + id + "\n\n"
 
+	err = r.ParseForm()
+	if err != nil {
+		fmt.Println(err)
+	}
+
 	for c, n := range exam {
 		var (
 			category = data.Categories[c]
 			current  int
 			done     []int
 		)
+
+		val := r.FormValue(c)
+		fmt.Println("read val", val)
+		if val != "" && val != "[]" {
+			var flagged []string
+			err = json.Unmarshal([]byte(val), &flagged)
+			if err != nil {
+				fmt.Println(err)
+			}
+			fmt.Println("will only include", flagged, "for category", c)
+			done = initDoneSlice(category, flagged)
+		}
 
 		// write category
 		examQuestions += "\n### " + strings.ToUpper(c) + "\n"
@@ -146,16 +164,25 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
+		var stop bool
+
 		// write questions
 		for i := 0; i < n; i++ {
 
 			// pick a random one
 			for {
+				if len(done) == len(category) {
+					stop = true
+					break
+				}
 				current = rand.Intn(len(category))
 				// exclude light bulb jokes
 				if !hasBeenAsked(current, done) && !strings.Contains(category[current].Question, "light bulb") {
 					break
 				}
+			}
+			if stop {
+				break
 			}
 
 			count++
