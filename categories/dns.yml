@@ -412,8 +412,8 @@
     caching-only
     forward-only
 
-- question: What are the possible DNS error codes?
-  answer: NOERROR and NXDOMAIN
+- question: Name three DNS error codes
+  answer: NOERROR, NXDOMAIN and SERVFAIL
 
 - question: What is the current meaning of the SOA's 'minimum' field?
   answer: TTL for caching of negative replies.
