@@ -63,7 +63,7 @@
 - question: A DS record set is signed by whom?
   answer: |
     The parent.
-- question: The label in an NSEC3 record encoded in what encoding and why?
+- question: Which encoding is used for the label in an NSEC3 record and why?
   answer: |
     Base32, because its is case insensitive.
     It is shorter than base16 (hex) but longer than base64.

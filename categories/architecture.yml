@@ -379,7 +379,7 @@
   answer: |
     To combat the major bottleneck of CPU operations: memory access.
     Multiplication on RISC for example, requires a combination of multiple arithmetic operations, leading to multiple memory accesses.
-    CISC provides dedicated instructions to multiplication, allowing optmization on the CPU.
+    CISC provides dedicated instructions for multiplication, allowing optmization on the CPU.
 
 - question: How many instructions are typically executed per clock cycle on a RISC architecture?
   answer: 1
