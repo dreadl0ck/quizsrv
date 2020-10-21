@@ -381,7 +381,7 @@
 - question: In what year where domain names commercialised?
   answer: 1985
 
-- question: Who was the first to discus changes to DNS administration in the 80s to support international & non-military development?
+- question: Who was the first to discuss changes to DNS administration in the 80s to support international & non-military development?
   answer: Vinton Cerf
 
 - question: In what year did the DNS *specification* come out? In what RFC?
@@ -412,7 +412,7 @@
     caching-only
     forward-only
 
-- question: What the possible DNS error codes?
+- question: What are the possible DNS error codes?
   answer: NOERROR and NXDOMAIN
 
 - question: What is the current meaning of the SOA's 'minimum' field?
