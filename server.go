@@ -89,6 +89,17 @@ var exam = map[string]int{
 	"web":          20,
 }
 
+func shuffle(src []string) []string {
+	final := make([]string, len(src))
+	rand.Seed(time.Now().UTC().UnixNano())
+	perm := rand.Perm(len(src))
+
+	for i, v := range perm {
+		final[v] = src[i]
+	}
+	return final
+}
+
 func genExam(w http.ResponseWriter, r *http.Request) {
 
 	rand.Seed(time.Now().UnixNano())
@@ -123,18 +134,18 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 			category = data.Categories[c]
 			current  int
 			done     []int
+			val = r.FormValue(c)
+			flagged []string
 		)
 
-		val := r.FormValue(c)
-		fmt.Println("read val", val)
 		if val != "" && val != "[]" {
-			var flagged []string
 			err = json.Unmarshal([]byte(val), &flagged)
 			if err != nil {
 				fmt.Println(err)
 			}
 			fmt.Println("will only include", flagged, "for category", c)
-			done = initDoneSlice(category, flagged)
+
+			flagged = shuffle(flagged)
 		}
 
 		// write category
@@ -164,25 +175,34 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
-		var stop bool
+		var (
+			numFlagged = len(flagged)
+		)
 
 		// write questions
 		for i := 0; i < n; i++ {
 
-			// pick a random one
-			for {
-				if len(done) == len(category) {
-					stop = true
+			if numFlagged > 0 {
+				if i >= numFlagged {
 					break
 				}
-				current = rand.Intn(len(category))
-				// exclude light bulb jokes
-				if !hasBeenAsked(current, done) && !strings.Contains(category[current].Question, "light bulb") {
-					break
+				n, err := strconv.Atoi(flagged[i])
+				if err == nil {
+					current = n
+				} else {
+					fmt.Println("invalid integer in flagged values", flagged[i])
+					continue
 				}
-			}
-			if stop {
-				break
+			} else {
+				// pick a random one
+				for {
+					current = rand.Intn(len(category))
+					fmt.Println(current)
+					// exclude light bulb jokes
+					if !hasBeenAsked(current, done) && !strings.Contains(category[current].Question, "light bulb") {
+						break
+					}
+				}
 			}
 
 			count++
