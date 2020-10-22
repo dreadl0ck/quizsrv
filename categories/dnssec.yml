@@ -76,8 +76,8 @@
     The CLE is the parent of both NEC and SOS.
 - question: Which records apart from NSEC and RRSIG are present at a delegation point?
   answer: |
-    DS record
-    NS record (even for insecure delegations)
+    - DNSKEY record
+    - NS record (even for insecure delegations)
 - question: |
     Which list is in lexicographic ordering?
     a) *a, a, ~a
@@ -138,7 +138,7 @@
   answer: Kaminsky attack
 
 - question: When does a domain name exist?
-  answer: A domain name exists if the name itslef or any of its descendants have a least 1 RR
+  answer: A domain name exists if the name itself or any of its descendants have a least 1 resource record.
 
 - question: How would you define an ENT in NSEC terms?
   answer: A domain name D that is covered by some NSEC records with source S and target T, is an ENT if D is an ancestor of T in the domain name tree.
