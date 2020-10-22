@@ -124,12 +124,13 @@
     - Use SNI (Server Name Indication) TLS extension (clear text)
     - Use ESNI (Encrypted Server Name Indication) TLS 1.3 extension
 
-- question: Name 4 request methods
+- question: Name 5 HTTP request methods
   answer: |
     1. GET
     2. HEAD
     3. OPTIONS
     4. PUT
+    5. POST
 
 - question: What is a URI reference
   answer: A relative URI, has to be completed by software

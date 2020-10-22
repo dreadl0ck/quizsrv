@@ -2,3 +2,4 @@ docker/static
 docker/files
 docker/categories
 docker/pages
+zeus/dumps/error_dump.sh
