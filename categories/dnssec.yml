@@ -94,7 +94,7 @@
   answer: |
     2 normally,
     3 in some cases.
-- question: The Type in an NSEC resource record applies to?
+- question: The type in an NSEC resource record applies to?
   answer: |
     The owner of the NSEC resource record (aka the source).
 - question: What is the meaning of the DS resource record?
@@ -210,10 +210,10 @@
     ![](/cia/files/img/RFC4592-6.png)
   answer: |
     ```
-    _ssh._tcp.host1.example. NSEC
-    _ssh._tcp.host2.example. NSEC
-    *.example. NSEC
-    sub.*.example. TXT MX
+    1. *.example. NSEC
+    2. sub.*.example. NSEC
+    3. _ssh._tcp.host1.example. NSEC
+    4. _ssh._tcp.host2.example. NSEC
     ```
 
 - question: What are the four possible results of the security status of a RRset as determined by a validating resolver?

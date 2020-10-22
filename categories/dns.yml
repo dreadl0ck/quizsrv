@@ -143,7 +143,7 @@
 - question: In BIND syntax (owner ttl class type data) which components are optional?
   answer: |
     ttl and class both have defaults.
-    The default class is 'IN'.
+    The default class is 'IN' (= Internet).
 - question: |
     Which system does not use TCP?
     a) DNS Crypt
@@ -307,7 +307,7 @@
 - question: Whats the difference between a CNAME and DNAME?
   answer: |
     A CNAME (canonical name) record defines an alias.
-    A DNAME (delegation name) is used for non-terminal DNS Name Redirection.
+    A DNAME (delegation name) is used for non-terminal DNS name redirection.
 - question: What is the max length of a label?
   answer: 63 Bytes
 - question: Are labels encoded as little-endian or big-endian?
@@ -328,11 +328,11 @@
 - question: What information do you find in a resource record?
   answer: Owner, ttl, class, type and resource data.
 
-- question: In a DNS RR, what are the available classes & what do the stand for?
+- question: In a DNS RR, what are the available classes and what do they stand for?
   answer: |
-    - IN Internet
-    - CH Chaosnet
-    - HS Hesiod
+    - IN: Internet
+    - CH: Chaosnet
+    - HS: Hesiod
 
 - question: If a parent and a child both have an NS record for the same domain, which one is authoritative?
   answer: The child's
