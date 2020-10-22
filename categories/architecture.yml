@@ -63,8 +63,7 @@
 - question: The x86 ISA does not make use of which addressing mode?
   answer: |
     The memory indirect addressing.
-    Using pointers to pointers is inffecient,
-    because it leads to two fetch operations for a single instruction.
+    Using pointers to pointers is inffecient, because it leads to two fetch operations for a single instruction.
 - question: When compiling on a 64 bit machine for 32 bit architecture, the use of _%rax_ in assembly causes?
   answer: |
     Compilation will fail, _%rax_ does not exists on 32 bit.
@@ -286,7 +285,7 @@
   answer: statically
 
 - question: What are the 2 kinds of executable files?
-  answer: binary executables & interpreted scripts
+  answer: Binary executables and interpreted scripts.
 
 - question: What does ELF stand for?
   answer: Executable and Linkable Format
@@ -303,16 +302,16 @@
     The 8086 was introduced in 1978 as a fully 16-bit extension of Intel's 8-bit 8080 microprocessor.
 - question: When was the IA-32 / i386 instruction set created?
   answer: |
-    Designed by Intel and first implemented in the 80386 microprocessor in 1985.
+    Designed by Intel and first implemented in the 80386 microprocessor in 1986.
 
 - question: What type(s) of filesystem does UEFI support?
   answer: The EFI firmware must support the FAT32, FAT16, and FAT12 variants of the EFI file system.
 
 - question: What does the GRUB boot loader have to do to load the kernel?
   answer: |
-    1. Locate the partition where the filesystem is stored.
-    2. Locate the kernel to use.
-    3. Set the initrd file and boot the system.
+    1. Locate the partition where the filesystem is stored
+    2. Locate the kernel to use
+    3. Set the initrd file and boot the system
 
 - question: What is the purpose of the GRUB boot loader in a UEFI system?
   answer: After the OS loader has started the hardware, the bootloader loads configuration files and starts the OS kernel.
@@ -325,11 +324,11 @@
 
 - question: Name five fields of a GPT header
   answer:
-    signature (8 bytes)
-    revision (4 bytes)
-    header size (4 bytes)
-    header CRC32 checksum (4 bytes)
-    LBA of the header (8 bytes)
+    - signature (8 bytes)
+    - revision (4 bytes)
+    - header size (4 bytes)
+    - header CRC32 checksum (4 bytes)
+    - LBA of the header (8 bytes)
 
 - question: What does EFI stand for?
   answer: Extensible Firmware Interface
@@ -363,8 +362,7 @@
 
 - question: What does instruction prefetching do?
   answer: |
-    It avoid stalling the CPU during a fetch, decode, execute cycle,
-    by fetching the next instruction as soon as the current one is being ready for decoding.
+    It avoids stalling the CPU during a fetch, decode and execute cycle, by fetching the next instruction as soon as the current one is being ready for decoding.
 
 - question: What does CPU stand for?
   answer: Central Processing Unit
@@ -422,3 +420,6 @@
     mov $1, %eax  ; syscall #1 == exit
     mov $0, %ebx  ; exit code 0
     int $128      ; interrupt 128 == make syscall
+
+- question: What does AST stand for?
+  answer: Abstract Syntax Tree

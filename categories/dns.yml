@@ -134,7 +134,7 @@
       b) stub resolver
       c) a resolver
   answer: |
-    b) stub resolver.
+    b) stub resolver
 - question: Whats the primary use of DNS?
   answer: |
     Looking up IP addresses
@@ -284,7 +284,7 @@
 - question: In which year have TLDs been specified?
   answer: |
     1984
-- question: In which year and rfc has the hosts.txt been specified?
+- question: In which year and RFC has the hosts.txt file been specified?
   answer: |
     1973 - RFC #606
 - question: First ccTLDs?
@@ -302,7 +302,7 @@
     254 bytes
 - question: Which are the attributes shared by a resource record set?
   answer: |
-    same owner, class, type, ttl
+    Same owner, class, type and ttl.
 - question: Whats the difference between a CNAME and DNAME?
   answer: |
     A CNAME (canonical name) record defines an alias.
@@ -316,7 +316,7 @@
   answer: They put too much load on the root servers.
 
 - question: What is anycast and why is it useful in DNS?
-  answer: It allows overloading hosts for an IP address. Root servers can therefore be replicated all over the world (see INR for more details)
+  answer: It allows overloading hosts for an IP address. Root servers can therefore be replicated all over the world.
 
 - question: How does a resolver announce itself as a full-service (non-stub) resolver?
   answer: It sets the Recursion Allowed (RA) flag
@@ -359,7 +359,7 @@
   answer: Usually formatted as YYYMMDDnn It allows for versioning of the data
 
 - question: Can a SOA have a 0 TTL?
-  answer: yes
+  answer: Yes, this will disable caching.
 
 - question: What are the different interpretations of the SOA's 'minimum' field?
   answer: |
