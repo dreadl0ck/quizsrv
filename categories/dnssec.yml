@@ -233,7 +233,10 @@
   answer: Lexicographic ordering
 
 - question: Which nodes of the tree are skipped during NSEC validation?
-  answer: Empty non terminals (ENTs)
+  answer:
+    - Empty non terminals (ENTs)
+    - NS records
+    - Glue A and AAAA records
 
 - question: What is a drawback of NSEC?
   answer:

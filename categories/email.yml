@@ -24,7 +24,7 @@
   answer: |
     ```<selector>._domainkey.example.com.```
     TXT
-- question: Why is the line limit in the ABNF message format 78 chars?
+- question: Why is the line limit in the ABNF message format for SMTP 78 characters?
   answer: |
     At the time, 80 char wide terminals were common.
     The decision was made to avoid wraparounds for better readability.
@@ -56,7 +56,7 @@
     Postfix:
     1. was designed to mitigate sendmail's vulnerabilities.
     2. runs as postdrop or postfix user, sendmail always as root.
-    3. has higher queuing speed than Sendmail.
+    3. has higher queuing speed than sendmail.
 
 - question: What 5 lines can you find in a normal (E)SMTP session?
   answer: |
@@ -216,7 +216,7 @@
   answer: Ascii (7-bit) which can be extended to MIME (8-bit)
 
 - question: What is the line length recommendation of an email? Why?
-  answer: Max width is 80 characters including CRLF because of old terminal width
+  answer: 80 characters including CRLF because of old terminal width.
 
 - question: Name the five postfix queues
   answer: |
