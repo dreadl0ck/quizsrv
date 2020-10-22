@@ -32,11 +32,11 @@
     - ANCOUNT (num answers)
     - NSCOUNT (num NS records)
     - ARCOUNT (num additional records)
-- question: Explain the situation of a bailiwick loop
+- question: Explain the situation of a bailiwick loop in DNS delegation
   answer: |
     NS record with name, but no IP addr given.
     This makes it impossible to find the server.
-    Solution: glue records.
+    Solution: 'glue' A record.
 - question: Explain 'Query Name Minimisation'
   answer: |
     To improve privacy, only the relevant part of a query is sent to the root servers.
@@ -320,19 +320,19 @@
   answer: It allows overloading hosts for an IP address. Root servers can therefore be replicated all over the world.
 
 - question: How does a resolver announce itself as a full-service (non-stub) resolver?
-  answer: It sets the Recursion Allowed (RA) flag
+  answer: It sets the Recursion Allowed (RA) flag.
 
 - question: Why is .os3.nl illegal in DNS?
-  answer: Because it contains an empty label at the start
+  answer: Because it contains an empty label at the start.
 
 - question: What information do you find in a resource record?
-  answer: owner, ttl, class, type, resource data
+  answer: Owner, ttl, class, type and resource data.
 
 - question: In a DNS RR, what are the available classes & what do the stand for?
   answer: |
-    IN Internet
-    CH Chaosnet
-    HS Hesiod
+    - IN Internet
+    - CH Chaosnet
+    - HS Hesiod
 
 - question: If a parent and a child both have an NS record for the same domain, which one is authoritative?
   answer: The child's
@@ -397,7 +397,7 @@
 - question: Who was originally in charge of DNS?
   answer: SRI & IANA
 
-- question: What were the intial generic Top Level Domains (gTLD) ? List all 5
+- question: What were the initial generic Top Level Domains (gTLD) ? List all 5
   answer: |
     .gov
     .edu
@@ -458,10 +458,10 @@
 
 - question: Describe the steps of a zone transfer
   answer: |
-    1. the client (slave) sends a query (opcode 0) with a special query type AXFR to the server (master)
+    1. the client (slave) sends a query (opcode 0, query type AXFR) to the server (master)
     2. the server responds with a series of messages
-      a. the first messgae is the SOA RR for the server zone apex
-      b. next and in no specified order, all the RRs for every domain in the server's zone
+      a. first message is the SOA RR for the server zone apex
+      b. next and in no specified order, all the RRs for every domain in the server's zone are sent
       c. the server repeats the SOA RR to signal the end of the transfer
 
 - question: Can you use different algorithms for your KSK and ZSK? If yes, what problems does this lead to?
