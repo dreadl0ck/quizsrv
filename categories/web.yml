@@ -180,7 +180,7 @@
   answer: XMLHttpRequest
 
 - question: What is XHR used for?
-  answer: Javascript API to send request to servers
+  answer: Javascript API to send HTTP requests to a server.
 
 - question: What does JSON stand for?
   answer: JavaScript Object Notation
@@ -198,7 +198,7 @@
   answer: Sandbox escapes
 
 - question: What were the issues with ActiveX?
-  answer: It would allow windows scripts to be run locally
+  answer: It would allow windows scripts to be run locally.
 
 - question: What does AJAX stand for?
   answer: Asynchronous JavaScript and XML
