@@ -74,9 +74,11 @@
 - question: Whats the bit position of the RA flag in the DNS header?
   answer: |
     The Recursion Available Flag is the 9th bit in the DNS header.
-- question: Whats the answer if there was no error but also an empty set of answers?
+- question: Whats the answer called if there was no error but also an empty set of answers?
   answer: |
     NODATA
+    Caution, this is not an official error code.
+    The error code in that case is NOERROR!
 - question: Whats the QTYPE for a slave initiated zone transfer (pull)?
   answer: |
     AXFR
@@ -137,7 +139,7 @@
     b) stub resolver
 - question: Whats the primary use of DNS?
   answer: |
-    Looking up IP addresses
+    Looking up IP addresses for a given name.
 - question: In BIND syntax (owner ttl class type data) which components are optional?
   answer: |
     ttl and class both have defaults.
@@ -261,7 +263,6 @@
     a) .os3.nl
     b) .os3.nl.
     c) os3.nl
-    d) .os3.nl.
   answer: |
     a) and b) are illegal because they start with a dot.
     This leads to an empty label on the left side.
@@ -356,7 +357,9 @@
   answer: A Start Of Authority record administrates important zone parameters
 
 - question: What's the purpose of the serial number in an SOA record?
-  answer: Usually formatted as YYYMMDDnn It allows for versioning of the data
+  answer: |
+    It allows for versioning of the data and can be used to force slave and secondary name servers to reload the zone configuration.
+    Usually formatted as YYYMMDDnn.
 
 - question: Can a SOA have a 0 TTL?
   answer: Yes, this will disable caching.
@@ -368,7 +371,7 @@
       BIND9 uses it as the TTL for caching negative replies
 
 - question: Do RRSIG RRs form a resource record set?
-  answer: No because all RRs in an RRSET must have the same TTL
+  answer: No, because all RRs in an RRSET must have the same TTL.
 
 - question: |
     Which one is used in DNS? Why is this an issue?
@@ -378,7 +381,7 @@
     node -> node is used
     node -> edge would have made the parent/child delegation of authority easier
 
-- question: In what year where domain names commercialised?
+- question: In what year were domain names commercialised?
   answer: 1985
 
 - question: Who was the first to discuss changes to DNS administration in the 80s to support international & non-military development?
@@ -447,7 +450,7 @@
 
     ![](/cia/files/img/WILDCARD-TREE.png)
   answer: The TXT record of *.example.com is returned.
-- question: Why are caching-only name servers usefull?
+- question: Why are caching-only name servers useful?
   answer: They reduce the load on the root servers
 
 - question: If your network administrator wants to implement delegation for your zone, what information would you need to give him so he can implement it?
