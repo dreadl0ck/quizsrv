@@ -323,7 +323,7 @@
   answer: Logical Block Addressing
 
 - question: Name five fields of a GPT header
-  answer:
+  answer: |
     - signature (8 bytes)
     - revision (4 bytes)
     - header size (4 bytes)

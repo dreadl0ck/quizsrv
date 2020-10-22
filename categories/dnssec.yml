@@ -233,13 +233,13 @@
   answer: Lexicographic ordering
 
 - question: Which nodes of the tree are skipped during NSEC validation?
-  answer:
+  answer: |
     - Empty non terminals (ENTs)
     - NS records
     - Glue A and AAAA records
 
 - question: What is a drawback of NSEC?
-  answer:
+  answer: |
     It allows for domain enumeration.
     The entire tree can be walked through, yielding all available domain names.
 
