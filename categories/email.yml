@@ -264,3 +264,6 @@
     0: use all data in the certficiate
     1: use SHA256 of certificate
     2: use SHA512 of certificate
+
+- question: Name two mail agents that talk directly to each other
+  answer: Message Receival Agent (MRA) and Message Transfer Agent (MTA)

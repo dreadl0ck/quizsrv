@@ -531,3 +531,16 @@
 
 - question: What does MIME stand for?
   answer: Multipurpose Internet Mail Extensions
+
+- question: Who invented the SMTP protocol?
+  answer: John Postel
+
+- question: Who invented email on ARPANET?
+  answer: Ray Tomlinson
+
+- question: Who is the author of the FTP protocol?
+  answer: Abhay Bhushan
+
+- question: When was the FTP protocol invented?
+  answer: |
+    1971, RFC #114
