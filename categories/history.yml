@@ -528,3 +528,6 @@
 
 - question: Who did the first implementation of UTF-8?
   answer: Ken Thompson and Rob Pike produced the first UTF-8 implementation for the Plan 9 operating system in September 1992.
+
+- question: What does MIME stand for?
+  answer: Multipurpose Internet Mail Extensions

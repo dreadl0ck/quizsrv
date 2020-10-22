@@ -73,7 +73,7 @@
   answer: 1
 - question: Whats the bit position of the RA flag in the DNS header?
   answer: |
-    The Recursion Available Flag is the 8th bit in the DNS header.
+    The Recursion Available Flag is the 9th bit in the DNS header.
 - question: Whats the answer if there was no error but also an empty set of answers?
   answer: |
     NODATA
@@ -104,7 +104,7 @@
   answer: NXDOMAIN
 - question: Whats the bit position of the RD flag in the DNS header?
   answer: |
-    The Recursion Desired Flag is the 7th bit in the DNS header.
+    The Recursion Desired Flag is the 8th bit in the DNS header.
 - question: What are the parameters of an SOA record?
   answer: |
     - serial
