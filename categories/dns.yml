@@ -435,7 +435,7 @@
 
     ![](/cia/files/img/WILDCARD-TREE.png)
   answer: The TXT record of *.example.com is returned.
-
+`
 - question: |
     What happens if the domain name _a.b.*.example.com_ is queried?
 
@@ -447,3 +447,19 @@
 
     ![](/cia/files/img/WILDCARD-TREE.png)
   answer: The TXT record of *.example.com is returned.
+- question: Why are caching-only name servers usefull?
+  answer: They reduce the load on the root servers
+
+- question: If your network administrator wants to implement delegation for your zone, what information would you need to give him so he can implement it?
+  answer: An NS record and a glue A record
+
+- question: Describe the steps of a zone transfer
+  answer: |
+    1. the client (slave) sends a query (opcode 0) with a special query type AXFR to the server (master)
+    2. the server responds with a series of messages
+      a. the first messgae is the SOA RR for the server zone apex
+      b. next and in no specified order, all the RRs for every domain in the server's zone
+      c. the server repeats the SOA RR to signal the end of the transfer
+
+- question: Can you use different algorithms for your KSK and ZSK? If yes, what problems does this lead to?
+  answer: A signed zone MUST include a DNSKEY for each algorithm present in the zone DS RRset and expect trust anchors for the zone. In practice this means having double signatures.

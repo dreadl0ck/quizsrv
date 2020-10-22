@@ -269,3 +269,5 @@
 
 - question: Is the SOA signed by the ZSK?
   answer: Yes.
+- question: Why is it useful to have the number of labels of the owner in an RRSIG record?
+  answer: If the number of labels in the owner and RRSIG don't match, we know that the RRSIG is for a wildcard
