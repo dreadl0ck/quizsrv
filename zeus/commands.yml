@@ -37,12 +37,18 @@ commands:
         description: clean up to prepare for build
         exec: rm -rf bin/*
 
+    make-docker:
+        dependencies:
+            - build-docker
+            - push-docker
+        exec: echo done
+
     build-docker:
         dependencies:
             - clean
         description: build docker container
         exec: |
-            cp -rf categories files pages docker
+            cp -rf courses files pages docker
             GOARCH=amd64 GOOS=linux CGO_ENABLED=0 go build -ldflags "-X main.Version=${VERSION}" -o docker/quizsrv server.go
             docker build -t dreadl0ck/quizsrv:${VERSION} docker
             rm -vf docker/quizsrv
