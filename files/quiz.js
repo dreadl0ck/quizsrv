@@ -8,15 +8,16 @@ window.addEventListener("load", function (evt) {
     var previousQuestion = false;
     var currentServerIndex = 0;
 
-    // function baseName(str)
-    // {
-    //     var base = new String(str).substring(str.lastIndexOf('/') + 1);
-    //     if(base.lastIndexOf(".") != -1)
-    //         base = base.substring(0, base.lastIndexOf("."));
-    //     return base;
-    // }
+    function baseName(str)
+    {
+        var base = new String(str).substring(str.lastIndexOf('/') + 1);
+        if(base.lastIndexOf(".") != -1)
+            base = base.substring(0, base.lastIndexOf("."));
+        return base;
+    }
     var pathArr = window.location.pathname.split('/');
     var course = pathArr[2];
+    var category = baseName(window.location.pathname);
 
     console.log("protocol", location.protocol);
 
@@ -27,7 +28,7 @@ window.addEventListener("load", function (evt) {
     }
 
     // load the flagged indices from local storage
-    var flagged = JSON.parse(localStorage.getItem(course));
+    var flagged = JSON.parse(localStorage.getItem(category));
     console.log("initial flagged indices", flagged);
 
     if (flagged == null) {
@@ -77,7 +78,7 @@ window.addEventListener("load", function (evt) {
         if (!flagged.includes(currentServerIndex)) {
 
             flagged.push(currentServerIndex);
-            localStorage.setItem(course, JSON.stringify(flagged));
+            localStorage.setItem(category, JSON.stringify(flagged));
             addFlag(currentServerIndex);
             console.log("flagged", currentServerIndex);
         }
@@ -105,7 +106,7 @@ window.addEventListener("load", function (evt) {
 
             flagged = remove(flagged, currentServerIndex)
 
-            localStorage.setItem(course, JSON.stringify(flagged));
+            localStorage.setItem(category, JSON.stringify(flagged));
             clearFlag();
             console.log("unflagged", currentServerIndex);
         }

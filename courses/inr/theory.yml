@@ -4,4 +4,94 @@
 - question: What does ILNP stand for?
   answer: Identifier-Locator Network Protocol
 
+- question: What does HIP stand for?
+  answer: Host Identity Protocol
 
+- question: What does EID stand for?
+  answer: Endpoint Identifier
+
+- question: What does RLOC stand for?
+  answer: Routing Locator
+
+- question: What does I-LV stand for?
+  answer: Identifier-Locator Vector
+
+- question: What does PDU stand for?
+  answer: Protocol Data Unit
+
+- question: What does SDU stand for?
+  answer: Service Data Unit
+
+- question: What does SAP stand for?
+  answer: Service Access Point
+
+- question: What does ITR stand for?
+  answer: Ingress Tunnel Routing
+
+- question: Explain multiplexing
+  answer: Multiple data streams are bundled into a single one.
+
+- question: Explain demultiplexing
+  answer: A single data stream is split up into multiple streams.
+
+- question: Explain a strong ES Model
+  answer: A host silently discards incoming datagrams not meant for itself.
+
+- question: Explain a weak ES Model
+  answer: A host accepts and routes incoming datagrams not meant for itself.
+
+- question: Value of 145 in binary (big endian)?
+  answer: 10010001
+
+- question: Whats the meaning of the 0.0.0.0 address?
+  answer: IP address unknown
+
+- question: Whats the meaning of the 127.0.0.1 address?
+  answer: Loopback address
+
+- question: Whats the meaning of the address if all host bits are 0?
+  answer: Network identification
+
+- question: Whats the meaning of the address if all host bits are 1?
+  answer: Directed broadcast
+
+- question: Whats the meaning of the 255.255.255.255 address?
+  answer: Local (sub)net broadcast
+
+- question: What does VLSM stand for?
+  answer: Variable Length Subnet Masks
+
+- question: What does CIDR stand for?
+  answer: Classless Inter-Domain Routing
+
+- question: Name the first 5 IPv4 header fields in order
+  answer: |
+    - Version
+    - IP Header Length (IHL)
+    - DiffServ
+    - Total Length
+    - Identification
+    - Flags
+
+- question: Name 5 additional IPv4 header fields
+  answer: |
+    - Time To Live
+    - Protocol
+    - Header Checksum
+    - Source Address
+    - Destination Address
+    - Options
+
+- question: Name 5 commonly multiplexed protocols in IPv4
+  answer: |
+    - ICMP
+    - IGMP
+    - OSPF
+    - TCP
+    - UDP
+
+- question: Is is possible to multiplex IP in IP?
+  answer: Yes
+
+- question: Are IP addresses little or big endian encoded on the wire?
+  answer: Big endian

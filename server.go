@@ -135,6 +135,9 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 			val      = r.FormValue(c)
 			flagged  []string
 		)
+		if len(category) == 0 {
+			continue
+		}
 
 		if val != "" && val != "[]" {
 			err = json.Unmarshal([]byte(val), &flagged)
@@ -475,10 +478,10 @@ func connect(w http.ResponseWriter, r *http.Request) {
 	for {
 		_, message, err := c.ReadMessage()
 		if err != nil {
-			log.Println("read:", err)
+			log.Println(r.RemoteAddr, "read:", err)
 			break
 		}
-		log.Printf("recv: %s", message)
+		log.Printf(r.RemoteAddr, "recv: %s", message)
 
 		if len(done) == len(category) {
 			writeDone(c, r)

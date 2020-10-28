@@ -44,7 +44,7 @@
       width: 400px;
     }
     .list {
-      font-size: 50px;
+      font-size: 75px;
     }
     .box {
       background: gray;
@@ -70,10 +70,13 @@
     .clearButton:hover {
         font-weight: bolder;
     }
+    ul {
+        padding-inline-start: 0px !important;
+    }
   </style>
   <body>
 
-    <pre class="nocenter logo">
+    <a href="/courses"><pre class="nocenter logo">
     ______   __    __  ________
    /      \ /  \  /  |/        |
   /$$$$$$  |$$  \ $$ |$$$$$$$$/
@@ -86,7 +89,16 @@
 
   Security & Network Engineering
      University of Amsterdam
-    </pre>
+    </pre></a>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <p>
+        Welcome, select a course to get started:
+    </p>
 
     <ul style="list-style-type:none;" class="list" id="list">
       {{ range $index, $elem := .Courses }}
