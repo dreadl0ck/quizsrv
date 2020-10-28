@@ -376,7 +376,7 @@
 - question: |
     Which one is used in DNS? Why is this an issue?
 
-    ![](/cia/files/img/DNSTREE.png)
+    ![](/files/img/DNSTREE.png)
   answer: |
     node -> node is used
     node -> edge would have made the parent/child delegation of authority easier
@@ -436,19 +436,19 @@
 - question: |
     What happens if the domain name _a.*.example.com_ is queried?
 
-    ![](/cia/files/img/WILDCARD-TREE.png)
+    ![](/files/img/WILDCARD-TREE.png)
   answer: The TXT record of *.example.com is returned.
 
 - question: |
     What happens if the domain name _a.b.*.example.com_ is queried?
 
-    ![](/cia/files/img/WILDCARD-TREE.png)
+    ![](/files/img/WILDCARD-TREE.png)
   answer: The TXT record of *.example.com is returned.
 
 - question: |
     What happens if the domain name _a.example.com_ is queried?
 
-    ![](/cia/files/img/WILDCARD-TREE.png)
+    ![](/files/img/WILDCARD-TREE.png)
   answer: The TXT record of *.example.com is returned.
 - question: Why are caching-only name servers useful?
   answer: They reduce the load on the root servers

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <script>
+      window.addEventListener("load", function (evt) {
+          var ul = document.getElementById("list");
+          var items = ul.getElementsByTagName("li");
+          for (var i = 0; i < items.length; ++i) {
+              var itm = items[i].getElementsByTagName("a")[0].getElementsByTagName("span")[1];
+              var cat = items[i].getElementsByTagName("a")[0].getElementsByTagName("span")[0];
+              var arr = JSON.parse(localStorage.getItem(cat.innerText.toLowerCase()));
+              console.log(cat.innerText, itm.innerText, arr);
+
+              if (arr != null) {
+                  var val = itm.innerText.slice(1,-1);
+                  console.log(val, parseInt(val), parseInt(val)-arr.length);
+                  itm.innerHTML = "(" + (parseInt(val)-arr.length).toString() + "/" + arr.length.toString().fontcolor("red") + ")";
+
+                  var clearBtn = document.createElement("div");
+                  let categoryName = cat.innerText.toLowerCase();
+
+                  clearBtn.onclick = function() {
+                      console.log("clear", categoryName);
+                      localStorage.setItem(categoryName, "[]");
+                      location.reload();
+                  };
+                  clearBtn.className = "clearButton";
+                  clearBtn.innerText = "X";
+                  items[i].appendChild(clearBtn)
+
+                  document.getElementById('flaggedExam').href += "&" + categoryName + "=" + JSON.stringify(arr);
+              }
+          }
+      });
+  </script>
+  <style>
+    @font-face {
+      font-family: "SF Pro Text Regular";
+      src: url("/files/FontsFree-Net-SFProText-Regular.ttf") format("truetype");
+    }
+    * {
+        font-family: "SF Pro Text Regular", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    html, body {
+      overflow-x: hidden; /* Hide scrollbars */
+      color: lime;
+      background-color: black;
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    pre {
+      font-family: monospace;
+    }
+    .version {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      font-family: monospace;
+      font-size: 35px;
+    }
+    .nocenter {
+      text-align: initial !important;
+    }
+    .logo {
+      margin-left: auto;
+      margin-right: auto;
+      width: 400px;
+    }
+    .list {
+      font-size: 50px;
+    }
+    .box {
+      background: gray;
+      border-radius: 10px;
+      border: 3px darkgray solid;
+      margin-left: 20%;
+      margin-right: 20%;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .quotes {
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+    .clearButton {
+        color: red;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        margin-left: 5px;
+        cursor: pointer;
+    }
+    .clearButton:hover {
+        font-weight: bolder;
+    }
+  </style>
+  <body>
+
+    <pre class="nocenter logo">
+    ______   __    __  ________
+   /      \ /  \  /  |/        |
+  /$$$$$$  |$$  \ $$ |$$$$$$$$/
+  $$ \__$$/ $$$  \$$ |$$ |__
+  $$      \ $$$$  $$ |$$    |
+   $$$$$$  |$$ $$ $$ |$$$$$/
+  /  \__$$ |$$ |$$$$ |$$ |_____
+  $$    $$/ $$ | $$$ |$$       |
+   $$$$$$/  $$/   $$/ $$$$$$$$/
+
+  Security & Network Engineering
+     University of Amsterdam
+    </pre>
+
+    <h1>Welcome to the <br id="course">{{.CourseName}}<br> quiz!</h1>
+
+    <p class="quotes">
+        "{{ .Quote }}" <br>- {{ .QuoteAuthor }}
+    </p>
+
+    <ul style="list-style-type:none;" class="list" id="list">
+      {{ range $name, $elems := .Categories }}
+        <li>
+            <a href="/courses/{{$.CourseID}}/{{ $name }}">
+                <span style="text-transform:uppercase">{{ $name }}</span> <span>({{ $elems }})</span>
+            </a>
+        </li>
+      {{ end }}
+      {{ range $val := .Slides }}
+        <li> <a href="/courses/{{.CourseID}}/{{ $val }}">
+            <span style="text-transform:uppercase">
+            {{ $val }}
+            </span>
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+
+    <div class="box">
+        <p>
+            Use the arrow right key or click the mouse to iterate through the questions.
+            On touch devices, swipe left or right.
+        </p>
+        <p>
+            New feature: flag questions and only repeat the flagged ones in subsequent runs, to train the questions you failed to answer.
+            The number of flagged questions will appear in the menu in red next to the number of successfully answered questions,
+            hit the X button to reset the flagged questions for the selected category.
+        </p>
+        <p>
+            While in a question session, use the arrow up key to flag a question and the arrow down to unflag.
+            Alternatively, you can also use a right click to flag or unflag.
+            To flag on mobile devices with a touch display, swipe up or down.
+        </p>
+        <p>
+            To indicate a question is flagged a red circle will appear next to the current index.
+        </p>
+        <p>
+            The order of questions is randomized every run, currently there are {{ .Total }} questions in the database.
+        </p>
+        <p>
+            Select a category above to start.
+        </p>
+
+        <p>
+            Feeling ready? Generate a test exam with random questions from the DB <a target="_blank" href="/mkexam?course={{.CourseID}}" style="color: red;">here</a>.
+        </p>
+        <p>
+            Use <a target="_blank" id="flaggedExam" href="/mkexam?course={{.CourseID}}" style="color: red;">this</a> link to generate an exam using randomly chosen flagged questions of each category.
+        </p>
+        <p>
+            If a category has no flagged questions, they will be randomly chosen from the entire category as usual.
+        </p>
+    </div>
+
+    <div id="version" class="version">{{.Version}}</div>
+
+  </body>
+</html>

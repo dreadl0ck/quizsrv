@@ -468,17 +468,17 @@
 - question: |
     What network type is this?
 
-    ![](/cia/files/img/Decentralized.png)
+    ![](/files/img/Decentralized.png)
   answer: Decentralized
 - question: |
     What network type is this?
 
-    ![](/cia/files/img/Distributed.png)
+    ![](/files/img/Distributed.png)
   answer: Distributed
 
 - question: Draw the initial 4 node ARPANET
   answer: |
-    ![](/cia/files/img/ARPANET.png)
+    ![](/files/img/ARPANET.png)
 
 - question: What is the difference between Unix and unix?
   answer: |
@@ -505,11 +505,11 @@
 
 - question: Draw a timeline with the most important Unix versions
   answer: |
-    ![](/cia/files/img/UNIX.png)
+    ![](/files/img/UNIX.png)
 
 - question: Draw a timeline with the most important BSD versions
   answer: |
-    ![](/cia/files/img/BSD.png)
+    ![](/files/img/BSD.png)
 
 - question: At which decimal value do capitals start in the ASCII table?
   answer: 65

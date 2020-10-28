@@ -295,7 +295,7 @@
 
 - question: Draw a schematic of a SSH connection from client to server
   answer: |
-    ![](/cia/files/img/SSH.png)
+    ![](/files/img/SSH.png)
 - question: When was the x86 instruction set created?
   answer: |
     x86 is a family of instruction set architectures initially developed by Intel based on the Intel 8086 microprocessor and its 8088 variant.
@@ -407,7 +407,7 @@
 
 - question: Draw a timeline of the most important Intel processor releases
   answer: |
-    ![](/cia/files/img/Intel.png)
+    ![](/files/img/Intel.png)
 
 - question: How would you exit your x86_64 program with exit code 0 using assembly?
   answer: |

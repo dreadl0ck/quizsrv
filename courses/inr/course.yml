@@ -1,0 +1,8 @@
+name: InterNetworking and Routing
+description: A course about network routing protocols and the internet on a large scale
+quotes:
+  "This is madness": "A traumatized OS3 student"
+exam:
+  "linklayer": 20
+  "routing": 60
+  "theory": 20

@@ -167,47 +167,47 @@
 
 - question: Draw a tree diagram with CLE, NEC, SOS and QDN
   answer: |
-    ![](/cia/files/img/TREE.png)
+    ![](/files/img/TREE.png)
 
 - question: |
     Draw the NSEC chain for the following DNS tree:
 
-    ![](/cia/files/img/TREE-2017.png)
+    ![](/files/img/TREE-2017.png)
   answer: |
-    ![](/cia/files/img/TREE-2017S.png)
+    ![](/files/img/TREE-2017S.png)
 
 - question: |
     Draw the NSEC chain for the following DNS tree:
 
-    ![](/cia/files/img/TREE-2015.png)
+    ![](/files/img/TREE-2015.png)
   answer: |
-    ![](/cia/files/img/TREE-2015S.png)
+    ![](/files/img/TREE-2015S.png)
 
 - question: |
-    ![](/cia/files/img/RFC4592-1.png)
+    ![](/files/img/RFC4592-1.png)
   answer: |
     A, B, E, C, F
 
 - question: |
-    ![](/cia/files/img/RFC4592-2.png)
+    ![](/files/img/RFC4592-2.png)
   answer: DNSKEY, RRSIG, NSEC
 
 - question: |
-    ![](/cia/files/img/RFC4592-3.png)
+    ![](/files/img/RFC4592-3.png)
   answer: None
 
 - question: |
-    ![](/cia/files/img/RFC4592-4.png)
+    ![](/files/img/RFC4592-4.png)
   answer: |
     ```*.example.```
 
 - question: |
-    ![](/cia/files/img/RFC4592-5.png)
+    ![](/files/img/RFC4592-5.png)
   answer: |
-    ![](/cia/files/img/RFC4592-5A.png)
+    ![](/files/img/RFC4592-5A.png)
 
 - question: |
-    ![](/cia/files/img/RFC4592-6.png)
+    ![](/files/img/RFC4592-6.png)
   answer: |
     ```
     1. *.example. NSEC

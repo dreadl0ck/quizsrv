@@ -42,11 +42,28 @@ type TemplateData struct {
 	QuoteAuthor string
 	Total       int
 	Category    string
+	Courses     []string
+	CourseName string
+	CourseID string
+}
+
+// YAML types
+
+type courseInfo struct {
+	Name string
+	Description string
+	Quotes  map[string]string
+	Exam map[string]int
 }
 
 type Data struct {
-	Categories map[string][]question
 	Slides     map[string]string
+	Courses    map[string]*course
+}
+
+type course struct {
+	Categories map[string][]question
+	Info *courseInfo
 }
 
 type question struct {
@@ -62,32 +79,6 @@ var (
 	upgrader = websocket.Upgrader{}
 	data     *Data
 )
-
-var quotes = map[string]string{
-	"We will never do this again":                         "John Postel",
-	"CIA next summer":                                     "OS3 students that failed the exam",
-	"One week, one week, one week and we had Unix":        "Ken Thompson",
-	"If you can read assembly, everything is open source": "Unknown",
-	"UNIX is basically a simple operating system, but you have to be a genius to understand the simplicity.":                                                                                "Dennis Ritchie",
-	"I think the major good idea in Unix was its clean and simple interface: open, close, read, and write.":                                                                                 "Ken Thompson",
-	"Pretty much everything on the web uses those two things: C and UNIX. The browsers are written in C. The UNIX kernel - that pretty much the entire Internet runs on - is written in C.": "Rob Pike",
-	"The one thing I stole was the hierarchical file system because it was a really good idea ...":                                                                                          "Ken Thompson",
-	"If you want to travel around the world and be invited to speak at a lot of different places, just write a Unix operating system.":                                                      "Linus Torvalds",
-	"Contrary to popular belief, Unix is user friendly. It just happens to be very selective about who it decides to make friends with.":                                                    "Unknown",
-	"UNIX is not so much an operating system as a way of thinking.":                                                                                                                         "Unknown",
-	"UNIX was not designed to stop its users from doing stupid things, as that would also stop them from doing clever things.":                                                              "Unknown",
-	"One of my most productive days was throwing away 1,000 lines of code.":                                                                                                                 "Ken Thompson",
-	"Be conservative in what you send, and liberal in what you accept":                                                                                                                      "John Postel",
-}
-
-var exam = map[string]int{
-	"architecture": 20,
-	"dns":          10,
-	"dnssec":       10,
-	"email":        20,
-	"history":      19,
-	"web":          20,
-}
 
 func shuffle(src []string) []string {
 	final := make([]string, len(src))
@@ -116,12 +107,19 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 	}
 
 	id = strings.TrimSuffix(id, "==")
+	courseID := r.FormValue("course")
+
+	cou, ok := data.Courses[courseID]
+	if !ok {
+		http.Error(w, "invalid course id", http.StatusBadRequest)
+		return
+	}
 
 	// write header
-	examQuestions += "# CIA Test Exam" + "\n"
+	examQuestions += "# " + strings.ToUpper(courseID) + " Test Exam" + "\n"
 	examQuestions += "\n> ID: " + id + "\n\n"
 
-	examSolutions += "# CIA Test Exam" + "\n"
+	examSolutions += "# " + strings.ToUpper(courseID) + " Test Exam Solution" + "\n"
 	examSolutions += "\n> ID: " + id + "\n\n"
 
 	err = r.ParseForm()
@@ -129,13 +127,13 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(err)
 	}
 
-	for c, n := range exam {
+	for c, n := range cou.Info.Exam {
 		var (
-			category = data.Categories[c]
+			category = cou.Categories[c]
 			current  int
 			done     []int
-			val = r.FormValue(c)
-			flagged []string
+			val      = r.FormValue(c)
+			flagged  []string
 		)
 
 		if val != "" && val != "[]" {
@@ -155,7 +153,7 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 		if c == "history" {
 			count++
 			// always add a quote for history part
-			for q, author := range quotes {
+			for q, author := range cou.Info.Quotes {
 				// skip CIA joke for exam questions
 				if strings.HasPrefix(q, "CIA") {
 					continue
@@ -277,7 +275,7 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("done! generated exam", id)
 
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("<a target='_blank' href='/cia/files/" + id + "/examQuestions.pdf'>examQuestions.pdf</a><br><a target='_blank' href='/cia/files/" + id + "/examSolutions.pdf'>examSolutions.pdf</a>"))
+	w.Write([]byte("<a target='_blank' href='/files/" + id + "/examQuestions.pdf'>examQuestions.pdf</a><br><a target='_blank' href='/files/" + id + "/examSolutions.pdf'>examSolutions.pdf</a>"))
 }
 
 func fixLinks(in string) string {
@@ -292,9 +290,9 @@ func fixLinks(in string) string {
 
 		if strings.HasPrefix(line, "!") {
 			if *tls {
-				out += strings.ReplaceAll(line, "/cia/files/img/", "./etc/quizsrv/files/img/") + "\n"
+				out += strings.ReplaceAll(line, "/files/img/", "./etc/quizsrv/files/img/") + "\n"
 			} else {
-				out += strings.ReplaceAll(line, "/cia/files/img/", "./files/img/")
+				out += strings.ReplaceAll(line, "/files/img/", "./files/img/")
 			}
 			continue
 		}
@@ -308,9 +306,61 @@ func fixLinks(in string) string {
 func quiz(w http.ResponseWriter, r *http.Request) {
 	homeTemplate := template.Must(template.ParseFiles(filepath.Join(*configFolder, "pages/quiz.html")))
 	err := homeTemplate.Execute(w, &TemplateData{
-		//Host:       "ws://"+r.Host+"/cia/connect", // TODO: unused
+		//Host:       "ws://"+r.Host+"/connect", // TODO: unused
 		Version:  Version,
 		Category: strings.ToUpper(filepath.Base(r.RequestURI)),
+		CourseID: strings.Split(r.RequestURI, "/")[2],
+	})
+	if err != nil {
+		log.Println(err)
+	}
+}
+
+func courseHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r.RemoteAddr, "course")
+	var (
+		slides     []string
+		categories = make(map[string]int)
+		total      int
+	)
+
+	cou, ok := data.Courses[filepath.Base(r.RequestURI)]
+	if !ok {
+		http.Error(w, "invalid course name", http.StatusBadRequest)
+		return
+	}
+
+	for c := range cou.Categories {
+		categories[c] = len(cou.Categories[c])
+		total += len(cou.Categories[c])
+	}
+	for c := range data.Slides {
+		slides = append(slides, c)
+	}
+
+	var quote, quoteAuthor string
+	for q, a := range cou.Info.Quotes {
+		quote, quoteAuthor = q, a
+		break
+	}
+
+	var courseNames []string
+	for n := range data.Courses {
+		courseNames = append(courseNames, n)
+	}
+
+	courseID := filepath.Base(r.RequestURI)
+	courseTemplate := template.Must(template.ParseFiles(filepath.Join(*configFolder, "pages/course.html")))
+	err := courseTemplate.Execute(w, &TemplateData{
+		Categories:  categories,
+		Slides:      slides,
+		Version:     Version,
+		Quote:       quote,
+		QuoteAuthor: quoteAuthor,
+		Total:       total,
+		Courses:     courseNames,
+		CourseID: courseID,
+		CourseName: cou.Info.Name,
 	})
 	if err != nil {
 		log.Println(err)
@@ -385,14 +435,25 @@ func connect(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	s := strings.Split(string(helloMsg), ";")
-	location := s[0]
-	flagged := strings.Split(s[1], ",")
+	var (
+		s = strings.Split(string(helloMsg), ";")
+		location = s[0]
+		flagged = strings.Split(s[1], ",")
+		courseName = r.FormValue("course")
+	)
 
 	fmt.Println("flagged", flagged)
+	fmt.Println("courseName", courseName)
+
+	cou, ok := data.Courses[courseName]
+	if !ok {
+		c.WriteMessage(websocket.TextMessage, []byte("index=XXX:invalid course name"))
+		c.Close()
+		return
+	}
 
 	var (
-		category      = data.Categories[filepath.Base(string(location))]
+		category      = cou.Categories[filepath.Base(location)]
 		done          = initDoneSlice(category, flagged)
 		current       int
 		previousIndex int
@@ -400,7 +461,7 @@ func connect(w http.ResponseWriter, r *http.Request) {
 
 	c.WriteMessage(websocket.TextMessage, []byte("total="+strconv.Itoa(len(category)-len(done))))
 
-	fmt.Println(len(category), filepath.Base(string(location)), string(location))
+	fmt.Println(len(category), filepath.Base(location), location)
 
 	for {
 		current = rand.Intn(len(category))
@@ -481,106 +542,162 @@ func connect(w http.ResponseWriter, r *http.Request) {
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r.RemoteAddr, "home")
 	var (
-		slides     []string
-		categories = make(map[string]int)
+		//slides     []string
+		//categories = make(map[string]int)
 		total      int
+		//courseName = filepath.Base(r.RequestURI)
 	)
-	for c := range data.Categories {
-		categories[c] = len(data.Categories[c])
-		total += len(data.Categories[c])
-	}
-	for c := range data.Slides {
-		slides = append(slides, c)
-	}
 
-	var quote, quoteAuthor string
-	for q, a := range quotes {
-		quote, quoteAuthor = q, a
-		break
+	//cou, ok := data.Courses[courseName]
+	//if !ok {
+	//	http.Error(w, "invalid courseName", http.StatusBadRequest)
+	//	return
+	//}
+	//
+	//for c := range cou.Categories {
+	//	categories[c] = len(cou.Categories[c])
+	//	total += len(cou.Categories[c])
+	//}
+	//for c := range data.Slides {
+	//	slides = append(slides, c)
+	//}
+
+	//var quote, quoteAuthor string
+	//for q, a := range cou.Info.Q {
+	//	quote, quoteAuthor = q, a
+	//	break
+	//}
+
+	var courseNames []string
+	for c := range data.Courses {
+		courseNames = append(courseNames, c)
 	}
 	homeTemplate := template.Must(template.ParseFiles(filepath.Join(*configFolder, "pages/index.html")))
 	err := homeTemplate.Execute(w, &TemplateData{
-		Categories:  categories,
-		Slides:      slides,
+		//Slides:      slides,
 		Version:     Version,
-		Quote:       quote,
-		QuoteAuthor: quoteAuthor,
+		//Quote:       quote,
+		//QuoteAuthor: quoteAuthor,
 		Total:       total,
+		Courses:     courseNames,
 	})
 	if err != nil {
 		log.Println(err)
 	}
 }
-
-func pdf(w http.ResponseWriter, r *http.Request) {
-	var (
-		slides, categories []string
-	)
-	for c := range data.Categories {
-		categories = append(categories, c)
-	}
-	for c := range data.Slides {
-		slides = append(slides, c)
-	}
-	homeTemplate := template.Must(template.ParseFiles("pages/pdf.html"))
-	err := homeTemplate.Execute(w, strings.TrimSuffix(filepath.Base(r.RequestURI), ".pdf"))
-	if err != nil {
-		log.Println(err)
-	}
-}
+//
+//func pdf(w http.ResponseWriter, r *http.Request) {
+//	var (
+//		slides, categories []string
+//	)
+//	for c := range data.Categories {
+//		categories = append(categories, c)
+//	}
+//	for c := range data.Slides {
+//		slides = append(slides, c)
+//	}
+//	homeTemplate := template.Must(template.ParseFiles("pages/pdf.html"))
+//	err := homeTemplate.Execute(w, strings.TrimSuffix(filepath.Base(r.RequestURI), ".pdf"))
+//	if err != nil {
+//		log.Println(err)
+//	}
+//}
 
 func main() {
 
 	flag.Parse()
 	rand.Seed(time.Now().UnixNano())
 
-	root := filepath.Join(*configFolder, "categories")
-	files, err := ioutil.ReadDir(root)
+	root := filepath.Join(*configFolder, "courses")
+	courses, err := ioutil.ReadDir(root)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	data = new(Data)
-	data.Categories = make(map[string][]question)
+	data.Courses = make(map[string]*course)
 	data.Slides = make(map[string]string)
 
-	for _, f := range files {
+	for _, file := range courses {
 
-		category := strings.TrimSuffix(f.Name(), filepath.Ext(f.Name()))
+		if !file.IsDir() {
+			continue
+		}
 
-		switch filepath.Ext(f.Name()) {
-		case ".yml", ".yaml":
-			c, err := ioutil.ReadFile(filepath.Join(root, f.Name()))
-			if err != nil {
-				log.Fatal(err)
+		http.HandleFunc("/courses/"+file.Name(), courseHandler)
+		cou := &course{
+			Categories: make(map[string][]question),
+		}
+		data.Courses[file.Name()] = cou
+
+		files, err := ioutil.ReadDir(filepath.Join(root, file.Name()))
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		for _, f := range files {
+
+			if f.Name() == "course.yml" {
+				c, err := ioutil.ReadFile(filepath.Join(root, file.Name(), f.Name()))
+				if err != nil {
+					log.Fatal(err)
+				}
+
+				var i = new(courseInfo)
+
+				err = yaml.UnmarshalStrict(c, &i)
+				if err != nil {
+					log.Fatal(err, " file: ", f.Name())
+				}
+
+				cou.Info = i
+				continue
 			}
 
-			var questions []question
+			category := strings.TrimSuffix(f.Name(), filepath.Ext(f.Name()))
 
-			err = yaml.UnmarshalStrict(c, &questions)
-			if err != nil {
-				log.Fatal(err, " file: ", f.Name())
+			switch filepath.Ext(f.Name()) {
+			case ".yml", ".yaml":
+				c, err := ioutil.ReadFile(filepath.Join(root, file.Name(), f.Name()))
+				if err != nil {
+					log.Fatal(err)
+				}
+
+				var questions []question
+
+				err = yaml.UnmarshalStrict(c, &questions)
+				if err != nil {
+					log.Fatal(err, " file: ", f.Name())
+				}
+
+				// TODO: categories have to be unique for now
+				if _, ok := cou.Categories[category]; ok {
+					log.Fatal("categories have to be unique for now:", category)
+				}
+				cou.Categories[category] = questions
+
+				fmt.Println("loaded category", category, len(questions), "for course", file.Name())
+
+				http.HandleFunc("/courses/"+file.Name()+"/"+category, quiz)
+			//case ".pdf":
+			//	data.Slides[category] = f.Name()
+			//	http.HandleFunc("/cia/"+category, pdf)
+			default:
+				log.Println("unsupported format", filepath.Ext(f.Name()), " file: ", f.Name())
 			}
-
-			data.Categories[category] = questions
-			fmt.Println("loaded category", category, len(questions))
-			http.HandleFunc("/cia/"+category, quiz)
-		case ".pdf":
-			data.Slides[category] = f.Name()
-			http.HandleFunc("/cia/"+category, pdf)
-		default:
-			log.Println("unsupported format", filepath.Ext(f.Name()), " file: ", f.Name())
 		}
 	}
 
 	log.SetFlags(0)
 
-	http.HandleFunc("/cia/mkexam", genExam)
-	http.HandleFunc("/cia/files/", http.StripPrefix("/cia/files/", http.FileServer(http.Dir(filepath.Join(*configFolder, "files")))).ServeHTTP)
-	http.HandleFunc("/cia/connect", connect)
-	http.HandleFunc("/cia", home)
-	http.HandleFunc("/", http.RedirectHandler("/cia", http.StatusMovedPermanently).ServeHTTP)
+	http.HandleFunc("/mkexam", genExam)
+	http.HandleFunc("/files/", http.StripPrefix("/files/", http.FileServer(http.Dir(filepath.Join(*configFolder, "files")))).ServeHTTP)
+	http.HandleFunc("/connect", connect)
+	http.HandleFunc("/cia", http.RedirectHandler("/courses/cia", http.StatusMovedPermanently).ServeHTTP)
+	http.HandleFunc("/courses", home)
+	http.HandleFunc("/", home)
 
 	fmt.Println("serving at", *addr)
 	if *tls {

@@ -1,6 +1,5 @@
 window.addEventListener("load", function (evt) {
     var output = document.getElementById("output");
-    var input = document.getElementById("input");
     var ws;
     var waitingForAnswer = true
     var current = 0;
@@ -9,16 +8,26 @@ window.addEventListener("load", function (evt) {
     var previousQuestion = false;
     var currentServerIndex = 0;
 
+    // function baseName(str)
+    // {
+    //     var base = new String(str).substring(str.lastIndexOf('/') + 1);
+    //     if(base.lastIndexOf(".") != -1)
+    //         base = base.substring(0, base.lastIndexOf("."));
+    //     return base;
+    // }
+    var pathArr = window.location.pathname.split('/');
+    var course = pathArr[2];
+
     console.log("protocol", location.protocol);
 
     if (location.protocol == "https:") {
-        ws = new WebSocket("wss://" + location.host + "/cia/connect");
+        ws = new WebSocket("wss://" + location.host + "/connect?course="+course);
     } else {
-        ws = new WebSocket("ws://" + location.host + "/cia/connect");
+        ws = new WebSocket("ws://" + location.host + "/connect?course="+course);
     }
 
     // load the flagged indices from local storage
-    var flagged = JSON.parse(localStorage.getItem(location.pathname.replaceAll("/cia/", "")));
+    var flagged = JSON.parse(localStorage.getItem(course));
     console.log("initial flagged indices", flagged);
 
     if (flagged == null) {
@@ -68,7 +77,7 @@ window.addEventListener("load", function (evt) {
         if (!flagged.includes(currentServerIndex)) {
 
             flagged.push(currentServerIndex);
-            localStorage.setItem(location.pathname.replaceAll("/cia/", ""), JSON.stringify(flagged));
+            localStorage.setItem(course, JSON.stringify(flagged));
             addFlag(currentServerIndex);
             console.log("flagged", currentServerIndex);
         }
@@ -96,7 +105,7 @@ window.addEventListener("load", function (evt) {
 
             flagged = remove(flagged, currentServerIndex)
 
-            localStorage.setItem(location.pathname.replaceAll("/cia/", ""), JSON.stringify(flagged));
+            localStorage.setItem(course, JSON.stringify(flagged));
             clearFlag();
             console.log("unflagged", currentServerIndex);
         }
@@ -177,7 +186,7 @@ window.addEventListener("load", function (evt) {
 
         if(e.key === "Escape") {
             console.log("MENU");
-            window.location =  "/cia";
+            window.location =  "/courses/"+course;
             return false;
         }
 

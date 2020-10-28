@@ -1,0 +1,24 @@
+name: Classical Internet Applications
+description: A course about UNIX history, computer architecture and the roots of the internet.
+quotes:
+  "We will never do this again": "John Postel"
+  "CIA next summer": "OS3 students that failed the exam"
+  "One week, one week, one week and we had Unix": "Ken Thompson"
+  "If you can read assembly, everything is open source": "Unknown"
+  "UNIX is basically a simple operating system, but you have to be a genius to understand the simplicity.": "Dennis Ritchie"
+  "I think the major good idea in Unix was its clean and simple interface: open, close, read, and write.": "Ken Thompson"
+  "Pretty much everything on the web uses those two things: C and UNIX. The browsers are written in C. The UNIX kernel - that pretty much the entire Internet runs on - is written in C.": "Rob Pike"
+  "The one thing I stole was the hierarchical file system because it was a really good idea ...": "Ken Thompson"
+  "If you want to travel around the world and be invited to speak at a lot of different places, just write a Unix operating system.": "Linus Torvalds"
+  "Contrary to popular belief, Unix is user friendly. It just happens to be very selective about who it decides to make friends with.": "Unknown"
+  "UNIX is not so much an operating system as a way of thinking.": "Unknown"
+  "UNIX was not designed to stop its users from doing stupid things, as that would also stop them from doing clever things.": "Unknown"
+  "One of my most productive days was throwing away 1,000 lines of code.": "Ken Thompson"
+  "Be conservative in what you send, and liberal in what you accept": "John Postel"
+exam:
+  "architecture": 20
+  "dns": 10
+  "dnssec": 10
+  "email": 20
+  "history": 19
+  "web": 20

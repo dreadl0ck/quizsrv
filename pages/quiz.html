@@ -2,16 +2,16 @@
 <html style="height:100%;width:100%;">
   <head>
     <meta charset="utf-8" />
-    <script src="/cia/files/quiz.js"></script>
-    <script src="/cia/files/swiped-events.js"></script>
-    <script src="/cia/files/nosleep.js"></script>
+    <script src="/files/quiz.js"></script>
+    <script src="/files/swiped-events.js"></script>
+    <script src="/files/nosleep.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   </head>
 
   <style>
     @font-face {
       font-family: "SF Pro Text Regular";
-      src: url("/cia/files/FontsFree-Net-SFProText-Regular.ttf") format("truetype");
+      src: url("/files/FontsFree-Net-SFProText-Regular.ttf") format("truetype");
     }
     * {
       font-family: "SF Pro Text Regular", sans-serif;
@@ -130,8 +130,8 @@
     }
     .fullscreen {
       background-color: lime;
-      -webkit-mask: url(/cia/files/fullscreen.svg) no-repeat center;
-      mask: url(/cia/files/fullscreen.svg) no-repeat center;
+      -webkit-mask: url(/files/fullscreen.svg) no-repeat center;
+      mask: url(/files/fullscreen.svg) no-repeat center;
       height: 50px;
       width: 50px;
       position: absolute;
@@ -445,14 +445,14 @@
   </style>
   <body id="body" style="height:100%;width:100%;">
 
-    <div id="menu" class="menu noselect"><a href="/cia">MENU</a></div>
+    <div id="menu" class="menu noselect"><a href="/courses/{{.CourseID}}">MENU</a></div>
     <div id="category" class="category noselect">{{ .Category }}</div>
     <div id="output" class="box noselect">
 
     </div>
     <div id="index" class="index noselect"></div>
     <div id="version" class="version noselect">{{.Version}}</div>
-{{/*    <img id="fullscreen" class="fullscreen noselect" src="/cia/files/fullscreen.svg" alt=""/>*/}}
+{{/*    <img id="fullscreen" class="fullscreen noselect" src="/files/fullscreen.svg" alt=""/>*/}}
     <div class="fullscreen" id="fullscreen"></div>
   </body>
   <button class='button' id="play"></button>
