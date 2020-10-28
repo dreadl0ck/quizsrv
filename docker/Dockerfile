@@ -8,7 +8,7 @@ COPY mdtopdf /usr/bin/mdtopdf
 COPY quizsrv /usr/sbin/quizsrv
 COPY files /etc/quizsrv/files
 COPY pages /etc/quizsrv/pages
-COPY categories /etc/quizsrv/categories
+COPY courses /etc/quizsrv/courses
 
 EXPOSE 443
 EXPOSE 80
