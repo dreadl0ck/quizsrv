@@ -8,7 +8,10 @@
           var ul = document.getElementById("list");
           var items = ul.getElementsByTagName("li");
           for (var i = 0; i < items.length; ++i) {
-              var itm = items[i].getElementsByTagName("a")[0].getElementsByTagName("span")[1];
+
+              console.log(items[i].getElementsByTagName("a"));
+
+              var itm = items[i].getElementsByTagName("a")[1].getElementsByTagName("span")[0];
               var cat = items[i].getElementsByTagName("a")[0].getElementsByTagName("span")[0];
               var arr = JSON.parse(localStorage.getItem(cat.innerText.toLowerCase()));
               console.log(cat.innerText, itm.innerText, arr);
@@ -133,7 +136,10 @@
       {{ range $name, $elems := .Categories }}
         <li>
             <a href="/courses/{{$.CourseID}}/{{ $name }}">
-                <span style="text-transform:uppercase">{{ $name }}</span> <span>({{ $elems }})</span>
+                <span style="text-transform:uppercase">{{ $name }}</span>
+            </a>
+            <a href="/courses/{{$.CourseID}}/{{ $name }}?flagged=true">
+                <span>({{ $elems }})</span>
             </a>
         </li>
       {{ end }}

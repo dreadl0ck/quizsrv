@@ -308,11 +308,12 @@ func fixLinks(in string) string {
 
 func quiz(w http.ResponseWriter, r *http.Request) {
 	homeTemplate := template.Must(template.ParseFiles(filepath.Join(*configFolder, "pages/quiz.html")))
+
 	err := homeTemplate.Execute(w, &TemplateData{
 		//Host:       "ws://"+r.Host+"/connect", // TODO: unused
 		Version:  Version,
-		Category: strings.ToUpper(filepath.Base(r.RequestURI)),
-		CourseID: strings.Split(r.RequestURI, "/")[2],
+		Category: strings.ToUpper(filepath.Base(r.URL.Path)),
+		CourseID: strings.Split(r.URL.Path, "/")[2],
 	})
 	if err != nil {
 		log.Println(err)
@@ -455,12 +456,20 @@ func connect(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	var catName = filepath.Base(location)
+	fmt.Println("received categoryName", catName)
+
 	var (
-		category      = cou.Categories[filepath.Base(location)]
+		category      = cou.Categories[catName]
 		done          = initDoneSlice(category, flagged)
 		current       int
 		previousIndex int
 	)
+
+	if len(category) == 0 {
+		c.Close()
+		return
+	}
 
 	c.WriteMessage(websocket.TextMessage, []byte("total="+strconv.Itoa(len(category)-len(done))))
 
@@ -481,7 +490,7 @@ func connect(w http.ResponseWriter, r *http.Request) {
 			log.Println(r.RemoteAddr, "read:", err)
 			break
 		}
-		log.Printf(r.RemoteAddr, "recv: %s", message)
+		log.Println(r.RemoteAddr, "recv:", message)
 
 		if len(done) == len(category) {
 			writeDone(c, r)

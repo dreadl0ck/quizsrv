@@ -31,15 +31,25 @@ window.addEventListener("load", function (evt) {
     var flagged = JSON.parse(localStorage.getItem(category));
     console.log("initial flagged indices", flagged);
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const flaggingEnabled = urlParams.get('flagged');
+
+    console.log("flaggingEnabled", flaggingEnabled);
+
+    if (!flaggingEnabled) {
+        console.log("ignore flags")
+        flagged = [];
+    }
+
     if (flagged == null) {
         flagged = [];
     }
 
     ws.onopen = function (evt) {
         if (flagged == null) {
-            ws.send(window.location + ";");
+            ws.send(window.location.pathname + ";");
         } else {
-            ws.send(window.location + ";" + flagged.join(","));
+            ws.send(window.location.pathname + ";" + flagged.join(","));
         }
     };
 
