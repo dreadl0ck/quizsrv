@@ -95,3 +95,37 @@
 
 - question: Are IP addresses little or big endian encoded on the wire?
   answer: Big endian
+
+- question: On which layer does 'switching' happen?
+  answer: |
+    Layer 2: Link layer
+
+- question: On which layer does 'routing' happen?
+  answer: |
+    Layer 3: Network layer
+
+- question: Whats the difference between an interface and a protocol?
+  answer: |
+    Interfaces: Same computer, different layer (vertical)
+    Protocol: Different computer, same layer (horizontal)
+
+- question: What could be used as an alternative name for an address?
+  answer: Locator
+
+- question: How are explicit network elements represented in a graph?
+  answer: As nodes, not as edges.
+
+- question: What is a fundamental design problem with the addressing concept?
+  answer: There are no identifiers for endpoints.
+
+- question: Whats missing in the internet architecture with regard to addressing?
+  answer: The distinction between addresses and an endpoints.
+
+- question: What is a bipartite graph?
+  answer: A graph with two disjoint sets of elements.
+
+- question: Which network element usually has mutliple interfaces?
+  answer: A router
+
+- question: Define the term 'routing'
+  answer: Delivery of packets to an address, using a number of hops though an intermediate network.
