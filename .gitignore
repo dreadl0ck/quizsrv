@@ -3,3 +3,5 @@ docker/files
 docker/courses
 docker/pages
 zeus/dumps/error_dump.sh
+files/anki
+courses/inr/Anki

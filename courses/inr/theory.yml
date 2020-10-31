@@ -96,6 +96,9 @@
 - question: Are IP addresses little or big endian encoded on the wire?
   answer: Big endian
 
+- question: Whats the dominant byte ordering in networking protocols?
+  answer: Big endian
+
 - question: On which layer does 'switching' happen?
   answer: |
     Layer 2: Link layer
