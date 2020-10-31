@@ -30,7 +30,7 @@ commands:
 
     run-local:
         description: run the server locally
-        exec: go run server.go
+        exec: go run *.go
 
     # clean up the mess
     clean:
