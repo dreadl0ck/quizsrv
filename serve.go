@@ -42,4 +42,3 @@ func serve(ctx context.Context, srv *http.Server, instance int) {
 		log.Printf("server encountered an error on exit: %s, instance: %d\n", err, instance)
 	}
 }
-

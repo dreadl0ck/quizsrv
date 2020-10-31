@@ -66,8 +66,8 @@ func courseHandler(w http.ResponseWriter, r *http.Request) {
 		QuoteAuthor: quoteAuthor,
 		Total:       total,
 		Courses:     courseNames,
-		CourseID: courseID,
-		CourseName: cou.Info.Name,
+		CourseID:    courseID,
+		CourseName:  cou.Info.Name,
 	})
 	if err != nil {
 		log.Println(err)
@@ -79,7 +79,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 	var (
 		//slides     []string
 		//categories = make(map[string]int)
-		total      int
+		total int
 		//courseName = filepath.Base(r.RequestURI)
 	)
 
@@ -110,16 +110,17 @@ func home(w http.ResponseWriter, r *http.Request) {
 	homeTemplate := template.Must(template.ParseFiles(filepath.Join(*configFolder, "pages/index.html")))
 	err := homeTemplate.Execute(w, &TemplateData{
 		//Slides:      slides,
-		Version:     Version,
+		Version: Version,
 		//Quote:       quote,
 		//QuoteAuthor: quoteAuthor,
-		Total:       total,
-		Courses:     courseNames,
+		Total:   total,
+		Courses: courseNames,
 	})
 	if err != nil {
 		log.Println(err)
 	}
 }
+
 //
 //func pdf(w http.ResponseWriter, r *http.Request) {
 //	var (

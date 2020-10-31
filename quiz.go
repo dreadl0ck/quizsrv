@@ -26,9 +26,9 @@ func connect(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var (
-		s = strings.Split(string(helloMsg), ";")
-		location = s[0]
-		flagged = strings.Split(s[1], ",")
+		s          = strings.Split(string(helloMsg), ";")
+		location   = s[0]
+		flagged    = strings.Split(s[1], ",")
 		courseName = r.FormValue("course")
 	)
 
