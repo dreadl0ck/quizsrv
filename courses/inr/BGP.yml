@@ -1,0 +1,29 @@
+- question: Is it wise to advertise customer routes to providers and peers?
+  answer: "Yes"
+- question: Is it wise to advertise all routes to customers?
+  answer: |-
+    Yes.
+    The customer pays for the traffic.
+- question: Is it wise to advertise provider or peer routesto other providers or peers?
+  answer: |-
+    No.
+    Outgoing route advertisements attract incoming traffic for which you have to pay.
+- question: What is the order of preference for incoming route advertisements?
+  answer: '1: Customers (the customer pays for traffic to and from)2: Peers (the cost
+    for the connection is generally split between the peers)3: Providers (traffic
+    to and from the provider costs money)'
+- question: What is a peer? (in the context of customers and providers)
+  answer: A horizontal relation between two neighbors that allows traffic to flow
+    between them without going trough the providers.
+- question: What is the relation between a customer and a provider?
+  answer: |-
+    A provider provides his customers with access to networks that are not otherwise connected to the customer.
+    The customer pays the provider for traffic to and from the provider.
+- question: What is an Autonomous System (AS)?
+  answer: A connected group of networks and routers representing some assigned set
+    of IP prefixes and having a single, consistent routing policy both internally
+    and externally.
+- question: On which network routing protocol is BGP based?
+  answer: |-
+    Path vector routing protocol.
+    Path vector routing is in between distance vector and link state routing.

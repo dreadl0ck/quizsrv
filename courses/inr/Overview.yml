@@ -1,0 +1,285 @@
+- question: What are the protocol values for ICMP, TCP and UDP in IP?
+  answer: ICMP is 1, TCP is 6, and UDP is 17.
+- question: Give the IPv4 packet header fields, their length and their purpose.
+  answer: |-
+    Version (4 bits, 0-3) always 0b0100 (=4);
+    IP Header Length / IHL (4 bits, 4-7) length in bytes;
+    Type of Service (8 bits, 8-15) now used for DiffServ (QoS) (bits 0-5) and ECN (Explicit Congestion Control) (bits 6-7);
+    Total Length (16 bits, 16-31) including header in bytes;
+    Identification (16 bits, 32-idk) used with fragmentation;
+    Flags (3 bits) contains DF (Don't Fragment) and MF (More Fragments -
+    - means that more fragments are coming, it's not a request for more fragments);
+    Fragment Offset (13 bits) first fragment is 0;
+    Time To Live (8 bits) hop count;
+    Protocol (8 bits) upper layer protocol multiplexing;
+    Header checksum (16 bits) one's complement of one's complement sum;
+    Source IP address (32 bits);
+    Destination IP address (32 bits);
+    Options (optional; padded) source routing, timestamp, ILNPv4, ...
+- question: What is the difference between a subnet and a link?
+  answer: |-
+    Originally they were the same, but later multi-subnet links also turned out to be useful.
+    However, a multi-link subnet should be avoided.
+- question: What is a subnet? (According to RFC4903/6250)
+  answer: A topological area within which addresses from the same subnet prefix are
+    assigned to interfaces.
+- question: What is a link? (According to RFC4903/6250)
+  answer: |-
+    A topological area within which a packet with an IPv4 TTL or IPv6 Hop Limit of 1 can be delivered.
+    That is, where no IP-forwarding occurs between two nodes.
+- question: What is a common subnet for a point-to-point link?
+  answer: |-
+    /30 gives two host bits or four addresses.
+    Minus the network ID and broadcast address, that leaves two usable addresses.
+    "But we may start deviating from original concepts": point to point links may be unnumbered, or we can use a /31 (RFC3021) or two /32s (PPP, RFC1332).
+- question: With a network prefix length of 5, what is the first, second, second-to-last
+    and last possible subnet? And what's the CIDR and non-CIDR mask notation (does
+    this have a name?)?
+  answer: |-
+    With a prefix length of five, you have five network bits and the rest are host bits (so the network mask is 0b1111 1000.0000 0000.0000 0000.0000 0000).In CIDR this is /5 and in non-CIDR the mask is 248.0.0.0.
+    The first subnet is 0.0.0.0 (as always), the second subnet sets the last network bit to one so that's 8.0.0.0, the second-to-last subnet has all network bits set to one except the last so 0b11110...
+    is 240.0.0.0, and the last one is 248.0.0.0.
+    Protip: if the second one is 8.0.0.0 then the second-to-last is 256-8*2 and the third-to-last is 256-8*3.
+- question: What is the difference between CIDR and VLSM?
+  answer: |-
+    Internet says: "The difference is that with VLSM, the recursion is performed on the address space previously assigned to an organization and is invisible to the global Internet.
+    CIDR, on the other hand, permits the recursive allocation of an address block by an Internet Registry to a high-level ISP, a mid-level ISP, a low-level ISP, and a private organization’s network." (Source: http://www.ccna4.com/2010/06/difference-between-vlsm-and-cidr.html )
+- question: What is CIDR?
+  answer: |-
+    Classless Inter-Domain Routing is the idea to put the division between the network part and host part of addresses on arbitrary bit positions.
+    It uses the / notation (0.0.0.0/0) and obsoletes classful addressing and VLSM.
+- question: What does RIPv1 not support?
+  answer: VLSM
+- question: What is VLSM?
+  answer: |-
+    Variable Length Subnet Masks uses subnets that are not necessarily all of the same size.
+    For example you can have a /8 allocated to some $BigCorp, and it can allocate a /16 to departments, which might have smaller /22 subnets for different purposes or something.In classful routing, one could only have a /8, /16 or /24 (depending on whether you are 1-127.x.x.x, 127-191.x.x.x or 192-224.x.x.x).
+- question: How many networks and hosts are there in a class C with the subnet mask
+    255.255.255.88?
+  answer: |-
+    88=0101 1000.
+    There are three network bits and five host bits.
+    Because in the ol' days one could not have a subnet mask of all zeroes or all ones (this would be confusing with the network id and broadcast address), this makes for (2^3)-3=6 networks.
+    Because it is a class C, we only have the last byte for ourselves, so the first 3 bytes we can just ignore.
+    Then as for hosts, there are 5 remaining host bits so (2^5)-3=30 hosts.
+- question: Are all-zeroes and/or all-ones subnets allowed?
+  answer: Not in RFC950, but in general yes.
+- question: How many possible subnet masks are there, when one only allows contiguous
+    masks?
+  answer: 33 (/0, /1, ..., /32)
+- question: What are non-contiguous network masks?
+  answer: |-
+    A network mask where the ones are not contiguous from the start.
+    For example 255.0.0.0 is 1111 1111.0000etc, so that is contiguous.
+    But 88.0.0.0 is 0101 1000.0000etc so that is non-contiguous.
+- question: What are the two purposes of an IPv4 address in the current Internet architecture?
+  answer: |-
+    It consists of a host and network part, thus:1.
+    It identifies the host's network interface; and2.
+    it provides the location of the host in a network, thus the network path for routing is known.
+- question: What was initially not allowed in original RFC950 subnetting?
+  answer: Subnets of all-zeroes and all-ones.
+- question: Why is the U/L bit flipped when converting from MAC address to IPv6 address?
+  answer: In MAC address architecture, the 7th bit signifies whether the MAC address
+    was universally or locally assigned.Should a user manually change their MAC address,
+    this 7th bit would be set to 1, indicating the Ethernet address was locally administered.
+- question: What bit is flipped when embedding a MAC address in an IPv6 address?
+  answer: |-
+    The U/L bit (universal/local bit) is flipped.
+    If the nibble was 0 in the MAC, it will be 2 in the v6 address.
+    It's the second nibble of the address.
+- question: Why is the minimum length of an ethernet frame 64 bytes?
+  answer: |-
+    Summary: to prevent collisions when the frames are too small.
+    Imagine host A and B both want to send a frame and they are quite far apart.
+    If host A would send a frame of only 20 bytes and host B does the same, at exactly the same time, the data will only arrive at the other end *after* they are done sending.
+    Therefore it will be impossible to sense that there was a collision.
+    By requiring a minimum length, it is certain that hosts at both ends of the network will be able to sense a collision because they detect incoming data before they're done sending.
+- question: What three new fields does sublayer LLC introduce?
+  answer: DSAP (Destination Service Access Point), SSAP (Source Service Access Point)
+    and Control (1 or 2 control bytes)
+- question: What is a collision?
+  answer: |-
+    When two devices send during overlaping times; i.e.
+    one device starts sending before the other device is done sending.
+- question: What is 2002::/16 for?
+  answer: |-
+    For 6to4 addresses, e.g.
+    2002:c000:0204::/48 is for 192.0.2.4
+- question: What does 6to4 do?
+  answer: |-
+    6to4 performs three functions:1.
+    Assigns a block of IPv6 address space to any host or network that has a global IPv4 address.2.
+    Encapsulates IPv6 packets inside IPv4 packets for transmission over an IPv4 network using 6in4.3.
+    Routes traffic between 6to4 and "native" IPv6 networks.
+- question: Why is 6to4 named 6to4?
+  answer: 6 islands translated to 4 (via tunneling)
+- question: What is SOCKS?
+  answer: |-
+    A proxying protocol.
+    It proxies "sockets", both IPv4 and IPv6, and UPD and TCP.
+- question: What is 64:FF9B for?
+  answer: Well-known prefix, used in the IPv6 tunneling protocol called 6to4.
+- question: Why was 64:FF9B chosen?
+  answer: |-
+    When added together, it is 0xFFFF (65535 in decimal).
+    If you already had an IPv6 packet with an embedded IPv4 address and a computed checksum, one can add this 64:FF9B to the address without having to recompute the checksum.
+    This is because of how the checksum works with "one's compliment" and whatever, don't need to know that.
+- question: What does a router do when it cannot forward an IPv6 packet because it
+    exceeds the MTU of the route it needs to take?
+  answer: It will send an ICMPv6 message back to the source to report that fragmentation
+    was needed but not available (since intermediate routers in v6 do not fragment;
+    only the source fragments).
+- question: What is IGMP for?
+  answer: |-
+    Internet Group Message Protocol.
+    Used for multicast messages.
+- question: What is the best match when a router looks in its routing table?
+  answer: |-
+    The longest match.
+    For example if the OS3 router has a default route to SURFnet (for accessing the Internet) and a route for the internal network, and it gets a packet for "145.100.102.146", it will not use the default route (where the subnet length is zero, namely 0.0.0.0/0) but it will use its longer match, which will be something like "145.100.102.0/24".
+- question: How many layers does the “Routing Tree” have for IPv4?
+  answer: '33: the empty set on top (that''s where the extra layer comes from, on
+    top of 32 bits IP addresses), and then towards the bottom a binary tree until
+    we have the full 32 bits for an IPv4 address.'
+- question: What is fragmentation?
+  answer: |-
+    Chopping up a piece of information into more pieces, because you want to send it over a link of lower capacity.
+    Otherwise you occupy the medium for a while.
+- question: What is encapsulation for?
+  answer: '"Wrapping of data in single unit." For example TCP is encapsulated in IP,
+    so that the TCP packet (and its payload) can be sent between IP addresses.'
+- question: When do you use fragmentation?
+  answer: |-
+    When splitting a larger message into smaller packets.
+    For example to meet the MTU requirement, or to not occupy the medium for a long time for a single message.
+- question: What are the local IP ranges and how many networks is each supposed to
+    have according to classful routing?
+  answer: 10/8 with 1 network172.16/12 with 16 networks192.168/16 with 256 networks169.254/16
+    with 1 network (exception)
+- question: What is link-local dynamic autoconfiguration used for?
+  answer: Connect to other nodes in the network when there is no router.
+- question: What range is used for link-local dynamic autoconfiguration?
+  answer: 169.254.0.0/16
+- question: What is anycast?
+  answer: Send a message to the most nearby host with a given address.
+- question: What is broadcast used for?
+  answer: Sending a message to all nodes in a network, for example an air alarm.
+- question: What is multicast used for?
+  answer: Sending messages to a group, such as IPTV.
+- question: What kind of interface is the loopback interface?
+  answer: |-
+    A software interface.
+    It refers to the machine itself.
+    One could call it an anycast address because it goes to the nearest machine (which is yourself).
+- question: What is the difference between an endpoint and an interface?
+  answer: A host is the endpoint; an interface has an address
+- question: Why is the internet resilient?
+  answer: |-
+    Because there are multiple paths between networks.
+    Each node can reach another through different paths, so a single path can fail without disconnecting a network part.
+- question: What is the difference between the router and a host?
+  answer: |-
+    Hosts are on the edges and used for applications.
+    Router is in the 'middle', dedicated to connect hosts.
+    Acting on layer 3.
+- question: What is an IP address assigned to?
+  answer: An interface (not the host itself).
+- question: What is the issue with endpoints having no names?
+  answer: When you are mobile and move between networks, you lose connectivity.
+- question: What is a packet?
+  answer: A string of bits.
+- question: When are you "on the Internet"?
+  answer: When you have a globally routeable/reachable IP address.
+- question: What is the 255.255.255.255 address?
+  answer: The local (sub)net broadcast address.
+- question: What value does the host part have in a broadcast address?
+  answer: All bits are set to 1.
+- question: What kind of address has all the host bits set to zero?
+  answer: The network identification
+- question: What is the 0.0.0.0 address for?
+  answer: |-
+    "Address unknown".
+    May only be used as a source address.
+    Note that in practice, it's used for many more things.
+    But don't tell Karst.
+- question: What is the difference between classful and classless routing?
+  answer: |-
+    Networks were initially divided in classes, where class A is any address starting with a binary zero; class B starts with 10; class C starts with 110, etc.
+    Each class reduces the size of the networks within: class A contains /8 networks, class B contains /16 networks, and class C contains /24 networks.
+    Classes D and E have no networks defined within.Classless routing is the modern approach (modern, because it was proposed in 1993), which everyone has been using since the mid 90s, where this class system is just bullshit.
+    If I want to have 1.1.0.0/16, that's just fine and it doesn't matter that it falls in class A and was historically a /8 network.
+- question: What is 9 in binary?
+  answer: "1001"
+- question: What is 0b1100 in decimal?
+  answer: "12"
+- question: Of which two parts does an IPv4 address comprise?
+  answer: A network part and a host part (in that order).
+- question: What does the weak end-system model not do?
+  answer: Discard datagrams whose destination does not correspond to the physical
+    interface through which it is received.
+- question: What are principles of HIPv2?
+  answer: |-
+    It uses public keys as Host Identifier (HI) and always does a DH KEX (with puzzle to defeat DoS).
+    It then builds an IPsec association between HIs (not between IP addresses).
+- question: What is LISP?
+  answer: |-
+    Locator/Identifier Separation ProtocolDifferentiates between an EID (Endpoint IDentifier) and RLOC (Routing LOCator).
+    Packets go through a tunnel router which routes the RLOCs.
+    EIDs are encapsulated within those packets.
+    The mapping is maintained in a distributed database.
+- question: What is ILNP?
+  answer: |-
+    Identifier-Locator Network ProtocolUses an I-LV (Identifier-Locator Vector) instead of IP address.Can run over IPv6 by using the first 64 bits as locator and second 64 bits as identifier.
+    Over v4 it uses the address as locator, and some option contains the 64-bit identifier.
+- question: What are two common routing techniques?
+  answer: Table lookup of next hop, or forwarding port.
+- question: What is routing?
+  answer: |-
+    Delivering packets to an address, using hops in intermediate networks.
+    It can be done on all layers, not only the network layer, for example ethernet frame switching is also routing.
+- question: How to write this with only Layer 2 traffic?(Host)---L3---(Network)---L3---(Host)
+  answer: (Host)---L2---(Network)---L2---[Bridge]---L2---(Network)---L2---(Host)
+- question: What is a bipartite graph?
+  answer: A graph which can be divided into two sections, where edges run between
+    nodes in different sections, but edges never connect two nodes that are in the
+    same section.
+- question: What distinction is missing in Internet architecture?
+  answer: |-
+    The distinction between addresses and endpoints.
+    An interface has an address, not an endpoint.
+- question: What is an explicit network element in a network graph?
+  answer: A node (not an edge)
+- question: What is an address (in a network graph)?
+  answer: A locator used in routing
+- question: What is inverse (de)multiplexing?
+  answer: |-
+    When multiple lower layers are used for a single higher layer, for example two physical cables for a single TCP connection.
+    Normal (de)multiplexing works the other way around: many TCP connections over one physical cable.
+    Of course, with inverse (de)multiplexing it can still have multiple TCP connections, but a single TCP connection's packet is not guaranteed to be transmitted completely over a single cable.
+- question: What is multiplexing in INR context?
+  answer: |-
+    Multiple data streams over a shared lower level.
+    For example, the physical medium can send many IP addresses through it, and one IP address can receive multiple TCP connections, etc.
+- question: What is added to an SDU when passing it to a lower layer?
+  answer: Control information for the lower layer.
+- question: What is a PDU?
+  answer: |-
+    Protocol Data Unit: the protocol data, consisting of headers and payload.
+    It operates within a layer.
+- question: What is a protocol used for?
+  answer: |-
+    Communicating within a layer.
+    For example if layer 4 on the transmitting machine talks TCP, then the receiving machine's layer 4 will also have to talk TCP.
+- question: What's a SAP?
+  answer: |-
+    A Service Access Point is an API provided by a layer.
+    For example the data link layer will provide an interface to the network layer, such that it can send messages through it.
+    Conversely, the network layer provides an interface to the link layer such that it can receive messages from it.
+- question: What is an interface and what travels over it?
+  answer: |-
+    It's something to connect on the same computer, between layers.
+    SDUs travel over it: Service Data Units.
+- question: Name the 7 OSI layers and give example protocols for layers 2, 3 and 4.
+  answer: 7 application6 presentation5 session4 transport (TCP/UDP)3 network (IP)2
+    (data) link (Ethernet)1 physical

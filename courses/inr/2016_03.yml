@@ -1,0 +1,95 @@
+- question: Which classical attribute is used to influence your upstream not to use
+    hot potato routing?
+  answer: Multiple Exit Disc (MED)
+- question: What does 'hot potato routing' mean and why is this relevant?
+  answer: <img src="/files/anki/paste-24438363914241.jpg" />
+- question: If a certain autonomous system has 4 external BGP peerings, what can you
+    say about the number of internal BGP peerings? Suppose no use is made of route
+    reflectors or other optimalisations.
+  answer: 4 routers have to be configured in full mesh, which means 6 peerings.
+- question: What are the usual import and export policies of ISPs with respect to
+    prefixes from providers, peers, customers, and the ISP itself?
+  answer: <img src="/files/anki/paste-23781233917953.jpg" />
+- question: Draw a Venn diagram illustrating the relations between backbone router,
+    internal router, ABR, and ASBR in OSPF
+  answer: <img src="/files/anki/paste-23063974379521.jpg" /><img src="/files/anki/paste-23398981828609.jpg"
+    />
+- question: Which multicast addresses does OSPFv2 use?
+  answer: "224.0.0.6 \n- ALLDRouters224.0.05 \n- ALLSPFRouters"
+- question: What is the difference between a neighbor and an adjacency in OSPF?
+  answer: <img src="/files/anki/paste-22720376995841.jpg" />
+- question: Dijkstra example
+  answer: <img src="/files/anki/paste-22630182682625.jpg" />
+- question: What are the equations for the centralised Bellman-Ford algorithm?
+  answer: <img src="/files/anki/paste-22488448761857.jpg" />
+- question: What is the fundamental difference between RIP and OSPF as far as theoretical
+    foundation of these routing protocols is concerned?
+  answer: |-
+    With OSPF, every router has to know the whole topology.
+    Every router also computes the best routes for themselves.
+- question: STP example
+  answer: <img src="/files/anki/paste-22119081574401.jpg" />
+- question: How is IPv6 multicast traffic restricted to the link layer?
+  answer: <img src="/files/anki/paste-21801253994497.jpg" />
+- question: What is the IPv6 prefix used for multicast?
+  answer: FF00::/8
+- question: What is the IPv6 prefix used for unique local unicast addressing?
+  answer: FC00::/7
+- question: What is the IPv6 prefix used for link local addressing?
+  answer: FE80::/10
+- question: What is the equivalent for ARP in IPV6?
+  answer: ICMPv6 neighbor discovery
+- question: Give an example of a layer 2 ethernet MAC address and how it can be used
+    in an IPv6 address for the local link
+  answer: <img src="/files/anki/paste-21157008900097.jpg" />
+- question: What fields are added to an ethernet frame to support VLANs?
+  answer: VLAN Type (2 bytes, 0x8100), CFI (1 bit, ethernet/token ring), priority
+    (12 bits, used by 802.1p), VLAND ID (12 bits, 0-4095)
+- question: What does VLAN abbreviate and in what specification is it defined?
+  answer: |-
+    Virtual Local Area Network
+    Specification = 802.1Q-2011
+- question: What does SNAP abbreviate and what specification is it based upon?
+  answer: |-
+    SNAP =  Sub Netwrok Access Protocol
+    Based on 802.2 LLC
+- question: |-
+    Consider the subnet of the IPv6 space given by the union of the prefixes ::/2, 8000::/2, 4000::/3, 6000::/3, c000::/4, and d000::/4.
+    Describe this same subnet as the union of prefixes with the maximum possible aggregation.
+  answer: |+
+    ::/2         = 00
+    8000::/2  = 10
+    4000::/3  = 010
+    6000::/3  = 011
+    c000::/4  = 1100
+    d000::/4  = 1101
+    First, d000/4 and c000/4 is aggregated into 110 = c000::/3
+    4000::/3 and 6000::/3 is aggregated into 01 = 4000::/2
+    Second, 4000::/2 can be aggregated with ::/2 which becomes ::/1
+    We end up with the following addresses:
+    ::/1, 8000::/2, and c000::/3
+
+- question: |-
+    For the purpose of IPv4/IPv6 algorithmic translation a service provider has set aside the IPv6 prefix 2016:0322:deed::/48.
+    What is the resulting IPv6 address (n canonical form) when embedding the IPv4 address 201.60.32.2?
+  answer: |-
+    2016:0322:deed:201.60:00000000:32.2::.
+    More info: RFC 6052, section 2.2
+- question: Name four different kinds of IPv6 addresses inside which an IPv4 address
+    can be embedded
+  answer: |2-
+
+    - Translatable
+    - Mapped
+    - Converted
+    - Compatible
+- question: |-
+    Consider four routers (R1, R2, R3, and R4).
+    There is a point-to point link P12 between R1 and R2, P23 between R2 and R3, P34 between R3 and R4 and P41 between R4 and R1.
+    All routers share a LAN L, which also contains the host H.
+    Draw a bipartite graph representing this situation.
+  answer: <img src="/files/anki/paste-3100966387713.jpg" />
+- question: How are interfaces and protocols used for network communication?
+  answer: <img src="/files/anki/paste-1808181231617.jpg" />
+- question: What is the difference between an interface and a protocol?
+  answer: <img src="/files/anki/paste-1357209665537.jpg" />

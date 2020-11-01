@@ -2,7 +2,10 @@ name: InterNetworking and Routing
 description: A course about network routing protocols and the internet on a large scale
 quotes:
   "This is madness": "A traumatized OS3 student"
+  "Addressing can follow topology, or topology can follow addressing.  Choose one.": "Rekhter’s Law"
+  "IP on everything!": "The Knowles Doctrine"
+  "The only real problem is scaling.": "O’Dell’s Axiom"
 exam:
-  "linklayer": 20
+  "layer2": 20
   "routing": 60
   "theory": 20

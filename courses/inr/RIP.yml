@@ -1,0 +1,124 @@
+- question: How can one set the next hop in RIPng?
+  answer: |-
+    Put the next hop in place of the prefix and fill the remaining fields (route tag, prefix length and metric) with 0x0000, 0x00 and 0xff.
+    The prefixes following will use this next hop.
+    One can reset t he next hop using ::.
+- question: What is the packet format of RIPng?
+  answer: |-
+    Length in bytes; value1; command (1=request, 2=response)1; version (=1, because it's the first version of the new protocol RIPng)2; reserved (must be 0)16; IPv6 prefix2; route tag1; prefix length (number of bits that is the network portion)1; metric (16=inf)
+    Fields `prefix` through `metric` can be repeated.
+- question: What destination address does RIPng use?
+  answer: ff02::9, the all-rip-routers mcast address.
+- question: What's the maximum length of RIPng packets?
+  answer: Any length that fits inside the network unfragmented
+- question: What feature did RIPng remove?
+  answer: Authentication, since that can be done at IP level with IPv6.
+- question: What protocol stack does RIPng use?
+  answer: IPv6 -> UDP port 521
+- question: What is the destination of RIPv2 packets?
+  answer: 'The broadcast address was replaced by a multicast address, the same as
+    EIGRP: 224.0.0.9 (which is not forwarded).'
+- question: What is the Next Hop field for in RIPv2?
+  answer: Used when best next hop does not speak RIP itself
+- question: What does each hop do with the route tag field of RIPv2 and what is its
+    purpose?
+  answer: |-
+    It is simply carried along.
+    It diffrentiates between internally and externally generated routes.
+- question: How does authentication work in RIPv2?
+  answer: |-
+    AFI is set to 0xFFFF, followed by the authentication type (2 bytes) and then the authentication data follows.
+    Auth type 2 is plaintext password, type 3 means use of some crypto.
+- question: What's the packet format of RIPv2?
+  answer: |-
+    Bytes; value1; command (1=request, 2=response)1; version (=2)2; Reserved (must be 0)2; Address Family Identifier (=2=IP)2; Route Tag (identification of route origin)4; IP address (network)4; Subnet Mask (CIDR support)4; Next Hop (gateway, if different from advertising router)4; Metric (16=inf)
+    The fields after (not including) reserved, can be repeated up to 25 times.
+- question: What does RIPv2 have extensions for?
+  answer: |2-
+
+    - Subnet masks
+    - Alternate next hop
+    - Authentication
+    - Multicasting
+    - Route tags
+- question: What are some advantages of EIGRP?
+  answer: |2-
+
+    - It uses partial and incremental updates when the routing table changes.
+    - It uses hello multicast packets to discover neighbours (IP 224.0.0.10).
+    - It uses ACKs for reliable communication.
+    - It can summarize on arbitrary bit boundaries (classless).
+- question: What algorithm does EIGRP use?
+  answer: DUAL, for loop-free routing and fast convergence.
+- question: What is EIGRP?
+  answer: |-
+    Enhanced Interior Gateway Routing Protocol.
+    Also Cisco proprietary, but in RFC 7868 for informational purposes.
+    It runs as protocol 88 on top of IP.
+- question: What metrics does IGRP communicate to neighbours?
+  answer: |-
+    A composite metric, based on delay, bandwidth, reliability and load.
+    The hop count is still communicated as a separate field to see when infinity has been reached.
+    It also communicates MTU information about the path.
+- question: What types of routes does IGRP have?
+  answer: Interior (with implicit subnet information, like RIPv1), system route (which
+    is possibly summarized), and exterior (acting as a configured candidate default).
+- question: What are autonomous systems in IGRP?
+  answer: |-
+    Independent domains.
+    Not the same as IANA-registered ASes.
+    IGRP autonomous systems are connected together with static (or redistributed) routes.
+- question: What is IGRP?
+  answer: |-
+    Interior Gateway Routing Protocol, by Cisco.
+    Uses a distance vector protocol.
+    Basically same as RIP, except it runs on top of IP (protocol 9), has a larger notion of infinity (typically 100, max 255) and accepts up to 4 parallel paths.
+- question: TODO ripv1 subnets, slide 17
+  answer: ""
+- question: What's in a RIPv1 packet?
+  answer: |-
+    Length in bytes; contents:1; Command (request=1, response=2)1; Version (=1)2; Reserved (0)2; Address Family Identifier (=2 for IP)2; Reserved (0)4; IP address (network)8; Reserved (0)4; Metric (max 16=infinity)
+    The fields after (not including) the first reserved field, can be repeated at most 25 times.
+- question: What is the maximum size of a RIPv1 packet and how many updates fit in
+    there?
+  answer: 512 bytes, fits 25 route updates (each update is 20 bytes)
+- question: What's the port/proto for RIPv1?
+  answer: 520/udp
+- question: What are RIPv1 packets sent to?
+  answer: IP 255.255.255.255, or to a directed broadcast address, or to an individual
+    host or router as a response to a request.
+- question: What timers does RIPv1 have, what's a default, and what do they do?
+  answer: |-
+    Update timer: interval between sending updates.
+    Default 30 seconds.
+    Invalid timer: if no updates are received for a route within <time>, set hop count to infinity.
+    Default 180 seconds.
+    Flush timer AKA garbage-collection timer: remove routes after they have been invalid for a while.
+    Default: 240 seconds.
+    Hold-down timer: Cisco's addition, does not accept updates during hold-down on routes that have been marked unreachable.
+    Default: 180 seconds.
+- question: How long does it take for information to spread through a network using
+    RIPv1?
+  answer: Each router will send its neighbours updates every 30 seconds (by default),
+    thus it depends on how many routers and when their timer expires.
+- question: What is a disadvantage of poisoned reverse?
+  answer: Larger routing update packets
+- question: What measures does RIPv1 take against counting to infinity?
+  answer: Both split horizon and poisoned reverse.
+- question: What is the basic operation of RIPv1?
+  answer: |-
+    It keeps a table of routes to destination networks, keeping the distance (metric) and gateway (next hop).
+    It periodically sends out this table (sans gateways) to all neighbours.
+    It will update the table with newly collected information (metric can only decrease, unless the information comes from the gateway itself and it overrides old information).
+- question: What is the maximum hop distance of RIP?
+  answer: |-
+    15 hops, i.e.
+    16 == infinity
+- question: What is an IGP? Is RIP an IGP?
+  answer: |-
+    Interior Routing Protocol.
+    Yes.
+- question: What algorithm is RIPv1 based on?
+  answer: Bellman-Ford distance vector algorithm
+- question: What does RIP stand for?
+  answer: Routing Information Protocol

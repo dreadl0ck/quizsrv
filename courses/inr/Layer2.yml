@@ -1,0 +1,67 @@
+- question: What's a VLAN?
+  answer: |-
+    Virtual LAN, where LAN stands for Local Area Network.
+    The ethertype is 0x8100.
+    It separates a physically bridged LAN into multiple logical/virtual LANs.
+- question: What's a no-frill?
+  answer: |-
+    A stupid switch, which just copies frames to separate the collision domain.
+    Uses store and forward technique.
+    The opposite is a learning and filtering switch/bridge, which remembers on which port a station resides.
+    This builds a filtering database.
+- question: What are common ethernet types?
+  answer: 0x800 for IP, 0x806 for ARP and 0x86DD for IPv6
+- question: |-
+    TODO slide 17 you can't do the reverse of a flip + why set the bit to universal when you locally administer it + why skip bits 64-71 when creating a ...
+    a what?
+  answer: ""
+- question: How to put a MAC address, ahem, EUI-64 in an IPv6 address?
+  answer: |-
+    Flip the U/L bit (from 0 to 1 in the example).
+    Locally assigned IPv6 addresses do the reverse.
+- question: How can one embed an MAC-48 in EUI-64?
+  answer: |-
+    Paste FF:FF in the middle:00:30:65:7E:9D:5E ⇒ 00:30:65:FF:FF:7E:9D:5E
+
+    But since they are obsolete, you can really just do whatever and could paste FF:FE in there as well.
+- question: How can one embed an EUI-48 in EUI-64?
+  answer: |
+    Paste FF:FE in the middle:00:30:65:7E:9D:5E ⇒ 00:30:65:FF:FE:7E:9D:5E
+- question: What bits are special in a MAC address?
+  answer: I/G bit (individual/group) and U/L (universal/local), the first and second
+    bit on the wire because it is sent in LSB format (least significant bit first),
+    or the last two bits of the first byte.
+- question: What is the OUI?
+  answer: Orginizationally Unique Identifier
+- question: What's the minimum and maximum size of a PDU in DIX Ethernet?
+  answer: "46 \n- 1500 bytes"
+- question: What does the DIX Ethernet / Ethernet II header look like?
+  answer: |2-
+
+    - 7 bytes preamble, 1 byte Start Frame Delimiter (SFD)
+    - Destination and source address (2×6 bytes)
+    - Type (2 bytes)
+    - PDU (perhaps with padding)
+    - FCS (CRC)
+- question: What fields does LLC introduce?
+  answer: |-
+    DSAP, SSAP and a control byte.
+    SAP stands for Service Access Point and D/S for destination/source.
+- question: Which sublayers does layer 2 have?
+  answer: |-
+    MAC (Media Access Control) and LLC (Logical Link Control).
+    MAC is the lower one and its most important example is Ethernet with CSMA/CD.
+    Ethernet also controle backoff and retransmission.
+    LLC introduces new fields (see another card).
+- question: What is the difference between hubs and switches, or between repeaters
+    and bridges?
+  answer: A repeater has a single collision domain; a bridge has a single broadcast
+    domain.
+- question: What forms a LAN/link?
+  answer: A network connected by bridges and/or switches.
+- question: What forms a LAN/link segment?
+  answer: |-
+    A network connectd by hubs and/or repeaters.
+    Notably *not* switches.
+- question: At which layer does a hub operate and what is another word for it?
+  answer: Physical; multiport repeater.

@@ -1,0 +1,12 @@
+- question: What is an issue with split horizon (in the context of counting to infinity)?
+  answer: |-
+    In a mesh of A, B and C, where only A is connected to network N, when the link A-N fails, B or C might still advertise the router to N to A.
+    Because B might hear the route from A, and B might tell C, C might think it has a route to N via B.
+    If B simply doesn't advertise back to the advertiser (A), and C does not advertise back to B, then still, C might advertise the route to A.
+- question: What are solutions for counting to infinity?
+  answer: Split horizon and Poison(ed) reverse
+- question: What is split horizon (in relation to "counting to infinity")?
+  answer: Not advertising back to the advertiser
+- question: What is poisoned reverse?
+  answer: B reports infinite distance to N back to A (when the link from B to N goes
+    down, and A is behind B from N's point of view).
