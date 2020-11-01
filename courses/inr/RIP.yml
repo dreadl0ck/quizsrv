@@ -31,19 +31,25 @@
     Auth type 2 is plaintext password, type 3 means use of some crypto.
 - question: What's the packet format of RIPv2?
   answer: |-
-    Bytes; value1; command (1=request, 2=response)1; version (=2)2; Reserved (must be 0)2; Address Family Identifier (=2=IP)2; Route Tag (identification of route origin)4; IP address (network)4; Subnet Mask (CIDR support)4; Next Hop (gateway, if different from advertising router)4; Metric (16=inf)
+    Bytes; value1; command (1=request, 2=response)
+    1; version (=2)
+    2; Reserved (must be 0)
+    2; Address Family Identifier (=2=IP)
+    2; Route Tag (identification of route origin)
+    4; IP address (network)
+    4; Subnet Mask (CIDR support)
+    4; Next Hop (gateway, if different from advertising router)
+    4; Metric (16=inf)
     The fields after (not including) reserved, can be repeated up to 25 times.
 - question: What does RIPv2 have extensions for?
-  answer: |2-
-
+  answer: |
     - Subnet masks
     - Alternate next hop
     - Authentication
     - Multicasting
     - Route tags
 - question: What are some advantages of EIGRP?
-  answer: |2-
-
+  answer: |
     - It uses partial and incremental updates when the routing table changes.
     - It uses hello multicast packets to discover neighbours (IP 224.0.0.10).
     - It uses ACKs for reliable communication.
@@ -76,7 +82,15 @@
 
 - question: What's in a RIPv1 packet?
   answer: |-
-    Length in bytes; contents:1; Command (request=1, response=2)1; Version (=1)2; Reserved (0)2; Address Family Identifier (=2 for IP)2; Reserved (0)4; IP address (network)8; Reserved (0)4; Metric (max 16=infinity)
+    Length in bytes; contents:
+    1; Command (request=1, response=2)
+    1; Version (=1)
+    2; Reserved (0)
+    2; Address Family Identifier (=2 for IP)
+    2; Reserved (0)
+    4; IP address (network)
+    8; Reserved (0)
+    4; Metric (max 16=infinity)
     The fields after (not including) the first reserved field, can be repeated at most 25 times.
 - question: What is the maximum size of a RIPv1 packet and how many updates fit in
     there?
@@ -96,8 +110,7 @@
     Default: 240 seconds.
     Hold-down timer: Cisco's addition, does not accept updates during hold-down on routes that have been marked unreachable.
     Default: 180 seconds.
-- question: How long does it take for information to spread through a network using
-    RIPv1?
+- question: How long does it take for information to spread through a network using RIPv1?
   answer: Each router will send its neighbours updates every 30 seconds (by default),
     thus it depends on how many routers and when their timer expires.
 - question: What is a disadvantage of poisoned reverse?

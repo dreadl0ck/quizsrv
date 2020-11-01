@@ -23,7 +23,6 @@
 - question: How can one embed an MAC-48 in EUI-64?
   answer: |-
     Paste FF:FF in the middle:00:30:65:7E:9D:5E ⇒ 00:30:65:FF:FF:7E:9D:5E
-
     But since they are obsolete, you can really just do whatever and could paste FF:FE in there as well.
 - question: How can one embed an EUI-48 in EUI-64?
   answer: |
@@ -35,7 +34,8 @@
 - question: What is the OUI?
   answer: Orginizationally Unique Identifier
 - question: What's the minimum and maximum size of a PDU in DIX Ethernet?
-  answer: "46 \n- 1500 bytes"
+  answer: |
+    46 - 1500 bytes
 - question: What does the DIX Ethernet / Ethernet II header look like?
   answer: |2-
     - 7 bytes preamble, 1 byte Start Frame Delimiter (SFD)

@@ -65,8 +65,8 @@
     with that address?
   answer: |-
     You need to specify an interface.
-    In the example of ping6, you can do this using -I (capital i) and many other tools will have similar options, or you need to add %interface to the address, e.g.
-    fe80::1%eth0
+    In the example of ping6, you can do this using -I (capital i) and many other tools will have similar options, or you need to add %interface to the address
+    e.g. fe80::1%eth0
 
 - question: What are the multicast addresses for all nodes, routers (link-local) and
     routers (site-local)?
@@ -87,8 +87,8 @@
 - question: Why is it ff00::/8 instead of ff::/8? What do the 00s mean?
   answer: |-
     Short form dictates that leading zeros are skipped.
-    Thus ff::/8 is equal to 00ff::/8 and not ff00::/8.The remaining byte (the zeroes) are used for flags (4 bits) and scope (4 bits).
-
+    Thus ff::/8 is equal to 00ff::/8 and not ff00::/8.
+    The remaining byte (the zeroes) are used for flags (4 bits) and scope (4 bits).
 - question: What is Unique Local Unicast?
   answer: |-
     The range fc00::/7 is supposed to be subnetted like fdrr:rrrr:rrrr:ssss::/64 where the "r"s are random bits and ssss is a subnet id.
@@ -129,14 +129,20 @@
   answer: |-
     ff00::/8 is multicast and 100::/8 is special-purpose.
 - question: Name some top level allocations
-  answer: '::/8 special-purpose100::/8 special-purpose2000::/3 global unicastfc00::/7
-    unique local unicastfe80::/10 link-local (link-scoped) unicastff00::/8 multicastslide
-    #15'
+  answer: |
+    ::/8 special-purpose
+    100::/8 special-purpose
+    2000::/3 global unicast
+    fc00::/7 unique local unicast
+    fe80::/10 link-local (link-scoped) unicast
+    ff00::/8 multicast
 - question: What happened to broadcast in IPv6?
   answer: |-
     This was replaced by multicast.
     (unfortunately ISPs do not know how to route this so most traffic is blocked)
-- question: What is the short form of 0000:0000:0130:1000:0001:0000:0000:0001/64?
+- question: |
+    What is the short form of
+    0000:0000:0130:1000:0001:0000:0000:0001/64?
   answer: |-
     0:0:130:1000:1::1/64
     You can choose yourself where you place the double colon, but there cannot be two double colons.
@@ -159,7 +165,7 @@
     DHCPv6
 - question: What does "built-in security" mean?
   answer: |-
-    Anyone implementing IPv6 is also required (by the spec, that is---not by the police!) to implement IPSEC.
+    Anyone implementing IPv6 is required by the spec to implement IPSEC.
     Therefore anyone speaking IPv6 can also speak IPSEC.
 - question: Why should IPv6 be used?
   answer: |
