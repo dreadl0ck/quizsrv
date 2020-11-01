@@ -1,12 +1,10 @@
 - question: What methods are available to implement IBGP scaling and how do they work?
   answer: |-
     <img src="/files/anki/paste-42142219108353.jpg" />
-
     <img src="/files/anki/paste-42318312767489.jpg" />
 - question: Why is IBGP scaling needed?
   answer: |+
     IBGP needs a full mesh in order to work.
-
 
 - question: What attribute was introduced later to communicate preferences to your
     upstream or to receie extra routing information from your upstream?
@@ -23,7 +21,6 @@
     In the order of addition to the shortest path tree and make the dotted lines solid for edges belonging to this shortest path tree.
     Note that each undirected edge may be used in both directions.
     Indicate clearly the direction you use in your drawing.
-
     <img src="/files/anki/paste-39423504809985.jpg" />
   answer: <img src="/files/anki/paste-40149354283009.jpg" />
 - question: What are the equations for the distributed Bellman-Ford algorithm? Include
@@ -31,28 +28,28 @@
   answer: <img src="/files/anki/paste-39225936314369.jpg" />
 - question: Name three additions EIGRP added to IGRP
   answer: |+
-    <img src="/files/anki/paste-38860864094209.jpg" /><img src="/files/anki/paste-39032662786049.jpg" />
+    <img src="/files/anki/paste-38860864094209.jpg" />
+    <img src="/files/anki/paste-39032662786049.jpg" />
 
 - question: Name three shortcomings in RIP that were addressed by IGRP
-  answer: <img src="/files/anki/paste-38555921416193.jpg" /><img src="/files/anki/paste-38714835206145.jpg"
-    />
+  answer: |
+    <img src="/files/anki/paste-38555921416193.jpg" />
+    <img src="/files/anki/paste-38714835206145.jpg" />
 - question: What information in RIPv2 is disguised as a 'fake route update'?
   answer: Authentication?????
 - question: How does RIPv2 use multicast? And RIPng?
   answer: |
-    RIPv2 from RFC2453:
-
-
-        4.5 Multicasting
-        In order to reduce unnecessary load on those hosts which are not    listening to RIP-2 messages, an IP multicast address will be used for periodic broadcasts.
+    RIPv2 from RFC2453: 4.5 Multicasting
+        In order to reduce unnecessary load on those hosts which are not listening to RIP-2 messages, an IP multicast address will be used for periodic broadcasts.
     The IP multicast address is 224.0.0.9.
-    Note    that IGMP is not needed since these are inter-router messages which    are not forwarded.
+    Note that IGMP is not needed since these are inter-router messages which are not forwarded.
         On NBMA networks, unicast addressing may be used.
-    However, if a    response addressed to the RIP-2 multicast address is received, it    should be accepted.
-        In order to maintain backwards compatibility, the use of the    multicast address will be configurable, as described in section 5.1.    If multicasting is used, it should be used on all interfaces which    support it.
+    However, if a response addressed to the RIP-2 multicast address is received, it should be accepted.
+        In order to maintain backwards compatibility, the use of the multicast address will be configurable, as described in section 5.1. If multicasting is used, it should be used on all interfaces which support it.
     RIPng uses FF02::9 for multicast.
-- question: Why isn't the gateway part of the RIPv1 information? How is the gateway
-    information obtained in RIP?
+- question: |
+    Why isn't the gateway part of the RIPv1 information?
+    How is the gateway information obtained in RIP?
   answer: |-
     Gateway is specific to a certain node, therefore it would not make sense to other nodes.
     Gateway used in the next hop.
@@ -76,23 +73,26 @@
 - question: Describe the different kinds of equipment that are being used on the layers
     1, 2, and 3 in a network environment and describe their characteristic properties
     relating to collisions and broadcasts.
-  answer: "Layer 1 \n- Hubs and repeaters.\nJust send out whatever comes in on all
-    ports.\nLayer 2 \n- Switches and bridges. \nLayer 3 \n- Routers"
+  answer: |
+    Layer 1 - Hubs and repeaters. Just send out whatever comes in on all ports.
+    Layer 2 - Switches and bridges
+    Layer 3 - Routers
 - question: |+
     The next picture represents the first 11 levels of the IPv6 address tree, where each level adds one more bit.
     Give for each of the labeled subtrees the corresponding prefix and its current use in the IPv6 address allocation.
     <img src="/files/anki/paste-30588757082113.jpg" />
-
-  answer: "C = 01 = 4000::/2 = Reserved?\nB = 001 = 2000::/3 = Global Unicast\nA =
-    00000000 = ::/8 = Reserved by IETF\nD = 1111110 = FC00::/7 = Unique Local Addresses\nF
-    = 11111111 = FF00::/8 = Multicast\nE = 1111111010 = FE80::/10 = Link-Scoped Unicast
-    \n\n"
-- question: "Consider three LANs (L1, L2, and L3), two hosts (H1 and H2), and two
-    routers (R1 and R2).\nHost H1 is connected to LAN L1.\nHost H2 is connected to
-    LAN L2.\nRouter one is connected to LAN L1 and L3.\nRouter R2 is connected to
-    LAN L3 and L2. \nDraw a bipartite graph representing this situation on layer 3.\n\nSuppose
-    LAN L1 is in fact a swicht S, which also has an IP address.\nHow would you represent
-    S in your picture?"
+  answer: |
+    C = 01 = 4000::/2 = Reserved?
+    B = 001 = 2000::/3 = Global Unicast
+    A = 00000000 = ::/8 = Reserved by IETF
+    D = 1111110 = FC00::/7 = Unique Local Addresses
+    F = 11111111 = FF00::/8 = Multicast
+    E = 1111111010 = FE80::/10 = Link-Scoped Unicast
+- question: |
+    Consider three LANs (L1, L2, and L3), two hosts (H1 and H2), and two routers (R1 and R2).
+    Host H1 is connected to LAN L1. Host H2 is connected to LAN L2. Router one is connected to LAN L1 and L3. Router R2 is connected to LAN L3 and L2.
+    Draw a bipartite graph representing this situation on layer 3.
+    Suppose LAN L1 is in fact a swicht S, which also has an IP address. How would you represent S in your picture?
   answer: |-
     <img src="/files/anki/paste-28578712387585.jpg" />
     S would be on the node side

@@ -7,8 +7,7 @@
     Type of Service (8 bits, 8-15) now used for DiffServ (QoS) (bits 0-5) and ECN (Explicit Congestion Control) (bits 6-7);
     Total Length (16 bits, 16-31) including header in bytes;
     Identification (16 bits, 32-idk) used with fragmentation;
-    Flags (3 bits) contains DF (Don't Fragment) and MF (More Fragments -
-    - means that more fragments are coming, it's not a request for more fragments);
+    Flags (3 bits) contains DF (Don't Fragment) and MF (More Fragments - means that more fragments are coming, it's not a request for more fragments);
     Fragment Offset (13 bits) first fragment is 0;
     Time To Live (8 bits) hop count;
     Protocol (8 bits) upper layer protocol multiplexing;
@@ -53,7 +52,8 @@
 - question: What is VLSM?
   answer: |-
     Variable Length Subnet Masks uses subnets that are not necessarily all of the same size.
-    For example you can have a /8 allocated to some $BigCorp, and it can allocate a /16 to departments, which might have smaller /22 subnets for different purposes or something.In classful routing, one could only have a /8, /16 or /24 (depending on whether you are 1-127.x.x.x, 127-191.x.x.x or 192-224.x.x.x).
+    For example you can have a /8 allocated to some $BigCorp, and it can allocate a /16 to departments, which might have smaller /22 subnets for different purposes or something.
+    In classful routing, one could only have a /8, /16 or /24 (depending on whether you are 1-127.x.x.x, 127-191.x.x.x or 192-224.x.x.x).
 - question: How many networks and hosts are there in a class C with the subnet mask
     255.255.255.88?
   answer: |-
@@ -127,9 +127,9 @@
     This is because of how the checksum works with "one's compliment" and whatever, don't need to know that.
 - question: What does a router do when it cannot forward an IPv6 packet because it
     exceeds the MTU of the route it needs to take?
-  answer: It will send an ICMPv6 message back to the source to report that fragmentation
-    was needed but not available (since intermediate routers in v6 do not fragment;
-    only the source fragments).
+  answer: |
+    It will send an ICMPv6 message back to the source to report that fragmentation was needed but not available
+    (since intermediate routers in v6 do not fragment, only the source fragments).
 - question: What is IGMP for?
   answer: |-
     Internet Group Message Protocol.
@@ -139,16 +139,17 @@
     The longest match.
     For example if the OS3 router has a default route to SURFnet (for accessing the Internet) and a route for the internal network, and it gets a packet for "145.100.102.146", it will not use the default route (where the subnet length is zero, namely 0.0.0.0/0) but it will use its longer match, which will be something like "145.100.102.0/24".
 - question: How many layers does the “Routing Tree” have for IPv4?
-  answer: '33: the empty set on top (that''s where the extra layer comes from, on
-    top of 32 bits IP addresses), and then towards the bottom a binary tree until
-    we have the full 32 bits for an IPv4 address.'
+  answer: |
+    33: the empty set on top (that's where the extra layer comes from, on top of 32 bits IP addresses),
+    and then towards the bottom a binary tree until we have the full 32 bits for an IPv4 address.
 - question: What is fragmentation?
   answer: |-
     Chopping up a piece of information into more pieces, because you want to send it over a link of lower capacity.
     Otherwise you occupy the medium for a while.
 - question: What is encapsulation for?
-  answer: '"Wrapping of data in single unit." For example TCP is encapsulated in IP,
-    so that the TCP packet (and its payload) can be sent between IP addresses.'
+  answer: |
+    "Wrapping of data in single unit."
+    For example TCP is encapsulated in IP, so that the TCP packet (and its payload) can be sent between IP addresses.
 - question: When do you use fragmentation?
   answer: |-
     When splitting a larger message into smaller packets.
@@ -210,14 +211,13 @@
     Classes D and E have no networks defined within.Classless routing is the modern approach (modern, because it was proposed in 1993), which everyone has been using since the mid 90s, where this class system is just bullshit.
     If I want to have 1.1.0.0/16, that's just fine and it doesn't matter that it falls in class A and was historically a /8 network.
 - question: What is 9 in binary?
-  answer: "1001"
+  answer: 1001
 - question: What is 0b1100 in decimal?
-  answer: "12"
+  answer: 12
 - question: Of which two parts does an IPv4 address comprise?
   answer: A network part and a host part (in that order).
 - question: What does the weak end-system model not do?
-  answer: Discard datagrams whose destination does not correspond to the physical
-    interface through which it is received.
+  answer: Discard datagrams whose destination does not correspond to the physical interface through which it is received.
 - question: What are principles of HIPv2?
   answer: |-
     It uses public keys as Host Identifier (HI) and always does a DH KEX (with puzzle to defeat DoS).
@@ -226,11 +226,11 @@
   answer: |-
     Locator/Identifier Separation ProtocolDifferentiates between an EID (Endpoint IDentifier) and RLOC (Routing LOCator).
     Packets go through a tunnel router which routes the RLOCs.
-    EIDs are encapsulated within those packets.
-    The mapping is maintained in a distributed database.
+    EIDs are encapsulated within those packets. The mapping is maintained in a distributed database.
 - question: What is ILNP?
   answer: |-
-    Identifier-Locator Network ProtocolUses an I-LV (Identifier-Locator Vector) instead of IP address.Can run over IPv6 by using the first 64 bits as locator and second 64 bits as identifier.
+    Identifier-Locator Network ProtocolUses an I-LV (Identifier-Locator Vector) instead of IP address.
+    Can run over IPv6 by using the first 64 bits as locator and second 64 bits as identifier.
     Over v4 it uses the address as locator, and some option contains the 64-bit identifier.
 - question: What are two common routing techniques?
   answer: Table lookup of next hop, or forwarding port.
@@ -238,8 +238,11 @@
   answer: |-
     Delivering packets to an address, using hops in intermediate networks.
     It can be done on all layers, not only the network layer, for example ethernet frame switching is also routing.
-- question: How to write this with only Layer 2 traffic?(Host)---L3---(Network)---L3---(Host)
-  answer: (Host)---L2---(Network)---L2---[Bridge]---L2---(Network)---L2---(Host)
+- question: |
+    How to write this with only Layer 2 traffic?
+    (Host)---L3---(Network)---L3---(Host)
+  answer: |
+    (Host)---L2---(Network)---L2---[Bridge]---L2---(Network)---L2---(Host)
 - question: What is a bipartite graph?
   answer: A graph which can be divided into two sections, where edges run between
     nodes in different sections, but edges never connect two nodes that are in the
@@ -281,5 +284,11 @@
     It's something to connect on the same computer, between layers.
     SDUs travel over it: Service Data Units.
 - question: Name the 7 OSI layers and give example protocols for layers 2, 3 and 4.
-  answer: 7 application6 presentation5 session4 transport (TCP/UDP)3 network (IP)2
-    (data) link (Ethernet)1 physical
+  answer: |
+    7 application
+    6 presentation
+    5 session
+    4 transport (TCP/UDP)
+    3 network (IP)
+    2 (data) link (Ethernet)
+    1 physical

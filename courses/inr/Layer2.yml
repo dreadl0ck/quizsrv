@@ -12,8 +12,9 @@
 - question: What are common ethernet types?
   answer: 0x800 for IP, 0x806 for ARP and 0x86DD for IPv6
 - question: |-
-    TODO slide 17 you can't do the reverse of a flip + why set the bit to universal when you locally administer it + why skip bits 64-71 when creating a ...
-    a what?
+    TODO slide 17 you can't do the reverse of a flip
+    why set the bit to universal when you locally administer it
+    why skip bits 64-71 when creating a ... a what?
   answer: ""
 - question: How to put a MAC address, ahem, EUI-64 in an IPv6 address?
   answer: |-
@@ -37,7 +38,6 @@
   answer: "46 \n- 1500 bytes"
 - question: What does the DIX Ethernet / Ethernet II header look like?
   answer: |2-
-
     - 7 bytes preamble, 1 byte Start Frame Delimiter (SFD)
     - Destination and source address (2×6 bytes)
     - Type (2 bytes)

@@ -5,7 +5,9 @@
     You need N(N-1)/2 connections to connect them all.
     With a lot of routers, this is undoable.
     Route reflectors and confederations can help to scale IBGP.
-    <img src="/files/anki/paste-26190710571009.jpg" /><img src="/files/anki/paste-26315264622593.jpg" /><img src="/files/anki/paste-26499948216321.jpg" />
+    <img src="/files/anki/paste-26190710571009.jpg" />
+    <img src="/files/anki/paste-26315264622593.jpg" />
+    <img src="/files/anki/paste-26499948216321.jpg" />
 - question: Which classical attribute is used to prevent your upstream to use hot
     potato routing? Is this always successful? What attribute was introduced later
     to communicate preferences to your upstream or ot receive extra routing information
@@ -16,25 +18,30 @@
     Communities are used to do finetuned control between peers
 - question: |-
     Draw a picture of the BGP relationships of an AS with its providers, peers, and customers.
-    What filtering should be implemented in the BGP sessions involved? What attribute should be used on incoming routes to distinguish between the different relationships? Show this in your picture, with example values
+    What filtering should be implemented in the BGP sessions involved?
+    What attribute should be used on incoming routes to distinguish between the different relationships? Show this in your picture, with example values
   answer: <img src="/files/anki/paste-25692494364673.jpg" />
 - question: |-
     What is the name in OSPF for a router that is part of multiple areas? Name the different OSPF LSAs having type 1 to 5.
     Mention for each type the router that originates these LSAs.
   answer: |+
-    ABR (Area Border Router)<img src="/files/anki/paste-25039659335681.jpg" />1 = originated by every router2 = originated by the DR3 = originated by the ABR4 = originated by the ABR5 = Originated by ASBR
+    ABR (Area Border Router)
+    <img src="/files/anki/paste-25039659335681.jpg" />
+    1 = originated by every router
+    2 = originated by the DR
+    3 = originated by the ABR
+    4 = originated by the ABR
+    5 = Originated by ASBR
 
 - question: |-
     Draw the result of the Dijkstra algorithm in the following graph, starting from the source node "a".
-    Label the nodes "b", "c", "d", ...
-    in the order of addition to the shortes path tree and make the dotted lines solid for edges belonging to this shortes path tree.
-    Note that each undirected edge may be used in both directions.
-    Inidcate clearly, using arrows, the direction you use in your drawing.
+    Label the nodes "b", "c", "d", in the order of addition to the shortes path tree and make the dotted lines solid for edges belonging to this shortes path tree.
+    Note that each undirected edge may be used in both directions. Inidcate clearly, using arrows, the direction you use in your drawing.
     <img src="/files/anki/paste-24537148162049.jpg" />
   answer: <img src="/files/anki/paste-24726126723073.jpg" />
-- question: What are the equations for the distributed Bellman-Ford algorithm? Include
-    formulas for D<sub>0, </sub>D<sub>N+1</sub>,<sub> </sub>And the limiting case
-    D itself.
+- question: |
+    What are the equations for the distributed Bellman-Ford algorithm?
+    Include formulas for D0, DN+1 and the limiting case D itself.
   answer: <img src="/files/anki/paste-24227910516737.jpg" />
 - question: What other changes are introduced in RIPv2?
   answer: |-
@@ -65,8 +72,9 @@
   answer: FE80::/10
 - question: In whch specification(s) are VLANs defined?
   answer: 802.1Q
-- question: 'What is SNAP and what specification is it an extension of? How long is
-    the SNAP header and what is the effect on the Ethernet MTU? '
+- question: |
+    What is SNAP and what specification is it an extension of?
+    How long is the SNAP header and what is the effect on the Ethernet MTU?
   answer: <img src="/files/anki/paste-11549167058945.jpg" />
 - question: Describe the different kind of equipment that er being used on the layers
     1, 2, and 3 in a network environment and describe their properties relating to
@@ -74,20 +82,21 @@
   answer: |-
     Repeaters and hubs are on layer 1, create one collision domain, single broadcast domain.
     Switches are on layer 2, a single broadcast domain and multiple collision domains.
-    Router on layer 3, all ports different broadcast domains (forms a boundary between broadcast domains, multiple collision domains.
-- question: What is the structure of the IPv6 header? How are the options implemented
-    in IPv6?
+    Router on layer 3, all ports different broadcast domains (forms a boundary between broadcast domains, multiple collision domains)
+- question: What is the structure of the IPv6 header? How are the options implemented in IPv6?
   answer: |-
     <img src="/files/anki/paste-11252814315521.jpg" />
     Options are implemented with the next header field with which you can link different headers together.
 - question: ""
-  answer: "2q = p + 32p = 2q \n- 32\n"
+  answer: |
+    2q = p + 32p = 2q - 32
 - question: |-
     If you subdivide a /17 network into multiple /27 subnetworks, how many possible subnets do you get (excluding subnet zero and the all-ones subnet) and how many possible hosts in each subnet?
     A /p network is subdivided into multiple /q subnetworks in such a way that the number of available subnets is exactly the same as the maximum number of hosts in each subnet.
     Express p as a function of q.
-  answer: "/17 = 32768/27 = 32 = 30 usable host addresses in each /27 subnet\n2<sup>15</sup>/2<sup>5</sup>
-    = 2<sup>10</sup> = 1024 = 1024 -2 = 1022 usable subnets\n2q = p + 32p = 2q \n-
-    32\n"
+  answer: |
+    /17 = 32768/27 = 32 = 30 usable host addresses in each /27 subnet
+    2<sup>15</sup>/2<sup>5</sup> = 2<sup>10</sup> = 1024 = 1024 -2 = 1022 usable subnets
+    2q = p + 32p = 2q - 32
 - question: What is the difference between an interface and a protocol?
   answer: <img src="/files/anki/paste-1357209665537.jpg" />

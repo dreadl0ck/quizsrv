@@ -1,19 +1,17 @@
-- question: Which classical attribute is used to influence your upstream not to use
-    hot potato routing?
+- question: Which classical attribute is used to influence your upstream not to use hot potato routing?
   answer: Multiple Exit Disc (MED)
 - question: What does 'hot potato routing' mean and why is this relevant?
   answer: <img src="/files/anki/paste-24438363914241.jpg" />
-- question: If a certain autonomous system has 4 external BGP peerings, what can you
-    say about the number of internal BGP peerings? Suppose no use is made of route
-    reflectors or other optimalisations.
+- question: |
+    If a certain autonomous system has 4 external BGP peerings, what can you say about the number of internal BGP peerings?
+    Suppose no use is made of route reflectors or other optimalisations.
   answer: 4 routers have to be configured in full mesh, which means 6 peerings.
-- question: What are the usual import and export policies of ISPs with respect to
-    prefixes from providers, peers, customers, and the ISP itself?
+- question: What are the usual import and export policies of ISPs with respect to prefixes from providers, peers, customers, and the ISP itself?
   answer: <img src="/files/anki/paste-23781233917953.jpg" />
-- question: Draw a Venn diagram illustrating the relations between backbone router,
-    internal router, ABR, and ASBR in OSPF
-  answer: <img src="/files/anki/paste-23063974379521.jpg" /><img src="/files/anki/paste-23398981828609.jpg"
-    />
+- question: Draw a Venn diagram illustrating the relations between backbone router, internal router, ABR, and ASBR in OSPF
+  answer: |
+    <img src="/files/anki/paste-23063974379521.jpg" />
+    <img src="/files/anki/paste-23398981828609.jpg" />
 - question: Which multicast addresses does OSPFv2 use?
   answer: "224.0.0.6 \n- ALLDRouters224.0.05 \n- ALLSPFRouters"
 - question: What is the difference between a neighbor and an adjacency in OSPF?
@@ -43,21 +41,24 @@
     in an IPv6 address for the local link
   answer: <img src="/files/anki/paste-21157008900097.jpg" />
 - question: What fields are added to an ethernet frame to support VLANs?
-  answer: VLAN Type (2 bytes, 0x8100), CFI (1 bit, ethernet/token ring), priority
-    (12 bits, used by 802.1p), VLAND ID (12 bits, 0-4095)
+  answer: |
+    VLAN Type (2 bytes, 0x8100)
+    CFI (1 bit, ethernet/token ring)
+    priority (12 bits, used by 802.1p)
+    VLAND ID (12 bits, 0-4095)
 - question: What does VLAN abbreviate and in what specification is it defined?
   answer: |-
     Virtual Local Area Network
     Specification = 802.1Q-2011
 - question: What does SNAP abbreviate and what specification is it based upon?
   answer: |-
-    SNAP =  Sub Netwrok Access Protocol
+    SNAP = Sub Netwrok Access Protocol
     Based on 802.2 LLC
 - question: |-
     Consider the subnet of the IPv6 space given by the union of the prefixes ::/2, 8000::/2, 4000::/3, 6000::/3, c000::/4, and d000::/4.
     Describe this same subnet as the union of prefixes with the maximum possible aggregation.
   answer: |+
-    ::/2         = 00
+    ::/2      = 00
     8000::/2  = 10
     4000::/3  = 010
     6000::/3  = 011

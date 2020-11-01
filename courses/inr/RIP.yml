@@ -73,8 +73,7 @@
     Interior Gateway Routing Protocol, by Cisco.
     Uses a distance vector protocol.
     Basically same as RIP, except it runs on top of IP (protocol 9), has a larger notion of infinity (typically 100, max 255) and accepts up to 4 parallel paths.
-- question: TODO ripv1 subnets, slide 17
-  answer: ""
+
 - question: What's in a RIPv1 packet?
   answer: |-
     Length in bytes; contents:1; Command (request=1, response=2)1; Version (=1)2; Reserved (0)2; Address Family Identifier (=2 for IP)2; Reserved (0)4; IP address (network)8; Reserved (0)4; Metric (max 16=infinity)

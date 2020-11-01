@@ -1,14 +1,14 @@
-- question: Which fields are inside a "BGP packet" header? What are the different
-    "BGP packet" types?
+- question: Which fields are inside a "BGP packet" header? What are the different "BGP packet" types?
   answer: |+
     <img src="/files/anki/paste-6794638262273.jpg" />
-
 - question: What are the three most important BGP attributes and selection criteria
     used in path selection in order of preference?
   answer: <img src="/files/anki/paste-6738803687425.jpg" />
 - question: What methods are available to do IBGP scaling and how do they work?
   answer: |+
-    <img src="/files/anki/paste-6326486827009.jpg" /><img src="/files/anki/paste-6472515715073.jpg" /><img src="/files/anki/paste-6631429505025.jpg" />
+    <img src="/files/anki/paste-6326486827009.jpg" />
+    <img src="/files/anki/paste-6472515715073.jpg" />
+    <img src="/files/anki/paste-6631429505025.jpg" />
 
 - question: Why is IBGP scaling needed?
   answer: IBGP needs a full mesh in order to work.
@@ -21,7 +21,8 @@
 - question: What fields are added in RIPv2 to the packet header used in RIPv1? What
     are the other changes introduced in RIPv2?
   answer: |+
-    <img src="/files/anki/paste-4496830758913.jpg" /><img src="/files/anki/paste-4672924418049.jpg" />
+    <img src="/files/anki/paste-4496830758913.jpg" />
+    <img src="/files/anki/paste-4672924418049.jpg" />
 
 - question: Name five fields included in a RIPv1 packet
   answer: <img src="/files/anki/paste-4209067950081.jpg" />
@@ -33,18 +34,22 @@
 - question: What is a BPDU and what is it used for? What frame format, with which
     parameters, does a BPDU use?
   answer: |+
-    <img src="/files/anki/paste-3010772074497.jpg" /><img src="/files/anki/paste-3328599654401.jpg" /><img src="/files/anki/paste-3478923509761.jpg" />
+    <img src="/files/anki/paste-3010772074497.jpg" />
+    <img src="/files/anki/paste-3328599654401.jpg" />
+    <img src="/files/anki/paste-3478923509761.jpg" />
 
 - question: What is a VLAN and in which standard are VLANs defined? What is the specified
     packet format?
   answer: |+
-    <img src="/files/anki/paste-2297807503361.jpg" /><img src="Vlanid.gif" />
+    <img src="/files/anki/paste-2297807503361.jpg" />
+    <img src="Vlanid.gif" />
 
 - question: |-
     Describe the format of DIX Ethernet and 802.3 Ethernet up to (but not including) the network layer header.
     Discuss SNAP and length issues
   answer: |
-    <img src="/files/anki/paste-1803886264321.jpg" /><img src="/files/anki/paste-2005749727233.jpg" />
+    <img src="/files/anki/paste-1803886264321.jpg" />
+    <img src="/files/anki/paste-2005749727233.jpg" />
 - question: What is the IPv6 network with the largest prefix length that includes
     2015:810:8088::/45, 2015:810:80a0::/44, and 2015:810:80bc::/46
   answer: |-

@@ -1,5 +1,5 @@
 - question: Is it wise to advertise customer routes to providers and peers?
-  answer: "Yes"
+  answer: Yes
 - question: Is it wise to advertise all routes to customers?
   answer: |-
     Yes.
@@ -9,9 +9,10 @@
     No.
     Outgoing route advertisements attract incoming traffic for which you have to pay.
 - question: What is the order of preference for incoming route advertisements?
-  answer: '1: Customers (the customer pays for traffic to and from)2: Peers (the cost
-    for the connection is generally split between the peers)3: Providers (traffic
-    to and from the provider costs money)'
+  answer: |
+    1: Customers (the customer pays for traffic to and from)
+    2: Peers (the cost for the connection is generally split between the peers)
+    3: Providers (traffic to and from the provider costs money)
 - question: What is a peer? (in the context of customers and providers)
   answer: A horizontal relation between two neighbors that allows traffic to flow
     between them without going trough the providers.

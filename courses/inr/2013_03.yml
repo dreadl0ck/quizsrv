@@ -8,14 +8,12 @@
     session? What is the name of the message that reveals this information? What is
     the difference between EBGP and IBGP with respect to loop prevention?
   answer: |-
-    IBGP will have the same AS number.
-    This is specified in the OPEN message.
+    IBGP will have the same AS number. This is specified in the OPEN message.
     <img src="/files/anki/paste-29764123361281.jpg" />
     When BGP updates travel through different Autonomous Systems (AS), EBGP routers prepend their AS to AS PATH attribute.
-     BGP routers use this information to check through which Autonomous Systems certain updates passed.
+    BGP routers use this information to check through which Autonomous Systems certain updates passed.
     If a EBGP speaking router detects its own AS in AS PATH attribute update, the router will ignore the update and will not advertise it further to IBGP neighbors, because it is a routing information loop.
     This is a built in mechanism for loop prevention in BGP.
-
     To avoid routing information loops within the same AS, all IBGP routers must peer with every router within AS (only TCP sessions required, not physical connections) – this is called full mesh IBGP.
     IBGP uses split horizon rule (covered in other article), which states that routes learned from one IBGP neighbor is never sent to the rest of IBGP neighbors.
     That way, when you have full mesh IBGP, routing information loops will not occur, because all routers have the same routing information.
@@ -27,8 +25,9 @@
 - question: |-
     Draw a graph of all adjacencies in a LAN with five routers.
     How many adjacencies are there? What is the difference between the DR and BDR as far as LSAs are concerned?
-  answer: "Everyone becomes adjacent to DR and BDR, so 10 adjacencies. \n\nOnly DR
-    sends out LSA ?"
+  answer: |
+    Everyone becomes adjacent to DR and BDR, so 10 adjacencies.
+    Only DR sends out LSA?
 - question: |-
     Show in a diagram the use of multicast between OSPF routers within a LAN.
     What multicast addresses are in use?
@@ -43,8 +42,7 @@
   answer: <img src="/files/anki/paste-26787711025153.jpg" />
 - question: |-
     Draw the result of the Dijkstra algorithm in the following graph, starting from the source node "a".
-    Label the nodes "b", "c", "d", ...
-    in the order of addition to the shortest path tree and make the dotted lines solid for edges belonging to this shortest path tree.
+    Label the nodes "b", "c", ..., in the order of addition to the shortest path tree and make the dotted lines solid for edges belonging to this shortest path tree.
     <img src="/files/anki/paste-26177825669121.jpg" />
   answer: <img src="/files/anki/paste-26491358281729.jpg" />
 - question: What information does RIPv2 put in the reserved fields in a RIPv1 packet?
@@ -61,7 +59,6 @@
   answer: |-
     <img src="/files/anki/paste-23789823852545.jpg" />
     When one link fails, the network splits into two?
-
     For a ring, you can only use the 'infinity is finite' or 'poisoned reverse' solutions due to the reason below.
     <img src="/files/anki/paste-25585120182273.jpg" />
 - question: What are the equations for the distributed Bellman-Ford algorithm? Give
@@ -80,11 +77,8 @@
 - question: |-
     IPv6 uses hardware MAC addresses in its autoconfiguration.
     How does this work and what are the two differences with respect to the IEEE procedure used for embedding MAC-48 into EUI-64?
-  answer: |2+
-
+  answer: |
     <img src="/files/anki/paste-20486994001921.jpg" />
-
-
     <img src="/files/anki/paste-21401822035969.jpg" />
     Not too sure about the second part of the question
 
@@ -110,29 +104,31 @@
     F = 11111111 = FF::/8 = Multicast
     E = 1111111010 = FE8::/10 = Link-Scoped Unicast
 - question: What is the minimal and maximal size of an IPv4 header? Explain.
-  answer: "\n<img src=\"/files/anki/paste-2259152797697.jpg\" />Note that size is
-    in 32-bit words (so not bytes). \n5 * 32 = 160 bits = 20 bytes\n15 * 32 = 480
-    bits = 60 bytes\n\nMinimal 5 because you need to have all the required fields.\nMaximum
-    15 if you include all the options (given below)\n<img src=\"/files/anki/paste-2680059592705.jpg\"
-    />\n"
+  answer: |
+    <img src="/files/anki/paste-2259152797697.jpg" />
+    Note that size is in 32-bit words (so not bytes).
+    5 * 32 = 160 bits = 20 bytes
+    15 * 32 = 480 bits = 60 bytes
+    Minimal 5 because you need to have all the required fields.
+    Maximum 15 if you include all the options (given below)
+    <img src="/files/anki/paste-2680059592705.jpg" />
 - question: If you subnet at /17 network in multiple /22 networks how many subnets
-    do you get (without counting subnet zero or the all-ones subnet) and how many
-    hosts in each subnet? What confusing could arise if you would allow subnet zero
-    and the all-ones subnet?
-  answer: "/17 = 32768\n/22 = 1024 = 1024 \n- 2 = 1022 usable hosts\n2<sup>15</sup>/2<sup>10</sup>
-    = 2<sup>5</sup> = 32 = 32 -2 = 30 usable subnets\nTraditionally, it was strongly
-    recommended that subnet zero and the all-ones subnet not be used for addressing.\nAccording
-    to RFC 950 leavingcisco.com, \"It is useful to preserve and extend the interpretation
-    of these special (network and broadcast) addresses in subnetted networks.\nThis
-    means the values of all zeros and all ones in the subnet field should not be assigned
-    to actual (physical) subnets.\""
-- question: What is the difference between a locator and an endpoints? Which of the
-    two is a topological notion?
+    do you get (without counting subnet zero or the all-ones subnet) and how many hosts in each subnet?
+    What confusing could arise if you would allow subnet zero and the all-ones subnet?
+  answer: |
+    /17 = 32768
+    /22 = 1024 = 1024 - 2 = 1022 usable hosts
+    2<sup>15</sup>/2<sup>10</sup> = 2<sup>5</sup> = 32 = 32 -2 = 30 usable subnets
+    Traditionally, it was strongly recommended that subnet zero and the all-ones subnet not be used for addressing.
+    According to RFC 950 leavingcisco.com: 'It is useful to preserve and extend the interpretation of these special (network and broadcast) addresses in subnetted networks. This means the values of all zeros and all ones in the subnet field should not be assigned to actual (physical) subnets.'
+- question: |
+    What is the difference between a locator and an endpoints?
+    Which of the two is a topological notion?
   answer: |-
     Locator is specific to interface, endpoint is a host to which the interface is connected.
-
-    Locator is topological notion (see slide)<img src="/files/anki/paste-1662152343553.jpg" />
+    Locator is topological notion
+    <img src="/files/anki/paste-1662152343553.jpg" />
 - question: What is a bipartite graph and how is this used in network modelling?
   answer: |-
-    "A bipartite graph, also called a bigraph, is a set of graph vertices decomposed into two disjoint sets such that no two graph vertices within the same set are adjacent.
-    "<img src="/files/anki/paste-1421634174977.jpg" />
+    A bipartite graph, also called a bigraph, is a set of graph vertices decomposed into two disjoint sets such that no two graph vertices within the same set are adjacent.
+    <img src="/files/anki/paste-1421634174977.jpg" />

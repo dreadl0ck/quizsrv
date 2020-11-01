@@ -8,5 +8,5 @@
 - question: What is split horizon (in relation to "counting to infinity")?
   answer: Not advertising back to the advertiser
 - question: What is poisoned reverse?
-  answer: B reports infinite distance to N back to A (when the link from B to N goes
-    down, and A is behind B from N's point of view).
+  answer: |
+    B reports infinite distance to N back to A in case the link from B to N goes down, and A is behind B from N's point of view.
