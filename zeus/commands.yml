@@ -50,7 +50,7 @@ commands:
         exec: |
             cp -rf courses files pages docker
             GOARCH=amd64 GOOS=linux CGO_ENABLED=0 go build -ldflags "-X main.Version=${VERSION}" -o docker/quizsrv *.go
-            docker build -t dreadl0ck/quizsrv:${VERSION} docker
+            docker build –no-cache -t dreadl0ck/quizsrv:${VERSION} docker
             rm -vf docker/quizsrv
     push-docker:
         exec: |
