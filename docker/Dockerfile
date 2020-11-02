@@ -13,5 +13,8 @@ COPY courses /etc/quizsrv/courses
 EXPOSE 443
 EXPOSE 80
 
+ARG VERSION
+ENV cacheBUSTER VERSION
+
 # start quizsrv
 ENTRYPOINT ["/usr/sbin/quizsrv", "-c=/etc/quizsrv", "-addr=:443", "-tls"]
