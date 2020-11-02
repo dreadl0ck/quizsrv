@@ -13,7 +13,9 @@
     <img src="/files/anki/paste-23063974379521.jpg" />
     <img src="/files/anki/paste-23398981828609.jpg" />
 - question: Which multicast addresses does OSPFv2 use?
-  answer: "224.0.0.6 \n- ALLDRouters224.0.05 \n- ALLSPFRouters"
+  answer: |
+    224.0.0.6 - ALLDRouters
+    224.0.05 - ALLSPFRouters
 - question: What is the difference between a neighbor and an adjacency in OSPF?
   answer: <img src="/files/anki/paste-22720376995841.jpg" />
 - question: Dijkstra example
@@ -37,8 +39,7 @@
   answer: FE80::/10
 - question: What is the equivalent for ARP in IPV6?
   answer: ICMPv6 neighbor discovery
-- question: Give an example of a layer 2 ethernet MAC address and how it can be used
-    in an IPv6 address for the local link
+- question: Give an example of a layer 2 ethernet MAC address and how it can be used in an IPv6 address for the local link
   answer: <img src="/files/anki/paste-21157008900097.jpg" />
 - question: What fields are added to an ethernet frame to support VLANs?
   answer: |
