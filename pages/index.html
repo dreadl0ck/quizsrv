@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="html" data-theme="dark">
   <head>
     <meta charset="utf-8" />
   </head>
@@ -13,10 +13,62 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
+
+    [data-theme="dark"] {
+        color: lime !important;
+        background-color: black !important;
+        fill: lime !important;
+    }
+
+    [data-theme="light"] {
+        color: black !important;
+        background-color: white !important;
+        fill: black !important;
+    }
+    [data-theme="light"] .icon {
+        background-color: black !important;
+    }
+
+    .gesture {
+        background-color: lime;
+        -webkit-mask: url(/files/gesture.svg) no-repeat center;
+        mask: url(/files/gesture.svg) no-repeat center;
+        height: 120px;
+        width: 120px;
+        -webkit-mask-size: 120px;
+        mask-size: 120px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .mouse {
+        background-color: lime;
+        -webkit-mask: url(/files/mouse.svg) no-repeat center;
+        mask: url(/files/mouse.svg) no-repeat center;
+        height: 120px;
+        width: 120px;
+        -webkit-mask-size: 120px;
+        mask-size: 120px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .keyboard {
+        background-color: lime;
+        -webkit-mask: url(/files/keyboard.svg) no-repeat center;
+        mask: url(/files/keyboard.svg) no-repeat center;
+        height: 120px;
+        width: 120px;
+        -webkit-mask-size: 120px;
+        mask-size: 120px;
+        display: block;
+        margin: 0 auto;
+    }
+
     html, body {
       overflow-x: hidden; /* Hide scrollbars */
-      color: lime;
-      background-color: black;
+        color: black;
+        background-color: white;
       font-size: 20px;
       text-align: center;
       margin-bottom: 30px;
@@ -52,8 +104,7 @@
       border: 3px darkgray solid;
       margin-left: 20%;
       margin-right: 20%;
-      padding-left: 20px;
-      padding-right: 20px;
+      padding: 20px;
     }
     .quotes {
         margin-left: 20%;
@@ -80,8 +131,100 @@
     .help p {
         margin: auto 30%;
     }
+
+    .theme-switch-wrapper {
+        position: absolute;
+        align-items: center;
+        display: flex;
+        top: 80px;
+        right: 27px;
+    }
+
+    .theme-switch {
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+        position: relative;
+    }
+
+    .theme-switch input {
+        display: none;
+    }
+
+    .slider {
+        background-color: #ccc;
+        bottom: 0;
+        cursor: pointer;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: .4s;
+    }
+
+    .slider:before {
+        background-color: #fff;
+        bottom: 4px;
+        content: "";
+        height: 26px;
+        left: 4px;
+        position: absolute;
+        transition: .4s;
+        width: 26px;
+    }
+
+    input:checked + .slider {
+        background-color: lime;
+    }
+
+    .slider:hover {
+        background-color: lime;
+    }
   </style>
-  <body>
+  <script>
+      window.addEventListener("load", function (evt) {
+          console.log("index");
+
+          const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+
+          function switchTheme(e) {
+              if (e.target.checked) {
+                  document.documentElement.setAttribute('data-theme', 'dark');
+                  document.getElementById('body').setAttribute('data-theme', 'dark');
+                  document.getElementById('html').setAttribute('data-theme', 'dark');
+
+                  localStorage.setItem('theme', 'dark');
+              }
+              else {
+                  document.documentElement.setAttribute('data-theme', 'light');
+                  document.getElementById('body').setAttribute('data-theme', 'light');
+                  document.getElementById('html').setAttribute('data-theme', 'light');
+
+                  localStorage.setItem('theme', 'light');
+              }
+          }
+
+          toggleSwitch.addEventListener('change', switchTheme, false);
+
+          const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+
+          if (currentTheme) {
+              document.documentElement.setAttribute('data-theme', currentTheme);
+
+              if (currentTheme === 'dark') {
+                  document.getElementById('body').setAttribute('data-theme', 'dark');
+                  document.getElementById('html').setAttribute('data-theme', 'dark');
+
+                  // important!
+                  toggleSwitch.checked = true;
+              } else {
+                  document.getElementById('body').setAttribute('data-theme', 'light');
+                  document.getElementById('html').setAttribute('data-theme', 'light');
+              }
+          }
+      });
+  </script>
+  <body id="body" data-theme="dark">
 
     <a href="/courses"><pre class="nocenter logo">
     ______   __    __  ________
@@ -118,17 +261,24 @@
 
     <div id="version" class="version">{{.Version}}</div>
 
-    <div class="help">
+    <div class="help box">
         <p>$ man quiz</p>
         <br>
-        <img src="/files/keyboard.svg"/>
+        <div class="keyboard icon"></div>
         <p>Use the arrow left/right keys to navigate, up and down to flag as failed, ESC to go back and the f key to switch to fullscreen mode.</p>
         <br>
-        <img src="/files/mouse.svg"/>
+        <div class="mouse icon"></div>
         <p>Left click for next question, right click to flag as failed.</p>
         <br>
-        <img src="/files/gesture.svg"/>
+        <div class="gesture icon"></div>
         <p>Swipe left or right to navigate on touch devices, up and down to flag or unflag questions.</p>
+    </div>
+
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
     </div>
 
   </body>

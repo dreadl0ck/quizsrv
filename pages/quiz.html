@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="height:100%;width:100%;">
+<html style="height:100%;width:100%;" id="html">
   <head>
     <meta charset="utf-8" />
     <script src="/files/quiz.js"></script>
@@ -9,6 +9,26 @@
   </head>
 
   <style>
+    [data-theme="dark"] {
+      color: lime !important;
+      background-color: black !important;
+      fill: lime !important;
+      border-color: transparent transparent transparent lime !important;
+    }
+    [data-theme="dark"] .icon {
+      background-color: lime !important;
+    }
+
+    [data-theme="light"] {
+      color: black !important;
+      background-color: white !important;
+      fill: black !important;
+      border-color: transparent transparent transparent black !important;
+    }
+    [data-theme="light"] .icon {
+      background-color: black !important;
+    }
+
     @font-face {
       font-family: "SF Pro Text Regular";
       src: url("/files/FontsFree-Net-SFProText-Regular.ttf") format("truetype");
@@ -22,8 +42,6 @@
       overflow: hidden; /* Hide scrollbars */
       margin: 0;
       max-width: 100%;
-      color: lime;
-      background-color: black;
       z-index: 1;
       -webkit-overflow-scrolling: touch;
       -webkit-user-drag: none;
@@ -453,8 +471,8 @@
     </div>
     <div id="index" class="index noselect"></div>
     <div id="version" class="version noselect">{{.Version}}</div>
-{{/*    <img id="fullscreen" class="fullscreen noselect" src="/files/fullscreen.svg" alt=""/>*/}}
-    <div class="fullscreen" id="fullscreen"></div>
+
+    <div class="fullscreen icon" id="fullscreen"></div>
   </body>
   <button class='button' id="play"></button>
 </html>

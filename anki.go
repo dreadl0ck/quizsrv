@@ -67,18 +67,11 @@ func ankiImport() {
 			re := regexp.MustCompile("\\.([A-Z]+)")
 			r := strings.NewReplacer("\\n", "\n", "</div>", "", "<div>", "", "&gt;", ">", "&lt;", "<", ". ", ".\n", "<br />", "\n", "&nbsp;", " ", "<br>", "\n", "- ", "\n- ", "src=\"paste-", "src=\"/files/anki/paste-")
 			f := func(in string) string {
-
 				return r.Replace(
-					//strip.StripTags(
 					re.ReplaceAllStringFunc(in, func(m string) string {
 						return strings.Replace(m, ".", ".\n", 1)
 					}),
-					//),
 				)
-			}
-
-			if strings.HasPrefix(n.FieldValues[0], "What are the five different OSPF") {
-				spew.Dump(n)
 			}
 
 			q = append(q, &question{

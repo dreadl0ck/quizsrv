@@ -8,6 +8,24 @@ window.addEventListener("load", function (evt) {
     var previousQuestion = false;
     var currentServerIndex = 0;
 
+    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+
+        if (currentTheme === 'dark') {
+            document.getElementById('body').setAttribute('data-theme', 'dark');
+            document.getElementById('html').setAttribute('data-theme', 'dark');
+            document.getElementById('play').setAttribute('data-theme', 'dark');
+            document.getElementById('fullscreen').setAttribute('data-theme', 'dark');
+        } else {
+            document.getElementById('body').setAttribute('data-theme', 'light');
+            document.getElementById('html').setAttribute('data-theme', 'light');
+            document.getElementById('play').setAttribute('data-theme', 'light');
+            document.getElementById('fullscreen').setAttribute('data-theme', 'light');
+        }
+    }
+
     function baseName(str)
     {
         var base = new String(str).substring(str.lastIndexOf('/') + 1);

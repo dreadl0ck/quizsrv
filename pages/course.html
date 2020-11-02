@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html id="html">
   <head>
     <meta charset="utf-8" />
   </head>
   <script>
       window.addEventListener("load", function (evt) {
+          const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+
+          if (currentTheme) {
+              document.documentElement.setAttribute('data-theme', currentTheme);
+
+              if (currentTheme === 'dark') {
+                  document.getElementById('body').setAttribute('data-theme', 'dark');
+                  document.getElementById('html').setAttribute('data-theme', 'dark');
+              } else {
+                  document.getElementById('body').setAttribute('data-theme', 'light');
+                  document.getElementById('html').setAttribute('data-theme', 'light');
+              }
+          }
+
           var ul = document.getElementById("list");
           var items = ul.getElementsByTagName("li");
           for (var i = 0; i < items.length; ++i) {
@@ -39,6 +53,18 @@
       });
   </script>
   <style>
+      [data-theme="dark"] {
+          color: lime !important;
+          background-color: black !important;
+          fill: lime !important;
+      }
+
+      [data-theme="light"] {
+          color: black !important;
+          background-color: white !important;
+          fill: black !important;
+      }
+
     @font-face {
       font-family: "SF Pro Text Regular";
       src: url("/files/FontsFree-Net-SFProText-Regular.ttf") format("truetype");
@@ -50,11 +76,13 @@
     }
     html, body {
       overflow-x: hidden; /* Hide scrollbars */
-      color: lime;
-      background-color: black;
+      /*color: lime;*/
+      /*background-color: black;*/
       font-size: 20px;
       text-align: center;
       margin-bottom: 30px;
+      color: black;
+      background-color: white;
     }
     a {
       text-decoration: none;
@@ -109,7 +137,7 @@
         padding-inline-start: 0px !important;
     }
   </style>
-  <body>
+  <body id="body">
 
   <a href="/courses"><pre class="nocenter logo">
     ______   __    __  ________
