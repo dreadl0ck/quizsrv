@@ -4,7 +4,7 @@
   answer: |-
     Yes.
     The customer pays for the traffic.
-- question: Is it wise to advertise provider or peer routesto other providers or peers?
+- question: Is it wise to advertise provider or peer routes to other providers or peers?
   answer: |-
     No.
     Outgoing route advertisements attract incoming traffic for which you have to pay.

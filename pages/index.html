@@ -73,6 +73,13 @@
     ul {
         padding-inline-start: 0px !important;
     }
+    img {
+        width: 100px;
+        height: 100px;
+    }
+    .help p {
+        margin: auto 30%;
+    }
   </style>
   <body>
 
@@ -91,13 +98,12 @@
      University of Amsterdam
     </pre></a>
 
-    <br>
-    <br>
-    <br>
-    <br>
 
     <p>
-        Welcome, select a course to get started:
+        Welcome to the SNE quizzer!
+    </p>
+    <p>
+        Select a course to get started:
     </p>
 
     <ul style="list-style-type:none;" class="list" id="list">
@@ -111,6 +117,19 @@
     </ul>
 
     <div id="version" class="version">{{.Version}}</div>
+
+    <div class="help">
+        <p>$ man quiz</p>
+        <br>
+        <img src="/files/keyboard.svg"/>
+        <p>Use the arrow left/right keys to navigate, up and down to flag as failed, ESC to go back and the f key to switch to fullscreen mode.</p>
+        <br>
+        <img src="/files/mouse.svg"/>
+        <p>Left click for next question, right click to flag as failed.</p>
+        <br>
+        <img src="/files/gesture.svg"/>
+        <p>Swipe left or right to navigate on touch devices, up and down to flag or unflag questions.</p>
+    </div>
 
   </body>
 </html>

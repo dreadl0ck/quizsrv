@@ -1,5 +1,8 @@
 - question: What are the protocol values for ICMP, TCP and UDP in IP?
-  answer: ICMP is 1, TCP is 6, and UDP is 17.
+  answer: |
+    1: ICMP
+    6: TCP
+    17: UDP
 - question: Give the IPv4 packet header fields, their length and their purpose.
   answer: |-
     Version (4 bits, 0-3) always 0b0100 (=4);
@@ -40,7 +43,8 @@
     Protip: if the second one is 8.0.0.0 then the second-to-last is 256-8*2 and the third-to-last is 256-8*3.
 - question: What is the difference between CIDR and VLSM?
   answer: |-
-    "The difference is that with VLSM, the recursion is performed on the address space previously assigned to an organization and is invisible to the global Internet. CIDR, on the other hand, permits the recursive allocation of an address block by an Internet Registry to a high-level ISP, a mid-level ISP, a low-level ISP, and a private organization’s network."
+    "The difference is that with VLSM, the recursion is performed on the address space previously assigned to an organization and is invisible to the global Internet.
+    CIDR, on the other hand, permits the recursive allocation of an address block by an Internet Registry to a high-level ISP, a mid-level ISP, a low-level ISP, and a private organization’s network."
     (Source: http://www.ccna4.com/2010/06/difference-between-vlsm-and-cidr.html )
 - question: What is CIDR?
   answer: |-
