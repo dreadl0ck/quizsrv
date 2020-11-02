@@ -92,7 +92,7 @@
     Consider three LANs (L1, L2, and L3), two hosts (H1 and H2), and two routers (R1 and R2).
     Host H1 is connected to LAN L1. Host H2 is connected to LAN L2. Router one is connected to LAN L1 and L3. Router R2 is connected to LAN L3 and L2.
     Draw a bipartite graph representing this situation on layer 3.
-    Suppose LAN L1 is in fact a swicht S, which also has an IP address. How would you represent S in your picture?
+    Suppose LAN L1 is in fact a switch S, which also has an IP address. How would you represent S in your picture?
   answer: |-
     <img src="/files/anki/paste-28578712387585.jpg" />
     S would be on the node side
