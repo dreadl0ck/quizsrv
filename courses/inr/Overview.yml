@@ -40,8 +40,8 @@
     Protip: if the second one is 8.0.0.0 then the second-to-last is 256-8*2 and the third-to-last is 256-8*3.
 - question: What is the difference between CIDR and VLSM?
   answer: |-
-    Internet says: "The difference is that with VLSM, the recursion is performed on the address space previously assigned to an organization and is invisible to the global Internet.
-    CIDR, on the other hand, permits the recursive allocation of an address block by an Internet Registry to a high-level ISP, a mid-level ISP, a low-level ISP, and a private organization’s network." (Source: http://www.ccna4.com/2010/06/difference-between-vlsm-and-cidr.html )
+    "The difference is that with VLSM, the recursion is performed on the address space previously assigned to an organization and is invisible to the global Internet. CIDR, on the other hand, permits the recursive allocation of an address block by an Internet Registry to a high-level ISP, a mid-level ISP, a low-level ISP, and a private organization’s network."
+    (Source: http://www.ccna4.com/2010/06/difference-between-vlsm-and-cidr.html )
 - question: What is CIDR?
   answer: |-
     Classless Inter-Domain Routing is the idea to put the division between the network part and host part of addresses on arbitrary bit positions.

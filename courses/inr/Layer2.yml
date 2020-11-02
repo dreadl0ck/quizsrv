@@ -22,11 +22,13 @@
     Locally assigned IPv6 addresses do the reverse.
 - question: How can one embed an MAC-48 in EUI-64?
   answer: |-
-    Paste FF:FF in the middle:00:30:65:7E:9D:5E ⇒ 00:30:65:FF:FF:7E:9D:5E
+    Paste FF:FF in the middle:
+    00:30:65:7E:9D:5E ⇒ 00:30:65:FF:FF:7E:9D:5E
     But since they are obsolete, you can really just do whatever and could paste FF:FE in there as well.
 - question: How can one embed an EUI-48 in EUI-64?
   answer: |
-    Paste FF:FE in the middle:00:30:65:7E:9D:5E ⇒ 00:30:65:FF:FE:7E:9D:5E
+    Paste FF:FE in the middle:
+    00:30:65:7E:9D:5E ⇒ 00:30:65:FF:FE:7E:9D:5E
 - question: What bits are special in a MAC address?
   answer: I/G bit (individual/group) and U/L (universal/local), the first and second
     bit on the wire because it is sent in LSB format (least significant bit first),

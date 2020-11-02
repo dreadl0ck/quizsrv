@@ -17,8 +17,7 @@
   answer: <img src="/files/anki/paste-40398462386177.jpg" />
 - question: |-
     Draw the result of the Dijkstra algorithm in the following graph, starting from the source node 'a'.
-    Label the nodes 'b', 'c', 'd', ...
-    In the order of addition to the shortest path tree and make the dotted lines solid for edges belonging to this shortest path tree.
+    Label the nodes 'b', 'c', ..., in the order of addition to the shortest path tree and make the dotted lines solid for edges belonging to this shortest path tree.
     Note that each undirected edge may be used in both directions.
     Indicate clearly the direction you use in your drawing.
     <img src="/files/anki/paste-39423504809985.jpg" />
@@ -40,12 +39,12 @@
 - question: How does RIPv2 use multicast? And RIPng?
   answer: |
     RIPv2 from RFC2453: 4.5 Multicasting
-        In order to reduce unnecessary load on those hosts which are not listening to RIP-2 messages, an IP multicast address will be used for periodic broadcasts.
+    In order to reduce unnecessary load on those hosts which are not listening to RIP-2 messages, an IP multicast address will be used for periodic broadcasts.
     The IP multicast address is 224.0.0.9.
     Note that IGMP is not needed since these are inter-router messages which are not forwarded.
-        On NBMA networks, unicast addressing may be used.
+    On NBMA networks, unicast addressing may be used.
     However, if a response addressed to the RIP-2 multicast address is received, it should be accepted.
-        In order to maintain backwards compatibility, the use of the multicast address will be configurable, as described in section 5.1. If multicasting is used, it should be used on all interfaces which support it.
+    In order to maintain backwards compatibility, the use of the multicast address will be configurable, as described in section 5.1. If multicasting is used, it should be used on all interfaces which support it.
     RIPng uses FF02::9 for multicast.
 - question: |
     Why isn't the gateway part of the RIPv1 information?
@@ -68,7 +67,8 @@
   answer: <img src="/files/anki/paste-37297495998465.jpg" />
 - question: Describe the format of DIX Ethernet and 802.3 Ethernet up to the IP header
   answer: |+
-    <img src="/files/anki/paste-36910948941825.jpg" /><img src="/files/anki/paste-37099927502849.jpg" />
+    <img src="/files/anki/paste-36910948941825.jpg" />
+    <img src="/files/anki/paste-37099927502849.jpg" />
 
 - question: Describe the different kinds of equipment that are being used on the layers
     1, 2, and 3 in a network environment and describe their characteristic properties

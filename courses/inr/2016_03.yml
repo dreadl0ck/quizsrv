@@ -78,8 +78,7 @@
     More info: RFC 6052, section 2.2
 - question: Name four different kinds of IPv6 addresses inside which an IPv4 address
     can be embedded
-  answer: |2-
-
+  answer: |
     - Translatable
     - Mapped
     - Converted
