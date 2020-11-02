@@ -121,6 +121,13 @@ func home(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func nobots(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte(`User-agent: *
+		Disallow: /
+	`))
+}
+
 //
 //func pdf(w http.ResponseWriter, r *http.Request) {
 //	var (
