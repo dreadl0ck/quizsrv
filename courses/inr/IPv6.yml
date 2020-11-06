@@ -1,6 +1,6 @@
-- question: In which radix are IPv6 addresses written? And what about the slide number
-    references in all the answers of this anki deck?
+- question: In which radix are IPv6 addresses written?
   answer: Base16 or Hexadecimal.
+
 - question: What replaces gethostbyname() and gethostbyaddr() in IPv6?
   answer: |-
     getaddrinfo() and getnameinfo()
@@ -8,33 +8,37 @@
 - question: What record will `dig -x 1337:a::f` ask for?
   answer: |-
     f.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.a.0.0.0.7.3.3.1.ip6.arpa.
-- question: How does 6to4 work? Was it made for an IPv6-only internet or an IPv4-only
-    internet?
+
+- question: How does 6to4 work?
   answer: |
     Everyone with a public v4 address gets an IPv6 site: 2002:a.b.c.d::/48
     A 6to4 router acts as gateway between 6to4 space to native IPv6 space.
-    It's made for an IPv4-only internet, to connect v6-only islands.
+
+- question: Was 6to4 created for an IPv6-only internet or an IPv4-only internet?
+  answer: It was created for an IPv4-only internet, to connect v6-only islands.
+
 - question: How can one represent an IPv4-only host in an IPv6-only network?
+  answer: Via IPv4-converted addresses.
+
+- question: Name five transition technologies for IPv4 to IPv6
   answer: |-
-    IPv4-converted addresses.
-- question: What are some transition technologies for IPv4 to IPv6?
+    - 6rd (IPv6 Rapid Deployment)
+    - NAT64 and DNS64
+    - DS-Lite (ISP network is IPv6-only, uses v4-in-v6 tunnels and CGNAT)
+    - 6to4
+    - ISATAP and Teredo
+
+- question: What fields does the IPv6 header have, how long are they and what is their purpose?
   answer: |-
-    6rd (IPv6 Rapid Deployment)
-    NAT64 and DNS64
-    DS-Lite (ISP network is IPv6-only, uses v4-in-v6 tunnels and CGNAT)
-    6to4
-    ISATAP and Teredo
-- question: What fields does the IPv6 header have, how long are they and what is their
-    purpose?
-  answer: |-
-    Version (4 bits) always 0110 (=6);
-    Traffic Class (8 bits) 6 bits for Differentiated Services and 2 bits for Explicit Congestion Notification;
-    Flowlabel (20 bits) identifies flows with special requirements;
-    Payload Length (16 bits) including extension headers;
-    Next Header (8 bits) type of following header;
-    Hop Limit (8 bits) forwarding count and loop protection;
-    Source address (128 bits); and
-    Destination Address (128 bits).
+    - Version (4 bits) always 0110 (=6);
+    - Traffic Class (8 bits) 6 bits for Differentiated Services and 2 bits for Explicit Congestion Notification
+    - Flowlabel (20 bits) identifies flows with special requirements
+    - Payload Length (16 bits) including extension headers
+    - Next Header (8 bits) type of following header
+    - Hop Limit (8 bits) forwarding count and loop protection
+    - Source address (128 bits)
+    - Destination Address (128 bits)
+
 - question: What ICMPv6 types are used for NDP?
   answer: |
     - 133: Router Solicitation
@@ -42,9 +46,11 @@
     - 135: Neighbor Solicitation
     - 136: Neighbor Advertisement
     - 137: Redirect Message
+
 - question: What is NDP?
   answer: |-
-    Neighbor Discovery Protocol, used for duplicate address detection / neighbour unreachability detection / discovering network properties / find addresses of neighbours.
+    The Neighbor Discovery Protocol.
+    Used for duplicate address detection / neighbour unreachability detection / discovering network properties / find addresses of neighbours.
     It makes extensive use of multicast.
 
 - question: What is the traditional unicast allocation hierarchy?
@@ -61,21 +67,27 @@
     It has the form ff02::1:ffxx:xxxx and is link-local.
     It is used in Neighbor Solicitation.
 
-- question: Why does 'ping6 fe80::1' typically not work, assuming there is a node
-    with that address?
+- question: Why does 'ping6 fe80::1' typically not work, assuming there is a node with that address?
   answer: |-
     You need to specify an interface.
-    In the example of ping6, you can do this using -I (capital i) and many other tools will have similar options, or you need to add %interface to the address
-    e.g. fe80::1%eth0
+    In the example of ping6, you can do this using the -I flag
+    Other tools will have similar options, sometimes you need to add %interface to the address e.g. fe80::1%eth0
 
-- question: What are the multicast addresses for all nodes, routers (link-local) and
-    routers (site-local)?
-  answer: |-
-    ff02::1, ff02::2 and ff05::2
+- question: What is the multicast address for all nodes?
+  answer: ff02::1
+
+- question: What is the multicast address for routers (link-local)?
+  answer: ff02::2
+
+- question: What is the multicast address for routers (site-local)?
+  answer: ff05::2
 
 - question: What scopes are available in a multicast address?
   answer: |-
-    0 (0000) and f (1111) are reserved.2=link-local5=site-locale=global
+    0 (0000) and f (1111) are reserved.
+    2 = link-local
+    5 = site-locale=global
+
 - question: What flags are used in a multicast address?
   answer: |-
     The flags are the third nibble (the first zero in ff00::/8).
@@ -89,19 +101,23 @@
     Short form dictates that leading zeros are skipped.
     Thus ff::/8 is equal to 00ff::/8 and not ff00::/8.
     The remaining byte (the zeroes) are used for flags (4 bits) and scope (4 bits).
+
 - question: What is Unique Local Unicast?
   answer: |-
     The range fc00::/7 is supposed to be subnetted like fdrr:rrrr:rrrr:ssss::/64 where the "r"s are random bits and ssss is a subnet id.
     It's fd instead of fc because the "local bit" is set to 1.
     It's designed so companies using such local space can be merged with a very small chance of collisions.
+
 - question: What is an anycast address?
   answer: |-
     A single address announced from multiple locations.
     It will reach only one endpoint.
     It looks like a normal unicast address (it's allocated from unicast space).
+
 - question: What IPv6 allocation is made for documentation purposes?
   answer: |-
     2001:db8::/32
+
 - question: What are some of the first global unicast address allocations?
   answer: |
     2001::/16 is the first RIR space
@@ -109,25 +125,35 @@
     3ffe::/16 was for 6bone (returned to IANA)
     (sub prefix of fully reserved 4000::/2)5f00::/8 6bone (returned to IANA)
     (sub prefix of fully reserved 4000::/2)
+
 - question: What is algorithmic translation?
   answer: |-
     Stateless.
     Since it's algorithmic, i.e.
     an algorithm can translate it without needing to look anything up (it just does some computation), it doesn't need state.
+
 - question: What does modern algorithmic translation to IPv4 use?
   answer: |-
     64:ff9b::/96 (well known prefix)
-- question: What are some addresses in special-purpose space?
+
+- question: Name 5 special purpose IPv6 addresses
   answer: |-
     ::/128 is "unspecified address", like 0.0.0.0 in IPv4.
     ::1/128 is localhost
     ::a.b.c.d/128 is an IPv4-compatible address (used for automatic tunneling, now deprecated)
     ::ffff:a.b.c.d/128 (from ::ffff:0:0/96) is an IPv4-mapped address (never seen on the wire, only for IPv6-only applications to communicate with v4-only hosts)
     64:ff9b::/96 is a well-known prefix (used by algorithmic translation)
-    100::/64 is the discard-only address block
+
+- question: What is the discard-only address block?
+  answer: 100::/64
+
+- question: What is the purpose of the discard-only address block?
+  answer: Used for sinkholing, useful for defending against DDoS attacks for example.
+
 - question: What is ff00::/8 and 100::/8?
   answer: |-
     ff00::/8 is multicast and 100::/8 is special-purpose.
+
 - question: Name some top level allocations
   answer: |
     ::/8 special-purpose
@@ -136,10 +162,12 @@
     fc00::/7 unique local unicast
     fe80::/10 link-local (link-scoped) unicast
     ff00::/8 multicast
+
 - question: What happened to broadcast in IPv6?
   answer: |-
     This was replaced by multicast.
     (unfortunately ISPs do not know how to route this so most traffic is blocked)
+
 - question: |
     What is the short form of
     0000:0000:0130:1000:0001:0000:0000:0001/64?
@@ -147,26 +175,33 @@
     0:0:130:1000:1::1/64
     You can choose yourself where you place the double colon, but there cannot be two double colons.
     It could also have been ::130:1000:1:0:0:1/64.
+
 - question: Can mixed notation of IPv4 also be used in IPv6
-  answer: duh
+  answer: |
+    ?
+
 - question: What is mixed notation in IPv4?
   answer: |-
     A host and network in one notation.
     You'll probably wonder "huh, that's just normal notation right?" and the answer is yes.
     Something like 131.211.140.25/26 where the network is 131.211.140.0/26.
+
 - question: What might move people to use IPv6?
   answer: |-
-    QoS (flowlabel is present in the standard header) and hierarchical routing (nothing new, but we have space to expand again)
+    - QoS (flowlabel is present in the standard header)
+    - Hierarchical routing (nothing new, but we have space to expand again)
+
 - question: What is the advantage of "no NAT needed"?
-  answer: |-
-    The end-to-end principle could be reinstated.
+  answer: The end-to-end principle could be reinstated.
+
 - question: What protocol is used in stateful autoconfiguration for IPv6?
-  answer: |-
-    DHCPv6
+  answer: DHCPv6
+
 - question: What does "built-in security" mean?
   answer: |-
     Anyone implementing IPv6 is required by the spec to implement IPSEC.
     Therefore anyone speaking IPv6 can also speak IPSEC.
+
 - question: Why should IPv6 be used?
   answer: |
     - Many more addresses (how many more?)
@@ -176,6 +211,125 @@
     - No NAT needed
     - Mobility (direct end-to-end communication)
     - Optimized headers (fixed length (40 bytes) with extension header mechanism)
-- question: How many more addresses are there in IPv6?
+
+- question: How long is an IPv6 header?
+  answer: 40 bytes
+
+- question: How many more addresses are there in IPv6 compared to IPv4?
   answer: |
     (2^128) / (2^32) = 2^96
+
+- question: How many _bits_ is the length of an IPv6 address?
+  answer: 128 bits
+
+- question: How many _bytes_ is the length of an IPv6 address?
+  answer: 16 bytes
+
+- question: What is the length of a Nibble in IPv6?
+  answer: 4 bits - one hexadecimal digit
+
+- question: How many nibbles form a block in IPv6?
+  answer: 4
+
+- question: How many blocks of nibbles make up an IPv6 address?
+  answer: 8 blocks of 4 nibbles = 32 hex digits
+
+- question: Whats the name for a group of 4 nibbles?
+  answer: quartet
+
+- question: Whats the length of a quartet in IPv6?
+  answer: 16 bits
+
+- question: On which date was the World IPv6 Launch?
+  answer: June 6, 2012
+
+- question: Which anycast address has been required from the very beginning?
+  answer: |
+    Subnet-router anycast (deprecated since 2011)
+    For each subnet, the address with all interface id bits set to zero.
+
+- question: What is the use of the subnet-router anycast address?
+  answer: Useful to be able to find the nearest router connected to a network, _from the outside_.
+
+- question: How is a multicast address structured?
+  answer: |
+    8 + 4 + 4 + 112 bits
+    - 8 bits ones
+    - 4 bits flag
+    - 4 bits scope
+    - 112 bits multicast group id
+
+- question: Is it allowed to write ff00::/8 as ff::/8?
+  answer: |
+    No.
+    Trailing zeroes may not be skipped, only leading zeroes.
+
+- question: Does IPv6 use ARP?
+  answer: |
+    No.
+    IPv6 makes use of ICMPv6 to discover addresses and status of neighbors.
+
+- question: Name three uses of ICMPv6 for address and status discovery in IPv6
+  answer: |
+    - discover properties of networks, prefixes and routers
+    - execute Duplicate Address Detection (DAD)
+    - execute Neighbor Unreachability Detection (NUD)
+
+- question: Which protocol makes extensive use of link local scoped multicast?
+  answer: The Neighbor Discovery Protocol (NDP)
+
+- question: What does SLAAC stand for?
+  answer: StateLess Address AutoConfiguration
+
+- question: What does StateLess Address AutoConfiguration do?
+  answer: |
+    - First, acquires a link-local address (with DAD)
+    - Then, uses a router advertisement to:
+      - check that autonomous flag is set for a given prefix
+      - generate interface identifier
+      - Apply Duplicate Address Detection
+
+- question: Name five IPv6 Next Header types
+  answer: |
+      - 0: HOPOPT
+      - 6: TCP
+      - 17: UDP
+      - 41: IPv6
+      - 43: IPv6-Route
+
+- question: Name three _older_ IETF transition techniques
+  answer: |
+      - Client and server dual stack
+      - Stateless IP / ICMP Translation (SIIT)
+      - Bump in the Stack (BIS)
+
+- question: Name three _current_ IETF transition techniques
+  answer: |
+    - Client and server dual stack
+    - 6to4
+    - ISATAP
+
+- question: How do IPv6 only client reach IPv4 only servers?
+  answer: |
+    Basically one big NAT scheme.
+    - RFC 6145: IP/ICMP Translation Algorithm, Header translation
+    - RFC 6146: Stateful NAT64
+    - RFC 6147: DNS64
+
+- question: Which combination of transition techniques results in a possible security nightmare?
+  answer: ISATAP + 6to4
+
+- question: What does ISATAP stand for?
+  answer: Intra-Site Automatic Tunnel Addressing Protocol
+
+- question: How does ISATAP work?
+  answer: |
+    - PREFIX: 0:5efe:a.b.c.d
+    - Uses IPv4 encapsulation inside the domain as data link layer
+    - Default gateway should be a full blown IPv6 router
+
+- question: Which domain name is used for reverse IPv6 lookups?
+  answer: ip6.arpa
+
+- question: Why are reverse lookups of IPv6 addresses considered 'clumsy'?
+  answer: Because the resulting origin names are very long and annoying to read.
