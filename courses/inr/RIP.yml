@@ -5,8 +5,13 @@
     One can reset t he next hop using ::.
 - question: What is the packet format of RIPng?
   answer: |-
-    Length in bytes; value1; command (1=request, 2=response)1; version (=1, because it's the first version of the new protocol RIPng)2; reserved (must be 0)16; IPv6 prefix2; route tag1; prefix length (number of bits that is the network portion)1; metric (16=inf)
-    Fields `prefix` through `metric` can be repeated.
+    Length in bytes; value1; command (1=request, 2=response)
+    1; version (=1, because it's the first version of the new protocol RIPng)
+    2; reserved (must be 0)
+    16; IPv6 prefix2; route tag
+    1; prefix length (number of bits that is the network portion)
+    1; metric (16=inf)
+    Fields `prefix` through `metric` can be repeated
 - question: What destination address does RIPng use?
   answer: ff02::9, the all-rip-routers mcast address.
 - question: What's the maximum length of RIPng packets?
