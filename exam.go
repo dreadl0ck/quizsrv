@@ -51,6 +51,8 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(err)
 	}
 
+	fmt.Println("mkexam", r.RemoteAddr, r.UserAgent())
+
 	for c, n := range cou.Info.Exam {
 		var (
 			category = cou.Categories[c]
@@ -59,6 +61,7 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 			val      = r.FormValue(c)
 			flagged  []string
 		)
+
 		if len(category) == 0 {
 			continue
 		}
@@ -149,6 +152,10 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 			}
 
 			done = append(done, current)
+
+			if len(done) == len(category) {
+				break
+			}
 		}
 	}
 
