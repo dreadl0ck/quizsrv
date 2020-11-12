@@ -16,19 +16,19 @@
     why set the bit to universal when you locally administer it
     why skip bits 64-71 when creating a ... a what?
   answer: ""
-- question: How to put a MAC address, ahem, EUI-64 in an IPv6 address?
+- question: How to put a EUI-64 MAC address in an IPv6 address?
   answer: |-
     Flip the U/L bit (from 0 to 1 in the example).
     Locally assigned IPv6 addresses do the reverse.
 - question: How can one embed an MAC-48 in EUI-64?
   answer: |-
-    Paste FF:FF in the middle:
+    Add FF:FF in the middle:
     00:30:65:7E:9D:5E ⇒ 00:30:65:FF:FF:7E:9D:5E
-    But since they are obsolete, you can really just do whatever and could paste FF:FE in there as well.
 - question: How can one embed an EUI-48 in EUI-64?
   answer: |
-    Paste FF:FE in the middle:
+    Add FF:FE pr FF:FF in the middle:
     00:30:65:7E:9D:5E ⇒ 00:30:65:FF:FE:7E:9D:5E
+    Since MAC-48 addresses are obsolete, both FF:FE and FF:FF may be used.
 - question: What bits are special in a MAC address?
   answer: I/G bit (individual/group) and U/L (universal/local), the first and second
     bit on the wire because it is sent in LSB format (least significant bit first),
