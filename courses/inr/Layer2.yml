@@ -84,16 +84,16 @@
 - question: Do bridges and switches create a single or multiple _broadcast domains_?
   answer: Single Broadcast Domain
 
-- question: Name the commitee responsible for the Media Access Control Data link sublayer
+- question: Name the committee responsible for the Media Access Control Data link sublayer
   answer: IEEE 802.3
 
-- question: Name the commitee responsible for the Logical Link Control sublayer
+- question: Name the committee responsible for the Logical Link Control sublayer
   answer: IEEE 802.2
 
-- question: Name the commitee responsible for specification of bridges and switches and their configuration algorithms
+- question: Name the committee responsible for specification of bridges and switches and their configuration algorithms
   answer: IEEE 802.1
 
-- question: Name the commitee responsible for wireless protocols
+- question: Name the committee responsible for wireless protocols
   answer: IEEE 802.11
 
 - question: How many extra bytes are introduced by the the LLC header?
