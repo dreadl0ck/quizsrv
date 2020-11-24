@@ -333,3 +333,71 @@
 
 - question: Why are reverse lookups of IPv6 addresses considered 'clumsy'?
   answer: Because the resulting origin names are very long and annoying to read.
+
+- question: How many IPv4 addresses are wasted due to being reserved?
+  answer: |
+    1/16 of the total.
+    Good example for legacy software issues.
+
+- question: How many octets in a class B directed broadcast equal 255?
+  answer: |
+    2 or 3
+    in the network part there can be a 255
+    first octet can't be 255 - would fall into reserved range or broadcast
+    but second octet can be 255 and has been given out in some cases
+
+- question: Why are broadcasts often not permitted?
+  answer: Because they can be used for Denial of Service attacks against remote networks.
+
+- question: What is the aggregated length of the 16 class B private networks?
+  answer: |
+    aggregated range is /12
+    one class B network is /16
+    all 16 class B networks: 4 bits needed for network part
+    (2^4=16) -> /12
+
+- question: Classical RFC 950 subnetting with a mask of 255.255.255.72 gives how many subnetworks?
+  answer: |
+    2 subnetworks 62 hosts
+    2^2 - 2 for networks
+    remaining bits for the host are 6: 2^6=64 hosts
+    subtract 2 for not using 00 and 11 in RFC 950 = 62 hosts
+
+- question: How is collecting network and aggregating them in a bigger system called?
+  answer: supernetting
+
+- question: How is splitting up networks into smaller systems called?
+  answer: subnetting
+
+- question: Is VLSM related to _subnetting_ or to _supernetting_?
+  answer: |
+    subnetting.
+    VLSM = Variable Length _Subnet_ Masks
+
+- question: Is CIDR related to _subnetting_ or to _supernetting_?
+  answer: |
+    mainly supernetting.
+    CIDR moves border of network and hosts to an arbitrary position, used to aggregate multiple networks.
+    But can also be used for subnetting.
+
+- question: What is the second prefix with prefix length 17?
+  answer: |
+    0.0.128.0/17
+    First 16 bit are zeroes, 17th bit is 1 followed by zeroes
+    1000 0000 -> 128
+
+- question: According to the original semantics of subnetting and data links, point to point links should use which prefix?
+  answer: |
+    /30 or smaller
+    You want to allocate IP addresses to both sides -> needs at least two bits for host part
+    If smaller, you would waste address space.
+
+- question: What link types should be avoided according to the IAB?
+  answer: |
+    to be avoided: multi-link - produces all kinds of issues
+    possible: multi-subnet - added to IPv4, more practical in IPv6
+
+- question: The length of an IPv4 header is?
+  answer: |
+    20 bytes without options
+    20-40 bytes with options
