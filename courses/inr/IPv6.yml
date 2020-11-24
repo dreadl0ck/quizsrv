@@ -401,3 +401,56 @@
   answer: |
     20 bytes without options
     20-40 bytes with options
+
+- question: Whats the growth factor for the number of IPv6 addresses compared to IPv4?
+  answer: |
+    2^96
+    128 - 32 = 96 additional bits
+
+- question: Whats the IPv6 header length?
+  answer: 40 bytes
+
+- question: Name the subnet mask corresponding to the mixed network/host 131.211.140.89/26
+  answer: |
+    255.255.255.192
+    192 = 128 + 64
+
+- question: The IPv6 address 2001:611:158:960::70 is in full?
+  answer: 2001:0611:0158:0960:0000:0070
+
+- question: Name the first four bits of the prefix 64:ff9b::/8
+  answer: |
+    0000
+    64 is actually encoded as 0064
+
+- question: Can the prefix pairs 2000::/3 and 4000::/3 be aggregated?
+  answer: No
+
+- question: Can the prefix pairs 4000::/3 and 8000::/3 be aggregated?
+  answer: No
+
+- question: Can the prefix pairs 4000::/3 and 6000::/3 be aggregated?
+  answer: Yes
+
+- question: Can the prefix pairs 6000::/3 and 8000::/3 be aggregated?
+  answer: No
+
+- question: Whats the subnet router anycast address for the network 2001:610:158:960::/64?
+  answer: |
+    2001:610:158:960::
+    Subnet router anycast address is formed by zeroing the host part.
+
+- question: What is the fc00::/7 prefix used for?
+  answer: Unique site local addresses
+
+- question: What is the ff00::/7 prefix used for?
+  answer: Multicast addresses
+
+- question: What is the fe80::/7 prefix used for?
+  answer: Link-local addresses.
+
+- question: Is there a difference between link-local and link-scoped addresses?
+  answer: No, its a synonym.
+
+- question: Is there a difference between unique site local and site-local addresses?
+  answer: No, Site-local was the old name.
