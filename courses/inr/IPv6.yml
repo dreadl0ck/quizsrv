@@ -454,3 +454,49 @@
 
 - question: Is there a difference between unique site local and site-local addresses?
   answer: No, Site-local was the old name.
+
+- question: What is the general multicast prefix?
+  answer: ff00::/8
+
+- question: What is the multicast prefix for link scoped multicast?
+  answer: ff02::/16
+
+- question: Name a reason why ping6 ff02::1 might fail
+  answer: |
+    If there are multiple interfaces attached, it is not clear which one to choose.
+    You can specify the interface with the -I flag on Unix systems.
+    Or use the ip%interface notation.
+
+- question: What protocol is used for neighbor discovery?
+  answer: ICMPv6
+
+- question: Name a field from the IPv4 header that has no equivalent in the IPv6 header
+  answer: |
+    The IP header length.
+    For IPv6 it is always 40 bytes.
+
+- question: Which transistion technology uses the prefix 2002::/16?
+  answer: 6to4
+
+- question: Which combination of transistion technologies is potentially dangerous?
+  answer: |
+    6to4 and ISATAP
+    Can lead to private addresses becoming public in some cases.
+
+- question: How are the v6 addresses called, that contain an v4 address used on the v6 side of an v6 to v4 gateway?
+  answer: IPv4-converted
+
+- question: Whats the notion for v4 addresses used by a software IPv6 stack, but never seen on the wire?
+  answer: IPv4-mapped
+
+- question: Whats the notion for v4 addresses to build automatic tunnels?
+  answer: IPv4-compatible
+
+- question: Whats a generic notion for embedding a v4 address in a given v6 prefix?
+  answer: IPv4-embedded
+
+- question: How are addresses on the v4 side of a gateway called
+  answer: IPv4-translatable
+
+- question: IPv6 PTR records for reverse address lookups are part of which domain?
+  answer: ip6.arpa.
