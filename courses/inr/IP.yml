@@ -500,3 +500,13 @@
 
 - question: IPv6 PTR records for reverse address lookups are part of which domain?
   answer: ip6.arpa.
+
+- question: What does the command ip maddress display to the user?
+  answer: The multicast addresses for all interfaces
+
+- question: How many AS are there in total?
+  answer: |
+    Aug 2019: 92,000
+
+- question: What does NBMA stand for?
+  answer: Non Broadcast Multiple Address
