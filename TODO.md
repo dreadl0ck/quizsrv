@@ -1,5 +1,6 @@
 # TODOs
 
+- polls with auto-timeout?
 - add a field to provide a tip for a question
 - show number of sessions on index page
 - add field for verbose explanation
