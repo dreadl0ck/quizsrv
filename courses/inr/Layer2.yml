@@ -76,7 +76,9 @@
     Notably *not* switches.
 
 - question: At which layer does a hub operate and what is another word for it?
-  answer: Physical; multiport repeater.
+  answer: |
+    Physical layer.
+    Also called multiport repeater.
 
 - question: Do bridges and switches create a single or multiple _collision domains_?
   answer: Multiple Collision Domains
@@ -147,3 +149,44 @@
     2. I: Instance Tag
     3. S: Service Tag (for provider)
     4. C: Client Tag
+
+- question: What is the best representation for a bridged LAN?
+  answer: |
+    The most extensive:
+    Nodes for bridges and LAN segments, so that interfaces between them are given by edges.
+
+- question: The root bridge in STP can have which types of ports?
+  answer: Only designated ports.
+
+- question: If the network is already a tree, what can be done with STP?
+  answer: STP can be run optionally.
+
+- question: The election of the STP root bridge is what?
+  answer: Not sticky.
+
+- question: A BDPU uses which DSAP?
+  answer: DSAP 0x42
+
+- question: A BDPU uses which multicast?
+  answer: |
+    01:80:C2:00:00:00
+    Multicasts can be recongized by the leading zeros on the wire.
+
+- question: Which protocol was standardized in 802.Q?
+  answer: Multiple Spanning Tree Protocol (MSTP)
+
+- question: Does the default route have the longest or shortest prefix?
+  answer: shortest prefix
+
+- question: Is the default route the least or most preferred?=
+  answer: least preferred
+
+- question: Which routing protocol is used for Inter-AS routing?
+  answer: BGP
+
+- question: What type of routing algorithm is Bellman-Ford?
+  answer: Distance vector algorithm
+
+- question: Relaxation in Dijkstras algorithm is done for?
+  answer: Only the non-permanent nodes, using only the latest permanent node.
+

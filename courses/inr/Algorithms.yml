@@ -3,10 +3,48 @@
     In a mesh of A, B and C, where only A is connected to network N, when the link A-N fails, B or C might still advertise the router to N to A.
     Because B might hear the route from A, and B might tell C, C might think it has a route to N via B.
     If B simply doesn't advertise back to the advertiser (A), and C does not advertise back to B, then still, C might advertise the route to A.
+
 - question: What are solutions for counting to infinity?
   answer: Split horizon and Poison(ed) reverse
+
 - question: What is split horizon (in relation to "counting to infinity")?
-  answer: Not advertising back to the advertiser
+  answer: Not advertising back to the advertiser.
+
 - question: What is poisoned reverse?
   answer: |
     B reports infinite distance to N back to A in case the link from B to N goes down, and A is behind B from N's point of view.
+
+- question: In Bellman-Ford as applied for RIP, what type of target is being used?
+  answer: |
+    A fixed target.
+    The algorithm takes in a target and varies the source, by listening to annoucements of neighbors.
+
+- question: In Dijkstra's Shortest Path Algorithm one uses?
+  answer: A varying source and fixed targets.
+
+- question: Which algorithm uses a forest of trees to construct a minimum spanning tree?
+  answer: |
+    Kruskal.
+    Runs in parallel and joins all the subtrees into a single one.
+
+- question: Name two algorithms that calculate a minimum spanning tree
+  answer: Kruskal and Prim
+
+- question: What information is distributed by the RIP protocol?
+  answer: |
+    Prefixes, gateways and metrics inside the routing table
+    But gateway information is not distributed.
+    So the answer is: Prefixes and metrics.
+
+- question: Which timer is not specified in an RFC?
+  answer: |
+    Hold-on timer.
+    Was added by Cisco later on, to avoid spreading invalid routing information.
+
+- question: VLSM and CIDR are supported by which protocol?
+  answer: Both together are only supported in EIGRP.
+
+- question: Which RIPv2-extension of RIPv1 was added as a hack?
+  answer: |
+    Authentication.
+    Stored in the first routing entry.
