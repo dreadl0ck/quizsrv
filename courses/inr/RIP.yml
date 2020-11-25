@@ -2,7 +2,7 @@
   answer: |-
     Put the next hop in place of the prefix and fill the remaining fields (route tag, prefix length and metric) with 0x0000, 0x00 and 0xff.
     The prefixes following will use this next hop.
-    One can reset t he next hop using ::.
+    One can reset the next hop using ::
 - question: What is the packet format of RIPng?
   answer: |-
     Length in bytes; value1; command (1=request, 2=response)
@@ -21,8 +21,8 @@
 - question: What protocol stack does RIPng use?
   answer: IPv6 -> UDP port 521
 - question: What is the destination of RIPv2 packets?
-  answer: 'The broadcast address was replaced by a multicast address, the same as
-    EIGRP: 224.0.0.9 (which is not forwarded).'
+  answer: |
+    The broadcast address was replaced by a multicast address, the same as EIGRP: 224.0.0.9 (which is not forwarded)
 - question: What is the Next Hop field for in RIPv2?
   answer: Used when best next hop does not speak RIP itself
 - question: What does each hop do with the route tag field of RIPv2 and what is its
