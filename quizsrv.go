@@ -50,6 +50,7 @@ type TemplateData struct {
 
 func main() {
 
+	fmt.Println(os.Args)
 	flag.Parse()
 	rand.Seed(time.Now().UnixNano())
 
