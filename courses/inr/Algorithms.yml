@@ -48,3 +48,45 @@
   answer: |
     Authentication.
     Stored in the first routing entry.
+
+- question: Which protocol was standardized in 802.Q?
+  answer: Multiple Spanning Tree Protocol (MSTP)
+
+- question: Does the default route have the longest or shortest prefix?
+  answer: shortest prefix
+
+- question: Is the default route the least or most preferred?
+  answer: least preferred
+
+- question: Which routing protocol is used for Inter-AS routing?
+  answer: BGP
+
+- question: What type of routing algorithm is Bellman-Ford?
+  answer: Distance vector algorithm
+
+- question: Relaxation in Dijkstras algorithm is done for?
+  answer: Only the non-permanent nodes, using only the latest permanent node.
+
+- question: In the Bellman-Ford distance vector algorithm, as applied for RIP, one uses what kind of source and target?
+  answer: A varying source and a fixed target
+
+- question: In Dijkstra's Shortest Path Algorithm one uses?
+  answer: A fixed source (also called single source shortest path algorithm)
+
+- question: Which algorithm uses a forest of trees to construct a minimum spanning tree?
+  answer: Kruskal (Minimum Spanning Tree Algorithm)
+
+- question: The RIP protocol distributes what information?
+  answer: Prefixes and metrics are distributed to the neighbors.
+
+- question: Is the gateway information distributed by the RIP protocol?
+  answer: No, only prefixes and metrics are distributed to the neighbors.
+
+- question: Which timer is not specified in an RFC?
+  answer: The hold-down timer (was added by Cisco later on, to prevent propagating invalid routing information)
+
+- question: VLSM and CIDR is supported by which protocols?
+  answer: Only in EIGRP.
+
+- question: Which RIPv2-extension of RIPv1 is added as a hack?
+  answer: Authentication

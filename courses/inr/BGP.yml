@@ -1,30 +1,63 @@
 - question: Is it wise to advertise customer routes to providers and peers?
   answer: Yes
+
 - question: Is it wise to advertise all routes to customers?
   answer: |-
     Yes.
     The customer pays for the traffic.
+
 - question: Is it wise to advertise provider or peer routes to other providers or peers?
   answer: |-
     No.
     Outgoing route advertisements attract incoming traffic for which you have to pay.
+
 - question: What is the order of preference for incoming route advertisements?
   answer: |
     1: Customers (the customer pays for traffic to and from)
     2: Peers (the cost for the connection is generally split between the peers)
     3: Providers (traffic to and from the provider costs money)
+
 - question: What is a peer? (in the context of customers and providers)
   answer: A horizontal relation between two neighbors that allows traffic to flow
     between them without going trough the providers.
+
 - question: What is the relation between a customer and a provider?
   answer: |-
     A provider provides his customers with access to networks that are not otherwise connected to the customer.
     The customer pays the provider for traffic to and from the provider.
+
 - question: What is an Autonomous System (AS)?
   answer: A connected group of networks and routers representing some assigned set
     of IP prefixes and having a single, consistent routing policy both internally
     and externally.
+
 - question: On which network routing protocol is BGP based?
   answer: |-
     Path vector routing protocol.
     Path vector routing is in between distance vector and link state routing.
+
+- question: The order of preference for using routes is?
+  answer: Customers > Peers > Providers
+
+- question: Transit relationships are following which rule?
+  answer: Don't export imports from providers to peers.
+
+- question: _iBGP_ makes sure there are no routing loops by?
+  answer: Using a full mesh and not forwarding from iBGP to iBGP.
+
+- question: _eBGP_ makes sure there are no routing loops, by?
+  answer: Looking for its own AS in the AS_PATH
+
+- question: If a BGP speaker has N BGP sessions, how many RIBs does it have?
+  answer: |
+    2N + 1
+    One for each side of a connection + 1 global DB.
+
+- question: The attribute not used in the path selection algorithm is?
+  answer: NEXT-HOP (not related to path preference)
+
+- question: Which attribute is practically not in use anymore?
+  answer: ORIGIN
+
+- question: The attribute that is related to hot and cold potato routing?
+  answer: MED (Multi Exit Discriminator)
