@@ -61,3 +61,286 @@
 
 - question: The attribute that is related to hot and cold potato routing?
   answer: MED (Multi Exit Discriminator)
+
+- question: Number of connections in a full mesh of iBGP speakers?
+  answer: N(N-1)/2
+
+- question: On what kind of routing strategy is BGP based upon?
+  answer: Path vector routing
+
+- question: How is path vector routing placed among the other routing strategies?
+  answer: In-between distance vector and link state routing.
+
+- question: What is used by BGP to make routing decision?
+  answer: Routing policies
+
+- question: How are BGP routers usually called?
+  answer: BGP speakers
+
+- question: Define the term 'Autonomous System'
+  answer: A connected group of networks and routers, representing an assigned set of IP addresses, using a single, consistent routing policy.
+
+- question: How are transit relations enforced?
+  answer: By applying export filtering.
+
+- question: What kind of traffic is attracted by outgoing route advertisements?
+  answer: Incoming traffic
+
+- question: Are provider and peer routes also advertised to other providers and peers?
+  answer: No, this would attract traffic that one is not being paid for.
+
+- question: Where are customer routes advertised towards?
+  answer: To providers and peers.
+
+- question: Are all incoming routes advertised towards the customer?
+  answer: Yes
+
+- question: What does eBGP stand for?
+  answer: External Border Gateway Protocol
+
+- question: What is eBGP used for?
+  answer: To exchange route prefixes between different ASs, and to implement routing policies.
+
+- question: What is iBGP used for?
+  answer: |
+    Used for BGP neighbors within one and the same AS, in order to create a consistent view among all nodes and to insert locally originated prefixes.
+
+- question: Are routes imported from one iBGP peer distributed to another iBGP peer?
+  answer: |
+    No! This is done to prevent possible routing loops.
+    Loop detection is based on duplicates in AS paths: iBGP cannot detect this.
+
+- question: How does iBGP need to be configured among all nodes in order to function as intended?
+  answer: As a full mesh.
+
+- question: How many Adjacent-RIB-In are kept per peer and what is stored inside?
+  answer: One per peer, unprocessed routes received from peer.
+
+- question: How many Local-RIBs are kept per BGP speaker?
+  answer: One globally per BGP speaker.
+
+- question: How many Adjacent-RIB-Out are kept per peer?
+  answer: One per peer.
+
+- question: What does the Adjacent-RIB-Out contain?
+  answer: Routes after output filtering
+
+- question: Does every AS need an output policy?
+  answer: Yes
+
+- question: What is stored in the Local-RUB?
+  answer: Routes after input filtering and best path selection.
+
+- question: Does every AS need an input policy?
+  answer: Yes
+
+- question: What happens when transmitting BGP updates?
+  answer: The Adj-RIBs-Out is sent to peers.
+
+- question: What happens when a BGP route update is received?
+  answer: |
+    1. Route is installed in Adj-RIB-In
+    2. Input policy is aplied
+    3. Best route selection algorithm is run
+    4. Selected route installed in Loc-RIB
+    5. IP forwarding table influenced
+    6. Apply export policy + possible route aggregation
+    7. Install exported routes in Adj-RIB-Out
+
+- question: Which protocol and port is used for BGP?
+  answer: TCP port 179
+
+- question: What TTL is usually set by eBGP when talking to a neighbor?
+  answer: TTL=1
+
+- question: What does NLRI stand for?
+  answer: |
+    Network Layer Reachability Information.
+    Prefixes that can or can no longer be reached.
+
+- question: Name the attributes for path selection in order of selection importance
+  answer: |
+    1. LOCAL_PREF
+    2. AS_PATH
+    3. ORIGIN (Historical)
+    4. MULTI_EXIT_DISC (MED)
+
+- question: Which BGP attribute is unrelated to path selection?
+  answer: NEXT_HOP
+
+- question: Which BGP attributes are _well-known_ and _mandantory_?
+  answer: AS_PATH, NEXT_HOP, ORIGIN
+
+- question: Which BGP attributes are _well-known_ and _disceretionary_?
+  answer: LOCAL_PREF, ATOMIC_AGGREGATE
+
+- question: Which BGP attributes are _optional_ and _transitive_?
+  answer: COMMUNITIES, AGGREGATOR
+
+- question: Which BGP attributes are _optional_ and _non-transitive_?
+  answer: MULTI_EXIT_DISC (MED)
+
+- question: What is the default value for LOCAL_PREF?
+  answer: 100
+
+- question: Which value wins for LOCAL_PREF?
+  answer: The highest value
+
+- question: Which path wins for AS_PATH?
+  answer: The shortest path, sequence length defines the metric.
+
+- question: What is the purpose of the ORIGIN attribute?
+  answer: Tells where the _route_ originated from.
+
+- question: Which value wins for ORIGIN?
+  answer: The lowest ORIGIN wins.
+
+- question: What is the value of the origin attribute in practice?
+  answer: 0
+
+- question: Name the best route selection criteria in order
+  answer: |
+    1. Drop if own AS in AS_PATH
+    2. Weight: Cisco specific
+    3. Highest Local Preference
+    4. Shortest AS Path
+    5. Lowest Origin: hardly used; historic
+    6. Lowest MED
+    7. Prefer eBGP over iBGP
+
+- question: Name the route preference tiebreakers in order
+  answer: |
+    1. Lowest IGP cost to BGP egress (Next Hop)
+    2. "Oldest" received path
+    3. Lowest Router ID
+    4. Lowest neighbor IP address
+
+- question: Why is the term 'message' used instead of packet when talking about BGP?
+  answer: Because a BGP message is part of a TCP stream, and as such can be spread over multiple packets during transport.
+
+- question: What is the length and the value of the BGP marker?
+  answer: 128 bits of 1 (compatibility with former authentication)
+
+- question: What is the minimum length of a BGP message?
+  answer: |
+    19 bytes in total.
+    16 bytes marker + 2 byte length field + 1 byte type field
+
+- question: What types of BGP message do exist?
+  answer: |
+    1. OPEN
+    2. UPDATE
+    3. NOTIFICATION
+    4. KEEPALIVE
+    5. Route-REFRESH
+
+- question: What fields are present in the BGP _OPEN_ message?
+  answer: |
+    1. Version (1 byte)
+    2. My AS (2 bytes)
+    3. Hold Time (2 bytes)
+    4. BGP Identifier (4 bytes)
+    5. Optional Params Len (1 byte)
+    6. Optional Parameters (variable)
+
+- question: What is the most interesting parameter in a BGP _OPEN_ message?
+  answer: The Capabilities Optional Parameter, contains a number of capability codes and data.
+
+- question: Name four example capability codes
+  answer: |
+    - 1: Multiprotocol Extensions
+    - 2: Route Refresh Capability
+    - 7: BGPSec Capability
+    - 65: Support for 4-octet AS number
+
+- question: What fields are present in the BGP _UPDATE_ message?
+  answer: |
+    1. Unfeasible Routes Length
+    2. Withdrawn Routes
+    3. Total Path Attribute Length
+    4. Path Attributes
+    5. Network Layer Reachability Information
+
+- question: How long is a BGP Keepalive message and what are its contents?
+  answer: 19 bytes (marker+length+type) - no content
+
+- question: What are the fields present in a BGP _NOTIFICATION_ message?
+  answer: |
+    1. Error Code
+    2. Error Subcode
+    3. Data
+
+- question: When do BGP _NOTIFICATION_ message get sent?
+  answer: In case of errors.
+
+- question: Name four BGP _NOTIFICATION_ error codes and their value
+  answer: |
+    - 1: Message Header Error
+    - 2: OPEN Error
+    - 3: UPDATE Error
+    - 4: Hold Timer Expired
+
+- question: What does AFI stand for?
+  answer: Address Family Identifier
+
+- question: What is the AFI used for in BGP?
+  answer: For multiprotocol extensions.
+
+- question: Is the AFI used in BGP compatible with the AFI used in RIP?
+  answer: No
+
+- question: What does SAFI stand for?
+  answer: Subsequent Address Family Identifier
+
+- question: What is a SAFI used for?
+  answer: Used for further subdivision, for example to distinguish unicast from multicast.
+
+- question: What are the message fields in a BGP _Route-REFRESH_ message?
+  answer: |
+    1. AFI
+    2. Reserved
+    3. SAFI
+
+- question: How does outbound traffic engineering work?
+  answer: By manipulating inoming routes, for example by changing local preference, or extending inbound AS paths.
+
+- question: What is more complicated - outbound or inbound traffic engineering?
+  answer: Inbound, because it depends on your neighbors policies and is out of your control.
+
+- question: When is a host called 'multi-homed'?
+  answer: When it is part of multiple Autonomous Systems.
+
+- question: What is the official way for Inbound traffic engineering?
+  answer: Manipulating the MED metric.
+
+- question: What is considered a method of last resort for Inbound traffic engineering?
+  answer: Announcing more specific routes, considered bad practice because it increases the size of routing tables.
+
+- question: Can providers overrule your efforts in traffic engineering?
+  answer: Yes
+
+- question: How can agreements between peers be made?
+  answer: By using communities.
+
+- question: Of what type is the Community attribute.
+  answer: Optional and transitive.
+
+- question: What can communities be used for?
+  answer: To communicate preferred treatment of a route.
+
+- question: Describe the well-known semantics of some communities
+  answer: |
+    - NO_EXPORT: don't export beyond the current AS
+    - NO_ADVERTISE: don't export at all
+
+- question: What are route reflector used for?
+  answer: To reduce the number of connections one would have in a full mesh.
+
+- question: Describe the functionality of a route reflector
+  answer: A route reflector has clients with which it peers via iBGP and for which it reflects transitive routes.
+
+- question: Is it possible to have additional autonomous systems inside an autonomous system?
+  answer: Yes, so called private ASs, specified in RFC 5065.
+
+- question: What is an unforeseen use case of eBGP?
+  answer: Its use as an internal routing protocol in data centers with private ASs.
