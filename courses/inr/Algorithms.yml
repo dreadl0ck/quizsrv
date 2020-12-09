@@ -90,3 +90,18 @@
 
 - question: Which RIPv2-extension of RIPv1 is added as a hack?
   answer: Authentication
+
+- question: How can adding memory help in case of link failure?
+  answer: Keeping information about a (longer) backup path towards a node can be used as a fallback.
+
+- question: What does SPT stand for? Name an example algorithm
+  answer: Shortest Path Tree - Dijkstra's algorithm.
+
+- question: What does MST stand for? Name two example algorithms
+  answer: Minimal Spanning Tree - Prim's and Kruskal's algorithms.
+
+- question: In which scenario can Kruskal's algorithm be parallellised?
+  answer: If there is a unique MST (= all distances are different)
+
+- question: In which case is a MST called 'unique'?
+  answer: If all distances (= weights) are different.
