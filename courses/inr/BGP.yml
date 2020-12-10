@@ -17,6 +17,7 @@
     2: Peers (the cost for the connection is generally split between the peers)
     3: Providers (traffic to and from the provider costs money)
 
+
 - question: What is a peer? (in the context of customers and providers)
   answer: A horizontal relation between two neighbors that allows traffic to flow
     between them without going trough the providers.

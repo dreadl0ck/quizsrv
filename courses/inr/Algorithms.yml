@@ -19,7 +19,7 @@
     A fixed target.
     The algorithm takes in a target and varies the source, by listening to annoucements of neighbors.
 
-- question: In Dijkstra's Shortest Path Algorithm one uses?
+- question: In Dijkstra's Shortest Path Algorithm one uses what kind of source and targets?
   answer: A varying source and fixed targets.
 
 - question: Which algorithm uses a forest of trees to construct a minimum spanning tree?
@@ -41,9 +41,6 @@
     Hold-on timer.
     Was added by Cisco later on, to avoid spreading invalid routing information.
 
-- question: VLSM and CIDR are supported by which protocol?
-  answer: Both together are only supported in EIGRP.
-
 - question: Which RIPv2-extension of RIPv1 was added as a hack?
   answer: |
     Authentication.
@@ -53,10 +50,10 @@
   answer: Multiple Spanning Tree Protocol (MSTP)
 
 - question: Does the default route have the longest or shortest prefix?
-  answer: shortest prefix
+  answer: Shortest prefix
 
 - question: Is the default route the least or most preferred?
-  answer: least preferred
+  answer: Least preferred
 
 - question: Which routing protocol is used for Inter-AS routing?
   answer: BGP
@@ -67,10 +64,10 @@
 - question: Relaxation in Dijkstras algorithm is done for?
   answer: Only the non-permanent nodes, using only the latest permanent node.
 
-- question: In the Bellman-Ford distance vector algorithm, as applied for RIP, one uses what kind of source and target?
+- question: In the Bellman-Ford algorithm, as applied for RIP, one uses what kind of source and target?
   answer: A varying source and a fixed target
 
-- question: In Dijkstra's Shortest Path Algorithm one uses?
+- question: In Dijkstra's Shortest Path Algorithm one uses what kind of source?
   answer: A fixed source (also called single source shortest path algorithm)
 
 - question: Which algorithm uses a forest of trees to construct a minimum spanning tree?
