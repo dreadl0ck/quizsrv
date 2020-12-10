@@ -1,12 +1,12 @@
 window.addEventListener("load", function (evt) {
-    var output = document.getElementById("output");
-    var ws;
-    var waitingForAnswer = true
-    var current = 0;
-    var total = 1;
-    var count = 1;
-    var previousQuestion = false;
-    var currentServerIndex = 0;
+    let output = document.getElementById("output");
+    let ws;
+    let waitingForAnswer = true
+    let current = 0;
+    let total = 1;
+    let count = 1;
+    let previousQuestion = false;
+    let currentServerIndex = 0;
 
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
 
@@ -28,14 +28,14 @@ window.addEventListener("load", function (evt) {
 
     function baseName(str)
     {
-        var base = new String(str).substring(str.lastIndexOf('/') + 1);
-        if(base.lastIndexOf(".") != -1)
+        let base = new String(str).substring(str.lastIndexOf('/') + 1);
+        if(base.lastIndexOf(".") !== -1)
             base = base.substring(0, base.lastIndexOf("."));
         return base;
     }
-    var pathArr = window.location.pathname.split('/');
-    var course = pathArr[2];
-    var category = baseName(window.location.pathname);
+    let pathArr = window.location.pathname.split('/');
+    let course = pathArr[2].toLowerCase();
+    let category = baseName(window.location.pathname).toLowerCase();
 
     console.log("protocol", location.protocol);
 
@@ -46,7 +46,7 @@ window.addEventListener("load", function (evt) {
     }
 
     // load the flagged indices from local storage
-    var flagged = JSON.parse(localStorage.getItem(category));
+    let flagged = JSON.parse(localStorage.getItem(category));
     console.log("initial flagged indices", flagged);
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -86,8 +86,8 @@ window.addEventListener("load", function (evt) {
 
     document.onkeydown = checkKey;
 
-    var previous = function() {
-        if (current == 1) {
+    let previous = function() {
+        if (current === 1) {
             return;
         }
         if (ws) {
@@ -96,10 +96,10 @@ window.addEventListener("load", function (evt) {
         }
     }
 
-    var flag = function() {
+    let flag = function() {
         console.log("flagged", flagged);
 
-        if (currentServerIndex == "XXX") {
+        if (currentServerIndex === "XXX") {
             return;
         }
 
@@ -108,15 +108,15 @@ window.addEventListener("load", function (evt) {
             flagged.push(currentServerIndex);
             localStorage.setItem(category, JSON.stringify(flagged));
             addFlag(currentServerIndex);
-            console.log("flagged", currentServerIndex);
+            console.log("flagged", currentServerIndex, category);
         }
     }
 
-    var addFlag = function() {
+    let addFlag = function() {
         console.log("addFlag", currentServerIndex)
-        var elem = document.getElementById("flag");
+        let elem = document.getElementById("flag");
         if (elem == null) {
-            var d = document.createElement("div");
+            let d = document.createElement("div");
             d.className = "circle";
             d.id = "flag";
             document.getElementById("index").appendChild(d);
@@ -127,7 +127,7 @@ window.addEventListener("load", function (evt) {
         return array.filter(el => el !== element);
     }
 
-    var unflag = function() {
+    let unflag = function() {
         console.log("flagged before unflag", flagged);
 
         if (flagged.includes(currentServerIndex)) {
@@ -142,16 +142,16 @@ window.addEventListener("load", function (evt) {
         console.log("flagged after unflag", flagged);
     }
 
-    var clearFlag = function() {
+    let clearFlag = function() {
         console.log("clearFlag", currentServerIndex)
-        var elem = document.getElementById("flag");
+        let elem = document.getElementById("flag");
         if (elem != null) {
             console.log(elem);
             elem.parentNode.removeChild(elem);
         }
     }
 
-    var next = function() {
+    let next = function() {
         previousQuestion = false;
         if (waitingForAnswer) {
             if (ws) {
@@ -167,7 +167,7 @@ window.addEventListener("load", function (evt) {
     }
 
     /* Get the element you want displayed in fullscreen mode (a video in this example): */
-    var elem = document.getElementById("body");
+    let elem = document.getElementById("body");
 
     /* When the openFullscreen() function is executed, open the video in fullscreen.
     Note that we must include prefixes for different browsers, as they don't support the requestFullscreen method yet */
@@ -183,7 +183,7 @@ window.addEventListener("load", function (evt) {
         }
     }
 
-    var noSleep = new NoSleep();
+    let noSleep = new NoSleep();
 
     function enableNoSleep() {
         noSleep.enable();
@@ -348,19 +348,19 @@ window.addEventListener("load", function (evt) {
         e.preventDefault();
     };
 
-    var print = function (message) {
+    let print = function (message) {
 
-        var target = output;
+        let target = output;
 
         if (waitingForAnswer) {
             flush();
             target = document.createElement("B");
         }
 
-        var lines = message.split("\n");
+        let lines = message.split("\n");
 
         for (var i in lines) {
-          var d = document.createElement("p");
+            let d = document.createElement("p");
 
           if (!waitingForAnswer) {
               d.className = "red";
@@ -381,7 +381,7 @@ window.addEventListener("load", function (evt) {
         next();
     });
 
-    var flush = function () {
+    let flush = function () {
       output.innerHTML= "";
     };
 });

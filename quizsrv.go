@@ -25,7 +25,7 @@ import (
 var (
 	Version = "master"
 
-	addr         = flag.String("addr", "localhost:8080", "http service address")
+	addr         = flag.String("addr", "0.0.0.0:80", "http service address")
 	configFolder = flag.String("c", "", "path to the configuration files")
 	tls          = flag.Bool("tls", false, "use TLS")
 	importAnki   = flag.Bool("anki", false, "import anki")
