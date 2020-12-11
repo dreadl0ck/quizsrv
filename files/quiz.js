@@ -348,6 +348,25 @@ window.addEventListener("load", function (evt) {
         e.preventDefault();
     };
 
+    // TODO: integrate into checkKey() function
+    document.addEventListener("keydown", function(event){
+        switch(event.keyCode){
+            case 9:
+                event.stopPropagation();
+                event.preventDefault();
+                console.log("TAB KEY PRESSED");
+                next()
+            case 33: //left or previous
+                console.log("left");
+            case 34: //right or next
+                console.log("right");
+            case 27: //start or play
+                console.log("play");
+            case 116: //stop or exit
+                console.log("stop");
+        }
+    });
+
     let print = function (message) {
 
         let target = output;
