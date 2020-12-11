@@ -1,5 +1,7 @@
 - question: Is it wise to advertise customer routes to providers and peers?
-  answer: Yes
+  answer: |
+    Yes.
+    The customer pays for the traffic.
 
 - question: Is it wise to advertise all routes to customers?
   answer: |-
@@ -72,7 +74,7 @@
 - question: How is path vector routing placed among the other routing strategies?
   answer: In-between distance vector and link state routing.
 
-- question: What is used by BGP to make routing decision?
+- question: What is used by BGP to make routing decisions?
   answer: Routing policies
 
 - question: How are BGP routers usually called?
@@ -172,7 +174,7 @@
 - question: Which BGP attributes are _well-known_ and _mandantory_?
   answer: AS_PATH, NEXT_HOP, ORIGIN
 
-- question: Which BGP attributes are _well-known_ and _disceretionary_?
+- question: Which BGP attributes are _well-known_ and _discretionary_?
   answer: LOCAL_PREF, ATOMIC_AGGREGATE
 
 - question: Which BGP attributes are _optional_ and _transitive_?

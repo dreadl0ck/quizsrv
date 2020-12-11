@@ -1,13 +1,15 @@
 - question: In which radix are IPv6 addresses written?
   answer: Base16 or Hexadecimal.
 
-- question: What replaces gethostbyname() and gethostbyaddr() in IPv6?
+- question: What replaces _gethostbyname()_ and _gethostbyaddr()_ in IPv6?
   answer: |-
-    getaddrinfo() and getnameinfo()
+    _getaddrinfo()_ and _getnameinfo()_
 
 - question: What record will `dig -x 1337:a::f` ask for?
   answer: |-
-    f.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.a.0.0.0.7.3.3.1.ip6.arpa.
+    ```
+    f.{23 * '0.'}.a.0.0.0.7.3.3.1.ip6.arpa.
+    ```
 
 - question: How does 6to4 work?
   answer: |
@@ -50,7 +52,7 @@
 - question: What is NDP?
   answer: |-
     The Neighbor Discovery Protocol.
-    Used for duplicate address detection / neighbour unreachability detection / discovering network properties / find addresses of neighbors.
+    Used for duplicate address detection, discovering network properties, addresses and reachability information.
     It makes extensive use of multicast.
 
 - question: What is the traditional unicast allocation hierarchy?
@@ -61,11 +63,10 @@
     - /48 customer allocations (from ISP)
     - /64 customer network (an IPv6 subnet)
 
-- question: What is a sollicited node address?
+- question: What is a solicited node address?
   answer: |-
     A multicast address which includes 24 bits of the unicast/anycast address on the interface under consideration.
-    It has the form ff02::1:ffxx:xxxx and is link-local.
-    It is used in Neighbor Solicitation.
+    It has the form ff02::1:ffxx:xxxx and is link-local, used in Neighbor Solicitation.
 
 - question: Why does 'ping6 fe80::1' typically not work, assuming there is a node with that address?
   answer: |-
@@ -138,11 +139,13 @@
 
 - question: Name 5 special purpose IPv6 addresses
   answer: |-
+    ```
     ::/128 is "unspecified address", like 0.0.0.0 in IPv4.
     ::1/128 is localhost
     ::a.b.c.d/128 is an IPv4-compatible address (used for automatic tunneling, now deprecated)
-    ::ffff:a.b.c.d/128 (from ::ffff:0:0/96) is an IPv4-mapped address (never seen on the wire, only for IPv6-only applications to communicate with v4-only hosts)
+    ::ffff:a.b.c.d/128 (from ::ffff:0:0/96) is an IPv4-mapped address (never seen on the wire, used for IPv6-only applications to communicate with v4-only hosts)
     64:ff9b::/96 is a well-known prefix (used by algorithmic translation)
+    ```
 
 - question: What is the discard-only address block?
   answer: 100::/64
@@ -178,13 +181,16 @@
 
 - question: Can mixed notation of IPv4 also be used in IPv6
   answer: |
-    ?
+    Yes.
+    For example:
+    ::212.200.31.255
 
 - question: What is mixed notation in IPv4?
   answer: |-
     A host and network in one notation.
-    You'll probably wonder "huh, that's just normal notation right?" and the answer is yes.
+    ```
     Something like 131.211.140.25/26 where the network is 131.211.140.0/26.
+    ```
 
 - question: What might move people to use IPv6?
   answer: |-
@@ -197,7 +203,7 @@
 - question: What protocol is used in stateful autoconfiguration for IPv6?
   answer: DHCPv6
 
-- question: What does "built-in security" mean?
+- question: What does "built-in security" mean in the context of IPv6?
   answer: |-
     Anyone implementing IPv6 is required by the spec to implement IPSEC.
     Therefore anyone speaking IPv6 can also speak IPSEC.
@@ -302,7 +308,7 @@
     remaining bits for the host are 6: 2^6=64 hosts
     subtract 2 for not using 00 and 11 in RFC 950 = 62 hosts
 
-- question: How is collecting network and aggregating them in a bigger system called?
+- question: How is collecting networks and aggregating them in a bigger system called?
   answer: supernetting
 
 - question: How is splitting up networks into smaller systems called?
@@ -333,15 +339,19 @@
 
 - question: What link types should be avoided according to the IAB?
   answer: |
-    to be avoided: multi-link - produces all kinds of issues
-    possible: multi-subnet - added to IPv4, more practical in IPv6
+    To be avoided: multi-link - produces all kinds of issues
+    Possible: multi-subnet - added to IPv4, more practical in IPv6
 
 - question: The length of an IPv4 header is?
   answer: |
     20 bytes without options
     20-40 bytes with options
 
-- question: Name the subnet mask corresponding to the mixed network/host 131.211.140.89/26
+- question: |
+  Name the subnet mask corresponding to the mixed network / host
+  ```
+  131.211.140.89/26
+  ```
   answer: |
     255.255.255.192
     192 = 128 + 64
@@ -467,7 +477,7 @@
     You can specify the interface with the -I flag on Unix systems.
     Or use the ip%interface notation.
 
-- question: What protocol is used for neighbor discovery?
+- question: What protocol is used for neighbor discovery in IPv6?
   answer: ICMPv6
 
 - question: Name a field from the IPv4 header that has no equivalent in the IPv6 header

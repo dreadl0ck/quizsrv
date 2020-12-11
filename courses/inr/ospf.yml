@@ -1,8 +1,8 @@
 - question: A designated router in OSPF in elected for what?
   answer: LANs and NBMAs only
 
-- question: In networks whith what link type does one usually not have full connectivity?
-  answer: In point to multipoint links
+- question: In networks with what link type does one usually not have full connectivity?
+  answer: In point-to-multipoint links
 
 - question: If a LAN contains a DR, a BDR and another router S, then which of them are adjacent?
   answer: |
@@ -27,8 +27,8 @@
 - question: What is an area called that does not flood inter-area prefixes?
   answer: Totally stubby
 
-- question: Is it possible to use multiple ASBRs?
-  answer: Yes
+- question: Is it possible to use multiple ASBRs for a single AS?
+  answer: Yes, backup boundary routers are added for redundancy.
 
 - question: Does the router ID in an OSPF packet header identify the originating, sending or receiving router?
   answer: The sending router
@@ -56,7 +56,7 @@
 - question: The database description packet has which type?
   answer: 2
 
-- question: Variable length part of a hello packet contains what?
+- question: The variable length part of a hello packet contains what?
   answer: The neighbor routes
 
 - question: A link state request packet contains a list of what?
@@ -108,19 +108,15 @@
     A subset of the collection of all point-to-point links.
     No full mesh connectivity, no (B)DR is elected.
 
-- question: How does link state propagation work in a nutshell on point-to-point and point-to-multipoint links?
+- question: How does link state propagation work on point-to-point and point-to-multipoint links?
   answer: |
     - Greetings (Hello packets) are sent out
     - Both ends will become adjacent
 
-- question: How does link state propagation work in a nutshell on broadcast and NBMA networks?
+- question: How does link state propagation work on broadcast and NBMA networks?
   answer: |
-    - Send out Hello packets
-      - via multicast if possible
-      - for NBMA: use manual list of neighbors
-    - Not all neighbors will become adjacent
-      - Only those that are neighbors in the virtual topology
-      - One of the adjacent routers is always (B)DR
+    - Send out Hello packets: via multicast if possible, for NBMA: use manual list of neighbors
+    - Not all neighbors will become adjacent: only those that are neighbors in the virtual topology, one of the adjacent routers is always (B)DR
 
 - question: What can you say about the period of LSP announcements
   answer: |
@@ -142,7 +138,7 @@
 - question: What mechanisms are available to recognize earlier LSPs?
   answer: |
     - Timestamps: bad option, would require clocks to sync
-    - Sequence Numbers: still need an aging procedure to protect against stale information (eg; when a router restarts)
+    - Sequence Numbers: still need an aging procedure to protect against stale information (eg: when a router restarts)
 
 - question: What is a problem with using sequence nunmbers?
   answer: They can wrap around (happened in ARPANET)
@@ -332,10 +328,12 @@
 
 - question: List all fields of an LS _Acknowledgement_ packet
   answer: |
+    ```
     1. LSA header #1
     2. LSA headers #2
     ...
     N. LSA headers #N
+    ```
 
 - question: Do Link State _Acknowledgements_ contain actual data?
   answer: No, they just refer to specific instances.
