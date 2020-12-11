@@ -218,8 +218,8 @@
     - Mobility (direct end-to-end communication)
     - Optimized headers (fixed length (40 bytes) with extension header mechanism)
 
-- question: How long is an IPv6 header?
-  answer: 40 bytes
+- question: Does IPv6 need network address translation?
+  answer: No, there are enough unique addresses (at least for now)
 
 - question: How many more addresses are there in IPv6 compared to IPv4?
   answer: |

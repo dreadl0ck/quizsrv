@@ -54,4 +54,4 @@ commands:
             rm -vf docker/quizsrv
     push-docker:
         exec: |
-            docker push dreadl0ck/quizsrv
+            docker push dreadl0ck/quizsrv:${VERSION}
