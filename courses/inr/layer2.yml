@@ -34,7 +34,7 @@
     or the last two bits of the first byte.
 
 - question: What is the OUI?
-  answer: Orginizationally Unique Identifier
+  answer: Organizationally Unique Identifier
 
 - question: What's the minimum and maximum size of a PDU in DIX Ethernet?
   answer: |

@@ -44,7 +44,7 @@
     - 4: Link State Update
     - 5: Link State ACK
 
-- question: The link state reuqest packet has which type?
+- question: The link state request packet has which type?
   answer: 3
 
 - question: The link state ACK packet has which type?
@@ -177,11 +177,11 @@
     1. HelloInterval (default 10 sec)
     2. RouterDeadInterval (default 40 sec)
 
-- question: Do LSAs get acknolwedged?
+- question: Do LSAs get acknowledged?
   answer: Yes
 
 - question: How is ensured that LSAs time out at about the same time?
-  answer: By using triggerd (re)distribution of MaxAge packets.
+  answer: By using triggered (re)distribution of MaxAge packets.
 
 - question: How are Designated Routers and Backup Designated Routers elected?
   answer: Using Hello packets.
@@ -367,7 +367,6 @@
     - 3: Network Summary LSA
     - 4: AS Boundary Router Summary LSA
     - 5: AS Extrenal LSA
-    - 6: <removed from spec>
     - 7: NSSA LSA
 
 - question: What does NSSA stand for?
@@ -383,7 +382,6 @@
     - 3: The destination network's prefix
     - 4: Router ID of described ASBR
     - 5: The destination network's prefix
-    - 6: <removed from spec>
     - 7: The destination network's prefix
 
 - question: List all possible values for the Router LSA _Type_ field
