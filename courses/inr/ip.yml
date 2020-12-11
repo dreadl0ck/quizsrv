@@ -348,10 +348,10 @@
     20-40 bytes with options
 
 - question: |
-  Name the subnet mask corresponding to the mixed network / host
-  ```
-  131.211.140.89/26
-  ```
+    Name the subnet mask corresponding to the mixed network / host
+    ```
+    131.211.140.89/26
+    ```
   answer: |
     255.255.255.192
     192 = 128 + 64
