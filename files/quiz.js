@@ -202,43 +202,45 @@ window.addEventListener("load", function (evt) {
 
         console.log(e.key);
 
-        if (e.keyCode == '70') {
-            openFullscreen();
-            return false;
-        }
-
-        if (e.keyCode == '32') {
-            // space
-            document.getElementById('play').click();
-            return false;
-        }
-
-        if(e.key === "Escape") {
-            console.log("MENU");
-            window.location =  "/courses/"+course;
-            return false;
-        }
-
-        if (e.keyCode == '38') {
-            // up arrow
-            flag(currentServerIndex);
-        }
-        else if (e.keyCode == '40') {
-            // down arrow
-            unflag(currentServerIndex);
-        }
-        else if (e.keyCode == '37') {
-           // left arrow
-           previous();
-        }
-        else if (e.keyCode == '39') {
-           // right arrow
-           next();
+        switch (e.keyCode) {
+            case 9:
+                e.stopPropagation();
+                e.preventDefault();
+                console.log("TAB KEY PRESSED");
+                next()
+                break;
+            case 70:
+                openFullscreen();
+                return false;
+            case 32:
+                // space
+                document.getElementById('play').click();
+                return false;
+            case "Escape":
+                console.log("MENU");
+                window.location =  "/courses/"+course;
+                return false;
+            case 38:
+                // up arrow
+                flag(currentServerIndex);
+                break;
+            case 40:
+                // down arrow
+                unflag(currentServerIndex);
+                break;
+            case 37:
+               // left arrow
+               previous();
+               break;
+            case 39:
+               // right arrow
+               next();
+               break;
         }
     }
 
-    var autoplayActive = false;
-    var autoplay = {};
+    let autoplayActive = false;
+    let autoplay = {};
 
     function invokeNext() {
         console.log("invokeNext");
@@ -347,25 +349,6 @@ window.addEventListener("load", function (evt) {
     {
         e.preventDefault();
     };
-
-    // TODO: integrate into checkKey() function
-    document.addEventListener("keydown", function(event){
-        switch(event.keyCode){
-            case 9:
-                event.stopPropagation();
-                event.preventDefault();
-                console.log("TAB KEY PRESSED");
-                next()
-            case 33: //left or previous
-                console.log("left");
-            case 34: //right or next
-                console.log("right");
-            case 27: //start or play
-                console.log("play");
-            case 116: //stop or exit
-                console.log("stop");
-        }
-    });
 
     let print = function (message) {
 
