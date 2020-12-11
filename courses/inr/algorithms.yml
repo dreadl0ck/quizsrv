@@ -20,7 +20,7 @@
     The algorithm takes in a target and varies the source, by listening to annoucements of neighbors.
 
 - question: In Dijkstra's Shortest Path Algorithm one uses what kind of source and targets?
-  answer: A varying source and fixed targets.
+  answer: A fixed source and varying targets.
 
 - question: Which algorithm uses a forest of trees to construct a minimum spanning tree?
   answer: |
@@ -32,9 +32,8 @@
 
 - question: What information is distributed by the RIP protocol?
   answer: |
-    Prefixes, gateways and metrics inside the routing table
-    But gateway information is not distributed.
-    So the answer is: Prefixes and metrics.
+    Prefixes and metrics only.
+    Gateway information is not distributed.
 
 - question: Which timer is not specified in an RFC?
   answer: |
@@ -73,9 +72,6 @@
 - question: Which algorithm uses a forest of trees to construct a minimum spanning tree?
   answer: Kruskal (Minimum Spanning Tree Algorithm)
 
-- question: The RIP protocol distributes what information?
-  answer: Prefixes and metrics are distributed to the neighbors.
-
 - question: Is the gateway information distributed by the RIP protocol?
   answer: No, only prefixes and metrics are distributed to the neighbors.
 
@@ -84,9 +80,6 @@
 
 - question: VLSM and CIDR is supported by which protocols?
   answer: Only in EIGRP.
-
-- question: Which RIPv2-extension of RIPv1 is added as a hack?
-  answer: Authentication
 
 - question: How can adding memory help in case of link failure?
   answer: Keeping information about a (longer) backup path towards a node can be used as a fallback.

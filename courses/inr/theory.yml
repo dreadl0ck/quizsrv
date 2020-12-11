@@ -122,7 +122,7 @@
   answer: There are no identifiers for endpoints.
 
 - question: Whats missing in the internet architecture with regard to addressing?
-  answer: The distinction between addresses and an endpoints.
+  answer: The distinction between addresses and endpoints.
 
 - question: What is a bipartite graph?
   answer: A graph with two disjoint sets of elements.

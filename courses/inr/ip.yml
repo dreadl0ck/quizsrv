@@ -50,7 +50,7 @@
 - question: What is NDP?
   answer: |-
     The Neighbor Discovery Protocol.
-    Used for duplicate address detection / neighbour unreachability detection / discovering network properties / find addresses of neighbours.
+    Used for duplicate address detection / neighbour unreachability detection / discovering network properties / find addresses of neighbors.
     It makes extensive use of multicast.
 
 - question: What is the traditional unicast allocation hierarchy?

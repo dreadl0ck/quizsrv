@@ -56,7 +56,7 @@
 - question: What are some advantages of EIGRP?
   answer: |
     - It uses partial and incremental updates when the routing table changes.
-    - It uses hello multicast packets to discover neighbours (IP 224.0.0.10).
+    - It uses hello multicast packets to discover neighbors (IP 224.0.0.10).
     - It uses ACKs for reliable communication.
     - It can summarize on arbitrary bit boundaries (classless).
 - question: What algorithm does EIGRP use?
@@ -66,7 +66,7 @@
     Enhanced Interior Gateway Routing Protocol.
     Also Cisco proprietary, but in RFC 7868 for informational purposes.
     It runs as protocol 88 on top of IP.
-- question: What metrics does IGRP communicate to neighbours?
+- question: What metrics does IGRP communicate to neighbors?
   answer: |-
     A composite metric, based on delay, bandwidth, reliability and load.
     The hop count is still communicated as a separate field to see when infinity has been reached.
@@ -102,9 +102,8 @@
   answer: 512 bytes, fits 25 route updates (each update is 20 bytes)
 - question: What's the port/proto for RIPv1?
   answer: 520/udp
-- question: What are RIPv1 packets sent to?
-  answer: IP 255.255.255.255, or to a directed broadcast address, or to an individual
-    host or router as a response to a request.
+- question: Where are RIPv1 packets sent towards?
+  answer: Towards IP 255.255.255.255, or to a directed broadcast address, or to an individual host or router as a response to a request.
 - question: What timers does RIPv1 have, what's a default, and what do they do?
   answer: |-
     Update timer: interval between sending updates.
@@ -116,7 +115,7 @@
     Hold-down timer: Cisco's addition, does not accept updates during hold-down on routes that have been marked unreachable.
     Default: 180 seconds.
 - question: How long does it take for information to spread through a network using RIPv1?
-  answer: Each router will send its neighbours updates every 30 seconds (by default),
+  answer: Each router will send its neighbors updates every 30 seconds (by default),
     thus it depends on how many routers and when their timer expires.
 - question: What is a disadvantage of poisoned reverse?
   answer: Larger routing update packets
@@ -125,16 +124,19 @@
 - question: What is the basic operation of RIPv1?
   answer: |-
     It keeps a table of routes to destination networks, keeping the distance (metric) and gateway (next hop).
-    It periodically sends out this table (sans gateways) to all neighbours.
+    It periodically sends out this table (sans gateways) to all neighbors.
     It will update the table with newly collected information (metric can only decrease, unless the information comes from the gateway itself and it overrides old information).
 - question: What is the maximum hop distance of RIP?
   answer: |-
     15 hops, i.e.
     16 == infinity
-- question: What is an IGP? Is RIP an IGP?
-  answer: |-
-    Interior Routing Protocol.
-    Yes.
+
+- question: What is an IGP?
+  answer: Interior Routing Protocol
+
+- question: Is RIP an IGP?
+  answer: Yes.
+
 - question: What algorithm is RIPv1 based on?
   answer: Bellman-Ford distance vector algorithm
 - question: What does RIP stand for?

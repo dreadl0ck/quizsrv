@@ -122,7 +122,7 @@
     Traditionally, it was strongly recommended that subnet zero and the all-ones subnet not be used for addressing.
     According to RFC 950 leavingcisco.com: 'It is useful to preserve and extend the interpretation of these special (network and broadcast) addresses in subnetted networks. This means the values of all zeros and all ones in the subnet field should not be assigned to actual (physical) subnets.'
 - question: |
-    What is the difference between a locator and an endpoints?
+    What is the difference between a locator and an endpoint?
     Which of the two is a topological notion?
   answer: |-
     Locator is specific to interface, endpoint is a host to which the interface is connected.

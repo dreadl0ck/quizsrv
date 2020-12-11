@@ -6,10 +6,8 @@
 
 - question: What's a no-frill?
   answer: |-
-    A stupid switch, which just copies frames to separate the collision domain.
-    Uses store and forward technique.
-    The opposite is a learning and filtering switch/bridge, which remembers on which port a station resides.
-    This builds a filtering database.
+    A stupid switch, which just copies frames to separate the collision domain, using the store and forward technique.
+    The opposite is a learning and filtering switch/bridge, which remembers on which port a station resides, building a filtering database.
 
 - question: What are common ethernet types?
   answer: 0x800 for IP, 0x806 for ARP and 0x86DD for IPv6
@@ -26,7 +24,7 @@
 
 - question: How can one embed an EUI-48 in EUI-64?
   answer: |
-    Add FF:FE pr FF:FF in the middle:
+    Add _FF:FE_ or _FF:FF_ in the middle:
     00:30:65:7E:9D:5E ⇒ 00:30:65:FF:FE:7E:9D:5E
     Since MAC-48 addresses are obsolete, both FF:FE and FF:FF may be used.
 
@@ -126,11 +124,11 @@
 
 - question: |
     What is the IPv6 interface identifier derived from the MAC address:
-    1c:00:ff:ff:00:c1
+    1C:00:FF:FF:00:C1
   answer: |
-    1e:00:ff:ff:fe:ff:00:c1
-    - ff:fe inserted in the middle
-    - 1c got bitflipped by two bits to 1e
+    1E:00:FF:FF:FE:F:00:C1
+    - _FF:FE_ inserted in the middle
+    - _1C_ got bitflipped by two bits to _1E_
 
 - question: The ether type in an LLC/SNAP header occupies which bytes?
   answer: Byte number 7 and 8 (= at offset 6 and 7)
