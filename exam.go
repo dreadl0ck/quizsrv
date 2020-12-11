@@ -31,7 +31,7 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 	}
 
 	id = strings.TrimSuffix(id, "==")
-	courseID := r.FormValue("course")
+	courseID := strings.ToLower(r.FormValue("course"))
 
 	cou, ok := data.Courses[courseID]
 	if !ok {
@@ -55,7 +55,7 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 
 	for c, n := range cou.Info.Exam {
 		var (
-			category = cou.Categories[c]
+			category = cou.Categories[strings.ToLower(c)]
 			current  int
 			done     []int
 			val      = r.FormValue(c)
@@ -161,11 +161,12 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 
 	var base string
 	if *tls {
+		// TODO: dont hardcode paths
 		base = filepath.Join("/etc/quizsrv", "files", id)
 	} else {
-		base = filepath.Join("files", id)
+		base = filepath.Join(*configFolder, "files", id)
 	}
-	_ = os.Mkdir(base, 0777)
+	_ = os.MkdirAll(base, 0777)
 
 	fq, err := os.Create(filepath.Join(base, "examQuestions.md"))
 	if err != nil {
@@ -206,7 +207,9 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	fmt.Println("done! generated exam", id)
+	dir, _ := os.Getwd()
+
+	fmt.Println("done! generated exam", id, "to", base, "pwd:", dir)
 
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("<a target='_blank' href='/files/" + id + "/examQuestions.pdf'>examQuestions.pdf</a><br><a target='_blank' href='/files/" + id + "/examSolutions.pdf'>examSolutions.pdf</a>"))

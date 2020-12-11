@@ -5,10 +5,10 @@ quotes:
   "IP on everything!": "The Knowles Doctrine"
   "The only real problem is scaling.": "O’Dell’s Axiom"
 exam:
-  "Algorithms": 10
-  "BGP": 10
-  "Overview": 10
-  "Layer2": 10
-  "IP": 20
-  "RIP": 20
+  "algorithms": 10
+  "bgp": 10
+  "overview": 10
+  "layer2": 10
+  "ip": 20
+  "rip": 20
   "theory": 20

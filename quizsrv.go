@@ -63,6 +63,8 @@ func main() {
 
 	log.SetFlags(0)
 
+	fmt.Println("will serve files from", filepath.Join(*configFolder, "files"))
+
 	http.HandleFunc("/mkexam", genExam)
 	http.HandleFunc("/files/", http.StripPrefix("/files/", http.FileServer(http.Dir(filepath.Join(*configFolder, "files")))).ServeHTTP)
 	http.HandleFunc("/connect", connect)

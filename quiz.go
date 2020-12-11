@@ -35,14 +35,14 @@ func connect(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("flagged", flagged)
 	fmt.Println("courseName", courseName)
 
-	cou, ok := data.Courses[courseName]
+	cou, ok := data.Courses[strings.ToLower(courseName)]
 	if !ok {
 		c.WriteMessage(websocket.TextMessage, []byte("index=XXX:invalid course name"))
 		c.Close()
 		return
 	}
 
-	var catName = filepath.Base(location)
+	var catName = strings.ToLower(filepath.Base(location))
 	fmt.Println("received categoryName", catName)
 
 	var (

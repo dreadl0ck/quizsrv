@@ -31,7 +31,7 @@ func courseImport() {
 		cou := &course{
 			Categories: make(map[string][]question),
 		}
-		data.Courses[file.Name()] = cou
+		data.Courses[strings.ToLower(file.Name())] = cou
 
 		files, err := ioutil.ReadDir(filepath.Join(root, file.Name()))
 		if err != nil {

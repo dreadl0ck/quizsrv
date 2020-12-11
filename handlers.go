@@ -31,7 +31,7 @@ func courseHandler(w http.ResponseWriter, r *http.Request) {
 		total      int
 	)
 
-	cou, ok := data.Courses[filepath.Base(r.RequestURI)]
+	cou, ok := data.Courses[strings.ToLower(filepath.Base(r.RequestURI))]
 	if !ok {
 		http.Error(w, "invalid course name", http.StatusBadRequest)
 		return
