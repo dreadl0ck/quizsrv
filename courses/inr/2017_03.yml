@@ -12,7 +12,7 @@
 - question: Which classical attribute is used to prevent your upstream to use hot
     potato routing? Is this always succesful?
   answer: MEDs can be used but it depends on what your neighbor has as local preference.
-- question: What are the three most important BGP attributes and selection cirteria
+- question: What are the three most important BGP attributes and selection criteria
     used in path selection in order of preference?
   answer: <img src="/files/anki/paste-40398462386177.jpg" />
 - question: |-
@@ -35,7 +35,7 @@
     <img src="/files/anki/paste-38555921416193.jpg" />
     <img src="/files/anki/paste-38714835206145.jpg" />
 - question: What information in RIPv2 is disguised as a 'fake route update'?
-  answer: Authentication?????
+  answer: Authentication
 - question: How does RIPv2 use multicast? And RIPng?
   answer: |
     RIPv2 from RFC2453: 4.5 Multicasting

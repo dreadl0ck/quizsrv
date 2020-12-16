@@ -1,5 +1,4 @@
-- question: Why is IBGP scaling needed? What methods are available to do it an how
-    do they work?
+- question: Why is IBGP scaling needed? What methods are available to do it and how do they work?
   answer: |-
     IBGP scaling is needed because IBGP routers need to be configured in a full-mesh topology.
     You need N(N-1)/2 connections to connect them all.
@@ -15,7 +14,7 @@
   answer: |-
     Hot potato routing: go over cheaper path.
     You can set the MED to influence this, but this doesn always work because it involves the peer's cooperations.
-    Communities are used to do finetuned control between peers
+    Communities are used to do finetuned control between peers.
 - question: |-
     Draw a picture of the BGP relationships of an AS with its providers, peers, and customers.
     What filtering should be implemented in the BGP sessions involved?
