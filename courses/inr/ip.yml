@@ -520,3 +520,50 @@
 
 - question: What does NBMA stand for?
   answer: Non Broadcast Multiple Address
+
+- question: Give 3 arguments for using IPv6
+  answer: |
+    1. more addresses
+    2. autoconfiguration (with SLaaC & DHCPv6)
+    3. built in IPsec
+    4. fixed header length
+    5. no need for NAT
+
+- question: Given the multicast address ff00::/8, what is the purpose of the 3rd nibble?
+  answer: |
+    Mostly unused, but serves as flags,
+      1st bit is always 0
+      2nd bit is the RDV point flag
+      3rd bit is the Prefix-owned flag
+      4th bit is the Transient flag
+
+- question: Why is 6to4 a security nightmare?
+  answer: |
+    ```
+       --------
+      | Host A |
+       --------
+          |
+          o <- IPv4 infra
+          |
+     -------------
+    | Router 6to4 |
+     -------------
+          |
+    THE INTERNET               Host A & B are globally reachable!
+          |
+     -------------
+    | Router 6to4 |
+     -------------
+          |
+          o <- IPv4 infra
+          |
+       --------
+      | Host B |
+       --------
+    ```
+- question: Why does no one implement reverse lookup for IPv6?
+  answer: |
+    Because the PTR records are too long e.g.
+      the address 2001:610::800c:195:169:1247
+      has the PTR record 7.4.2.1.9.[...].ip6.arpa.<- IPv4 infra
