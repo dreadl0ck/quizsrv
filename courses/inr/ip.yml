@@ -68,7 +68,7 @@
     A multicast address which includes 24 bits of the unicast/anycast address on the interface under consideration.
     It has the form ff02::1:ffxx:xxxx and is link-local, used in Neighbor Solicitation.
 
-- question: Why does 'ping6 fe80::1' typically not work, assuming there is a node with that address?
+- question: Why does 'ping6 fe80::1' typically not work if the host has multiple interfaces?
   answer: |-
     You need to specify an interface.
     In the example of ping6, you can do this using the -I flag
