@@ -298,3 +298,55 @@
     3 network (IP)
     2 (data) link (Ethernet)
     1 physical
+- question: What's the difference between an interface & a protocol?
+  answer: |
+    An interface: runs on the same machine but different layers, uses Service Data Units (SDU)
+    A protocol: runs on the same layer but different machines, uses Protocol Data Units (PDU)
+- question: What's the difference between an address and an endpoint
+  answer: |
+    An addresse is used to locate a point in the network.
+    An endpoint is a device you want to communicate with
+- question: What is routing?
+  answer: Delivering packets to an address?
+- question: On what layer(s) can routing be done?
+  answer: All layers!
+- question: What are problem do INLP, LISP and HIPv2 solve?
+  answer: The location vs endpoint problem
+- question: What is the difference between the strong & weak End-System (ES) model
+  answer: |
+    In the strong ES model, a host will silently **discard** incoming datagrams whose destination address does not correspond to the physical interface on which it was received
+    In the weak ES model, a host will **accept (and possibly route)** incoming datagrams whose destination address does not correspong to the physical interface on which it was received
+- question: Are IPv4 addresses big-endian or little-endian in their binary format?
+  answer: big endian
+- question: |
+    Given the first byte of the private IPv4 address ranges
+      Class A 0 <= a <= 127
+      Class B 127 <= a <= 191
+      Class C 192 <= a <= 223
+      Class D W <= a <= X
+      Class E Y <= a <= Z
+    What are the values of W, X, Y, Z?
+  answer: |
+    Class D: 224 <= a <= 239
+    Class E: 240 <= a <= 255
+- question: Given 255.255.255.255 & 192.168.255.255, explain the purpose type of IP address and how they differ
+  answer: |
+    255.255.255.255 is a local subnet broadcast (think of it as the broadcast address for the 0.0.0.0 network)
+    192.168.255.255 is a directed broadcast
+    The local subnet broadcast is never forwarded by routers!
+- question: Can an IPv4 packet be fragmented on the way? What about IPv6?
+  answer: |
+    IPv4 -> yes, except if the DF flag is set
+    IPv6 -> no
+- question: What happends if a router receives an IPv4 packet that's too large to transmit but the DF flag is set?
+  answer: It returns an ICMP error to the sender of the packet
+- question: In IPv4, how many bits is IHL? What is the max IPv4 header length in bytes?
+  answer: IHL is 4 bits, so it's decimal value can range from 0 to 15. This value represents the number of 32-bit words in an IPv4 header (min 5, max 15). Therefore the max IPv4 header length is 15 * 4 = 60 bytes
+- question: In practice, how would you create a multi-link subnet?
+  answer: Assign multiple addresses to a single interface
+- question: What is 127.0.53.53 used for?
+  answer: Owned by ICANN to answer DNS leak problems
+- question: What is 127.0.0.53 used for?
+  answer: The local DNS resolver
+- question: What is the total amount of reserved IPv4 addresses?
+  answer: 1/16th
