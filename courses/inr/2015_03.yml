@@ -44,7 +44,7 @@
   answer: <img src="/files/anki/paste-24227910516737.jpg" />
 - question: What other changes are introduced in RIPv2?
   answer: |-
-    Authentication, using the authenticastion hack.
+    Authentication, using the first routing entry as authentication hack.
     And multicast is now also included (RIPv1 uses broadcast)
 - question: What fields are added for RIPv2?
   answer: <img src="/files/anki/paste-23437636534273.jpg" />

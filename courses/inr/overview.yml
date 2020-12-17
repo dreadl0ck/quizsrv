@@ -345,7 +345,7 @@
 - question: In practice, how would you create a multi-link subnet?
   answer: Assign multiple addresses to a single interface
 - question: What is 127.0.53.53 used for?
-  answer: Owned by ICANN to address DNS leak problems
+  answer: Owned by ICANN to address DNS name collision problems
 - question: What is 127.0.0.53 used for?
   answer: The local DNS resolver
 - question: What is the total amount of reserved IPv4 addresses?
