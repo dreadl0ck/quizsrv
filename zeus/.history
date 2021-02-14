@@ -1,1 +1,6 @@
 exit
+push-docker 
+build-docker 
+push-docker 
+build-docker 
+push-docker 

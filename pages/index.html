@@ -207,6 +207,13 @@
           toggleSwitch.addEventListener('change', switchTheme, false);
 
           const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+          console.log("theme", currentTheme);
+
+          if (currentTheme === null) {
+              console.log("setting dark theme");
+              document.documentElement.setAttribute('data-theme', 'dark');
+              localStorage.setItem('theme', 'dark');
+          }
 
           if (currentTheme) {
               document.documentElement.setAttribute('data-theme', currentTheme);
