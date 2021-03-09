@@ -1,0 +1,26 @@
+- question: What functionality is provided by P4?
+  answer: Dataplane programmability
+
+- question: What does P4 stand for?
+  answer: Programming Protocol Independent Packet Processors
+
+- question: What benefits does P4 provide?
+  answer: |
+    - Protocol Independent
+    - Reduces complexity
+    - Efficient use of resources
+    - Greater visibility
+    - Target independent
+
+- question: What is in-band telemetry?
+  answer: Allows to query for switch internal state, e.g. queue states, to diagnose performance problems.
+
+- question: What is AQM?
+  answer: Active Queue Management
+
+- question: What does PISA stand for?
+  answer: Protocol Independent Switch Architecture
+
+#  Tables associate user-defined keys with actions.
+#  P4 tables generalize traditional switch tables; they can be used to implement routing tables, flow lookup tables, access-control lists, and other user-defined table types, including complex multi-variable decisions.
+

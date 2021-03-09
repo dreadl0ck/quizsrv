@@ -1,0 +1,9 @@
+name: Advanced Networking
+description: A course about Transport Layer Protocols and network traffic performance.
+quotes:
+  "Keep calm and pass AN": "traumatized OS3 students"
+exam:
+  "flowvisor": 30
+  "mpls": 30
+  "p4": 10
+  "media": 20

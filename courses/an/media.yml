@@ -1,0 +1,140 @@
+- question: What does SIP stand for?
+  answer: |
+    Session Initiation Transport.
+    Protocol for managing communication sessions, used initially to set up connection.
+
+- question: What is the purpose of H.323?
+  answer: |
+    Signaling protocol for real-time interactive applications.
+    Operates well on WANs.
+
+- question: What does RTP stand for?
+  answer: Real-time Transport Protocol
+
+- question: What features does RTP provide?
+  answer: |
+    - Lightweight, one single message
+    - Top up: Runs over another transport protocol
+    - Supports multicast
+
+- question: What does RTCP stand for?
+  answer: RTP Control Protocol
+
+- question: What is RTCP used for?
+  answer: Management protocol for RTP that allows endpoints to exchange information about data flows.
+
+- question: What functionality is provided by RTCP?
+  answer: |
+    - Media syncronization
+    - QoS reports
+    - Participation reports
+    - Participation details
+
+- question: What is the RTCP traffic limited to when the number of participants increases?
+  answer: Typically to 5% of the session bandwidth.
+
+- question: Name the RTCP message types
+  answer: |
+    - SDES: Sender Descriptor
+    - BYE: Exit
+    - SR: Sender Report
+    - RR: Receiver Report
+    - APP: Application
+
+- question: What is a CDN?
+  answer: |
+    Content Delivery Network.
+    A collection of network elements arranged for more effective delivery of content to end users.
+
+- question: What types of content outsourcing do exist?
+  answer: |
+    - cooperative push-based
+    - non cooperative pull based
+    - cooperative pull-based
+
+- question: What is "Surrogate Placement" in the context of content delivery?
+  answer: Selection of surrogates to efficiently facilitate content delivery.
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:
+
+- question:
+  answer:

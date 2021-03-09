@@ -1,0 +1,358 @@
+- question: What does MPLS stand for?
+  answer: Multi-Protocol Label Switching
+
+- question: What is MPLS used for?
+  answer: It is a different forwarding method, based on labels, not addresses.
+
+- question: What is one of the core benefits that MPLS has to offer?
+  answer: Faster than address based routing, due to smaller numeric values and the lack of prefix matching.
+
+- question: Why was there a need for MPLS within provider backbone networks?
+  answer: Due to the full mesh requirement of iBGP speakers, the routing tables where becoming too big for the hardware to handle.
+
+- question: What can be said about LSPs with regard to direction?
+  answer: Label switched paths are always unidirectional.
+
+- question: What does LSP stand for?
+  answer: Label switched path
+
+- question: How is an MPLS label composed on the wire?
+  answer: |
+    - 20 bits for label (a number)
+    - 3 bits for EXP
+    - 1 bit for Bottom of stack
+    - 8 bits for TTL
+
+- question: What does EXP stand for and what is its purpose in the MPLS header?
+  answer: |
+    Experimental Bits for Class of Service
+    Orignally meant for QoS, not really used nowadays.
+
+- question: Which label values are reserved by the MPLS protocol?
+  answer: 0-15
+
+- question: Is it possible to add multiple MPLS labels to a packet?
+  answer: |
+    Yes it is, the S bit is used to implement this.
+    It is set to 1 to indicate the current label is the bottom of the stack.
+
+- question: Where is the MPLS header placed on the wire?
+  answer: Between the ethernet (L2) and the ip (L3) header.
+
+- question:  What is stored in the table mpls.0?
+  answer: It contains the MPLS labels.
+
+- question: Why does classical destination based routing scale badly?
+  answer: Longest prefix matching is slow.
+
+- question: What does LIB stand for?
+  answer: |
+    Label Information Base.
+    A table that contains the labels and related addressing information.
+
+- question: In which year did label switching start?
+  answer: |
+    - 1996 IP Switching, limited to ATM (Ipsilon)
+    - 1997 Tag Switching, not limited to ATM (Cisco)
+    - later standardized by IETF
+
+- question: What is ATM?
+  answer: |
+    Asynchronous Transfer Mode.
+    Packet switching technique similar to ISDN but providing higher speeds.
+
+- question: What problems did occurs in the late 90s with regard to packet switching?
+  answer: New equipment was overwhelmed by the growing amount of network traffic within a few months, and needed to be replaced with new hardware.
+
+- question: Is MPLS applicable to any network layer protcol?
+  answer: Yes it is! _Multi_ Protocol Layer Switching
+
+- question: What does shim layer refer to?
+  answer: |
+    A 'fake' layer that has been inserted temporarely into the network packet.
+    The MPLS header is commonly refered to as a shim header.
+
+- question: What is the difference between routing and switching?
+  answer: |
+    - Switching: based on physical layer2 address, occurs within the subnet or the network.
+    - Routing: based on network layer3 address, occurs between networks.
+
+- question: Are mac addresses hierarchical?
+  answer: No, they are handed out in blocks to vendors and are randomly assigned to network interface cards.
+
+- question: What does 'recursive lookup' refer to in the context of packet routing?
+  answer: A recursive lookup is done to determine the outbound interface for a given next hop.
+
+- question: What does LER stand for?
+  answer: |
+    Label Edge Router (also called PE = Provider Edge router)
+    Connected to the rest of the world, customers etc.
+
+- question: What is a CE router?
+  answer: A customer edge router
+
+- question: What does LSR stand for?
+  answer: |
+    Label switching router, used for transit on a Label Switched Path.
+    Also refered to as P = Provider router.
+
+- question: What is another common name for MPLS tunnels?
+  answer: Virtual Circuits
+
+- question: What does FEC stand for?
+  answer: |
+    Forwarding Equivalence Class.
+    A set of packets that receive the same treatment, in regard to queuing, next hop, egress interface etc.
+
+- question: How is a FEC structured?
+  answer: FEC is a route (address, prefix, set of prefixes)
+
+- question: Are all packets with the same FEC forwarded with the same label?
+  answer: Yes, all of them over the same LSP.
+
+- question: What is a core difference between traditional routing and MPLS based routing?
+  answer: |
+    In traditional routing the FEC is determined at every hop.
+    For MPLS, the FEC is determined only once at the ingress LER.
+
+- question: With special type of addresses is used by Juniper routers for the FEC?
+  answer: Loopback address of PE1 (= egress router).
+
+- question: How are prefixes distributed within a MPLS enabled network?
+  answer: Via OSPF or IS-IS as usual.
+
+- question: Do MPLS have global significance, e.g. do they have to be globally unique?
+  answer: No! MPLS labels are only locally significant to the processing router, the same label could be used by multiple routers.
+
+- question: What happens during a label _push_ operation?
+  answer: Packet enters on an LER and gets a MPLS label while being handed to the next hop.
+
+- question: What happens during a label _pop_ operation?
+  answer: Packet enters the destination LER and the MPLS label is removed again.
+
+- question: What does PHP stand for?
+  answer: |
+    Penultimate Hop Poppping.
+    Uses a special label 3 (Implicit Null Label), that signals the last router that the label pop and lookup can be skipped, and the packet shall be treated like a normal IP packet.
+    Its a performance optimization that is not mandantory but enabled by default in modern implementations.
+
+- question: Which label allocation scheme is used by MPLS?
+  answer: |
+    The MPLS architecture uses downstream label allocation.
+    Downstream because the traffic flows in the opposite direction.
+    Routers expect to receive traffic with the label they choose themselves.
+
+- question: Whats the directional relation between the traffic and the label flow?
+  answer: They move into opposite directions.
+
+- question: Should a label be unique within a MPLS domain?
+  answer: No, unique has to be unique on the router or per interface.
+
+- question: What is the numeric range for label values?
+  answer: 0 - 1048575
+
+- question: What happens to packets with unreconigzed labels?
+  answer: They are dropped.
+
+- question: What does LFIB stand for?
+  answer: |
+    Label Forwarding Information Base, generated from LIB.
+    Forwarding table mapping between labels and outgoing interfaces.
+
+- question: What does FIB stand for?
+  answer: |
+    Forwarding Information Base, table mapping between prefixes and outgoing interfaces.
+    Generated from Routing Information Base (RIB).
+
+- question: What is the core purpose of MPLS?
+  answer: Setting up virtual circuits / tunnels accross switched infrastructure.
+
+- question: Why is the loopback interface commonly used to assign the router identifier?
+  answer: A router can have many physical interfaces, but the loopback software interface is stable and always up.
+
+- question: How are labels distributed and the mappings created?
+  answer: |
+    Either in a static or in a dynamic configuration.
+    - Static: manual configuration in the routers of label bindings and LSPs.
+    - Dynamic: via LDP, RSVP-TE or BGP
+
+- question: What drawbacks of static configuration in a network?
+  answer: Problems with scalability, operability, error prone, failure detection, not resilient.
+
+- question: What does LDP stand for?
+  answer: Label Distribution Protocol.
+
+- question: What is LDP used for?
+  answer: Distributes the label information to neighbors.
+
+- question: What transport protocol is a LDP session based on?
+  answer: TCP
+
+- question: What happens during the LDP initialization phase?
+  answer: Configuration parameters are exchanged, routers advertise their labels to neighbors.
+
+- question: What is stored in the LDP Input label database?
+  answer: MPLS labels that R1 must add to a packet when sending to a neighbor, used for learning routes.
+
+- question: What is stored in the LDP Output label database?
+  answer: MPLS labels that R2 expects to receive from neighbors, used to advertise routes.
+
+- question: What is the command to show the LDP database on a Juniper router?
+  answer: _show ldp database_
+
+- question: Does LDP build a full mesh of LSPs?
+  answer: Yes.
+
+- question: Do LSPs change with changes in routing?
+  answer: Yes.
+
+- question: During which period does the danger of blackholing or looping occur?
+  answer: During reconvergence of the network.
+
+- question: What is needed for LDP to work?
+  answer: An IGP running 'under LDP', for the actual forwarding.
+
+- question: LSPs merge towards what side of a network connection?
+  answer: Towards the destination.
+
+- question: What does RSVP stand for?
+  answer: |
+    Resource ReserVation Protocol.
+    Bandwidth reservation protocol for individual traffic flows.
+
+- question: What was the reason the RSVP protocol was not widely used?
+  answer: Scales badly, due to requirement for setting up paths for individual traffic flows, and thus maintaining state for every flow.
+
+- question: Was MPLS developed before RSVP?
+  answer: No, RSVP was created before MPLS.
+
+- question: What does the RSVP-TE extension do?
+  answer: |
+    The TE stands for Traffic Engineering.
+    Improved version of RSVP that scales better, due to configuration per FEC (ingress and egress router pair).
+
+- question: What does "Traffic Engineering" refer to?
+  answer: The possibility to send traffic from source to destination on a path that differs from the lowest-cost path calculated by routing protocols.
+
+- question: What is considered difficult with traditional IP routing protocols?
+  answer: |
+    - tweaking link cost or weight to influence IGP behavior
+    - availability of resources (eg: bandwidth) not taken into account
+
+- question: Name two other protocols that got traffic engineering extensions
+  answer: IS-IS-TE and OSPF-TE.
+
+- question: Is RSVP a signaling protocol or a routing protocol?
+  answer: It is a signaling protocol.
+
+- question: Is traffic engineering possible using LDP only?
+  answer: No.
+
+- question: What does IGP stand for?
+  answer: Internal Gateway Protocol.
+
+- question: Does an RSVP-signaled LSP always follow the IGP shortest path?
+  answer: No.
+
+- question: What does the term administrative color refer to?
+  answer: Attributes that can be used for traffic engineering to prefer certain routes over others.
+
+- question: Is the bandwidth reservation in RSVP-TE mandantory?
+  answer: No, it is optional.
+
+- question: What does ERO stand for, in the context of RSVP-TE?
+  answer: Explicit Route Object
+
+- question: What does RRO stand for, in the context of RSVP-TE?
+  answer: Record Route Object
+
+- question: What types of RSVP-TE messages do exist?
+  answer: |
+    - RSVP PATH: path message
+    - RSVP RESV: reservation message
+
+- question: What types of routers to exist in general?
+  answer: |
+    - Ingress routers
+    - Egress routers
+    - Transit routers
+
+- question: What is the Record Route Object used for in RSVP-TE?
+  answer: To check if the path is loop free.
+
+- question: What does MP-BGP stand for?
+  answer: Multi Protocol Border Gateway Protocol.
+
+- question: What is MP-BGP used for?
+  answer: Extension to BGP to exchange more generic objects (NLRI) than just prefixes.
+
+- question: What does NLRI stand for?
+  answer: Network Layer Reachability Information
+
+- question: What does AFI stand for?
+  answer: Address Family Identifier.
+
+- question: What does SAFI stand for?
+  answer: Subsequent Address Family Identifier.
+
+- question: What can be advertised used the multi protocol extensions to BGP?
+  answer: |
+    Virtually anything: routes, MAC addresses, multicast subscriptions, security filters or label mappings for example.
+
+- question: What does VRF stand for?
+  answer: Virtual Routing and Forwarding instance.
+
+- question: Did LDP or RSVP-TE solve the interdomain use case?
+  answer: No, new BGP extension were defined to achieve it.
+
+- question: What does VPLS stand for?
+  answer: Virtual Private LAN Service.
+
+- question: What functionality does VPLS provide?
+  answer: VPLS is an Ethernet based Multipoint-2-Multipoint Layer2 VPN.
+
+- question: Name three different label distribution protocols
+  answer: |
+    - LDP
+    - RSVP-TE
+    - MP-BGP
+
+- question: Can one use different label distribution protocol simultaneously?
+  answer: Yes! But increases complexity and provisioning effort.
+
+- question: What does EVPN stand for?
+  answer: Ethernet Virtual Private Network.
+
+- question: What problems are solved by EVPN?
+  answer: |
+    Solves VPLS limitations: redundancy, multicast, multihoming, provsioning simplicity.
+
+- question: What functionality does EVPN provide?
+  answer: Layer2 overlay on IP/MPLS network (data plane).
+
+- question: What does SR stand for?
+  answer: Segment Routing.
+
+- question: What kind of problems did 'Source Routing' have?
+  answer: Security problems.
+
+- question: What is Segment Routing used for?
+  answer: Segment Routing is an alternative for LDP and RSVP-TE in MPLS networks.
+
+- question: What is characteristic for Segment Routing?
+  answer: |
+    The source can define the path the packet will take.
+    A list of segment identifiers is attached to the packet at ingress of SR domain.
+
+- question: What functionality does SR-MPLS provide?
+  answer: Re-uses MPLS data plance without changes, segments are encoded as MPLS labels.
+
+- question: What is special about SRv6?
+  answer: |
+    Segments are encoded as IPv6 address, two possible ways to operate the control plane: distributed or centralized.
+
+- question: Why was MPLS designed initially?
+  answer: Because the equipment was too slow to keep up with the growing amount of traffic.
+
+- question: What is MPLS used for nowadays?
+  answer: Traffic Engineering, segment routing, improving network resiliency, L2 and L3 VPNs.
