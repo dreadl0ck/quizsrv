@@ -61,7 +61,7 @@
     Asynchronous Transfer Mode.
     Packet switching technique similar to ISDN but providing higher speeds.
 
-- question: What problems did occurs in the late 90s with regard to packet switching?
+- question: What problems did occur in the late 90s with regard to packet switching?
   answer: New equipment was overwhelmed by the growing amount of network traffic within a few months, and needed to be replaced with new hardware.
 
 - question: Is MPLS applicable to any network layer protcol?
@@ -121,7 +121,7 @@
 - question: How are prefixes distributed within a MPLS enabled network?
   answer: Via OSPF or IS-IS as usual.
 
-- question: Do MPLS have global significance, e.g. do they have to be globally unique?
+- question: Do MPLS labels have global significance, e.g. do they have to be globally unique?
   answer: No! MPLS labels are only locally significant to the processing router, the same label could be used by multiple routers.
 
 - question: What happens during a label _push_ operation?
@@ -146,7 +146,7 @@
   answer: They move into opposite directions.
 
 - question: Should a label be unique within a MPLS domain?
-  answer: No, unique has to be unique on the router or per interface.
+  answer: No, a label has to be unique on the router or per interface.
 
 - question: What is the numeric range for label values?
   answer: 0 - 1048575
@@ -176,7 +176,7 @@
     - Static: manual configuration in the routers of label bindings and LSPs.
     - Dynamic: via LDP, RSVP-TE or BGP
 
-- question: What drawbacks of static configuration in a network?
+- question: What drawbacks arise from static configuration of a network?
   answer: Problems with scalability, operability, error prone, failure detection, not resilient.
 
 - question: What does LDP stand for?
@@ -271,7 +271,7 @@
     - RSVP PATH: path message
     - RSVP RESV: reservation message
 
-- question: What types of routers to exist in general?
+- question: What types of routers do exist in general?
   answer: |
     - Ingress routers
     - Egress routers
@@ -295,9 +295,9 @@
 - question: What does SAFI stand for?
   answer: Subsequent Address Family Identifier.
 
-- question: What can be advertised used the multi protocol extensions to BGP?
+- question: What can be advertised using the multi protocol extensions to BGP?
   answer: |
-    Virtually anything: routes, MAC addresses, multicast subscriptions, security filters or label mappings for example.
+    Virtually anything, for example: routes, MAC addresses, multicast subscriptions, security filters or label mappings.
 
 - question: What does VRF stand for?
   answer: Virtual Routing and Forwarding instance.
@@ -317,7 +317,7 @@
     - RSVP-TE
     - MP-BGP
 
-- question: Can one use different label distribution protocol simultaneously?
+- question: Can one use different label distribution protocols simultaneously?
   answer: Yes! But increases complexity and provisioning effort.
 
 - question: What does EVPN stand for?
@@ -345,7 +345,7 @@
     A list of segment identifiers is attached to the packet at ingress of SR domain.
 
 - question: What functionality does SR-MPLS provide?
-  answer: Re-uses MPLS data plance without changes, segments are encoded as MPLS labels.
+  answer: Re-uses MPLS data plane without changes, segments are encoded as MPLS labels.
 
 - question: What is special about SRv6?
   answer: |

@@ -1,0 +1,235 @@
+- question: What is the end-to-end principle?
+  answer: Ensuring reliadbility is considered heavy lifting, and should therefore only be done on the edges of the connection, to avoid overloading the transit routers.
+
+- question: What is the job of the Transport Layer Protocol?
+  answer: To take a stream of messages produced by one host and reproduce the stream at a foreign receiving host without change.
+
+- question: Name three core attributes of TCP
+  answer: |
+    - Connection oriented
+    - Reliable
+    - Byte-stream oriented
+
+- question: Which reliability guarantees are provided by TCP?
+  answer: |
+    - Error detection
+    - Error correction
+    - Notification of problems
+
+- question: What are the flag bits in the TCP header used for?
+  answer: To indicate operation that are in progress.
+
+- question: What are the TCP options used for?
+  answer: To manage control of connection details and negotiation parameters.
+
+- question: Name the core components of the TCP header
+  answer: |
+    - Source and Destination Port
+    - Sequence Number
+    - Acknowledgement Number
+    - Flags
+    - Header Length
+    - Window Size
+    - Checksum
+    - Options
+
+- question: What is the sequence number in TCP used for?
+  answer: To communicate the offset of the first bit in the included data portion to the other end.
+
+- question: What is the acknowledgement number in TCP used for?
+  answer: To indicate the offset of the next bit in the byte stream the other end wants to receive.
+
+- question: When a client sends sequence number 10 and ack number 30, what will the server reply?
+  answer: Seq=30, ACK=11
+
+- question: Which variables have to be initialized in order to create a TCP connection?
+  answer: |
+    - Sequence Number
+    - Buffer sizes
+    - Round Trip Time (RTT)
+
+- question: What does ISN stand for?
+  answer: Initial Sequence Number
+
+- question: Why do buffer sizes have to be negiotaed on connection setup?
+  answer: To avoid over-running the receivers.
+
+- question: Why does the Round Trip Time need to be calculated?
+  answer: In order to be able to calculate the timeout.
+
+- question: Briefly explain the TCP three way handshake
+  answer: |
+    1. Active open: client sends SYN segment with initial seq number to server
+    2. Passive open: server allocates buffers, specifies server side initial seq number and replies with SYNACK segment
+    3. Client replies with ACK, which may contain data
+
+- question: What happens during the TCP SYN attack?
+  answer: |
+    One or multiple clients send only the initial SYN packets, in order to have the server allocate buffer space for them.
+    Since no further packets are sent for the openened connection, the server will run out of resources quickly and fail to handle legitimate traffic.
+
+- question: Briefly describe the TCP connection termination
+  answer: |
+    Each direction shuts down independently.
+    1. Client sends FIN control segment
+    2. Server replies with ACK, closes connection and sends FIN
+    3. Client replies with ACK
+    4. Server receives ACK and closes connection
+
+- question: Is it possible that one side of a TCP connection is closed, but the other one is still used to send data?
+  answer: Yes, so called half close, a TCP connection is full duplex and both sides can communicate independently.
+
+- question: What is characteristic for the client of a TCP connection?
+  answer: The client establishes the connection by sending the first packet with the SYN flag set.
+
+- question: What does the positive acknowledgement mechanism in TCP do?
+  answer: Confirming to the sender that the segment was received successfully.
+
+- question: Can TCP segment acknowledgements be accumluated?
+  answer: Yes! Sending a packet for acknowledging every segment individually would perform badly.
+
+- question: How does TCP handle problems in transmission?
+  answer: Checksum to detect errors in transfered data, sequence numbers for data segments, positive acknowledgements.
+
+- question: What is the procedure if some segments get lost?
+  answer: Lost segments are being retransmitted.
+
+- question: What indicates that a segment got lost?
+  answer: When the round trip timer expired.
+
+- question: How can the ideal RTO be determined?
+  answer: By measuring the Round Trip Time.
+
+- question: What does RTO stand for?
+  answer: Retransmission Timeout
+
+- question: What does RTT stand for?
+  answer: Round Trip Time
+
+- question: What is the speed of light in a fiber medium?
+  answer: 200 km/ms
+
+- question: How is the RTT being calculated?
+  answer: Time it takes for the signal to be transmitted from sender to receiver, plus the time for the acknowledgement for receipt to travel back.
+
+- question: How is the RTT being estimated?
+  answer: |
+    1) SampleRTT is measured for packets that have been transmitted _once_.
+    2) SmoothedRTT is the weighted avergae of the collected SampleRTT value.s
+    3) RTTVAR is the variation of the RTT.
+
+- question: What is the formulat to calculate the TCP timeout interval?
+  answer: RTO = SRTT + max(Clock, 4 * DevRTT)
+
+- question: Is the RTO calculated for a TCP session static?
+  answer: No! It is constantly being recalculated, in order to react to changes in latency.
+
+- question: What does the term Bufferbloat refer to?
+  answer: The undesirable latency that comes from the existence of excessively large buffers in network communication systems.
+
+- question: What happens during queueing?
+  answer: |
+    1) TCP stream starts sending traffic
+    2) Large buffer on bottleneck node starts to fill up
+    3) TCP does not notice packet loss and increases CWND
+    4) Large buffer is completely full
+    5) Packet loss is only detected when buffer is already full
+    6) Huge delay and jitter, bad throughput
+
+- question: How will a TCP receiver react upon arrival of an in-order segment with the expected seq number, if all data up to the seq number has been ACKed?
+  answer: ACK will be delayed, and the receiver will wait up to 500ms for the next segment. If no next segment arrives, the ACK will be sent out.
+
+- question: How will a TCP receiver react upon arrival of an in-order segment with the expected seq number, if one other segment has an ACK pending?
+  answer: Receiver will immediately sent cumulative ACK, acknowledging both in-order segments.
+
+- question: How will a TCP receiver react upon arrival of an out-of-order segment with a sequence number higher than expected?
+  answer: If a gap is detected, the receiver will immediately send a duplicate ACK, indicating the seq number of the next expected byte.
+
+- question: How will a TCP receiver react upon arrival of a segment that partially or completely fills a gap?
+  answer: Receiver will immediately send ACK, if that segment starts at the lower end of the gap.
+
+- question: What is flow control in TCP?
+  answer: |
+    A mechanism used by the sender to determine how much pipelining can be done so that the receiving end is not overflown.
+    Regulated by a _variable sliding window_ (via window advertisement): the _receive window_ (rwnd).
+    Flow control uses pipeling to improve throughput and is essential for performance.
+
+- question: What is congestion control in TCP?
+  answer: |
+    A mechanism to overcome problems due to congestion detected on the network, using the congestion window.
+
+- question: What is the MTU of an ethernet frame?
+  answer: 1500 bytes for a normal frame, 9000 bytes for jumbo frames.
+
+- question: What happens during pipelining?
+  answer: |
+    Pipelining is a mechanism used for flow control, and allows _W_ segments to be outstanding, in order to increase throughput.
+    _W_ can be sent every RTT, to fill the network path: _W = BDP_ (Bandwidth Delay Product).
+
+- question: How does the SYN attack relate to the receive window?
+  answer: The buffer for the receive window allocated for each client is essentially wasted, because the clients never complete the three way handshake.
+
+- question: How does the sliding window mechnism improve throughput?
+  answer: By utilizing the bandwidth more effectively, essentially saturating the network wuth packets.
+
+- question: What is considered the upper bound for the throughput of TCP connection?
+  answer: The receive window (rwnd).
+
+- question: What is the difference between goodput and throughput?
+  answer: |
+    Throughput is the measurement of all data flowing through a link no matter if it is useful data or not (also retransmissions), while goodput is focused on useful (e.g. application) data only.
+
+- question: Which parameters are kept by a TCP _sender_?
+  answer: |
+    - LastByteAcked
+    - LastByteSent
+    - LastByteWritten (not yet sent out)
+
+- question: Which parameters are kept by a TCP _receiver_?
+  answer: |
+    - LastByteRead
+    - NextByteExpected
+    - LastByteReceived
+
+- question: What conditions must hold regarding the parameters on the _sender_ side?
+  answer: |
+    1) LastByteAcked <= LastByteSent
+    2) LastByteSent <= LastByteWritten
+
+- question: What conditions must hold regarding the parameters on the _receiver_ side?
+  answer: |
+    1) LastByteRead <= NextByteExpected (not possible to read a byte if all preceding bytes haven't been acked yet)
+    2) NextByteExpected <= LastByteRcvd + 1
+
+- question: What equation needs to be true on the receiver side to avoid overflowing the buffer?
+  answer: LastByteRcvd - LastByteRead <= RcvBuffer
+
+- question: What is the equation for the _amount of free space_ on the receiver side (rwnd)?
+  answer: AdvertisedWindow = RcvBuffer - ((NextByteExpected-1) - LastByteRead)
+
+- question: How can the effective window be calculated on the sender side?
+  answer: EffectiveWindow = AdvertisedWindow - (LastByteSent - LastByteAcked)
+
+- question: Which equation has to hold true on the sender side, regarding the effective window?
+  answer: LastByteSent - LastByteAcked <= AdvertisedWindow
+
+- question: What is the relation between an optimal receive window and the link capacity?
+  answer: The receive window is the uppper bound for throughput, but links along the path can have different bandwidth as well.
+
+- question: How can the Bandwidth Delay Product be calculated?
+  answer: bandwidth (bits per second) of bottneck link * round trip time (in seconds)
+
+- question: What does the BDP describe?
+  answer: The bandwith delay caused by the bottleneck link along a network path.
+
+- question: What is considered a large BDP and how are networks called that suffer from this?
+  answer: |
+    Large BDP: > 10^5 bits > 12.5 KBytes
+    Called LFN = long fat network
+
+- question: What are problems with LFNs?
+  answer: |
+    - receive window size (wasting bandwidth)
+    - need better RTT measurements
+    - wrapping of sequence numbers (32bits)
+    - packet loss reduces throughput dramatically
