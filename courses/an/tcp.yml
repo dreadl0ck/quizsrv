@@ -233,3 +233,178 @@
     - need better RTT measurements
     - wrapping of sequence numbers (32bits)
     - packet loss reduces throughput dramatically
+
+- question: How many different values can be represented using 16 bits?
+  answer: 2^16 = 65536 distinct values
+
+- question: How many bits are reserved for the receive window in the TCP header?
+  answer: 16 bits
+
+- question: What is the maximum possible window size when using only the receive window field?
+  answer: 16 bit field => max 64 Kbytes
+
+- question: Is the use of TCP options compulsory?
+  answer: No, the use of options is optional.
+
+- question: How can the window size be increased beyond the limit imposed by the size of its field in the TCP header?
+  answer: By setting the window scaling factor in the TCP options.
+
+- question: Could the Maximum Segment Size be set to a value bigger than the MTU?
+  answer: Yes, but the MTU would still be the limit.
+
+- question: What does MSS stand for?
+  answer: Maximum Segment Size
+
+- question: What is the purpose of the MTU?
+  answer: Defines the largest packet size that can travel through the network in bytes.
+
+- question: What does MTU stand for?
+  answer: Maximum Transmission Unit
+
+- question: What does the Path MTU refer to?
+  answer: |
+    The smallest MTU on an IP path, as discovered by Path MTU Discovery, or in other words: the largest packet size that will traverse the network without fragmentation.
+
+- question: What should the receive window be equal to?
+  answer: Should be equal to the bandwidth delay product (BDP).
+
+- question: Which option was introduced by RFC 1323 "TCP Large Windows Extensions"?
+  answer: The window scaling (WSCALE) option.
+
+- question: When is the WSCALE option negotiated and can it be renegotiated during a session?
+  answer: Negotiated at start up (in SYN packet), cannot be renegotiated.
+
+- question: What is the purpose of the timestamp option rgarding the RTT calculation?
+  answer: Contains a timestamp for every segment, used for more accurate RTT calculation, based on each received ACK.
+
+- question: Name two benefits of the TCP timestamp option
+  answer: |
+    1) Receiver echoes back what was received: no need for clock synchronization
+    2) Provides protection against wrapped sequence numbers (PAWS)
+
+- question: What does SACK stand for?
+  answer: Selective Ackknowledgement
+
+- question: What is the purpose of SACK?
+  answer: Allows to acknowledge out-of-order segments selectively, can be combined with selective retransmission.
+
+- question: What is the purpose of DSACK?
+  answer: Acknowledges duplicate packets using the SACK field, by using the first block.
+
+- question: Is congestion avoidable for large networks?
+  answer: No! Overprovisioning the network so that it could always guarantee all users to communicate at their full bandwidth would not be profitable.
+
+- question: What are the two possible approaches to congestion control?
+  answer: |
+    1) End-to-end congestion control
+    2) Network-assisted congestion control
+
+- question: Which congestion control approach was chosen for TCP?
+  answer: End-to-end congestion control
+
+- question: Explain the principles used for end-to-end congestion control
+  answer: |
+    - No explicit feedback from network
+    - Congestion inferred from end-system observed loss and delay
+
+- question: Explain the principles used for network-assisted congestion control
+  answer: |
+    - Routers provide feedback to end systems
+      - single bit indicating congestion (explicit notification)
+      - explicit rate at which sender should send at is communicated
+
+- question: Which side of a TCP connection is responsible for congestion control?
+  answer: The sender side. Since TCP connections are full duplex, both client and server choose a congestion algorithm for sending data to the other side.
+
+- question: During a single TCP session, can both sides run different congestion algorithms?
+  answer: Yes!
+
+- question: Which four components does a congestion control algorithm have?
+  answer: |
+    - Slow start
+    - Congestion avoidance
+    - Fast retransmit
+    - Fast recovery
+
+- question: Name the different TCP implementations that have been created during the evolution of the TCP stack
+  answer: |
+    1) TCP Tahoe was the original implementation
+    2) TCP Reno implemented fast recovery
+    3) TCP New Reno improves retransmission during the fast recovery phase of TCP Reno
+
+- question: What is the purpose of the congestion window and on which side of a connection is it being maintained?
+  answer: Used to restrict data flow to less than the recievers buffer size when congestion occurs.
+
+- question: How can the allowed congestion window size be calculated?
+  answer: Allowed window = min(rwnd, cwnd)
+
+- question: How can the presence of congestion on the network be detected?
+  answer: |
+    - Timeouts
+    - Duplicate ACKs
+
+- question: Is the congestion window static?
+  answer: No, constantly being recalculated based on the arrival of ACKs. This is called self-clocking.
+
+- question: Briefly explain how the slow start congestion control phase works
+  answer: |
+    - At start cwnd is equal to min(4*MSS, max(2*MSS, 4380 bytes))
+    - To avoid wasting bandwidth, initial increase is exponential
+    - Doubling cwnd every RTT: cwnd = cwnd + MSS (when ACK arrives)
+
+- question: Explain the purpose of the Slow start threshold (ssthresh)
+  answer: |
+    Determines if _cwnd_ should follow slow start or congestion control.
+    Initially very high (equal to rwnd), decreases after congestion.
+
+- question: What does AIMD stand for?
+  answer: Additive Increase Multiplicative Decrease
+
+- question: In which congestion control phase is AIMD used?
+  answer: During the congestion avoidance phase.
+
+- question: Explain multiplicative decrease during congestion avoidance
+  answer: |
+    Congestion window is halved for every lost segment, but it cannot be decreased below 1 MSS.
+
+- question: Explain additive increase during congestion avoidance
+  answer: |
+    Every time an ACK arrives: _cwnd += MSS * (MSS / cwnd)_
+    Every RTT congestion window increases by 1 MSS.
+
+- question: Explain how TCP attempts to implement fairness
+  answer: Instead of starting to send enough data to directly fill the advertised receive window, TCP tries to sense the amount of congestion on the network, by exponentially ramping up data volume during the slow start phase.
+
+- question: How can the TCP sending rate be calculated?
+  answer: rate = cwnd / RTT (bytes / sec)
+
+- question: How does TCP react to a single timeout?
+  answer: |
+    ssthresh = bytes_in_flight / 2
+    Slow start up to cwnd > ssthresh, then congestion avoidance.
+
+- question: How does TCP react to three duplicate ACKs?
+  answer: |
+    Saw toothed behavior of congestion avoidance.
+    Fast recovery, first implemented in TCP Reno.
+
+- question: What are the bytes in flight?
+  answer: The amount of data that has been sent but not yet acknowledged.
+
+- question: Explain the fast retransmit phase
+  answer: |
+    - If sender receives 3 ACKs for the same data
+      - resends segment before timer expires
+      - waits for an ACK of the entire transmit window before returning to congestion avoidance
+
+- question: Which TCP implementation is used by systems nowadays?
+  answer: TCP New Reno
+
+- question: What are advantages of TCP New Reno with regard to congestion control?
+  answer: It is able to detect _multiple losses_, improves further on fast retransmits compared to previous implementations.
+
+- question: Briefly describe the core strategy deployed by TCP New Reno regarding congestion control
+  answer: |
+    - Keeps track of last un-acked packet when entering fast recovery
+    - On every ACK increase cwnd by one MSS
+    - When last ACK arrives, return to congestion avoidance, set cwnd to value when entering fast recovery
