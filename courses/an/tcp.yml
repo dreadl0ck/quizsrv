@@ -408,3 +408,48 @@
     - Keeps track of last un-acked packet when entering fast recovery
     - On every ACK increase cwnd by one MSS
     - When last ACK arrives, return to congestion avoidance, set cwnd to value when entering fast recovery
+
+- question: Provide the equation for the congestion window if loss is detected
+  answer: cwnd = cwnd - a*cwnd (multiplicative decrease)
+
+- question: Provide the equation for the congestion window if an ACK arrives
+  answer: cwnd = cwnd + b/cwnd (additive increase)
+
+- question: Name am improved TCP implementation particularly for wireless networks
+  answer: Westwood TCP (improves on Reno)
+
+- question: Name the TCP implementation suitable for large BDP networks
+  answer: High-speed TCP (HSTCP)
+
+- question: Name the TCP implementation that slightly increases throughput
+  answer: Scalable TCP (congestion window does not oscillate)
+
+- question: What is the standard TCP implementation enabled on linux nowadays?
+  answer: TCP Cubic
+
+- question: What is a more recent TCP implementation than TCP Cubic?
+  answer: Bottleneck Bandwidth and Round-trip propagation time (BBR) from Google
+
+- question: Formulate the fairness goal for TCP
+  answer: If _K_ TCP sessions share same bottleneck link of bandwidth _R_, each should have average rate of _R/K_.
+
+- question: Why do multimedia apps often not make use of TCP?
+  answer: Because they do not want rate throttled by congestion control.
+
+- question: What can be done to get a higher share of the network, while still using TCP?
+  answer: An additional connection could be openened, nothing prevents an app from using multiple connections between two hosts.
+
+- question: Which problem does MPTCP solve?
+  answer: When IP addresses change, TCP connections have to be re-established.
+
+- question: What does MPTCP stand for?
+  answer: Multi Path Transport Layer Protocol
+
+- question: How does a client communicate to a server that he supports MPTCP?
+  answer: By sending the MP_CAPABLE TCP option with the SYN packet during the three way handshake.
+
+- question: What does SCTP stand for?
+  answer: Stream Control Transmission Protocol
+
+- question: Is SCTP compatible to TCP?
+  answer: No
