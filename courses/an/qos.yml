@@ -1,0 +1,327 @@
+- question: What is Quality of Service?
+  answer: The statistical performance guarantees that a network system can make in terms of _throughput, delay, jitter_ and _packet loss_.
+
+- question: How is _jitter_ defined?
+  answer: The variance in the arrival rate of packets from the same data flow.
+
+- question: How is _delay_ defined?
+  answer: The amount of time it takes for a packet to be transmitted end-to-end across a network.
+
+- question: How is _throughput_ defined?
+  answer: The average rate of successful message delivery over a communication channel.
+
+- question: How is _goodput_ defined?
+  answer: The amount of application layer _throughput_ excluding protocol overheads.
+
+- question: How can the network latency be calculated?
+  answer: Transmission delay + Propagation delay + Queueing Delay + Processing Delay
+
+- question: How is _bandwidth_ defined?
+  answer: The net bit rate or the maximum throughput of a logical or physical communication path.
+
+- question: Name the two key router functions
+  answer: |
+    - Run routing algorithms/protocol (RIP, OSPF, BGP)
+    - Forward datagrams from incoming to outgoing link
+
+- question: For high-speed switching fabric, is the _forwarding data plane_ implemented in hardware or in software?
+  answer: In hardware.
+
+- question: What is the purpose of a routing processor?
+  answer: |
+    - Compute forwarding tables
+    - Push packets to input ports
+
+- question: Is the _management control plane_ implemented in hard- or in software?
+  answer: In software.
+
+- question: What are the functions of an input port?
+  answer: |
+    - Line Termination: bit-level reception
+    - Link Layer Protocol Handling
+    - Switching via lookup, forwarding and queueing
+
+- question: Whats the purpose of switching fabrics?
+  answer: Transfer packet from input buffer to appropriate output buffer.
+
+- question: How is the switching rate defined?
+  answer: The rate at which packets can be transfered from inputs to outputs.
+
+- question: What is a desirable switching rate given N inputs?
+  answer: A switching rate of N times line rate.
+
+- question: What are the three types of switching fabrics?
+  answer: |
+    - Memory
+    - Bus
+    - Crossbar
+
+- question: Whats the purpose of the output ports?
+  answer: |
+    - Datagram buffering, Queueing
+    - Link Layer Protocol Handling
+    - Line Termination
+
+- question: When is buffering required on an output port?
+  answer: When datagrams arrive from fabric faster than the transmission rate.
+
+- question: What is the purpose of a scheduling algorithm?
+  answer: To choose among queued datagrams for transmission.
+
+- question: What is it called when a queued datagram at the fron of the queue prevents others from moving forward?
+  answer: Head-of-Line (HOL) blocking
+
+- question: What can happen when the input port buffers overflow?
+  answer: Queueing delay and packet loss.
+
+- question: What can cause queueing at input ports?
+  answer: If the switching fabric is slower than the input ports combined.
+
+- question: When does output port queueing occur?
+  answer: Buffering meachnism is needed when arrival rate via switching fabric exceeds output line speed.
+
+- question: Why is _packet marking_ needed for QoS?
+  answer: Needed for router to distinguish between different classes and to treat packets accordingly.
+
+- question: Why is _policing_ needed for QoS?
+  answer: To provide protection in form of isolation for a class of traffic against others.
+
+- question: Why is _efficient allocation_ desirable for QoS?
+  answer: While providing isolation, it is desirable to use resources as efficiently as possible.
+
+- question: What problem occurs when allocating a fixed, non-sharable bandwidth to a flow?
+  answer: _Inefficient_ use of bandwidth if flow doesn't use its allocation.
+
+- question: What are the four principles of QoS?
+  answer: |
+    - Packet classification and marking
+    - Scheduling and policing
+    - Efficient resource usage
+    - Call admission (signaling)
+
+- question: What are the two types of QoS?
+  answer: |
+    - Fine grained approach: Provide QoS to applications or specific flows (_Integrated Services_)
+    - Coarse grained approach: Provide QoS to large classes of data or aggregated traffic (_Differentiated Services_)
+
+- question: To which type of approach to QoS do _Integrated Services_ belong?
+  answer: To the fine grained approach.
+
+- question: To which type of approach to QoS do _Differentiated Services_ belong?
+  answer: To the coarse grained approach.
+
+- question: What does DSCP stand for?
+  answer: Differentiated Services Code Point
+
+- question: What is the purpose of DSCP?
+  answer: A packet header value that can be used to request high priority or best effort delivery for traffic.
+
+- question: On which side of a network is traffic policing being done?
+  answer: Inside the network, clients are unaware of this.
+
+- question: What can be achieved using differentiated services?
+  answer: |
+    - Fewer drops
+    - Lower delay
+    - Lower jitter
+
+- question: How is a DiffServ domain defined?
+  answer: A contiguous set of DS nodes which operate with a common service provisioning policy and a set of PHB groups implemented on each node.
+
+- question: What type of DiffServ nodes do exist?
+  answer: |
+    - Boundary
+    - Egress
+    - Ingress
+    - Interior
+
+- question: What does PHB stand for?
+  answer: Per Hop Behavior
+
+- question: What can be said regarding _simplicity_ for functions in the network _core_?
+  answer: Simple functions in network core.
+
+- question: What can be said regarding _simplicity_ for functions on the network _edge_?
+  answer: Complex functions at edge routers or hosts.
+
+- question: What is the purpose of an _ingress_ router?
+  answer: |
+    - Police or shape traffic
+    - Set Differentiated Service Code Point (DSCP) in IP header
+
+- question: What is the purpose of a _core_ router?
+  answer: |
+    - Implement Per Hop Behavior (PHB) for each DSCP
+    - Process packets based on DSCP
+
+- question: What can be said regarding _locality_ of SiffServ Code Points?
+  answer: Only local significance.
+
+- question: Whats the _expedite forwarding_ PHB codepoint?
+  answer: 101110
+
+- question: Which bits define the _class_ for the _assured fowarding_ PHB?
+  answer: Bit DS5, DS4 and DS3 define the class.
+
+- question: Which bits define the _drop probability_ for the _assured fowarding_ PHB?
+  answer: Bit DS2, DS1 specify the drop probability.
+
+- question: Which DS bit is always zero?
+  answer: Bit DS0.
+
+- question: How are the DiffServ bits laid out within the 8 bit field?
+  answer: |
+    ```
+    0   | 1   | 2   | 3   | 4   | 5   | 6  | 7  |
+    DS5 | DS4 | DS3 | DS2 | DS1 | DS0 | -- | -- |
+    ```
+
+- question: What is the purpose of a classifier?
+  answer: Selecting packets in a traffic stream based on the content of some portion of the packet header.
+
+- question: Which types of _classifiers_ do exist?
+  answer: |
+    - The BA (Behavior Aggregate) classifier
+    - The MF (Multi-Field) classifier
+
+- question: What the purpose of the _meter_ in a traffic conditioner?
+  answer: Measure the temporal properties of the stream of packets and compare them against a traffic profile.
+
+- question: What the purpose of the _marker_ in a traffic conditioner?
+  answer: Set the DS field of a packet to a particular codepoint.
+
+- question: What the purpose of the _shaper_ in a traffic conditioner?
+  answer: Delay (_shaping_) packets to adjust the stream to a profile.
+
+- question: What the purpose of the _dropper_ in a traffic conditioner?
+  answer: Discard packets to adjust the stream to a profile (_policing_).
+
+- question: What are parameters to be considered for policing traffic?
+  answer: |
+    - Average rate
+    - Peak rate
+    - Variability / burst size
+
+- question: What is a token bucket?
+  answer: A software counter for the allowable number of IP bytes.
+
+- question: Which two paramters does a token bucket take?
+  answer: |
+    - Token accumulation rate: _r_
+    - Burst tolerance: _b_
+
+- question: What does FIFO stand for?
+  answer: First In First Out
+
+- question: What is a FIFO queue used for?
+  answer: Traditional queueing technique used at routers.
+
+- question: What happens to packets that arrive at a full buffer?
+  answer: They either get discarded, or a discard policy is used to determine which packet to discard among the arrival and those already queued.
+
+- question: How does the Round Robin strategy distribute packets among consumers?
+  answer: Equal distribution between a set of consumers.
+
+- question: What is the round robin problem?
+  answer: Short packets get penalized.
+
+- question: Which strategy takes packet size into account?
+  answer: Bit-round fair queuing.
+
+- question: How does _bit-round robin_ work?
+  answer: |
+    - Computes the virtual finish time
+    - Clock ticks per bit sent
+    - Send packets in order of finish time
+
+- question: What is the classical stratefgy to drop packets on a full queue?
+  answer: |
+    Tail drop: all packets are treated identical, new packets are dropped until the queue has space.
+
+- question: What is a major problem with the _tail drop_ packet discarding strategy?
+  answer: Cannot deal with bursty traffic, but most of the internet traffic is arriving in bursts.
+
+- question: What is a property of a good queue?
+  answer: It absorbs bursts.
+
+- question: What is a standing queue?
+  answer: A queue that does not manage to drain / dissipate.
+
+- question: How can one observe a bad queue?
+  answer: By looking at the queue length over a sliding time period longer than one RTT.
+
+- question: What does AQM stand for?
+  answer: Active Queue Management
+
+- question: What is the idea of _Active Queue Management_?
+  answer: |
+    Actively manage buffers to improve congestions signaling and queueing behavior.
+    Actively in the sense of not waiting until the queue is full, but acting before that happens.
+
+- question: What does RED stand for?
+  answer: Random Early Detection
+
+- question: What is the purpose of _Random Early Detection_?
+  answer: Monitors the _average queue size_ and drops packets based on statistical properties.
+
+- question: What is _Parameterless AQM_?
+  answer: New AQM algorithms that are configuration less.
+
+- question: Name two _Parameterless AQM_ algorithms
+  answer: |
+    - Blue and Stochastic Fair Blue
+    - CoDel
+
+- question: What is automatically adjusted by the _Blue and Stochastic Fair Blue_ algorithm?
+  answer: Adjusts the probability automatically.
+
+- question: Briefly describe the CoDel algorithm
+  answer: |
+    - determines emergence of bufferbloat using the information on delays
+    - identifies queues with bufferbloat and drops packets
+    - defines a target as acceptable queue length
+    - defines time interval to check for bad queues and drops packets in presence of them
+
+- question: What does CoS stand for?
+  answer: Class of Service
+
+- question: On which layer of the OSI model does Class of Service marking take place?
+  answer: Layer 2
+
+- question: Is QoS the same as CoS?
+  answer: |
+    No!
+    QoS operates on layer 3, CoS on layer 2.
+    CoS does not have an end-to-end guarantee, and can be used to achieve more fine grained control at the ethernet level.
+
+- question: What does PCP stand for?
+  answer: Priority Code Point
+
+- question: How many bits is the size of the PCP?
+  answer: 3 bits
+
+- question: How is the standard for CoS called?
+  answer: 802.1Q (VLAN tagging)
+
+- question: What is the IETF recommendation for the PCP value given to the _lowest_ priority traffic?
+  answer: 0, for background traffic.
+
+- question: What is the IETF recommendation for the PCP value given to the _highest_ priority traffic?
+  answer: 7, for network control traffic.
+
+- question: What does _IntServ_ stand for?
+  answer: Integrated Services
+
+- question: What are _Integrated Services_?
+  answer: An architecture for providing QoS guarantees in IP networks for individual application sessions.
+
+- question: What are the main characteristics of _Integrated Services_?
+  answer: |
+    - Resource reservation: routers maintain state info of allocated resources
+    - Admission control: admit or deny new call setup requests
+
+- question: Which two concerns arise for _Integrated Services_?
+  answer: |
+    - Scalability: signaling, maintaining per flow state scales badly
+    - Flexible Service Models: IntServ has only two classes
+

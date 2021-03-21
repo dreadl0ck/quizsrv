@@ -3,9 +3,10 @@ description: A course about Transport Layer Protocols and network traffic perfor
 quotes:
   "Keep calm and pass AN": "traumatized OS3 students"
 exam:
-  "flowvisor": 20
+  "flowvisor": 10
   "mpls": 20
   "p4": 10
-  "media": 20
-  "tcp": 20
+  "media": 10
+  "tcp": 30
   "udp": 10
+  "qos": 10
