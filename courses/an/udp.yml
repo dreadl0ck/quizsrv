@@ -1,0 +1,51 @@
+- question: What does UDP stand for?
+  answer: User Datagram Protocol
+
+- question: When was UDP created?
+  answer: |
+    1980, RFC #768
+
+- question: What is characteristic for UDP in regard to data transfer?
+  answer: Provides an _unreliable connectionless_ delivery service using IP to transport messages.
+
+- question: How does UDP ensure data integrity?
+  answer: CRC32 checksum in the UDP header
+
+- question: Name five protocols that are based on UDP
+  answer: |
+    - DNS
+    - NTP
+    - DHCP
+    - TFTP
+    - QUIC
+
+- question: What does TFTP stand for?
+  answer: Trivial File Transfer Procotols
+
+- question: What benefits does TFTP provide compared to FTP?
+  answer: |
+    Useful for applications that do not need the full feature set (and complexity) of FTP.
+    Often used for embedded computing, stored in the ROM and used for the bootstrapping process.
+
+- question: What does RBUDP stand for?
+  answer: Reliable Blast UDP
+
+- question: What does UDT stand for?
+  answer: UDP-based Data Transfer protocol
+
+- question: Briefly describe how RBUDP works
+  answer: |
+    1) Blast (transmission) phase
+      - sender sends entire payload via UDP at user-specified rate
+      - receiver keepts track of received packets
+    2) Synchronization phase
+      - sender send DONE message via TCP
+      - receiver send ACK with list of received packets
+      - repeat blast until no missing data
+
+- question: Which features are provided by SCTP?
+  answer: |
+    - Multi homing: increased resilience to network failures
+    - Multiple streams between endpoints
+    - Bundle of message in one packet to increase performance
+    - Security features against flooding and other attacks
