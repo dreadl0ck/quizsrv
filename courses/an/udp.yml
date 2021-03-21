@@ -49,3 +49,61 @@
     - Multiple streams between endpoints
     - Bundle of message in one packet to increase performance
     - Security features against flooding and other attacks
+
+- question: Briefly summarize data transfer over SCTP
+  answer: |
+    - Multiplexing and demultiplexing for ordered delivery of messages
+    - Only data sent within the same stream is delivered in sequence relative to that stream
+      - this minimizes the impact of head of line blocking in case of message loss
+
+- question: What does QUIC stand for?
+  answer: Quick UDP Internet Connections
+
+- question: What was _previously_ known as the _narrow waist_ of the Internet?
+  answer: The Internet Protocol (IP)
+
+- question: What is _nowadays_ known as the _narrow waist_ of the Internet?
+  answer: The Hypertext Transfer Protocol (HTTP)
+
+- question: What is a core improvement of QUIC in regard to connection establishment?
+  answer: Implements zero RTT connection establishment.
+
+- question: What is the average connection establishment time for TCP?
+  answer: 100ms
+
+- question: What is the average connection establishment time for TCP + TLS?
+  answer: |
+    - 200ms for repeated connections
+    - 300ms if never talked to the server before
+
+- question: What is the average connection establishment time for QUIC?
+  answer: |
+    - 0ms for repeated connections
+    - 100ms if never talked to the server before
+
+- question: What is head of line blocking?
+  answer: If one segment is lost, the others can't be pushed forward.
+
+- question: Does QUIC support multiplexing?
+  answer: Yes
+
+- question: How does QUIC implement flow control?
+  answer: Per stream (TCP does it per connection), implementation is conceptually similar to TCP.
+
+- question: What does NACK stand for?
+  answer: Negative Acknowledgement
+
+- question: What is reported back using a NACK?
+  answer: Reports the largest observed packet number, and packets with sequence number lower than the largest obeserved that have not yet been seen.
+
+- question: Why are negative acknowledgements more efficient than selective acknowledgements?
+  answer: |
+    When using selective acknowledgements, packets might get resent even if it would not have been required, because the TCP spec does not mandate receivers to store segments ahead of the bytestream.
+
+- question: Does QUIC allow requesting segments again, that have already been sent to the receiver?
+  answer: No, QUIC does not allow _reneging_, which makes it simpler to implement on the sender side.
+
+- question: What does Forward Error Correction do?
+  answer: |
+    Allows to restore lost segments on the receiver side, but adds additional protocol overhead.
+    If the network does not have a high loss, the overhead might outweight the performance benefit.
