@@ -1,0 +1,142 @@
+- question: What is _Content Centric Networking_ and who introduced it?
+  answer: |
+    The _original_ internet was primarily about sharing resources.
+    The _current_ Internet is about accessing content.
+    Introduced by Van Jacobson in 2006.
+
+- question: What is the goal of _Information Centric Networking_?
+  answer: |
+    The goal is to decouple information from its sources, by means of a clea location-identity split: name identifies content and not its location.
+
+- question: Which problem is solved by ICN?
+  answer: |
+    The problem of flash crowds.
+    It exploits in-network storage (caches) and in-network information awareness to optimally select location.
+
+- question: What is a benefit of ICN?
+  answer: Allows for mobile users, by defining a publish-subscribe model for expressing availability of content and interest in the content.
+
+- question: Which guarantee is provided by ICN?
+  answer: Guarantees that a receiver will only get content it requested.
+
+- question: Which types of packets do exist in ICN?
+  answer: |
+    - Interest packets
+    - Data packets
+
+- question: What are the components of an _interest_ packet in ICN?
+  answer: |
+    - Name
+    - Selectors (order preference, filters)
+    - Nonce
+    - Guiders (scope, interest lifetime)
+
+- question: What are the components of a _data_ packet in ICN?
+  answer: |
+    - Name
+    - MetaInfo (content type, validity period)
+    - Content
+    - Signature
+
+- question: What does NDN stand for?
+  answer: Named Data Networking
+
+- question: What are the three core components of the NDN router architecture?
+  answer: |
+    - Content Store
+    - Pending Interest Table (PIT)
+    - FIB (Forwarding Information Base)
+
+- question: What is _Named Data Networking_?
+  answer: It's a proposed Future Internet architecture, that is used to investigate the evolution from today's host-centric network architecture IP to a data-centric network architecture (NDN).
+
+- question: How is data integrity provided in _Named Data Networking_?
+  answer: Data is digitally signed.
+
+- question: What does SCION stand for?
+  answer: Scalability, Control and Isolation On Next-Generation Networks
+
+- question: What was the montivation for SCION?
+  answer: The Internet is network of networks, 'glued together' by BGP, which does not provide any security by default.
+
+- question: Briefly describe how SCION works
+  answer: |
+    - Replaces BGP and IP in the inter-domain context
+    - Does not affect infrastructure and network protocls within an AS
+    - Local trust anchors enable flexible trust relationships and prevent attacks from the outside
+    - Verifiable: security proofs through formal methods
+
+- question: Explain the notion of SCIONs Isolation Domains
+  answer: |
+    ISDs are SCIONs approach for scalability, fault isolation and sovereignity.
+    Isolation Domains are groupings of ASes, ISD core ASes manage the ISD and provide global connectivity.
+
+- question: How do Isolation Domains improve the scalability of the routing protocol?
+  answer: Routing processes can be separated into an intra-ISD and an inter-ISD process.
+
+- question: What does TRC stand for?
+  answer: Trust Root Configuration
+
+- question: How do ISDs enable heterogenous trust and network security?
+  answer: |
+    - Every ISD defines their own trust roots in a _Trust Root Confiugration_ (TRC)
+    - External attackers cannot compromise the routing process inside an ISD
+
+- question: What is a drawback of the current Internet architecture?
+  answer: |
+    Paths are completely determined in the network, source can only set the destination.
+    No control of transparency about network paths is possible.
+
+- question: What is a drawback of source routing?
+  answer: |
+    End hosts learn complete network topology and calculate paths.
+    Large overhead for end hosts, no control for network providers.
+
+- question: What are benefits of SCION regarding path selection?
+  answer: |
+    ASes discover multiple paths that are consistent with their policies.
+    Source host obtains multiple candidate paths and selects one.
+    Path transparency and control for both network operators and end hosts.
+
+- question: What is the job of the _control_ plane in SCION?
+  answer: Routing - constructs and disseminates path segments.
+
+- question: What is the job of the _data_ plane in SCION?
+  answer: |
+    Packet forwarding.
+    Hosts combine path segments, data packets contain path.
+    Routers authenticate information and forward packets based on path.
+    Simple and stateless routers, no need for forwarding tables.
+
+- question: How does SCION fundamentally resolve routing hijacks?
+  answer: |
+    - All routing messages are signed
+    - End hosts select path and embed it in the packet header, path cannot be changed by attackers
+    - End hosts can select paths that only traverse trusted ASes
+    - Enables _geo-fencing_ for sensitive data
+
+- question: Briefly compare SCION to BGP
+  answer: |
+    - Security, scalabilty
+    - Multi-path: SCION can use multiple network paths simulatenously
+
+- question: What does RINA stand for?
+  answer: Recursive Internet Architecture
+
+- question: What is RINA?
+  answer: New network architecture that is based on the fundamental principle that networking is inter-process communication (IPC).
+
+- question: What is provided by all layers in RINA?
+  answer: Flows to two or more application instances with certain properties (delay, loss, etc).
+
+- question: What are the three types of systems in RINA?
+  answer: |
+    - Host
+    - Interior routers
+    - Border routers
+
+- question: What is the main benefit of RINA?
+  answer: |
+    Scales better, avoids problems with routing tables that the curent Internet infrastructure has.
+    Its a flexible service model that can be adapted to the specific situation.
+
