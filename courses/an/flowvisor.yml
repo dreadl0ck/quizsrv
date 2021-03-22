@@ -13,7 +13,7 @@
     - Isolation between slices
     - Extensible slice definition
 
-- question: What are the slicing policies?
+- question: What are slicing policies?
   answer: Specifies resource limits for each slice.
 
 - question: What are the resource limits specified by slicing policies?
@@ -41,4 +41,22 @@
 
 - question: What is Network Function Virtualization used for?
   answer: Moving networking functionalities outside the network nodes.
+
+- question: What are benefits of FlowVisor?
+  answer: |
+    - Programmability
+    - Strong isolation model
+
+- question: What is a mojor drawback of FlowVisor?
+  answer: Protocol support is defined in the standard, which makes it inflexible and usuable to handle non IP traffic.
+
+- question: What is purpose of FlowVisor?
+  answer: |
+    - Divide the production network into logical slices
+    - Delegate control of each slice to a different controller
+    - Enforce strong isolation
+    - Allows logical testbed to mirror production network
+
+- question: How does FlowVisor operate?
+  answer: Acts as a proxy, intercepts messages between OpenFlow controller and OpenFlow enabled switch, rewrites messages according to policy.
 

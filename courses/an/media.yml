@@ -21,7 +21,9 @@
   answer: RTP Control Protocol
 
 - question: What is RTCP used for?
-  answer: Management protocol for RTP that allows endpoints to exchange information about data flows.
+  answer: |
+    Management protocol for RTP that allows endpoints to exchange information about data flows.
+    Used by RTP to determine how to tune its behavior.
 
 - question: What functionality is provided by RTCP?
   answer: |
@@ -55,3 +57,121 @@
 - question: What is "Surrogate Placement" in the context of content delivery?
   answer: Selection of surrogates to efficiently facilitate content delivery.
 
+- question: What are benefits of video conferencing?
+  answer: |
+    - Reduced travel costs
+    - Easier access to remote experts
+    - More personal than a voice conference
+
+- question: Name three VoIP signaling protocols?
+  answer: |
+    - SIP
+    - H.323
+    - Skype
+
+- question: What does VoIP stand for?
+  answer: Voice over IP
+
+- question: What is the purpose of signaling protocols?
+  answer: To provide all information needed to setup, control and teardown of VoIP calls.
+
+- question: Which transport protocols are used to transport signaling messages for VoIP protocols?
+  answer: TCP and UDP
+
+- question: What problems occur when transporting audio data over a network connection?
+  answer: No constant rate guarantees can be made.
+
+- question: What is the classic mechanism for content delivery in networks?
+  answer: Client-server model. Server holds content, client requests content, downloads it and can then play it.
+
+- question: What are requirements for the client-server model for content delivery?
+  answer: |
+    - Timestamping
+    - Indication of packet loss
+    - Identification of clients
+    - Good use of bandwidth
+
+- question: What is the core idea of streaming video data?
+  answer: |
+    Server sends video frames at a fixed rate.
+    Even though these will arrive delayed at the client, the rate will not change.
+
+- question: What are the four sources of packet delay?
+  answer: |
+    - Nodal processing
+    - Queueing
+    - Transmission
+    - Propagation
+
+- question: What is the most common bottleneck for transferring data over a network?
+  answer: Queueing delay.
+
+- question: What does client-side buffering and playout delay try to compensate?
+  answer: Network added delay and delay jitter.
+
+- question: What is delay loss?
+  answer: IP datagram arrives too late for playout at receiver.
+
+- question: What is the typical maximum tolerable delay?
+  answer: 150ms
+
+- question: What is network loss?
+  answer: IP datagram lost due to network congestion (router buffer overflow).
+
+- question: What is loss tolerance?
+  answer: Depending on voice encoding, losses concealed, packet loss rates between 1% and 10% can be tolerated.
+
+- question: How do participants in an RTP session reduce overhead as the number of conference participants increases?
+  answer: They reduce RTCP traffic, typically makes up for 5% of the session bandwidth.
+
+- question: What is _adaptive bit rate streaming_?
+  answer: Technique for dynamically adjusting the compression level and video quality of a stream to match bandwidth availability.
+
+- question: What was the _old_ thinking on Streaming over HTTP?
+  answer: |
+    - TCP hurts multimedia transmission
+    - We need buffering (a-la RTP)
+    - Push methods (content pushed from server to client)
+
+- question: What are _new_ insights on Streaming over HTTP?
+  answer: |
+    - TCP passes more easily through firewalls and NATs
+    - TCP congestion control does not hurt clients if they can adapt to bandwidth variations
+    - Pull methods (client controls speed of receival)
+
+- question: What is a progressive download?
+  answer: Treats video as a regular file and starts to play it as soon enough data has been received.
+
+- question: What are the two key concepts for CDN organization?
+  answer: |
+    - Overlay approach
+    - Network approach
+
+- question: Which types of CDN servers do exist?
+  answer: |
+    - Origin server: stores the definitive version of a resource
+    - Replica server (or surrogate server): stores resource copy
+
+- question: What is the responsibility of a request routing system?
+  answer: Responsible for routing client requests to an appropriate surrogate server for the delivery of content.
+
+- question: What types of request routing algorithms do exist?
+  answer: |
+    - Adaptive
+    - Non adaptive
+
+- question: Name three request routing mechanisms
+  answer: |
+    - DNS-based request routing
+    - HTTP redirection
+    - URL Rewriting
+
+- question: Is the closest server always the best one to serve the request?
+  answer: No, it might have a bad latency because it is currently under heavy use!
+
+- question: How can the performance be measured for a CDN?
+  answer: |
+    - Cache hit ratio should be high
+    - Reserved bandwidth
+    - Latency
+    - Surrogate server load
