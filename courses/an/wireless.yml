@@ -15,7 +15,7 @@
     - Refraction
 
 - question: What is _diffraction_?
-  answer: Radio signal encounters and obstacle that is larger than its size in wavelength, signal propagates to a different source.
+  answer: Radio signal encounters and obstacle that is larger than it's size in wavelength, signal propagates to a different source.
 
 - question: What is the effect of _attenuation_?
   answer: Reduces power level with distance.
@@ -73,10 +73,10 @@
   answer: Range of <50km.
 
 - question: What is the responsibility of a relay?
-  answer: Responsible for sending packets between wired network and wireless host(s) in its area.
+  answer: Responsible for sending packets between wired network and wireless host(s) in it's area.
 
 - question: Does bluetooth need infrastructure to operate?
-  answer: No, its an _ad hoc_ protocol.
+  answer: No, it's an _ad hoc_ protocol.
 
 - question: Whats the maximum range of bluetooth?
   answer: Around 10 meters.
@@ -257,7 +257,7 @@
   answer: Dynamic Frequency Selection
 
 - question: How far can the _preamble_ be transmitted in _free space_?
-  answer: Due to its low modulation, the preamble can travel beyond 250 meters.
+  answer: Due to it's low modulation, the preamble can travel beyond 250 meters.
 
 - question: Why does 2.4GHz always have better coverage than 5GHz at the same transmit power?
   answer: Less path loss than 5GHz, therefore higher range.

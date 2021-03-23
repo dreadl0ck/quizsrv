@@ -23,7 +23,7 @@
 - question: What is RTCP used for?
   answer: |
     Management protocol for RTP that allows endpoints to exchange information about data flows.
-    Used by RTP to determine how to tune its behavior.
+    Used by RTP to determine how to tune it's behavior.
 
 - question: What functionality is provided by RTCP?
   answer: |

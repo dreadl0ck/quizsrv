@@ -34,7 +34,7 @@
   answer: The sending router
 
 - question: Where is the originating router specified?
-  answer: Its part of the LSA header
+  answer: It's part of the LSA header
 
 - question: Name the different types of link state packets
   answer: |
@@ -84,7 +84,7 @@
   answer: Faster convergence time.
 
 - question: What is represented in link state packets?
-  answer: The state of a router and its links to the rest of the network.
+  answer: The state of a router and it's links to the rest of the network.
 
 - question: How are broadcast networks (LANs) and NBMA networks represented inside the topology?
   answer: As virtual nodes.
@@ -226,7 +226,7 @@
   answer: At least one interface in area 0.
 
 - question: How is an internal router defined?
-  answer: All its interfaces are completely within a single area.
+  answer: All it's interfaces are completely within a single area.
 
 - question: What does ABR stand for?
   answer: Area Border Router
@@ -241,7 +241,7 @@
   answer: It participates in another (external) routing protocol.
 
 - question: What is one of the main tasks of an ABR?
-  answer: To summarize area prefixes towards the backbone, receive summarized data from the backbone and foward the summarized data to its attached areas.
+  answer: To summarize area prefixes towards the backbone, receive summarized data from the backbone and foward the summarized data to it's attached areas.
 
 - question: What is a stub(by) area?
   answer: |

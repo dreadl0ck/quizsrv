@@ -4,3 +4,261 @@
 - question: What is the wavelength of the visible light spectrum?
   answer: 400nm - 700nm
 
+- question: What are the core functions of the PHY layer?
+  answer: |
+    - Channel coding: encode a series of bits into signals
+    - Modulation: adapt signal to the transmission channel
+    - Multiplexing: share the channel
+
+- question: How is signaling defined?
+  answer: Signaling is the method of represneting the bits (signals).
+
+- question: How can a signal be represented on a medium?
+  answer: |
+    - Varying Amplitude
+    - Varying Frequency
+    - Varying Phase
+    - Clock
+
+- question: How is the _bit rate_ defined?
+  answer: The number of bits processed per unit of time (bits/s).
+
+- question: How is the _baud rate_ defined?
+  answer: The number of signaling events per second.
+
+- question: How many symbols per second get transferred at 1kBd?
+  answer: 1000 baud = 1000 symbols per second
+
+- question: How is encoding defined?
+  answer: The symbolic grouping of bits (symbols or code groups) prior to being presented to the media.
+
+- question: What are the advantages using code groups?
+  answer: |
+    - Reducing bit level errors
+    - Helping to distinguish data bits from control bits
+    - Better media error detection
+
+- question: Name two encoding examples
+  answer: |
+    - Non return to zero (NRZ), high voltage = 1, low voltage = 0
+    - Manchester encoding: XOR of clock and data
+
+- question: Which encoding is used by Ethernet?
+  answer: Manchester encoding
+
+- question: What is the difference between electrical and optical transmission?
+  answer: Electrical pulses VS internal reflection
+
+- question: Is it possible to use multiple light signals within the same optical cable?
+  answer: Yes!
+
+- question: Is the light inside an optical fiber cable from the visible light spectrum?
+  answer: No.
+
+- question: Whats the relation between frequency and wavelength?
+  answer: Increasing wavelength -> decreasing frequency
+
+- question: What are the benefits of _electrical_ transmission?
+  answer: |
+    - Lower material cost
+    - Lower cost of transmitters and receivers
+    - Capability to carry electrical power as well as signals
+
+- question: What are the benefits of _optical_ transmission?
+  answer: |
+    - Exceptionally low loss
+    - Absence of ground current and other parasite signal and power issues
+    - Inherently high data-carrying capacity
+
+- question: What are the components of a fiber optic cable?
+  answer: |
+    - Core: made from glass or plastic fibers
+    - Cladding: plastic coating and kevlar fibers to strengthen the core
+    - Buffer coating: outer jacket made from Teflon or PVC
+
+- question: Which two types of optical fiber cables do exist?
+  answer: |
+    - Multi-mode: cheaper, thicker core, for short distances (up to 2km), orange coating
+    - Single-mode: for long distances, yellow coating
+
+- question: Whats the difference in terms of wavelengths between Multi-mode and Single-mode fiber cables?
+  answer: |
+    - Multi-mode: 850nm - 1300nm
+    - Single-mode: 1300nm - 1550nm
+
+- question: What types of connectors do exist for fiber cables?
+  answer: |
+    - SC: square / standard
+    - LC: little / local
+    - ST: straight tip / bayonet
+
+- question: What types of transceivers do exist for fiber cables?
+  answer: |
+    - XENPACK
+    - SFP: Small Form-factor Pluggable
+    - SFP+
+    - XFP (10 Gigabit Small Form-factor Pluggable)
+
+- question: What happens during _attenuation_?
+  answer: |
+    Loss in signal strength over distance.
+    Light loses intensity while traveling further ahead.
+
+- question: Can _attenuation_ be avoided?
+  answer: No, it's inevidable.
+
+- question: How are decibels (dB) defined?
+  answer: |
+    The unit to express differences in signal strengths (loss or gain) between start and end.
+    It's a relative value expressing _attenuation_.
+
+- question: What is the unit to express the power of an interface?
+  answer: Decibels milliwatt (dBm) is an _absolute_ value used to express output power and receiver sensitivity.
+
+- question: What is the power budget for optical transmission?
+  answer: |
+    The maximum tolerated power and the maximum launch power of optical transceivers.
+    Can be used to calculate whether the receiver can still pick up the signal after a certain optical loss.
+
+- question: Is it possible to damage optical transceivers by using a laser with too much power?
+  answer: Yes! Always calculate the power budget to be on the safe side.
+
+- question: What is _dispersion_?
+  answer: Different wavelengths travel at different speeds, causes spreading of the light pulse.
+
+- question: Is a good idea to look into a powered optical fiber cable?
+  answer: Very bad idea! Even though the light is not visible, it can damage your eye!
+
+- question: Should you be gentle to your fiber cables?
+  answer: Yes, they are fragile! Don't bend them too much, or they will break.
+
+- question: What was characteristic for _first_ generation optical networks?
+  answer: |
+    - Optics provided transmission and capacity
+    - Switching and intelligence handled in electronics
+
+- question: What is characteristic for _second_ generation optical networks?
+  answer: Routing switching and intelligence are moving in the optical layer
+
+- question: What are the basic components used for _optical networks_?
+  answer: |
+    - Couplers and splitters
+    - Filters
+    - Multiplexers and demultiplexers
+
+- question: What can be used to create a wavelength crossconnect?
+  answer: Cascading multiplexer and demultiplexer can create a static crossconnect.
+
+- question: What are the two approaches to deal with signal _attentuation_?
+  answer: |
+    - Regenerators: converts optical into electrical signal and retransmit
+    - Amplifiers
+
+- question: What are the three types of degradation?
+  answer: |
+    - Loss of Energy
+    - Shape Distortion
+    - Loss of Timing (Jitter)
+
+- question: What are the three R's?
+  answer: |
+    Options to recover from signal loss:
+    - Re-Amplify
+    - Re-Shape
+    - Re-Generate
+
+- question: What does TDM stand for?
+  answer: Time Division Multiplexing
+
+- question: What is Time Division Multiplexing?
+  answer: |
+    Two or more signals are transferred apparently simultaneously as sub-channels in one communication channel, but are physically taking turns on the channel.
+    The time domain is divided into several recurrent timeslots of fixed length, one for each sub-channel.
+
+- question: What is SONET/SDH?
+  answer: |
+    Synchronous Optical Networking (SONET)
+    Synchronous Digital Hierarchy (SDH)
+    Originally designed to transport different circuits of different origins within a single framing protocol.
+
+- question: What can currently be transported by a SONET/SDH frame?
+  answer: |
+    - Ethernet (Ethernet over SONET - EOS)
+    - IP (Packet over SONET - POS)
+
+- question: How are SONET/SDH frames transmitted?
+  answer: |
+    Row by row.
+    Each row has a header a data section and a trailer.
+
+- question: What does GFP stand for?
+  answer: Generic Framing Protocol
+
+- question: What is the purpose of GFP?
+  answer: Allows to map client packets into the SONET/SDH payloads, in order to transport non-TDM traffic more efficiently.
+
+- question: What does WDM stand for?
+  answer: Wavelength-division multiplexing
+
+- question: What is the purpose of WDM?
+  answer: Multiplexes multiple optical carrier signals on a single optical fiber by using different wavelengths (colors) of laser light to carry different signals.
+
+- question: How many channels can be used in the C-band when using _conventional_ WDM?
+  answer: 16 channels
+
+- question: How many channels can be used in the C-band when using _dense_ WDM?
+  answer: |
+    - 40 channels at 100GHz spaing
+    - 80 channels at 50GHz spacing
+
+- question: Which types of WDM do exist?
+  answer: |
+    - Conventional WDM
+    - Dense WDM
+    - Coarse WDM
+
+- question: What are _transponders_?
+  answer: Components that convert the incoming optical signal in an ITU standard wavelength.
+
+- question: Compare TDM and (D)WDM
+  answer: |
+    - TDM: takes signals and multiplexes them to a single fiber
+    - (D)WDM: takes multiple optical signals and multiplexes them onto a single fiber
+
+- question: What does OTN stand for?
+  answer: Optical Transport Network
+
+- question: What is OTN used for?
+  answer: |
+    Replaces SONET/SDH as transport mechanisms, as it integrates better with DWDM.
+    OTN specifies a digital wrapper to create an optical data unit (ODU).
+
+- question: What is special about _all-optical_ (photonic) networks?
+  answer: Data goes from source to destination without ever undergoing an optical-to-electrical (OE) conversion.
+
+- question: What is the goal of photonic packet switching?
+  answer: To enable packet-switching rates impossible in electronic packet switching.
+
+- question: What is AOLS?
+  answer: |
+    All optical label switching.
+    Uses 20bit labels converted in the electric space to make quick decision while rest of packet is on 'hold'.
+
+- question: What is a potential problem when thinking about _photonic packet switching_?
+  answer: |
+    Buffering!
+    To resolve contention a device is needed that is capable to temporarily store light.
+    Options:
+    - ODLS (optical delay lines)
+    - Deflection routing (hot potato routing)
+
+- question: What is _optical burst switching_?
+  answer: |
+    A source header proceeds the packet burst.
+    The header travels at lower speed an in an out-of-band control channel.
+    Example: Just Enough Time Protocol (JET)
+
+- question: What are the advantages of _optical burst switching_?
+  answer: |
+    - Accomodates packets of variable and fairly large size
+    - Little or no buffering required at intermediate nodes

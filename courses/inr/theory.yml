@@ -134,8 +134,8 @@
   answer: Delivery of packets to an address, using a number of hops though an intermediate network.
 
 - question: What is the PDU(n) equal to?
-  answer: Its equal to the SDU(n)+CTL.
+  answer: It's equal to the SDU(n)+CTL.
 
 - question: What is the PDU(n+1) equal to?
-  answer: Its equal to the SDU(n).
+  answer: It's equal to the SDU(n).
 

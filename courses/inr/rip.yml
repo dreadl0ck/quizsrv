@@ -25,7 +25,7 @@
     The broadcast address was replaced by a multicast address, the same as EIGRP: 224.0.0.9 (which is not forwarded)
 - question: What is the Next Hop field for in RIPv2?
   answer: Used when best next hop does not speak RIP itself
-- question: What does each hop do with the route tag field of RIPv2 and what is its
+- question: What does each hop do with the route tag field of RIPv2 and what is it's
     purpose?
   answer: |-
     It is simply carried along.
@@ -115,7 +115,7 @@
     Hold-down timer: Cisco's addition, does not accept updates during hold-down on routes that have been marked unreachable.
     Default: 180 seconds.
 - question: How long does it take for information to spread through a network using RIPv1?
-  answer: Each router will send its neighbors updates every 30 seconds (by default),
+  answer: Each router will send it's neighbors updates every 30 seconds (by default),
     thus it depends on how many routers and when their timer expires.
 - question: What is a disadvantage of poisoned reverse?
   answer: Larger routing update packets

@@ -23,7 +23,7 @@
     - 1 bit for Bottom of stack
     - 8 bits for TTL
 
-- question: What does EXP stand for and what is its purpose in the MPLS header?
+- question: What does EXP stand for and what is it's purpose in the MPLS header?
   answer: |
     Experimental Bits for Class of Service
     Orignally meant for QoS, not really used nowadays.
@@ -134,7 +134,7 @@
   answer: |
     Penultimate Hop Poppping.
     Uses a special label 3 (Implicit Null Label), that signals the last router that the label pop and lookup can be skipped, and the packet shall be treated like a normal IP packet.
-    Its a performance optimization that is not mandantory but enabled by default in modern implementations.
+    It's a performance optimization that is not mandantory but enabled by default in modern implementations.
 
 - question: Which label allocation scheme is used by MPLS?
   answer: |

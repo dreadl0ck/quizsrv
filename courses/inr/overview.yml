@@ -139,10 +139,10 @@
   answer: |-
     Internet Group Message Protocol.
     Used for multicast messages.
-- question: What is the best match when a router looks in its routing table?
+- question: What is the best match when a router looks in it's routing table?
   answer: |-
     The longest match.
-    For example if the router has a default route to a provider and a route for the internal network, and it gets a packet for "145.100.102.146", it won't use the default route (where the subnet length is zero, namely 0.0.0.0/0) but its longer match, eg: "145.100.102.0/24".
+    For example if the router has a default route to a provider and a route for the internal network, and it gets a packet for "145.100.102.146", it won't use the default route (where the subnet length is zero, namely 0.0.0.0/0) but it's longer match, eg: "145.100.102.0/24".
 - question: How many layers does the “Routing Tree” have for IPv4?
   answer: |
     33
@@ -154,7 +154,7 @@
 - question: What is encapsulation used for?
   answer: |
     "Wrapping of data in single unit."
-    For example TCP is encapsulated in IP, so that the TCP packet (and its payload) can be sent between IP addresses.
+    For example TCP is encapsulated in IP, so that the TCP packet (and it's payload) can be sent between IP addresses.
 - question: When do you use fragmentation?
   answer: |-
     When splitting a larger message into smaller packets.

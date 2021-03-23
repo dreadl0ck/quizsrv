@@ -460,7 +460,7 @@
   answer: Link-local addresses.
 
 - question: Is there a difference between link-local and link-scoped addresses?
-  answer: No, its a synonym.
+  answer: No, it's a synonym.
 
 - question: Is there a difference between unique site local and site-local addresses?
   answer: No, Site-local was the old name.

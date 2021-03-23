@@ -164,7 +164,7 @@
 
 - question: How is a process called that is reclaimed by init after the parent exited?
   answer: Orphan
-- question: How is a process called that exited without the parent process reading its exit status?
+- question: How is a process called that exited without the parent process reading it's exit status?
   answer: Zombie
 
 - question: What new register was introduced in the Intel 8080, compared to the 8008?
@@ -237,7 +237,7 @@
 - question: How many bits is the Intel 8086 architecture made up of?
   answer: 16 bits
 
-- question: In what year was the Intel 8008 made? How many bits is its program counter?
+- question: In what year was the Intel 8008 made? How many bits is it's program counter?
   answer: |
     1972
     6 + 8 = 14 bits which can be used for addressing
@@ -298,7 +298,7 @@
     ![](/files/img/SSH.png)
 - question: When was the x86 instruction set created?
   answer: |
-    x86 is a family of instruction set architectures initially developed by Intel based on the Intel 8086 microprocessor and its 8088 variant.
+    x86 is a family of instruction set architectures initially developed by Intel based on the Intel 8086 microprocessor and it's 8088 variant.
     The 8086 was introduced in 1978 as a fully 16-bit extension of Intel's 8-bit 8080 microprocessor.
 - question: When was the IA-32 / i386 instruction set created?
   answer: |

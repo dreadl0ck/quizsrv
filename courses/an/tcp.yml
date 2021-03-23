@@ -243,7 +243,7 @@
 - question: Is the use of TCP options compulsory?
   answer: No, the use of options is optional.
 
-- question: How can the window size be increased beyond the limit imposed by the size of its field in the TCP header?
+- question: How can the window size be increased beyond the limit imposed by the size of it's field in the TCP header?
   answer: By setting the window scaling factor in the TCP options.
 
 - question: Could the Maximum Segment Size be set to a value bigger than the MTU?

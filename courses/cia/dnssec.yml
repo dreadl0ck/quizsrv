@@ -65,7 +65,7 @@
     The parent.
 - question: Which encoding is used for the label in an NSEC3 record and why?
   answer: |
-    Base32, because its is case insensitive.
+    Base32, because it's is case insensitive.
     It is shorter than base16 (hex) but longer than base64.
 - question: Denial of Existence needs at most how many NSEC records?
   answer: |
@@ -138,7 +138,7 @@
   answer: Kaminsky attack
 
 - question: When does a domain name exist?
-  answer: A domain name exists if the name itself or any of its descendants have a least 1 resource record.
+  answer: A domain name exists if the name itself or any of it's descendants have a least 1 resource record.
 
 - question: How would you define an ENT in NSEC terms?
   answer: A domain name D that is covered by some NSEC records with source S and target T, is an ENT if D is an ancestor of T in the domain name tree.
@@ -146,10 +146,10 @@
 - question: How would you prove NoData for an ENT with NSEC?
   answer: If the domain has an ancestor with an TON NSEC record that covers it.
 
-- question: Why doesn't an NSEC3 record contain NSEC3 in its type list?
+- question: Why doesn't an NSEC3 record contain NSEC3 in it's type list?
   answer: Because the types refer to the original (non-hashed) domain name.
 
-- question: Does an NSEC record contain the NSEC in its type bitmap?
+- question: Does an NSEC record contain the NSEC in it's type bitmap?
   answer: Yes.
 
 - question: What hashing algorithms can be used in a DS record digest?
@@ -222,7 +222,7 @@
 - question: A query with the DO flag set always has ARCOUNT > 0. Explain why
   answer: |
     There is no DO flag in the classic DNS flags.
-    The pseudo opt type 41 has place in its TTL field for the DO flag.
+    The pseudo opt type 41 has place in it's TTL field for the DO flag.
 
 - question: Why is NSEC3 using base32 encoding?
   answer: |
@@ -253,7 +253,7 @@
     Treating them as regular nodes would require to hash them again, creating an infinite loop.
     So NSEC3 records are outside of the original tree.
 
-- question: Why does a.root-servers.net _not_ have a signature on its A and AAAA records?
+- question: Why does a.root-servers.net _not_ have a signature on it's A and AAAA records?
   answer: |
     The root nameservers are inside the .net zone, which is delegated to other servers.
     This means the .net zone has to delegate it back, which makes it an insecure delegation.

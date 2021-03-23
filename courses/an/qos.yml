@@ -90,7 +90,7 @@
   answer: While providing isolation, it is desirable to use resources as efficiently as possible.
 
 - question: What problem occurs when allocating a fixed, non-sharable bandwidth to a flow?
-  answer: _Inefficient_ use of bandwidth if flow doesn't use its allocation.
+  answer: _Inefficient_ use of bandwidth if flow doesn't use it's allocation.
 
 - question: What are the four principles of QoS?
   answer: |

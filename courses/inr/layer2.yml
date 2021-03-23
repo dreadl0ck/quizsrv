@@ -56,7 +56,7 @@
 - question: Which sublayers does layer 2 have?
   answer: |-
     MAC (Media Access Control) and LLC (Logical Link Control).
-    MAC is the lower one and its most important example is Ethernet with CSMA/CD.
+    MAC is the lower one and it's most important example is Ethernet with CSMA/CD.
     Ethernet also controle backoff and retransmission.
     LLC introduces new fields (see another card).
 

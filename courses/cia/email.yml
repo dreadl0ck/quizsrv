@@ -11,10 +11,10 @@
   answer: |
     465 for TLS only,
     587 plain text, then upgrade with STARTTLS (insecure, MitM can force downgrade!)
-- question: What does SPF use for its checks?
+- question: What does SPF use for it's checks?
   answer: |
     The 'MAIL FROM' SMTP command.
-- question: What does DMARC use for its checks?
+- question: What does DMARC use for it's checks?
   answer: |
     The 'From' header, because it is presented to the user.
 - question: Which message agents do not talk directly to each other?
