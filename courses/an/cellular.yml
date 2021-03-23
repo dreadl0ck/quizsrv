@@ -1,0 +1,139 @@
+- question: What does HSPA stand for?
+  answer: High Speed Packet Access
+
+- question: What does MSC stand for?
+  answer: Mobile Switching Center
+
+- question: What does BTS stand for?
+  answer: Base Transmission Station
+
+- question: What was a key insight from using 3G in practice?
+  answer: |
+    New cellular data network operates in parallel (except at edge) with existing cellular voice network.
+    Voice network unchanged in core, data network operates in parallel.
+
+- question: What could be transferred using 3G next to voice?
+  answer: Data could be transferred as well.
+
+- question: What does ITU stand for?
+  answer: International Telecommunication Union
+
+- question: Which requirements had to be fulfilled by 4G?
+  answer: |
+    - All IP packet switched network
+    - Need for higher data rates
+    - Dynamically share and use network resources
+    - Smooth handovers
+
+- question: What does LTE stand for?
+  answer: Long Term Evolution
+
+- question: Does LTE equal 4G?
+  answer: No, LTE is sometimes also called 3.9G.
+
+- question: How was the network architecture simplified for LTE?
+  answer: |
+    - IP based network replacing GPRS core
+    - Optimzed for hte IP-Multimedia Subsystem (IMS)
+    - No more cicruit switching
+
+- question: What does EPS stand for?
+  answer: Evolved Packet System
+
+- question: Where was EPS used?
+  answer: The Evolved Packet System was the system architecture in LTE-Advanced.
+
+- question: What are the components of the _Evolved Packet Core_?
+  answer: |
+    - Mobility Management Entity (MME): user context, authentication and authorization
+    - Serving Gateway (SGW): transfers packets between edge and core
+    - Packet Data Network Gateway (PGW): connects to external networks
+
+- question: What is a benefit of the _Evolved Packet Core_?
+  answer: Easier to scale for network operators.
+
+- question: What does HSS stand for?
+  answer: Home Subscriber Server
+
+- question: What is stored in the _Home Subscriber Server_?
+  answer: Database of user-related and subscriber-related information.
+
+- question: What are the main functions of the E-UTRAN?
+  answer: |
+    - Radio resource management
+    - Radio mobility control
+    - Scheduling and dynamic allocation of radio resources
+    - Security
+    - Connectivity to EPC
+
+- question: What is used by LTE for QoS instead of circuits?
+  answer: EPS bearers are used instead.
+
+- question: Which two classes of bearers do exist in LTE?
+  answer: |
+    - Non-GBR bearers: not guaranteed a minimum bit rate, useful for email and file transfer
+    - Guaranteed Bit Rate bearers: useful for voice, interactive video, gaming
+
+- question: On what information are handovers for mobility management based upon?
+  answer: |
+    - Radio link quality, user equipment capability, call type, QoS requirements, policy aspects
+    - The Reference Signal Received Power (indicates radio link quality for a connection in an LTE cell)
+
+- question: What does ICIC stand for?
+  answer: Inter-cell interference coordination
+
+- question: What is the purpose of ICIC?
+  answer: Reduces interference when the same frequency is used in a neighboring cell.
+
+- question: What types of channels do exist in LTE?
+  answer: |
+    - Logical channels
+    - Transport channels
+    - Physical channels
+
+- question: What is the purpose of channels in LTE?
+  answer: Provide services to the layers above.
+
+- question: How is a network of large and small cells called?
+  answer: A heterogeneous network (HetNet)
+
+- question: What does CoMP stand for?
+  answer: Coordinated Multipoint Transmission and Reception
+
+- question: Briefly describe the core idea of CoMP
+  answer: Reception alternates between multiple points, instead of using joint transmission.
+
+- question: Name six key capabilities that have been enhanced from 4G to 5G
+  answer: |
+    - Peak data rate
+    - Mobility
+    - Latency
+    - Connection density
+    - Network energy efficiency
+    - Area traffic capacity
+
+- question: Name three application areas of 5G
+  answer: |
+    - Enhanced Mobile Broadband (eMBB)
+    - Ultra-Reliable and Low Latency Communications (URLLC)
+    - Massive Machine Time Communications (mMTC)
+
+- question: How could the 10+ fold increase in bandwidth of 5G over 4G be achieved?
+  answer: |
+    - Combination of more spectrum and more aggressive use of 4G technologies
+    - Very aggressive use of MIMO
+    - Very fine grain beamforming and MU-MI
+
+- question: Briefly explain the concept of 5G network slicing
+  answer: Different slices can be used to implement different functions, across the same core network.
+
+- question: What is the purpose of the 5G service automation architecture?
+  answer: Allocate network slices on demand, at high speeds.
+
+- question: Name the four important aspects of the 5G Release 15
+  answer: |
+    - Non-Standalone vs Standalone Deployments
+    - Service Based Architecture
+    - Network Slicing
+    - Control-PLane User-Plane Split
+
