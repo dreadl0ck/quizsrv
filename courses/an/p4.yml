@@ -21,6 +21,137 @@
 - question: What does PISA stand for?
   answer: Protocol Independent Switch Architecture
 
-#  Tables associate user-defined keys with actions.
-#  P4 tables generalize traditional switch tables; they can be used to implement routing tables, flow lookup tables, access-control lists, and other user-defined table types, including complex multi-variable decisions.
+- question: What is the purpose of tables in P4?
+  answer: Tables associate user-defined keys with actions.
 
+- question: What are benefits of a _programmable data plane_?
+  answer: |
+    - New Features: support for new protocols
+    - Reduce Complexity: remove unused protocols
+    - Efficient use of resources
+    - Greater visibility
+    - Software development cycle: rapid design cycle, fast innovation
+
+- question: Which devices can be programmed using P4?
+  answer: |
+    - PISA
+    - ASICs
+    - NPUs
+    - CPUs
+    - FPGAs
+
+- question: What is PISA?
+  answer: A single pipeline forwarding architecture.
+
+- question: What does a provider have to do if he wants to add support for P4?
+  answer: Define architecture and provide compiler backend.
+
+- question: What is a new capability of P4_16?
+  answer: It possible to define architectures, to enable P4 on a diversity of devices.
+
+- question: What are the P4_16 language elements?
+  answer: |
+    - Parsers
+    - Controls
+    - Expressions
+    - Data Types
+    - Architecture Description
+    - Extern Libraries
+
+- question: What is the ingress_port?
+  answer: The switch port on which the packet arrived.
+
+- question: What is the egress_spec?
+  answer: The switch port to which the packet should be sent to.
+
+- question: What is the egress_port?
+  answer: The switch port on which the packet is departing from (read only in egress pipeline).
+
+- question: Name a feature that is implemented via P4 externs
+  answer: Traffic meters.
+
+- question: Name the basic P4 data types
+  answer: |
+    ```
+    - bit<n>
+    - bit (same as bit<1>)
+    - int<n>
+    - varbit<n>
+    ```
+
+- question: What are header types in P4?
+  answer: |
+    - Ordered collections of members
+    - Byte aligned
+    - Can be valid or invalid
+
+- question: What are structs in P4?
+  answer: Unordered collection of members with no alignment restrictions.
+
+- question: What is a header stack in P4?
+  answer: Array of headers.
+
+- question: What is a header union in P4?
+  answer: One of several headers.
+
+- question: What are parsers in P4?
+  answer: Functions that map packets into headers and metadata, written in a state machine style.
+
+- question: What are the three predefined states of each parser?
+  answer: |
+    - start
+    - accept
+    - reject
+
+- question: Is it possible to define additional states in P4?
+  answer: Yes.
+
+- question: Is it possible to loop via states in P4?
+  answer: Yes.
+
+- question: What are P4_16 controls?
+  answer: |
+    Code segments, similar to C functions (without loops).
+    Can declare varaibles, create tables, instantiate externs, etc.
+    Functionality is specified by code in the apply() statement.
+
+- question: What can be implemented using P4_16 controls?
+  answer: |
+    - Match-Action pipeline
+    - Deparsers
+    - Updating checksums
+
+- question: What is specified by the fundamental unit of a Match-Action Pipeline?
+  answer: |
+    - What data to match on
+    - List of possible actions
+    - Optionally, a list of possible table actions
+
+- question: What is a different name for table entries in P4?
+  answer: Rules.
+
+- question: What information does a table entry contain?
+  answer: |
+    - Key to match on
+    - A _single_ action that is executed upon match
+    - Action data (possibly empty)
+
+- question: Based on what information are the table entries populated from the control plane?
+  answer: |
+    - Based on the configuration
+    - Based on automatic discovery
+    - Based on protocol
+
+- question: Name the three standard match kinds defined by the P4 standard library
+  answer: |
+    - Exact match
+    - Ternary match
+    - LPM match
+
+- question: What is the name of the P4 standard library for importing it?
+  answer: core.p4
+
+- question: Which two additional match kinds are defined by the _v1model.p4_ architecture?
+  answer: |
+    - range
+    - selector
