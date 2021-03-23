@@ -50,7 +50,7 @@
 - question: What is a mojor drawback of FlowVisor?
   answer: Protocol support is defined in the standard, which makes it inflexible and usuable to handle non IP traffic.
 
-- question: What is purpose of FlowVisor?
+- question: What is the purpose of FlowVisor?
   answer: |
     - Divide the production network into logical slices
     - Delegate control of each slice to a different controller
@@ -60,3 +60,55 @@
 - question: How does FlowVisor operate?
   answer: Acts as a proxy, intercepts messages between OpenFlow controller and OpenFlow enabled switch, rewrites messages according to policy.
 
+- question: What does NFV stand for?
+  answer: Network Function Virtualization
+
+- question: Which two types of resources do exist inside NFV Infrastructure?
+  answer: |
+    - Compute resources
+    - Network resources
+
+- question: Which components does _Network Function Virtualization_ have?
+  answer: |
+    - Network Service: end-to-end functionality
+    - Service Function Chain: ordered set of VNFs
+    - Network Forwarding Path
+    - VNF: function for specific treatment of data flows
+    - NFV Infrastructure: Hardware and software
+
+- question: What types of SFC templates do exist?
+  answer: |
+    - Serial (sequential path)
+    - Traffic splitting (eg: load balancer)
+    - Bifurcated path with single end point
+
+- question: What does SFC stand for?
+  answer: Service Function Chain
+
+- question: What does VNF-FG stand for?
+  answer: Virtual Network Function - Forwarding Graph
+
+- question: Name four examples for applying _Network Function Virtualization_?
+  answer: |
+    - Switching
+    - Home routers
+    - Security: Firewall, Traffic analysis
+    - Applications: Load Balancers, CDN
+
+- question: What does SDN stand for?
+  answer: Software Defined Networking
+
+- question: What are the main contributions of SDN?
+  answer: |
+    - Match-Action abstraction
+    - Standardized protocol to interact with switch
+    - Logically centralized control via a single entity
+
+- question: What are issues with SDN?
+  answer: |
+    - Data-plane protocol evolution requires changes to standards
+    - Limited interoperability between vendors
+    - Limited programmability
+
+- question: What is a challenge for Hyper Flexible Network Control?
+  answer: Legacy systems limit evolvability.

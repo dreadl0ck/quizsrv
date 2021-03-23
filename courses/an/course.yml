@@ -7,6 +7,7 @@ exam:
   "mpls": 20
   "p4": 10
   "media": 10
-  "tcp": 30
+  "tcp": 20
   "udp": 10
   "qos": 10
+  "future": 10
