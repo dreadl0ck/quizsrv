@@ -5,6 +5,8 @@ quotes:
 exam:
   "flowvisor": 10
   "mpls": 20
+  "optical": 5
+  "wireless": 5
   "p4": 10
   "media": 10
   "tcp": 20

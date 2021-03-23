@@ -1,0 +1,278 @@
+- question: What is the wireless spectrum for _IEEE 802.11b/g_?
+  answer: 2.4 GHz
+
+- question: What is the wireless spectrum for _IEEE 802.11a_?
+  answer: 5 GHz
+
+- question: What is the wireless spectrum for _Bluetooth_?
+  answer: 2.45 GHz
+
+- question: What does _WPAN_ stand for?
+  answer: Wireless Personal Area Network
+
+- question: What does _WMAN_ stand for?
+  answer: Wireless Metropolitan Area Network
+
+- question: How do large cellular radio networks provide coverage for entire countries?
+  answer: Network is divided into smaller areas (cells) using different frequency subbands.
+
+- question: Whats the range of a WPAN?
+  answer: Around 10 meters.
+
+- question: Whats the range of a WLAN?
+  answer: Around 100 meters, depending on the antennas.
+
+- question: Whats the range of a WMAN?
+  answer: Range of <50km.
+
+- question: What is the responsibility of a relay?
+  answer: Responsible for sending packets between wired network and wireless host(s) in its area.
+
+- question: Does bluetooth need infrastructure to operate?
+  answer: No, its an _ad hoc_ protocol.
+
+- question: Whats the maximum range of bluetooth?
+  answer: Around 10 meters.
+
+- question: Whats the maximum burst size in Bluetooth v5.0?
+  answer: 2Mbps bursts.
+
+- question: Whats a _piconet_?
+  answer: An ad hoc network that links a wireless user group of devices using Bluetooth technology protocols.
+
+- question: Whats a _scatternet_?
+  answer: A type of ad hoc computer network consisting of two or more _piconets_.
+
+- question: Whats the link layer protocol used in the bluetooth protocol stack?
+  answer: Point-to-Point Protocol (PPP)
+
+- question: What does SDP stand for?
+  answer: Service Discovery Protocol
+
+- question: Whats the purpose of the RFCOMM protocol in the bluetooth stack?
+  answer: Presents a virtual RS-232 serial port, transparent to the device.
+
+- question: What is the purpose TCS BIN in the bluetooth protocol stack?
+  answer: Signaling protocol that defines the call control signaling necessary to establish voice and data calls between Bluetooth devices.
+
+- question: What does TCS BIN stand for?
+  answer: Telephony Control Specification—Binary
+
+- question: What does BSS stand for?
+  answer: Basic Service Set
+
+- question: How is the identification of a BSS called?
+  answer: BSSID
+
+- question: How is a BSSID composed?
+  answer: |
+    - MAC address of the access point servicing the infrastructure BSS
+    - Generated in an independent BSS (IBSS)
+
+- question: Explain the ideas behind an IBSS
+  answer: |
+    - No base stations
+    - Nodes can only transmit to other nodes within link coverage
+    - Nodes organize themselves into a network: route among themselves
+
+- question: Whats the maximum achievable throughput with _IEEE 802.11b_?
+  answer: Up to 11 Mbps (2.4GHz unlicensed spectrum)
+
+- question: Whats the maximum achievable throughput with _IEEE 802.11a_?
+  answer: Up to 54 Mbps (5GHz range)
+
+- question: Whats the maximum achievable throughput with _IEEE 802.11g_?
+  answer: Up to 54 Mbps (2.4GHz range)
+
+- question: Whats the maximum achievable throughput with _IEEE 802.11b_?
+  answer: Up to 600 Mbps (2.4GHz or 5GHz range, multiple antennas)
+
+- question: What is established during association with an access point?
+  answer: The identity and address of a host.
+
+- question: Which actions does a host perform when associating with an AP?
+  answer: |
+    - Scans channels, listening for _beacon frames_ containing APs name (SSID) and MAC address
+    - Selects AP to associate with
+    - May perform authentication
+    - Will typically run DHCP to get IP address in APs subnet
+
+- question: Which types of scanning do exist?
+  answer: |
+    - Passive scanning: listen to beacon frames from AP
+    - Active scanning: probe request frame broadcast
+
+- question: What does CSMA/CD stand for?
+  answer: Carrier Sense Multiple Access with Collision Detection
+
+- question: Whats the purpose of CSMA/CD?
+  answer: Send as soon as the medium is free and listen into the medium to sense if a collision occurs.
+
+- question: What are problems in wireless networks?
+  answer: |
+    - Signal strength decreases proportional to the square of the distance
+    - The sender would apply CS and CD, but collisions happen at receiver
+    - It can happen that a sender cannot sense the collision
+    - CS might not work if a terminal is hidden
+
+- question: Why is there a need for medium access control mechanisms?
+  answer: |
+    Due to contention for the medium.
+    Imagine A and B simultaneously transmit to C over the same channel, how can C correctly decode received information?
+
+- question: What type of terminals in wireless signaling do exist?
+  answer: |
+    - Exposed terminals
+    - Hidden terminals
+
+- question: Explain _exposed_ terminals in wireless signaling
+  answer: |
+    - B sends to A, C wants to send to another terminal (not A or B)
+    - C has to wait, CS signals a medium in use
+    - but A is outside the radio range of C, therefore waiting it not neccessary
+    - C is _exposed_ to B
+
+- question: Explain _hidden_ terminals in wireless signaling
+  answer: |
+    - A sends to B, C cannot receive A
+    - C wants to send to B, C senses a free medium (CS fails)
+    - collision at B, A cannot receive the collision (CD fails)
+    - A is _hidden_ for C
+
+- question: Why is collision detection no suited for wireless networking?
+  answer: Devices can be out of range for each other, or drown each others signals (hidden vs exposed terminals).
+
+- question: What does CSMA/CA stand for?
+  answer: Carrier Sense Multiple Access Collision Avoidance
+
+- question: What does CSMA/CA do?
+  answer: Tries to _avoid_ collision before it would occur.
+
+- question: What are two main ideas of CSMA/CA?
+  answer: |
+    - Sense/listen before transmitting
+    - Don't collide with ongoing transmission by other node
+
+- question: What is the _slot time_ in wireless networking?
+  answer: Time required for station to start transmitting, and beginning of frame to propagate to others (Basic unit of backoff algorithm)
+
+- question: What does SIFS stand for?
+  answer: Short Inter-Frame Space
+
+- question: What is the definition of SIFS?
+  answer: Time required for station to sense end of frame and start transmitting.
+
+- question: What does DIFS stand for?
+  answer: DCF Inter-Frame Space
+
+- question: What does DCF stand for?
+  answer: Distributed Coordinated Function
+
+- question: What is the definition of DIFS?
+  answer: |
+    Time to wait before starting backoff interval ("contending")
+    SIFS + 2 slot times
+
+- question: Why is random backoff being applied for data transmission in wireless networking?
+  answer: To avoid synchronization in the centralized system.
+
+- question: Which mechanism is used to avoid collisions?
+  answer: Reserving transmission windows, by using small reservation packets.
+
+- question: What is a RTS packet?
+  answer: Request-to-send packet, a small packet used to _reserve_ a transmission time slot.
+
+- question: What is a CTS packet?
+  answer: Clear-to-send packet, a small packet used to _confirm_ a transmission time slot.
+
+- question: For 5G _cellular networking_ is a direct line of sight required for successful signal transmission?
+  answer: Yes.
+
+- question: Which certification body develops the WiFi standard?
+  answer: The IEEE
+
+- question: Whats the job of the Wi-Fi alliance?
+  answer: A consortium of industries, that tries to provide certification and ensuring interoperability between devices from different vendors.
+
+- question: What was the first WiFi standard?
+  answer: IEEE 802.11b (2.4GHz)
+
+- question: In which band are IoT devices primarely active and why?
+  answer: 2.4GHz band, because the chipsets are cheaper than those for 5GHz.
+
+- question: How many non overlapping channels are in the 2.4GHz band?
+  answer: 3
+
+- question: Whats a good tool to analyze the wireless spectrum for troubleshooting?
+  answer: inSSIDer from metageek
+
+- question: What does DFS stand for in the context of wireless networking?
+  answer: Dynamic Frequency Selection
+
+- question: How far can the _preamble_ be transmitted in _free space_?
+  answer: Due to its low modulation, the preamble can travel beyond 250 meters.
+
+- question: Why does 2.4GHz always have better coverage than 5GHz at the same transmit power?
+  answer: Less path loss than 5GHz, therefore higher range.
+
+- question: What happens during time slotted communication?
+  answer: Multiple users share a medium for data transmission, they can't transfer data at the same time.
+
+- question: Do Wi-Fi repeaters bring down the throughput with a factor of 2?
+  answer: |
+    Yes.
+    A repeater receives from a client and then transmits to a gateway, so half of time is spent on switching between sending and receiving.
+
+- question: What types of modulations can be applied to wireless signals?
+  answer: |
+    - Amplitude modulation
+    - Frequency modulation
+    - Phase modulation
+
+- question: Which type of modulation is used in Wi-Fi?
+  answer: Phase + Amplitude modulation (I/Q)
+
+- question: Do older Wi-Fi devices slow down the throughput of high-end Wi-Fi devices?
+  answer: |
+    Yes.
+    The lower modulations, take up all the airtime.
+    Newer devices use higher modulation, transfer data faster and therefore use less airtime.
+
+- question: At what price does higher modulation come?
+  answer: Requires higher sensitivity for the receivers.
+
+- question: How long did the adoption of WPA2 took?
+  answer: Over 10 years.
+
+- question: What does OFDM stand for?
+  answer: Orthogonal Frequency Division Multiplexing
+
+- question: What is the purpose of OFDM?
+  answer: Remove the need for guard bands, no adjacent sub-carrier interference.
+
+- question: What is a drawback of _Frequency Division Multiplexing_?
+  answer: Guard bands needed, waste of bandwidth.
+
+- question: What is the core idea behind OFDM?
+  answer: |
+    Send multiple smaller packets, instead of less large ones.
+    Multiple sub-channels carry samples at a lower rate, which gives almost the same bandwidth as a wide band channel.
+
+- question: What is used to implement OFDM?
+  answer: Fast Fourier Transforms
+
+- question: What happens during adjacent channel interference?
+  answer: The energy from multiple channels can lead to backoffs, even if the channels do not overlap.
+
+- question: What is the purpose of BSS coloring?
+  answer: Conflict detection, by marking your own and neighboring WiFi signals, to differentiate them from one another.
+
+- question: What does MIMO stand for?
+  answer: Multiple Input, Multiple Output
+
+- question: What is the purpose of MIMO?
+  answer: Increases robustness for wireless signal transmission.
+
+- question: |
+    Which IoT protocol has a larger range: Bluetooth or Zigbee?
+  answer: Zigbee
