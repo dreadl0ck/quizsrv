@@ -249,7 +249,7 @@
   answer: No.
 
 - question: What does IGP stand for?
-  answer: Internal Gateway Protocol.
+  answer: Interior Gateway Protocol.
 
 - question: Does an RSVP-signaled LSP always follow the IGP shortest path?
   answer: No.
@@ -303,7 +303,7 @@
   answer: Virtual Routing and Forwarding instance.
 
 - question: Did LDP or RSVP-TE solve the interdomain use case?
-  answer: No, new BGP extension were defined to achieve it.
+  answer: None of them, new BGP extension were defined to achieve it.
 
 - question: What does VPLS stand for?
   answer: Virtual Private LAN Service.

@@ -47,7 +47,7 @@
   answer: Define architecture and provide compiler backend.
 
 - question: What is a new capability of P4_16?
-  answer: It possible to define architectures, to enable P4 on a diversity of devices.
+  answer: It's possible to define architectures, to enable P4 on a diversity of devices.
 
 - question: What are the P4_16 language elements?
   answer: |
@@ -124,7 +124,6 @@
 - question: What is specified by the fundamental unit of a Match-Action Pipeline?
   answer: |
     - What data to match on
-    - List of possible actions
     - Optionally, a list of possible table actions
 
 - question: What is a different name for table entries in P4?
