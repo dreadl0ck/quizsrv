@@ -30,7 +30,7 @@
   answer: 1000 baud = 1000 symbols per second
 
 - question: How is encoding defined?
-  answer: The symbolic grouping of bits (symbols or code groups) prior to being presented to the media.
+  answer: The symbolic grouping of bits (symbols or code groups) prior to being presented to the medium.
 
 - question: What are the advantages using code groups?
   answer: |
