@@ -13,8 +13,8 @@
     - Isolation between slices
     - Extensible slice definition
 
-- question: What are slicing policies?
-  answer: Specifies resource limits for each slice.
+- question: What is the purpose of slicing policies?
+  answer: They specify resource limits for each slice.
 
 - question: What are the resource limits specified by slicing policies?
   answer: |
@@ -47,7 +47,7 @@
     - Programmability
     - Strong isolation model
 
-- question: What is a mojor drawback of FlowVisor?
+- question: What is a major drawback of FlowVisor?
   answer: Protocol support is defined in the standard, which makes it inflexible and usuable to handle non IP traffic.
 
 - question: What is the purpose of FlowVisor?

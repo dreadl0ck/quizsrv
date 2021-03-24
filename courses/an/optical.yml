@@ -208,7 +208,7 @@
 
 - question: How many channels can be used in the C-band when using _dense_ WDM?
   answer: |
-    - 40 channels at 100GHz spaing
+    - 40 channels at 100GHz spacing
     - 80 channels at 50GHz spacing
 
 - question: Which types of WDM do exist?
