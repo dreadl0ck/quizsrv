@@ -15,7 +15,7 @@ import (
 	"time"
 )
 
-func genExam(w http.ResponseWriter, r *http.Request) {
+func genExamAllInOne(w http.ResponseWriter, r *http.Request) {
 
 	rand.Seed(time.Now().UnixNano())
 
@@ -53,7 +53,7 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("mkexam", r.RemoteAddr, r.UserAgent())
 
-	for c, n := range cou.Info.Exam {
+	for c := range cou.Info.Exam {
 		var (
 			category = cou.Categories[strings.ToLower(c)]
 			current  int
@@ -108,7 +108,7 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 		)
 
 		// write questions
-		for i := 0; i < n; i++ {
+		for i := 0; i < len(category); i++ {
 
 			if numFlagged > 0 {
 				if i >= numFlagged {
@@ -197,7 +197,7 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 		e = "mdtopdf"
 	}
 
-	examName := strings.ToUpper(courseID) + "-Exam-"
+	examName := strings.ToUpper(courseID) + "-Exam-AllInOne-"
 
 	err = exec.Command(e, "-i", filepath.Join(base, "examSolutions.md"), "-o", filepath.Join(base, "/" + examName + "Solutions.pdf")).Run()
 	if err != nil {
@@ -210,8 +210,9 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 	}
 
 	dir, _ := os.Getwd()
+
 	fmt.Println("done! generated exam", id, "to", base, "pwd:", dir)
 
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("<a target='_blank' href='/files/" + id + "/" + examName + "Questions.pdf'>" + examName + "Questions.pdf</a><br><a target='_blank' href='/files/" + id + "/"+examName + "Solutions.pdf'>" + examName + "Solutions.pdf</a><br>"))
+	w.Write([]byte("<a target='_blank' href='/files/" + id + "/" + examName + "Questions.pdf'>" + examName + "Questions.pdf</a><br><a target='_blank' href='/files/" + id + "/"+examName + "Solutions.pdf'>" + examName + "Solutions.pdf</a>"))
 }

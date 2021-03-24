@@ -131,7 +131,7 @@ func connect(w http.ResponseWriter, r *http.Request) {
 				previousIndex++
 
 				// last entry in done was the previous question
-				index := len(done)-previousIndex
+				index := len(done) - previousIndex
 
 				// handle last question
 				if index < 0 {

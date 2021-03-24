@@ -34,7 +34,7 @@
 - question: How was the network architecture simplified for LTE?
   answer: |
     - IP based network replacing GPRS core
-    - Optimzed for hte IP-Multimedia Subsystem (IMS)
+    - Optimzed for the IP-Multimedia Subsystem (IMS)
     - No more cicruit switching
 
 - question: What does EPS stand for?

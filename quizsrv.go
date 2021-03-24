@@ -66,6 +66,9 @@ func main() {
 	fmt.Println("will serve files from", filepath.Join(*configFolder, "files"))
 
 	http.HandleFunc("/mkexam", genExam)
+	http.HandleFunc("/mkexamAll", genAllExams)
+	http.HandleFunc("/mkexamAllInOne", genExamAllInOne)
+	http.HandleFunc("/mkexamCategories", genExamCategories)
 	http.HandleFunc("/files/", http.StripPrefix("/files/", http.FileServer(http.Dir(filepath.Join(*configFolder, "files")))).ServeHTTP)
 	http.HandleFunc("/connect", connect)
 	http.HandleFunc("/cia", http.RedirectHandler("/courses/cia", http.StatusMovedPermanently).ServeHTTP)

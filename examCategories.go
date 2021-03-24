@@ -15,21 +15,26 @@ import (
 	"time"
 )
 
-func genExam(w http.ResponseWriter, r *http.Request) {
+func genExamCategories(w http.ResponseWriter, r *http.Request) {
 
 	rand.Seed(time.Now().UnixNano())
 
 	var (
-		examQuestions string
-		examSolutions string
-		count         int
+		output   string
 	)
+
+	err := r.ParseForm()
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println("mkexam ALL", r.RemoteAddr, r.UserAgent())
 
 	id, err := cryptoutils.RandomString(10)
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	// generate exams until all questions have been used
 	id = strings.TrimSuffix(id, "==")
 	courseID := strings.ToLower(r.FormValue("course"))
 
@@ -39,25 +44,24 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// write header
-	examQuestions += "# " + strings.ToUpper(courseID) + " Test Exam" + "\n"
-	examQuestions += "\n> ID: " + id + "\n\n"
+	for c, _ := range cou.Categories {
 
-	examSolutions += "# " + strings.ToUpper(courseID) + " Test Exam Solution" + "\n"
-	examSolutions += "\n> ID: " + id + "\n\n"
+		var (
+			examQuestions string
+			examSolutions string
+			count         int
+		)
 
-	err = r.ParseForm()
-	if err != nil {
-		fmt.Println(err)
-	}
+		// write header
+		examQuestions += "# " + strings.ToUpper(courseID) + " Test Exam" + "\n"
+		examQuestions += "\n> ID: " + id + "\n\n"
 
-	fmt.Println("mkexam", r.RemoteAddr, r.UserAgent())
+		examSolutions += "# " + strings.ToUpper(courseID) + " Test Exam Solution" + "\n"
+		examSolutions += "\n> ID: " + id + "\n\n"
 
-	for c, n := range cou.Info.Exam {
 		var (
 			category = cou.Categories[strings.ToLower(c)]
 			current  int
-			done     []int
 			val      = r.FormValue(c)
 			flagged  []string
 		)
@@ -108,7 +112,7 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 		)
 
 		// write questions
-		for i := 0; i < n; i++ {
+		for i := 0; i < len(category); i++ {
 
 			if numFlagged > 0 {
 				if i >= numFlagged {
@@ -122,15 +126,7 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 					continue
 				}
 			} else {
-				// pick a random one
-				for {
-					current = rand.Intn(len(category))
-
-					// exclude light bulb jokes
-					if !hasBeenAsked(current, done) && !strings.Contains(category[current].Question, "light bulb") {
-						break
-					}
-				}
+				current = i
 			}
 
 			count++
@@ -150,68 +146,63 @@ func genExam(w http.ResponseWriter, r *http.Request) {
 					examSolutions += "    " + fixLinks(line)
 				}
 			}
-
-			done = append(done, current)
-
-			if len(done) == len(category) {
-				break
-			}
 		}
+
+		var base string
+		if *tls {
+			// TODO: dont hardcode paths
+			base = filepath.Join("/etc/quizsrv", "files", id)
+		} else {
+			base = filepath.Join(*configFolder, "files", id)
+		}
+		_ = os.MkdirAll(base, 0777)
+
+		fq, err := os.Create(filepath.Join(base, "examQuestions.md"))
+		if err != nil {
+			log.Fatal(err)
+		}
+		fq.WriteString(examQuestions)
+
+		fs, err := os.Create(filepath.Join(base, "examSolutions.md"))
+		if err != nil {
+			log.Fatal(err)
+		}
+		fs.WriteString(examSolutions)
+
+		err = fq.Close()
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		err = fs.Close()
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		var e string
+		if *tls {
+			e = "/usr/bin/mdtopdf"
+		} else {
+			e = "mdtopdf"
+		}
+
+		examName := strings.ToUpper(courseID) + "-Exam-Category-" + strings.ToUpper(c) + "-"
+
+		err = exec.Command(e, "-i", filepath.Join(base, "examSolutions.md"), "-o", filepath.Join(base, "/" + examName + "Solutions.pdf")).Run()
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		err = exec.Command(e, "-i", filepath.Join(base, "examQuestions.md"), "-o", filepath.Join(base, "/" + examName + "Questions.pdf")).Run()
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		dir, _ := os.Getwd()
+		fmt.Println("done! generated exam", id, "to", base, "pwd:", dir)
+		output += "<a target='_blank' href='/files/" + id + "/" + examName + "Questions.pdf'>" + examName + "Questions.pdf</a><br><a target='_blank' href='/files/" + id + "/"+examName + "Solutions.pdf'>" + examName + "Solutions.pdf</a><br>"
 	}
-
-	var base string
-	if *tls {
-		// TODO: dont hardcode paths
-		base = filepath.Join("/etc/quizsrv", "files", id)
-	} else {
-		base = filepath.Join(*configFolder, "files", id)
-	}
-	_ = os.MkdirAll(base, 0777)
-
-	fq, err := os.Create(filepath.Join(base, "examQuestions.md"))
-	if err != nil {
-		log.Fatal(err)
-	}
-	fq.WriteString(examQuestions)
-
-	fs, err := os.Create(filepath.Join(base, "examSolutions.md"))
-	if err != nil {
-		log.Fatal(err)
-	}
-	fs.WriteString(examSolutions)
-
-	err = fq.Close()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	err = fs.Close()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	var e string
-	if *tls {
-		e = "/usr/bin/mdtopdf"
-	} else {
-		e = "mdtopdf"
-	}
-
-	examName := strings.ToUpper(courseID) + "-Exam-"
-
-	err = exec.Command(e, "-i", filepath.Join(base, "examSolutions.md"), "-o", filepath.Join(base, "/" + examName + "Solutions.pdf")).Run()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	err = exec.Command(e, "-i", filepath.Join(base, "examQuestions.md"), "-o", filepath.Join(base, "/" + examName + "Questions.pdf")).Run()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	dir, _ := os.Getwd()
-	fmt.Println("done! generated exam", id, "to", base, "pwd:", dir)
 
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("<a target='_blank' href='/files/" + id + "/" + examName + "Questions.pdf'>" + examName + "Questions.pdf</a><br><a target='_blank' href='/files/" + id + "/"+examName + "Solutions.pdf'>" + examName + "Solutions.pdf</a><br>"))
+	w.Write([]byte(output))
 }
