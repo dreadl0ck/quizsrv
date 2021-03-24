@@ -62,7 +62,7 @@
 - question: Briefly describe how SCION works
   answer: |
     - Replaces BGP and IP in the inter-domain context
-    - Does not affect infrastructure and network protocls within an AS
+    - Does not affect infrastructure and network protocols within an AS
     - Local trust anchors enable flexible trust relationships and prevent attacks from the outside
     - Verifiable: security proofs through formal methods
 

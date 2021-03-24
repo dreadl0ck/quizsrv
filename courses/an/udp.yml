@@ -20,7 +20,7 @@
     - QUIC
 
 - question: What does TFTP stand for?
-  answer: Trivial File Transfer Procotols
+  answer: Trivial File Transfer Procotol
 
 - question: What benefits does TFTP provide compared to FTP?
   answer: |
@@ -37,10 +37,10 @@
   answer: |
     1) Blast (transmission) phase
       - sender sends entire payload via UDP at user-specified rate
-      - receiver keepts track of received packets
+      - receiver keeps track of received packets
     2) Synchronization phase
-      - sender send DONE message via TCP
-      - receiver send ACK with list of received packets
+      - sender sends DONE message via TCP
+      - receiver sends ACK with list of received packets
       - repeat blast until no missing data
 
 - question: Which features are provided by SCTP?
@@ -94,7 +94,7 @@
   answer: Negative Acknowledgement
 
 - question: What is reported back using a NACK?
-  answer: Reports the largest observed packet number, and packets with sequence number lower than the largest obeserved that have not yet been seen.
+  answer: Reports the largest observed packet number, and packets with sequence number lower than the largest observed that have not yet been seen.
 
 - question: Why are negative acknowledgements more efficient than selective acknowledgements?
   answer: |
