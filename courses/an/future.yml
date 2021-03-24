@@ -6,7 +6,7 @@
 
 - question: What is the goal of _Information Centric Networking_?
   answer: |
-    The goal is to decouple information from it's sources, by means of a clea location-identity split: name identifies content and not it's location.
+    The goal is to decouple information from it's sources, by means of a clear location-identity split: name identifies content and not it's location.
 
 - question: Which problem is solved by ICN?
   answer: |
@@ -56,7 +56,7 @@
 - question: What does SCION stand for?
   answer: Scalability, Control and Isolation On Next-Generation Networks
 
-- question: What was the montivation for SCION?
+- question: What was the motivation for SCION?
   answer: The Internet is network of networks, 'glued together' by BGP, which does not provide any security by default.
 
 - question: Briefly describe how SCION works
@@ -137,6 +137,6 @@
 
 - question: What is the main benefit of RINA?
   answer: |
-    Scales better, avoids problems with routing tables that the curent Internet infrastructure has.
+    Scales better, avoids problems with routing tables that the current Internet infrastructure has.
     It's a flexible service model that can be adapted to the specific situation.
 
