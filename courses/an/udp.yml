@@ -20,7 +20,7 @@
     - QUIC
 
 - question: What does TFTP stand for?
-  answer: Trivial File Transfer Procotol
+  answer: Trivial File Transfer Protocol
 
 - question: What benefits does TFTP provide compared to FTP?
   answer: |
