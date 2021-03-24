@@ -11,7 +11,7 @@
     - Multiplexing: share the channel
 
 - question: How is signaling defined?
-  answer: Signaling is the method of represneting the bits (signals).
+  answer: Signaling is the method of representing the bits (signals).
 
 - question: How can a signal be represented on a medium?
   answer: |
