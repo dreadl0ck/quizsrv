@@ -132,12 +132,12 @@
 - question: Should you be gentle to your fiber cables?
   answer: Yes, they are fragile! Don't bend them too much, or they will break.
 
-- question: What was characteristic for _first_ generation optical networks?
+- question: What was characteristic for the _first_ generation optical networks?
   answer: |
     - Optics provided transmission and capacity
     - Switching and intelligence handled in electronics
 
-- question: What is characteristic for _second_ generation optical networks?
+- question: What is characteristic for the _second_ generation optical networks?
   answer: Routing switching and intelligence are moving in the optical layer
 
 - question: What are the basic components used for _optical networks_?
