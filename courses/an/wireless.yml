@@ -186,7 +186,7 @@
     - collision at B, A cannot receive the collision (CD fails)
     - A is _hidden_ for C
 
-- question: Why is collision detection no suited for wireless networking?
+- question: Why is collision detection not suited for wireless networking?
   answer: Devices can be out of range for each other, or drown each others signals (hidden vs exposed terminals).
 
 - question: What does CSMA/CA stand for?
