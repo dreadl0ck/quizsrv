@@ -1,0 +1,44 @@
+- question: What is a common commercial tool for wireless penetration testing?
+  answer: The WiFi Pineapple
+
+- question: What are common attacks against WPA networks?
+  answer: |
+    - Evil Portal
+    - MitM
+    - Handshake sniffing
+    - Deauth attacks
+
+- question: How many packets are needed to complete a full WPA handshake?
+  answer: 4
+
+- question: How does the Karma attack work?
+  answer: |
+    Devices send Prefered Network List, then these networks are replicated by the attacker.
+
+- question: What mechanism does Android offer to defend against the Karma attack?
+  answer: |
+    Turn on WiFi automatically in known locations.
+    Prevents device from broadcasting prefered network list everywhere.
+
+- question: What is the PMKID attack?
+  answer: |
+    Some routers append the PMKID in the SNR field of the EAPOL frames.
+    This allows to crack encryption key even for networks without clients connected.
+
+- question: How can the deauth frame be used to gather full handshake from connected clients?
+  answer: By deauthing them, the client will reconnect automatically and the handshake can be captured via sniffing.
+
+- question: What is a core security improvement of WPA3?
+  answer: WPA3 will be much harder to attack because of its modern key establishment protocol called "Simultaneous Authentication of Equals" (SAE).
+
+- question: How are management frames protected in WPA3?
+  answer: TODO
+
+- question: Are management frames protected in WPA/WPA2?
+  answer: Not by default, only in WPA2 Enterprise.
+
+- question: Which features must be supported by a network card to be usable for WiFi attacks?
+  answer: Packet injection and monitor mode.
+
+- question: What is a great open source tool to conduct wireless attacks and reconaissance?
+  answer: bettercap (https://bettercap.org)

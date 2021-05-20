@@ -1,0 +1,42 @@
+- question: How can you calculate the receiver signal strength?
+  answer: Receiver signal = Sender signal - Loss + Noise
+
+- question: Which frequency is used for the FM band?
+  answer: 95 MHz
+
+- question: What does GNSS stand for?
+  answer: Global Navigation Systems
+
+- question: What does a debiasing algorithm do?
+  answer: |
+    Debiasing is the reduction of bias, particularly with respect to judgment and decision making.
+    A debiasing algorithm extracts only the random bits from a stream of bytes, and discards consecutive sequences of identical values.
+
+- question: What is a possible attack vector against VN debiasing?
+  answer: Denial of Service
+
+- question: What is the oldest debiasing algorithm?
+  answer: Von Neumann Debiasing
+
+- question: Which debiasing algorithm offers additional security?
+  answer: Kaminsky Debiasing
+
+- question: What is expressed by the _entropy_ of data?
+  answer: |
+    Entropy is a measure for randomness.
+    Higher entropy means higher randomness, likely due to encryption or compression for example.
+
+- question: Which frequency is used by the ISS to transfer Voice and SSTV downlink?
+  answer: 145.8 MHz
+
+- question: What test suite can be used to check data with regard to randomness?
+  answer: NIST STS
+
+- question: Can RF signals like white noise be used to gather truly random bytes for cryptographic operations?
+  answer: |
+    Yes, cosmic noise is truly random.
+    But beware of external interference and consider to encase the antenna in a faraday cage, to capture only thermal noise from the device itself.
+    The choice of debiasing strategy is also important.
+
+- question: How can truly random data be gathered in a way that is less prone to external interference?
+  answer: By using a hardware randomness generator like the ChaosKey.

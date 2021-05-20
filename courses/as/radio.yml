@@ -47,3 +47,6 @@
 
 - question: What is are limiting factors when sniffing radio frequencies?
   answer: Noise and interference.
+
+- question: What types of noise do exist?
+  answer: atmospheric, terrestrial, thermal, radio frequency interference

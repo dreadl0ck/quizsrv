@@ -1,0 +1,34 @@
+- question: What does GSM stand for?
+  answer: Global System for Mobile Communications
+
+- question: What is the marketing name for GSM?
+  answer: 2G
+
+- question: What does BCCH stand for?
+  answer: Broadcast Control Channel
+
+- question: What does CCCH stand for?
+  answer: Common Control Channel
+
+- question: What does LAI stand for?
+  answer: Location Area identification
+
+- question: What does MCC stand for?
+  answer: Mobile Country Code
+
+- question: What does MNC stand for?
+  answer: Mobile Network Code
+
+- question: What does LAC stand for?
+  answer: Location Area Code
+
+- question: How is the unique identifier for a GSM cell called?
+  answer: Cell ID.
+
+- question: Which hex value is used in GSM for message padding?
+  answer: 2b
+
+- question: What is the IMSI used for?
+  answer: |
+    The international mobile subscriber identity is a number that uniquely identifies every user of a cellular network.
+    It is stored as a 64-bit field and is sent by the mobile device to the network.
