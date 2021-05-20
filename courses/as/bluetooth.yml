@@ -1,0 +1,60 @@
+- question: What is a common tool to sniff bluetooth traffic and which known limitation does it have?
+  answer: |
+    The Ubertooth One.
+    Can only sniff on a single advertisement channel at the same time,
+    which can lead to missing the pairing process.
+
+- question: How many advertisement channels are there in the bluetooth standard?
+  answer: 3
+
+- question: On which radio frequency is Bluetooth located?
+  answer: 2.4GHz
+
+- question: What is the unit used to express the _signal strength_?
+  answer: |
+    dBm: unit of level used to indicate that a power level is expressed in decibels with reference to one milliwatt.
+
+- question: What is the unit used to express the _channel frequency_?
+  answer: Hertz (Hz)
+
+- question: What does SNR stand for?
+  answer: Signal to Noise Ratio
+
+- question: What is the LAP used for in Bluetooth and how many bytes is it?
+  answer: |
+    Lower Address Part (3 bytes).
+    This portion of Bluetooth Address is allocated by the vendor of device.
+    The LAP value uniquely identifies a Bluetooth device as part of the Access Code in every transmitted frame.
+
+- question: What is the UAP used for in Bluetooth and how many bytes is it?
+  answer: |
+    Upper Address Part (1 byte).
+    Contains remaining 8 bits of the OUI.
+    The UAP value is used for seeding in various Bluetooth specification algorithms.
+
+- question: What does LAP stand for?
+  answer: Lower Address Part
+
+- question: What does LAP stand for?
+  answer: Upper Address Part
+
+- question: Which ubertooth commandline tool is used for sniffing BTLE?
+  answer: ubertooth-btle
+
+- question: Which bluetooth LE PDU type is used to transfer the channel map?
+  answer: CONNECT_IND (connection indication)
+
+- question: When and in which version of bluetooth has LE Secure Connection been introduced?
+  answer: LE Secure Connection is introduced in Bluetooth version 4.2 (2014)
+
+- question: Which versions of BTLE are vulnerable to MitM attacks?
+  answer: BTLE v4.0 and v4.1
+
+- question: What can be used to reduce signal interference?
+  answer: A faraday cage.
+
+- question: Which PDU type is used to enable encryption in BTLE 4.1?
+  answer: LL_FEATURE_REQ
+
+- question: Which PDU type is used to enable encryption in BTLE 4.2?
+  answer: LL_ENC_REQ

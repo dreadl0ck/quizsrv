@@ -1,0 +1,49 @@
+- question: Explain what happens during _modulation_
+  answer: Transformation of digital or analog signal into _analog_ signal.
+
+- question: Explain what happens during _encoding_?
+  answer: Conversion of bit streams into _digital_ signal.
+
+- question: Explain what happens during _ASK_ modulation?
+  answer: |
+    Symbol is sent via fixed Amplitude carrier wave at _fixed_ frequency for a specific time.
+    The RadioHead library uses this type of modulation.
+
+- question: Explain what happens during _AM_ modulation?
+  answer: |
+    Amplitude (= signal strength) of carrier wave is varied in proportion to that of the message signal.
+    The earliest type of modulation, used by the RCSwitch library.
+
+- question: What does _ASK_ modulation stand for?
+  answer: Amplitude-shift keying
+
+- question: What does _AM_ modulation stand for?
+  answer: Amplitude Modulation
+
+- question: What happens during 4-to-6 encoding?
+  answer: |
+    Every byte is divided in two nibbles (1 nibble = 4 bits), each nibble encoded in 6 bits.
+    64 distinct characters can be encoded in 6 bits.
+
+- question: What does FCS stand for?
+  answer: |
+    Frame Check Sequence.
+    For 433MHz frames: CRC-16 is used.
+
+- question: What is added to differentiate multiple clients by the RadioHead library?
+  answer: A header with 1 byte sender and receiver addresses is added.
+
+- question: Which frequency is common for home automation and remote controls?
+  answer: 433MHz
+
+- question: What needs to be applied in order to sniff radio frequencies?
+  answer: The receiver must apply same type of modulation.
+
+- question: Which encoding is commonly used for radio messages?
+  answer: LSB - Least Significant Bit First.
+
+- question: What is the least significant bit of _00111001_?
+  answer: The far right 1.
+
+- question: What is are limiting factors when sniffing radio frequencies?
+  answer: Noise and interference.
