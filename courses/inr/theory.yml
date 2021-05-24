@@ -43,19 +43,19 @@
 - question: Value of 145 in binary (big endian)?
   answer: 10010001
 
-- question: Whats the meaning of the 0.0.0.0 address?
+- question: What's the meaning of the 0.0.0.0 address?
   answer: IP address unknown
 
-- question: Whats the meaning of the 127.0.0.1 address?
+- question: What's the meaning of the 127.0.0.1 address?
   answer: Loopback address
 
-- question: Whats the meaning of the address if all host bits are 0?
+- question: What's the meaning of the address if all host bits are 0?
   answer: Network identification
 
-- question: Whats the meaning of the address if all host bits are 1?
+- question: What's the meaning of the address if all host bits are 1?
   answer: Directed broadcast
 
-- question: Whats the meaning of the 255.255.255.255 address?
+- question: What's the meaning of the 255.255.255.255 address?
   answer: Local (sub)net broadcast
 
 - question: What does VLSM stand for?
@@ -96,7 +96,7 @@
 - question: Are IP addresses little or big endian encoded on the wire?
   answer: Big endian
 
-- question: Whats the dominant byte ordering in networking protocols?
+- question: What's the dominant byte ordering in networking protocols?
   answer: Big endian
 
 - question: On which layer does 'switching' happen?
@@ -107,7 +107,7 @@
   answer: |
     Layer 3: Network layer
 
-- question: Whats the difference between an interface and a protocol?
+- question: What's the difference between an interface and a protocol?
   answer: |
     Interfaces: Same computer, different layer (vertical)
     Protocol: Different computer, same layer (horizontal)
@@ -121,7 +121,7 @@
 - question: What is a fundamental design problem with the addressing concept?
   answer: There are no identifiers for endpoints.
 
-- question: Whats missing in the internet architecture with regard to addressing?
+- question: What's missing in the internet architecture with regard to addressing?
   answer: The distinction between addresses and endpoints.
 
 - question: What is a bipartite graph?

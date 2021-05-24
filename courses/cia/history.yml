@@ -92,14 +92,14 @@
     @ Bell Labs
 - question: Which system suffered from the second system effect?
   answer: The Multics OS.
-- question: Whats the meaning of "Multics"?
+- question: What's the meaning of "Multics"?
   answer: Multiplexed Information and Computing Service
 - question: Explain the term "Unics"
   answer: |
     (Un for Uniplexed) + influence by:
     1. CTSS
     2. Multics
-- question: Whats the meaning of "CTSS"?
+- question: What's the meaning of "CTSS"?
   answer: Compatible Time Sharing System
 - question: When was 3BSD released?
   answer: 1979
@@ -179,7 +179,7 @@
   answer: TELNET and FTP
 - question: How many Mbps is a T3 line?
   answer: 45 Mbps
-- question: Whats the bitsize of the VAX?
+- question: What's the bitsize of the VAX?
   answer: 32-bit
 - question: What was included in 4.2 BSD?
   answer: TCP/IP stack
@@ -444,7 +444,7 @@
   answer: 1989
 - question: What does IRC stand for?
   answer: Internet Relay Chat
-- question: Whats the length of an NCP address?
+- question: What's the length of an NCP address?
   answer: 1 byte
 
 - question: Who authored the DNS specification?

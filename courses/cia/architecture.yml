@@ -57,7 +57,7 @@
 - question: What is the purpose of the _.interp_ ELF section?
   answer: |
     The _.interp_ section contains the DLLs.
-- question: Whats the entry point of an ELF executable?
+- question: What's the entry point of an ELF executable?
   answer: |
     _start
 - question: The x86 ISA does not make use of which addressing mode?
@@ -90,7 +90,7 @@
     Sections
 - question: In an ELF file, what are segments?
   answer: Segments are a clustering of sections that are loaded into memory during runtime
-- question: Whats the name of the executable file format used by Linux?
+- question: What's the name of the executable file format used by Linux?
   answer: |
     ELF
 
@@ -105,7 +105,7 @@
 - question: Name the path for the first device corresponding to the slave side of a pseudo terminal.
   answer: |
     /dev/pts/0
-- question: Whats the master side of a pseudo terminal?
+- question: What's the master side of a pseudo terminal?
   answer: |
     /dev/ptmx
 - question: Physical Address Extension (PAE) extends the possible memory space to?
@@ -124,7 +124,7 @@
     2. Environment Vector
     3. Argument Vector
 
-- question: Whats the entrypoint in crt1.o of an ELF executable?
+- question: What's the entrypoint in crt1.o of an ELF executable?
   answer: |
     *_start*
     crt is the C runtime.

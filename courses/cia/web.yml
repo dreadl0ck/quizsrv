@@ -1,6 +1,6 @@
 - question: What are servlets?
   answer: Server side java applications
-- question: Whats an advantage of SSI?
+- question: What's an advantage of SSI?
   answer: Process reuse.
 - question: What does SSI stand for?
   answer: Server Side Includes
@@ -14,7 +14,7 @@
   answer: Linux Apache MySQL PHP
 - question: Who invented the world wide web?
   answer: Tim Berners Lee (CERN)
-- question: Whats a drawback of CGI?
+- question: What's a drawback of CGI?
   answer: One process per request
 - question: What does CGI stand for?
   answer: Common Gateway Interface

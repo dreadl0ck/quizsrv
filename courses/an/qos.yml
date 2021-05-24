@@ -41,7 +41,7 @@
     - Link Layer Protocol Handling
     - Switching via lookup, forwarding and queueing
 
-- question: Whats the purpose of switching fabrics?
+- question: What's the purpose of switching fabrics?
   answer: Transfer packet from input buffer to appropriate output buffer.
 
 - question: How is the switching rate defined?
@@ -56,7 +56,7 @@
     - Bus
     - Crossbar
 
-- question: Whats the purpose of the output ports?
+- question: What's the purpose of the output ports?
   answer: |
     - Datagram buffering, Queueing
     - Link Layer Protocol Handling
@@ -157,7 +157,7 @@
 - question: What can be said regarding _locality_ of SiffServ Code Points?
   answer: Only local significance.
 
-- question: Whats the _expedite forwarding_ PHB codepoint?
+- question: What's the _expedite forwarding_ PHB codepoint?
   answer: 101110
 
 - question: Which bits define the _class_ for the _assured fowarding_ PHB?

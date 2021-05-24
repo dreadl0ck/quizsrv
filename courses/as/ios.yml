@@ -14,7 +14,7 @@
     - Protects against replay attack and bus sniffing
     - AES in Mac XEX mode ('xor-encrypt-xor')
 
-- question: Whats the purpose of the AES engine?
+- question: What's the purpose of the AES engine?
   answer: |
     - Encrypts and decrypts from flash to memory and vice versa
 

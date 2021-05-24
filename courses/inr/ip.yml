@@ -240,10 +240,10 @@
 - question: How many blocks of nibbles make up an IPv6 address?
   answer: 8 blocks of 4 nibbles = 32 hex digits
 
-- question: Whats the name for a group of 4 nibbles?
+- question: What's the name for a group of 4 nibbles?
   answer: quartet
 
-- question: Whats the length of a quartet in IPv6?
+- question: What's the length of a quartet in IPv6?
   answer: 16 bits
 
 - question: On which date was the World IPv6 Launch?
@@ -417,12 +417,12 @@
 - question: Why are reverse lookups of IPv6 addresses considered 'clumsy'?
   answer: Because the resulting origin names are very long and annoying to read.
 
-- question: Whats the growth factor for the number of IPv6 addresses compared to IPv4?
+- question: What's the growth factor for the number of IPv6 addresses compared to IPv4?
   answer: |
     2^96
     128 - 32 = 96 additional bits
 
-- question: Whats the IPv6 header length?
+- question: What's the IPv6 header length?
   answer: 40 bytes
 
 - question: The IPv6 address 2001:611:158:960::70 is in full?
@@ -445,7 +445,7 @@
 - question: Can the prefix pairs 6000::/3 and 8000::/3 be aggregated?
   answer: No
 
-- question: Whats the subnet router anycast address for the network 2001:610:158:960::/64?
+- question: What's the subnet router anycast address for the network 2001:610:158:960::/64?
   answer: |
     2001:610:158:960::
     Subnet router anycast address is formed by zeroing the host part.
@@ -496,13 +496,13 @@
 - question: How are the v6 addresses called, that contain an v4 address used on the v6 side of an v6 to v4 gateway?
   answer: IPv4-converted
 
-- question: Whats the notion for v4 addresses used by a software IPv6 stack, but never seen on the wire?
+- question: What's the notion for v4 addresses used by a software IPv6 stack, but never seen on the wire?
   answer: IPv4-mapped
 
-- question: Whats the notion for v4 addresses to build automatic tunnels?
+- question: What's the notion for v4 addresses to build automatic tunnels?
   answer: IPv4-compatible
 
-- question: Whats a generic notion for embedding a v4 address in a given v6 prefix?
+- question: What's a generic notion for embedding a v4 address in a given v6 prefix?
   answer: IPv4-embedded
 
 - question: How are addresses on the v4 side of a gateway called

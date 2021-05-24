@@ -142,7 +142,7 @@
     Downstream because the traffic flows in the opposite direction.
     Routers expect to receive traffic with the label they choose themselves.
 
-- question: Whats the directional relation between the traffic and the label flow?
+- question: What's the directional relation between the traffic and the label flow?
   answer: They move into opposite directions.
 
 - question: Should a label be unique within a MPLS domain?

@@ -55,7 +55,7 @@
 - question: Is the light inside an optical fiber cable from the visible light spectrum?
   answer: No.
 
-- question: Whats the relation between frequency and wavelength?
+- question: What's the relation between frequency and wavelength?
   answer: Increasing wavelength -> decreasing frequency
 
 - question: What are the benefits of _electrical_ transmission?
@@ -81,7 +81,7 @@
     - Multi-mode: cheaper, thicker core, for short distances (up to 2km), orange coating
     - Single-mode: for long distances, yellow coating
 
-- question: Whats the difference in terms of wavelengths between Multi-mode and Single-mode fiber cables?
+- question: What's the difference in terms of wavelengths between Multi-mode and Single-mode fiber cables?
   answer: |
     - Multi-mode: 850nm - 1300nm
     - Single-mode: 1300nm - 1550nm

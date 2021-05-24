@@ -63,13 +63,13 @@
 - question: How do large cellular radio networks provide coverage for entire countries?
   answer: Network is divided into smaller areas (cells) using different frequency subbands.
 
-- question: Whats the range of a WPAN?
+- question: What's the range of a WPAN?
   answer: Around 10 meters.
 
-- question: Whats the range of a WLAN?
+- question: What's the range of a WLAN?
   answer: Around 100 meters, depending on the antennas.
 
-- question: Whats the range of a WMAN?
+- question: What's the range of a WMAN?
   answer: Range of <50km.
 
 - question: What is the responsibility of a relay?
@@ -78,25 +78,25 @@
 - question: Does bluetooth need infrastructure to operate?
   answer: No, it's an _ad hoc_ protocol.
 
-- question: Whats the maximum range of bluetooth?
+- question: What's the maximum range of bluetooth?
   answer: Around 10 meters.
 
-- question: Whats the maximum burst size in Bluetooth v5.0?
+- question: What's the maximum burst size in Bluetooth v5.0?
   answer: 2Mbps bursts.
 
-- question: Whats a _piconet_?
+- question: What's a _piconet_?
   answer: An ad hoc network that links a wireless user group of devices using Bluetooth technology protocols.
 
-- question: Whats a _scatternet_?
+- question: What's a _scatternet_?
   answer: A type of ad hoc computer network consisting of two or more _piconets_.
 
-- question: Whats the link layer protocol used in the bluetooth protocol stack?
+- question: What's the link layer protocol used in the bluetooth protocol stack?
   answer: Point-to-Point Protocol (PPP)
 
 - question: What does SDP stand for?
   answer: Service Discovery Protocol
 
-- question: Whats the purpose of the RFCOMM protocol in the bluetooth stack?
+- question: What's the purpose of the RFCOMM protocol in the bluetooth stack?
   answer: Presents a virtual RS-232 serial port, transparent to the device.
 
 - question: What is the purpose TCS BIN in the bluetooth protocol stack?
@@ -122,16 +122,16 @@
     - Nodes can only transmit to other nodes within link coverage
     - Nodes organize themselves into a network: route among themselves
 
-- question: Whats the maximum achievable throughput with _IEEE 802.11b_?
+- question: What's the maximum achievable throughput with _IEEE 802.11b_?
   answer: Up to 11 Mbps (2.4GHz unlicensed spectrum)
 
-- question: Whats the maximum achievable throughput with _IEEE 802.11a_?
+- question: What's the maximum achievable throughput with _IEEE 802.11a_?
   answer: Up to 54 Mbps (5GHz range)
 
-- question: Whats the maximum achievable throughput with _IEEE 802.11g_?
+- question: What's the maximum achievable throughput with _IEEE 802.11g_?
   answer: Up to 54 Mbps (2.4GHz range)
 
-- question: Whats the maximum achievable throughput with _IEEE 802.11b_?
+- question: What's the maximum achievable throughput with _IEEE 802.11b_?
   answer: Up to 600 Mbps (2.4GHz or 5GHz range, multiple antennas)
 
 - question: What is established during association with an access point?
@@ -152,7 +152,7 @@
 - question: What does CSMA/CD stand for?
   answer: Carrier Sense Multiple Access with Collision Detection
 
-- question: Whats the purpose of CSMA/CD?
+- question: What's the purpose of CSMA/CD?
   answer: Send as soon as the medium is free and listen into the medium to sense if a collision occurs.
 
 - question: What are problems in wireless networks?
@@ -238,7 +238,7 @@
 - question: Which certification body develops the WiFi standard?
   answer: The IEEE
 
-- question: Whats the job of the Wi-Fi alliance?
+- question: What's the job of the Wi-Fi alliance?
   answer: A consortium of industries, that tries to provide certification and ensuring interoperability between devices from different vendors.
 
 - question: What was the first WiFi standard?
@@ -250,7 +250,7 @@
 - question: How many non overlapping channels are in the 2.4GHz band?
   answer: 3
 
-- question: Whats a good tool to analyze the wireless spectrum for troubleshooting?
+- question: What's a good tool to analyze the wireless spectrum for troubleshooting?
   answer: inSSIDer from metageek
 
 - question: What does DFS stand for in the context of wireless networking?

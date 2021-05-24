@@ -71,7 +71,7 @@
   answer: |
     1 without wildcards.
     2 with wildcards.
-- question: Whats the role of the CLE when querying for a non-existent domain?
+- question: What's the role of the CLE when querying for a non-existent domain?
   answer: |
     The CLE is the parent of both NEC and SOS.
 - question: Which records apart from NSEC and RRSIG are present at a delegation point?

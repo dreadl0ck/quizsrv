@@ -57,7 +57,7 @@
 - question: What types of antennas do exist?
   answer: Omnidirectional and directional antennas.
 
-- question: Whats a good antenna length given a certain wavelength?
+- question: What's a good antenna length given a certain wavelength?
   answer: Antenna should be a quarter of the wavelength.
 
 - question: Explain what happens during _trilateration_

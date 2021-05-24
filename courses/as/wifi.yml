@@ -73,7 +73,7 @@
     3. Associate to the access point
       - AP will keep track of client MAC address
 
-- question: Whats the name of the standard that first introduced encryption to the WiFi?
+- question: What's the name of the standard that first introduced encryption to the WiFi?
   answer: Wired Equivalent Privacy (WEP)
 
 - question: What are problems with WEP?

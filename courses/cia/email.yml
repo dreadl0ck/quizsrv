@@ -1,13 +1,13 @@
 - question: What indicates the end of line in SMTP?
   answer: |
     CRLF - Carriage Return (CR) and Line Feed (LF).
-- question: Whats the maximum line length including the end of lines in SMTP?
+- question: What's the maximum line length including the end of lines in SMTP?
   answer: |
     998 is the hard limit + 2 chars for the EOL = 1000.
-- question: Whats the recommended line length excluding the EOL in SMTP?
+- question: What's the recommended line length excluding the EOL in SMTP?
   answer: |
     78 characters.
-- question: Whats the port number for smtps / ssmtp?
+- question: What's the port number for smtps / ssmtp?
   answer: |
     465 for TLS only,
     587 plain text, then upgrade with STARTTLS (insecure, MitM can force downgrade!)

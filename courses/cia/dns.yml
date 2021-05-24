@@ -12,7 +12,7 @@
   answer: |
     When the query is in another zone.
     Delegation cancels the wildcard defaults.
-- question: Whats the value for the label type of a compressed label?
+- question: What's the value for the label type of a compressed label?
   answer: |
     11.
     The first two bits of the length bytes contain the label type.
@@ -44,20 +44,20 @@
   answer: |
     1018 instances operated by the 12 independent operators.
     12 operators, 13-1 because Verisign owns to.
-- question: Whats the op code for a standard DNS query?
+- question: What's the op code for a standard DNS query?
   answer: |
     0
-- question: Whats the op code for DSO?
+- question: What's the op code for DSO?
   answer: |
     6
-- question: Whats the DSO op code used for?
+- question: What's the DSO op code used for?
   answer: |
     DNS Stateful Operation.
     Used to indicate that statekeeping is possible because the session is established over TCP.
-- question: Whats the DNS result code for a ServFail?
+- question: What's the DNS result code for a ServFail?
   answer: |
     2
-- question: Whats the result code for NXDOMAIN?
+- question: What's the result code for NXDOMAIN?
   answer: |
     3
 - question: How many possible values are there for the QTYPE field?
@@ -69,25 +69,25 @@
     - QNAME
     - QTYPE (2 bytes)
     - QCLASS (2 bytes)
-- question: Whats the value of the QCLASS 'IN' after being encoded?
+- question: What's the value of the QCLASS 'IN' after being encoded?
   answer: 1
-- question: Whats the bit position of the RA flag in the DNS header?
+- question: What's the bit position of the RA flag in the DNS header?
   answer: |
     The Recursion Available Flag is the 9th bit in the DNS header.
-- question: Whats the answer called if there was no error but also an empty set of answers?
+- question: What's the answer called if there was no error but also an empty set of answers?
   answer: |
     NODATA
     Caution, this is not an official error code.
     The error code in that case is NOERROR!
-- question: Whats the QTYPE for a slave initiated zone transfer (pull)?
+- question: What's the QTYPE for a slave initiated zone transfer (pull)?
   answer: |
     AXFR
-- question: Whats the QTYPE for a master initiated zone transfer (push)?
+- question: What's the QTYPE for a master initiated zone transfer (push)?
   answer: |
     NOTIFY
-- question: Whats the op code for "dynamic update"?
+- question: What's the op code for "dynamic update"?
   answer: 5
-- question: Whats the ASCII value of * (asterisk label)?
+- question: What's the ASCII value of * (asterisk label)?
   answer: 42
 - question: Define the source of synthesis (SOS)
   answer: |
@@ -104,7 +104,7 @@
     - NS records in authority section
 - question: Which result if no CLE and no SOS?
   answer: NXDOMAIN
-- question: Whats the bit position of the RD flag in the DNS header?
+- question: What's the bit position of the RD flag in the DNS header?
   answer: |
     The Recursion Desired Flag is the 8th bit in the DNS header.
 - question: What are the parameters of an SOA record?
@@ -137,7 +137,7 @@
       c) a resolver
   answer: |
     b) stub resolver
-- question: Whats the primary use of DNS?
+- question: What's the primary use of DNS?
   answer: |
     Looking up IP addresses for a given name.
 - question: In BIND syntax (owner ttl class type data) which components are optional?
@@ -168,12 +168,12 @@
   answer: |
     d) wildcards must not be prefixed by a label
 
-- question: Whats the maximum offset when using a compressed label?
+- question: What's the maximum offset when using a compressed label?
   answer: |
     14 bits are available for storage, so:
     2^14 - 1 (for empty root label) = 16.383 bytes
 - question: |
-    Whats the encoding of 112.nl in hex?
+    What's the encoding of 112.nl in hex?
     Hint: The ascii value of . is 0x2e
   answer: |
     0x03 0x31 0x31 0x32 0x02 0x6e 0x6c 0x00
@@ -200,9 +200,9 @@
     A validating resolver answers to dig www.os3.nl
     Which flags are set?
   answer: AD, but not AA
-- question: Whats the full name of the AA flag?
+- question: What's the full name of the AA flag?
   answer: Authoritative Answer
-- question: Whats the full name of the CD flag?
+- question: What's the full name of the CD flag?
   answer: Checking Disabled
 - question: Do NSEC chains touch?
   answer: Yes
@@ -215,7 +215,7 @@
 - question: The digest in the text representation of a DS record uses which encoding?
   answer: |
     Hex encoding
-- question: Whats the full name of the DO flag?
+- question: What's the full name of the DO flag?
   answer: |
     DNSSEC OK
 - question: With empty caches, a lookup of www.os3.nl will consist of?
@@ -304,7 +304,7 @@
 - question: Which are the attributes shared by a resource record set?
   answer: |
     Same owner, class, type and ttl.
-- question: Whats the difference between a CNAME and DNAME?
+- question: What's the difference between a CNAME and DNAME?
   answer: |
     A CNAME (canonical name) record defines an alias.
     A DNAME (delegation name) is used for non-terminal DNS name redirection.
