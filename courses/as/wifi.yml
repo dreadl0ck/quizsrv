@@ -42,3 +42,73 @@
 
 - question: What is a great open source tool to conduct wireless attacks and reconaissance?
   answer: bettercap (https://bettercap.org)
+
+- question: What is the purpose of IEEE 802.11c?
+  answer: Bridging between AP's
+
+- question: What does ISM stand for and what purpose does it have?
+  answer: |
+    Industrial Scientific Medical
+    The ISM radio bands are portions of the radio spectrum reserved internationally for industrial, scientific and medical purposes, excluding applications in telecommunications
+
+- question: Which channels from the 2.4GHz band should be preferred because they do not overlap?
+  answer: Channels 1, 6 and 11
+
+- question: How many non overlapping channels are in the 5GHz band?
+  answer: 24
+
+- question: What is the channel width for the 5GHz band?
+  answer: 20MHz
+
+- question: Explain what happens during _active_ scanning
+  answer: The client initiates the effort by sending a probe.
+
+- question: Explain what happens during _passive_ scanning
+  answer: The client just listens, AP broadcasts a beacon frame.
+
+- question: Briefly describe what happens during joining an Access Point (AP)
+  answer: |
+    1. Scan for access points
+    2. Authenticate to the access point
+    3. Associate to the access point
+      - AP will keep track of client MAC address
+
+- question: Whats the name of the standard that first introduced encryption to the WiFi?
+  answer: Wired Equivalent Privacy (WEP)
+
+- question: What are problems with WEP?
+  answer: |
+    - based on RC4 cipher
+    - Shared key (fixed)
+    - IV has to be unique for each packet
+      - only 16 bits of 24 bit IV actually used
+      - predictable
+      - CRC32 is weak and easy to forge
+
+- question: How can WEP be attacked in practice?
+  answer: |
+    1. Send ping, we know the plaintext response
+    2. Get encrypted response
+    3. Calculate RC4 stream
+    4. Store RC4 stream indexed for each IV
+    5. Now every packet can be decrypted
+
+- question: How is authentication implemented in WEP?
+  answer: |
+    MAC address based, two options:
+    1. Open: any client can associate
+    2. Closed: only known clients can associate
+
+- question: What does TKIP stand for?
+  answer: Temporal key integrity protocol
+
+- question: What does RSN stand for?
+  answer: Robust Security Network
+
+- question: How was TKIP used to overcome WEP weaknesses without the need for new hardware?
+  answer: |
+    802.11i:
+    - Message integrity code
+    - New IV sequencing
+    - Per packet mixing function
+    - Re-Keying

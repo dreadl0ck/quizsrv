@@ -50,3 +50,41 @@
 
 - question: What types of noise do exist?
   answer: atmospheric, terrestrial, thermal, radio frequency interference
+
+- question: What factors does the distance of a radio transmission depend on?
+  answer: Transmitting power, atenna, receiver sensitity, noise and obstructions.
+
+- question: What types of antennas do exist?
+  answer: Omnidirectional and directional antennas.
+
+- question: Whats a good antenna length given a certain wavelength?
+  answer: Antenna should be a quarter of the wavelength.
+
+- question: Explain what happens during _trilateration_
+  answer: _Trilateration_ is the process of determining absolute or relative locations of points by measurement of distances, using the geometry of circles, spheres or triangles.
+
+- question: Explain what hapens during _triangulation_
+  answer: _Triangulation_ is the process of determining the location of a point by forming triangles to the point from known points.
+
+- question: Name two types of analog modulation
+  answer: |
+    - Amplitude Modulation (AM)
+    - Frequency Modulation (FM)
+
+- question: Name four types of digital modulation
+  answer: |
+    - PSK (Phase Shift Keying)
+    - FSK (Frequency Shift Keying)
+    - ASK (Amplitude Shift Keying)
+    - QAM (Quadrature Amplitude Modulation)
+
+- question: Explain what happens during QAM modulation
+  answer: |
+    QAM modulation is a combination of amplitude and phase modulation.
+    Inputs are the data stream and the RF carrier, the output is the modulated signal, which is amplitude and phase modulated.
+
+- question: Explain the consequences of higher QAM modulation depth
+  answer: Higher QAM modulation depth means more symbols, but a smaller symbol distance and therefore a lower noise tolerance.
+
+- question: What determines the QAM modulation depth?
+  answer: The length of the symbol in the data stream.

@@ -58,3 +58,88 @@
 
 - question: Which PDU type is used to enable encryption in BTLE 4.2?
   answer: LL_ENC_REQ
+
+- question: Name three key attributes of BTLE
+  answer: Lost cost, low energy, low distance
+
+- question: What is the IEEE standard indentifier for bluetooth?
+  answer: IEEE 802.15
+
+- question: What does GATT stand for?
+  answer: Generic Attribute Profile
+
+- question: What does GAP stand for?
+  answer: Generic Access Profile
+
+- question: Where does the name bluetooth originate from?
+  answer: Named after the analogy that bluetooth would unite devices the way Harald Bluetooth united the tribes of Denmark into a single kingdom.
+
+- question: What does HCI stand for?
+  answer: Host Controller Interface
+
+- question: What is the purpose of the HCI?
+  answer: Host Controller Interface serves as an interface between RF radio hardware and the software drivers.
+
+- question: Who developed frequency hopping and why?
+  answer: Hedy Lamarr, she created a radio guidance system during WW2 for allied torpedoes that was more diffult to jam.
+
+- question: Which channel width is bluetooth using and how many channels are there in total?
+  answer: BLE uses 40 channels of 2MHz.
+
+- question: Which device classes exist for bluetooth?
+  answer: Classes _1_, _1.5_, _2_ and _3_.
+
+- question: Which bluetooth class is considered low power?
+  answer: Class _3_.
+
+- question: Which bluetooth class is considered high power?
+  answer: Class _1_.
+
+- question: Which bluetooth class is used for USB adapters and access points?
+  answer: Class _1_.
+
+- question: Which bluetooth class is used for beacons and wearables?
+  answer: Class _1.5_.
+
+- question: Which bluetooth class is used for mobile devices and smart card readers?
+  answer: Class _2_.
+
+- question: Which bluetooth class is used for bluetooth adapters?
+  answer: Class _3_.
+
+- question: How many different bluetooth profiles do exist?
+  answer: 34 different profiles.
+
+- question: Name five common bluetooth profiles
+  answer: |
+    - HID (Human Interface Device)
+    - DUN (Dialup Networking)
+    - FTP (File Transfer Protocol)
+    - HFP (Handsfree Protocol)
+    - OBEX (Object Exchange Protocol)
+
+- question: What is the definition of a bluetooth profile and what is required for two devices to communicate?
+  answer: |
+    Bluetooth profiles are a a set of services or functions that a device will offer.
+    In order to communicate, two devices must implement a common subset of these functions.
+
+- question: What types of bluetooth pairing do exist?
+  answer: |
+    - Legacy Pairing
+    - Secure Simple Pairing
+
+- question: Name the four different types of SSP
+  answer: |
+    - Just Works
+    - Numeric Pairing
+    - Passkey Entry
+    - Out of Band
+
+- question: What encryption algorithm is the latest bluetooth standard using?
+  answer: AES
+
+- question: Name three past vulnerabilities in the bluetooth stack, and briefly explain them
+  answer: |
+    - BLURTOOTH: keys not correctly validated
+    - Blueborne: Bufferoverflow in firmware
+    - Bluesnarfing: legitimate pairing, but UI does not give the user a notification

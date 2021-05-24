@@ -32,3 +32,72 @@
   answer: |
     The international mobile subscriber identity is a number that uniquely identifies every user of a cellular network.
     It is stored as a 64-bit field and is sent by the mobile device to the network.
+
+- question: What was a major issue with the first generation of cell phones?
+  answer: Suspectible to cloning
+
+- question: What is the name for the second generation of mobile networks?
+  answer: GSM
+
+- question: What does SIM stand for?
+  answer: Subscriber Identity Module
+
+- question: What data is stored in the SIM card?
+  answer: |
+    - IMSI
+    - Ki (128 bits)
+    - PIN
+
+- question: What is revelant for analyzing GSM with regard to anonymity?
+  answer: |
+    - IMSI (International Mobile Subscriber Identity) to identify caller
+    - TMSI (Temporary Mobile Subscriber Identity), changed frequently
+    in general: no strong anonymity guarantess.
+
+- question: How is confidentiality ensured in GSM?
+  answer: |
+    - Data encrypted with stream cipher A5/1 or A5/2
+    - Encryption Key Kc
+      - Kc = A8(RAND,Ki), A8 is a hash
+      - Kc sent to base station with (RAND,XRES)
+      - Mobile computes Kc = A8(RAND,Ki)
+      - Keystream generated from A6(Kc)
+
+- question: How is authentication handled in GSM?
+  answer: |
+    - Via challenge - response
+    - Home network generates RAND and computes XRES = A3(RAND,Ki)
+    - (RAND,XRES) sent to base station
+    - BS sends challenge RAND to mobile
+    - Mobile response with SRES = A3(RAND,Ki)
+    - BS verifies SRES = XRES
+
+- question: What are known security problems with GSM?
+  answer: |
+    - Hash (A3/A8) is brokem, Ki can be obtained in 2 to 10 hours with the SIM
+    - No encryption from base station to base station controller
+    - Encryption algorithm A5/1 broken with known plaintext
+    - Fake base station attacks
+    - Jamming for DoS
+    - No replay protection
+
+- question: What kind of attacks are possible against second generation SIM cards?
+  answer: |
+    - Optical Fault Induction with flashbulb to recover Ki
+    - Partitioning attacks to recover Ki
+
+- question: Which security issues have been addressed with 3GPP?
+  answer: |
+    - Mutual authentication
+    - Integrity-protected signaling
+    - Keys cannot be reused
+    - Triples cannot be replayed
+    - Stronger encryption algorithm (KASUMI)
+    - Encryption extended to base station controller
+
+- question: What are the characteristics of the KASUMI cipher?
+  answer: |
+    - From MISTY1
+    - 64 bits block cipher, 128 bit key
+    - 8 round feistel network
+    - Used in GSM (A5/3) and in GPRS (GEA3 key stream generator)

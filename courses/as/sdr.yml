@@ -40,3 +40,11 @@
 
 - question: How can truly random data be gathered in a way that is less prone to external interference?
   answer: By using a hardware randomness generator like the ChaosKey.
+
+- question: Describe the benefits of SDR
+  answer: |
+    Software Defined Radio allows to implement components like filters or modulators in software, instead of using dedicated hardware.
+    This makes implemetation and research of new technologies much cheaper and faster.
+
+- question: What does SDR stand for?
+  answer: Software Defined Radio
