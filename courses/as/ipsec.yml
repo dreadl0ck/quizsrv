@@ -1,0 +1,130 @@
+- question: On which layer does TLS operate in the OSI model?
+  answer: Application Layer
+
+- question: On which layer does TLS operate in the OSI model?
+  answer: Network layer
+
+- question: Is IPSec transparent or opague to applications?
+  answer: Transparent
+
+- question: What is a serious organizational challenge when deploying IPSec?
+  answer: Interoperability between products from different vendors.
+
+- question: What does IKE stand for?
+  answer: Internet Key Exchange
+
+- question: What happens during IKE?
+  answer: |
+    - Mutual authentication
+    - Establishment of session key
+    - Two phases, similar to SSL session and connection
+
+- question: What does ESP stand for?
+  answer: Encapsulating Security Payload
+
+- question: What is the ESP used for?
+  answer: Used to provide confidentiality and/or integrity.
+
+- question: What does AH stand for?
+  answer: Authentication Header
+
+- question: What is the purpose of the AH?
+  answer: Provides integrity only.
+
+- question: Which two phases of IKE do exist?
+  answer: |
+    - Phase 1: IKE security association (SA), comparable to SSL session
+    - Phase 2: AH/ESP Security Association, comparable to SSL connection
+
+- question: Why is there not always a need for two phases in IKE?
+  answer: If phase 2 (connection establishment after session establishment) does not occur multiple times, it is more costly to have two phases.
+
+- question: Briefly describe what happens during IKE phase 1
+  answer: |
+    - Choose key option
+    - Choose mode
+    - Mutual authentication
+    - Ephemeral Diffie Hellmann to establish session key, provides perfect forward secrecy
+
+- question: Explain the different key options in IKE phase 1
+  answer: |
+    - 4 different "key options"
+      - public key encryption (original version)
+      - public key encryption (improved version)
+      - public key signature
+      - symmetric key
+
+- question: Explain the different modes in IKE phase 1
+  answer: |
+    - main mode (preserves anonymity, slower)
+    - aggressive mode (loss of anonymity, faster)
+
+- question: Explain what happens during IKE phase 2
+  answer: |
+    - Establishes IPSec AH/ESP Security Association (comparable to SSL connection)
+    - Only one mode of authentication: public key signatures
+    - IDE and IPSec SA in 4 messages, extra child SA's in 2 messages
+    - DoS protection via cookies optional
+    - Crypto suites similar to TLS
+
+- question: How many different versions of IKE phase 1 do exist?
+  answer: 4 key options x 2 modes = 8
+
+- question: Explain the purpose of cookies in the IPSec context
+  answer: |
+    - Initiator Cookie (IC) and Responder Cookie (RC) are supposed to prevent DoS attacks
+    - Problem: Bob wants to remain stateless
+      - but needs to remember CP from message 1 (for proof of identity in msg 6)
+      -> cookies offer little DoS protection
+
+- question: Explain the use of the Public Key Signature key option and the implications
+  answer: |
+    - Aggressive mode does not try to hide identities
+    - Aggressive mode cannot negotiate g or p
+    - Main mode MUST be implemented, aggressive mode SHOULD
+    - Passive attacker knows identities of Alice and Bob in aggressive mode, but not in main mode
+    - Active attacker can determine Alice and Bob identity in main mode
+
+- question: Explain the use of the Symmetric Key key option and the implications
+  answer: |
+    - Same as signature mode but KAB (symmetric key) shared in advance
+    - Catch-22: Alice’s ID is encrypted wit K. To find K, Bob must know KAB, and to get KAB Bob must know he’s talking to Alice.
+    - Alice’s IP address is used as ID
+    - So why all the trouble to try to hide identities in a 6 message protocol
+    - Aggressive is the same as the digital signature aggressive mode. Does not have the problems of the main mode.
+
+- question: Explain the use of Public Key Encryption and the implications
+  answer: |
+    - K, proofA and proofB are computed as in main mode
+    - Identities are hidden in aggressive mode (the only aggressive mode to hide identities)
+    - So no use of main mode
+
+- question: Explain the issue with using the Public Key Encryption key options
+  answer: |
+    - Trudy can generate a, b, RA and RB
+    - And can compute keys and proofs gab mod p, K, SKEYID, proofA and proofB (also in main mode)
+    - So trudy can create messages that appears to be between Alice and Bob that appears to be
+      valid.
+    - Plausible Deniability: Alice and Bob can deny that any conversation took place
+
+- question: Explain how IPSec transport mode works
+  answer: |
+    - Adds extra IPSec header
+    - Designed for host-to-host
+    - Efficient, add minimal amount of extra header information
+    - original header remains, so passive attacker can see who is talking
+
+- question: Explain how IPSec tunnel mode works
+  answer: |
+    - Designed for firewall-to-firewall traffic
+    - Original IP packet encapsulated in IPSec
+    - Original IP header not visible to attacker
+
+- question: What is protected by the authentication header?
+  answer: The immutable fields in the IP header
+
+- question: How can the ESP be used to provide only integrity?
+  answer: By using NULL encryption, IP header is then not protected.
+
+- question: Why can't all IP header fields be protected by the AH?
+  answer: Because some fields like the TTL change at every hop.
