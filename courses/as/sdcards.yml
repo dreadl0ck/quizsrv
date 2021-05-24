@@ -1,0 +1,81 @@
+- question: What is a better error correction method than BCH?
+  answer: LDPC (Low Density Parity Check)
+
+- question: Which error correction method is becoming more popular and why?
+  answer: |
+    LDPC (Low Density Parity Check)
+    More efficient, because less space needed for error correction code.
+
+- question: Who decided how much space is used for error correction and based on what criteria?
+  answer: Decided by the controller vendor, based on their requirements for the amount of errors that shall be correctable.
+
+- question: What is the layout on an 8K flash memory page, when having 2048 bytes of data and using ECC?
+  answer: |
+    Data (2048 bytes) | ECC (90 bytes) | ...
+
+- question: What do the values X and Y mean in BCH(X,Y)?
+  answer: |
+    X = Total data size
+    Y = Size of data payload without error correction code
+
+- question: What happens if the ECC code section has errors as well?
+  answer: The ECC code is covering the entire message and can thus also be used to correct itself, so errors can be tolerated to a certain level.
+
+- question: What has to be identified in order to decode data that is protected with BCH?
+  answer: The polynomial, among other parameters like page size etc.
+
+- question: Where can parameter configurations for different flash memory vendors be looked up?
+  answer: For example at flash-extractor.com
+
+- question: What is a good software to analyze flash memory dumps?
+  answer: |
+    ruSolut Visual Nand Reconstructor
+    and
+    ACELab PC-3000
+
+- question: What is a good flash memory reader hardware device?
+  answer: |
+    ruSolut Visual Nand Reconstructor comes with an FPGA based NAND reader device.
+    Alternatively, ACELab also has a reader device the PC-3000 spider board.
+
+- question: What happens during scrambling of flash memory?
+  answer: |
+    Original data gets XORed with pseudo random bytes produced by the flash controller.
+    Unlike true encryption, scrambling patterns are not designed for security reasons and are therefore easy to identify, extract and then use for data recovery.
+
+- question: How does data look like after scrambling?
+  answer: A repeating pattern is visible.
+
+- question: What is the reason that data can often be recovered from flash devices?
+  answer: Error correction codes, shadow copies made by the flash controller, or damaged pages that still contain old information and have been abandoned.
+
+- question: What is a name of the strategy a scrambler applies to obfuscate the data?
+  answer: One Time Pad (XOR input data with random bytes)
+
+- question: Explain what wear leveling is and why it's needed
+  answer: |
+    Wear leveling is a technique for prolonging the service life of some kinds of erasable computer storage media, such as flash memory.
+    It is needed because frequent access to the same memory cells would degrade them quickly and lead to a short life time of the hardware.
+
+- question: Can the page data of flash memory be erased?
+  answer: |
+    Deleting data has to happen at the block level, one block contains multiple pages.
+    If any page is detected to be corrupted, usually it does not get deleted, because the other pages in the block still contain valid data.
+
+- question: What does LBN stand for?
+  answer: Logical Block Number
+
+- question: What does LPN stand for?
+  answer: Logical Page Number
+
+- question: What can be done if the error rate is too high and not correctable?
+  answer: Rereading the device can help, or changing the voltage used during dumping the data.
+
+- question: Which steps have to be taken in order to recover data from flash based devices?
+  answer: |
+    - Extract raw flash data
+    - Identify ECC protocol and parameters
+    - Identify scrambling protocol and parameters
+    - Identify wear-leveling scheme (LBN,LPN)
+    - Reconstruct the physical image
+    - Look for data remnants in unused area on flash
