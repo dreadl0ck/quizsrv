@@ -1,14 +1,14 @@
 name: Advanced Security
 description: A course about security aspects of various communication protocols.
 quotes:
-  "Keep calm and pass AS": "traumatized OS3 students"
+  "I have PTSD from dokuwiki": "traumatized OS3 students"
 exam:
   "bluetooth": 10
   "gsm": 20
   "fuzzing": 5
   "sdr": 5
   "wifi": 10
-  "ios": 10
+  "ios": 5
   "ipsec": 20
-  "sdcards": 10
+  "sdcards": 15
   "radio": 10
