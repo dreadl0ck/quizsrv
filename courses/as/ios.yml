@@ -1,0 +1,45 @@
+- question: What is the purpose and the design of the Secure Enclave?
+  answer: |
+    - Crypto coprocessor in A7+, for key management and crypto operations
+    - Device-specific inaccessible UID key
+    - Hardwired GID key
+    - Hardware RNG
+    - Stores fingerprint + face digest
+    - Secure ECC computing, L4 microkernel
+
+- question: What is the purpose and design of the Memory Protection Engine?
+  answer: |
+    - Protects memory used by the SEnc from the CPU
+    - Encrypts and protects integrity
+    - Protects against replay attack and bus sniffing
+    - AES in Mac XEX mode ('xor-encrypt-xor')
+
+- question: Whats the purpose of the AES engine?
+  answer: |
+    - Encrypts and decrypts from flash to memory and vice versa
+
+- question: Why is transplantation of flash memory impossible for iOS devices?
+  answer: Because the keys used in by the AES engine are linked to the Secure Enclave and device UID.
+
+- question: How does TouchID work in a nutshell?
+  answer: |
+    - Finger scan sent to SEnc (encrypted)
+    - Converted into lossy vector representation
+    - Stored or compared against stored data
+    - Only accessible to SEnc, no backups
+
+- question: How does FaceID work in a nutshell?
+  answer: |
+    - 30K random points on face + 2D infrared images
+    - sent to SEnc (encrypted), only accessible to SEnc
+
+- question: How does the Secure Neural Engine work in a nutshell?
+  answer: |
+    - Converts 2D and depth maps into mathematical representations
+    - Previously part of SEnc
+    - Uses memory protection engine for securing allocated memory
+
+- question: What is the Secure Element?
+  answer: |
+    - Java card platform, used for Apple Pay
+    - Compliant with financial industry requirement for electronic payments
