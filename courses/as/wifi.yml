@@ -112,3 +112,11 @@
     - New IV sequencing
     - Per packet mixing function
     - Re-Keying
+- question: What is the maximum legal transmission power for a Wireless Access Point (WAP)?
+  answer: 100mW
+
+- question: How many 2.4GHz WiFi channels are there?
+  answer: 13 in most of the world (Japan has 14)
+
+- question: How wide are the 2.4GHz WiFi channels?
+  answer: 20MHz

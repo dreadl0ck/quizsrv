@@ -12,7 +12,7 @@
     Debiasing is the reduction of bias, particularly with respect to judgment and decision making.
     A debiasing algorithm extracts only the random bits from a stream of bytes, and discards consecutive sequences of identical values.
 
-- question: What is a possible attack vector against VN debiasing?
+- question: What is a possible attack vector against Von Neumann debiasing?
   answer: Denial of Service
 
 - question: What is the oldest debiasing algorithm?
@@ -48,3 +48,5 @@
 
 - question: What does SDR stand for?
   answer: Software Defined Radio
+- question: What protocol is the Dutch P2000 network based on? What is it used for?
+  answer: FLEX. Used by emergency health & fire services

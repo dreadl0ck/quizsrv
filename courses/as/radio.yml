@@ -88,3 +88,17 @@
 
 - question: What determines the QAM modulation depth?
   answer: The length of the symbol in the data stream.
+- question: What are the ISM bands?
+  answer: Part of the radio spectrum internationally reserved for Industry Science Medical purposes
+
+- question: What is the difference between triangulation and trilateration?
+  answer: Both are used for measuring distances. Triangulation uses the angle of the incoming signal while trilateration calculates distance based on the intersection of circles (2D) or spheres (3D)
+
+- question: Why would a radio protocol use duty cycles?
+  answer: To decrease collisions and therefore inteference between transmitting antennas
+
+- question: Given a wavelength λ, what is the ideal length of the receiving antenna?
+  answer: λ/2
+
+- question: What is a pro & con for curled antennas?
+  answer: More space efficient & transportable. Less gain than straight.

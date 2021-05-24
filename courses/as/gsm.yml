@@ -1,5 +1,5 @@
 - question: What does GSM stand for?
-  answer: Global System for Mobile Communications
+  answer: Groupe Spécial Mobile (name of the committee) & Global System for Mobile Communications (name of the standard)
 
 - question: What is the marketing name for GSM?
   answer: 2G
@@ -101,3 +101,22 @@
     - 64 bits block cipher, 128 bit key
     - 8 round feistel network
     - Used in GSM (A5/3) and in GPRS (GEA3 key stream generator)
+    It is stored as a 64-bit field and is sent by the mobile device to the network
+
+- question: What are the security goals of the Subscriber Identity Module (SIM) card
+  answer: It provides a tamper & cloning resistant chip
+
+- question: How many bits is the private key _Ki_ that's stored in the SIM card?
+  answer: 128 bits
+
+- question: What is the difference between the IMSI and the IMEI?
+  answer: ISMI identifies the user whereas IMEI identifies the hardware
+
+- question: What is the issue with 2G cryptography? Was this solved in 3G and if so, how?
+  answer: 2G used proprietary cryptography A5/1 which has been shown to be broken. 3G fixed this by moving to AES
+
+- question: Which of authentication, anonimity or confidentiality is the most important to phone companies, and why?
+  answer: Authentication sinces it's necessary for proper billing. Anonimity is not seriously considered (although an attempt was made with TMSI) and confidentiality is only important as a selling point
+
+- question: Why makes GSM fake base stations possible?
+  answer: The base station is not authenticated (only the user is)
