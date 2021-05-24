@@ -52,7 +52,7 @@
   answer: atmospheric, terrestrial, thermal, radio frequency interference
 
 - question: What factors does the distance of a radio transmission depend on?
-  answer: Transmitting power, atenna, receiver sensitity, noise and obstructions.
+  answer: Transmitting power, antenna, receiver sensitity, loss, noise and obstructions.
 
 - question: What types of antennas do exist?
   answer: Omnidirectional and directional antennas.
@@ -63,7 +63,7 @@
 - question: Explain what happens during _trilateration_
   answer: _Trilateration_ is the process of determining absolute or relative locations of points by measurement of distances, using the geometry of circles, spheres or triangles.
 
-- question: Explain what hapens during _triangulation_
+- question: Explain what happens during _triangulation_
   answer: _Triangulation_ is the process of determining the location of a point by forming triangles to the point from known points.
 
 - question: Name two types of analog modulation
