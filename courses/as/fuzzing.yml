@@ -1,0 +1,29 @@
+- question: What does the term fuzzing refer to?
+  answer: |
+    Fuzz testing is an automated software testing method where invalid, or malformed inputs are applied to a target application, in order to provoke a crash.
+    Spotting bugs early in the development cycle helps to improve stability and security.
+
+- question: What testing methods do exist for fuzzing?
+  answer: |
+    - White box testing: source code of target is available
+    - Black box testing: no source code available
+    - Gray box testing: source code partially available
+
+- question: What phases are executed during fuzzing?
+  answer: |
+    1. Target identification
+    2. Input identification
+    3. Generate input data
+    4. Feed data
+    5. Monitor for memory corruptions or crashes
+    6. Determine exploitability
+
+- question: Explain _generational_ input data generation
+  answer: |
+    - Data is created from scratch based on grammar rules such as ABNF
+    - Drawback: slower generation of input
+
+- question: Explain _mutational_ input data generation
+  answer: |
+    - Data is created based on input files (corpus) and mutating them
+    - Drawback: coverage might be incomplete, due to choice of corpus
