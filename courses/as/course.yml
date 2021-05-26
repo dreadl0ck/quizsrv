@@ -1,9 +1,8 @@
 name: Advanced Security
-description: A course about security aspects of various communication protocols.
+description: A course about security aspects of various communication protocols and other technologies.
 quotes:
   "I have PTSD from dokuwiki": "traumatized OS3 students"
 exam:
-  "bluetooth": 10
   "gsm": 20
   "fuzzing": 5
   "sdr": 5

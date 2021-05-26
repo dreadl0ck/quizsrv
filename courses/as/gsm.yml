@@ -118,5 +118,5 @@
 - question: Which of authentication, anonimity or confidentiality is the most important to phone companies, and why?
   answer: Authentication sinces it's necessary for proper billing. Anonimity is not seriously considered (although an attempt was made with TMSI) and confidentiality is only important as a selling point
 
-- question: Why makes GSM fake base stations possible?
+- question: What makes fake GSM base stations possible?
   answer: The base station is not authenticated (only the user is)

@@ -8,7 +8,7 @@
   answer: 3
 
 - question: On which radio frequency is Bluetooth located?
-  answer: 2.4GHz
+  answer: 2.45 GHz
 
 - question: What is the unit used to express the _signal strength_?
   answer: |
@@ -150,12 +150,12 @@
   answer: Applying a gaussian filter to the frequency allows for smoother frequency transition which in turn reduces interference from neighboring devices
 
 - question: What is Hedy Lamar's contribution to Bluetooth?
-  answer: Frequency Hoping Spread Spectrum (originally patented by Nikola Tesla and rediscoverd by Lamar during WWII)
+  answer: Frequency Hopping Spread Spectrum (originally patented by Nikola Tesla and rediscoverd by Lamar during WWII)
 
-- question: What part of the bluetooth protocol stack is in charge of managing the frequency hoping?
+- question: What part of the bluetooth protocol stack is in charge of managing the frequency hopping?
   answer: The Link Management Protocol (LMP)
 
-- question: What is wrong with the early bluetooth cryptography?
+- question: What was wrong with the early bluetooth cryptography?
   answer: It was using proprietary algorithms such as E21, E22. Later versions switched to AES
 
 - question: How many security modes does bluetooth classic have?

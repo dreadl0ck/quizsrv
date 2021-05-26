@@ -23,7 +23,7 @@
 - question: What is the PMKID attack?
   answer: |
     Some routers append the PMKID in the SNR field of the EAPOL frames.
-    This allows to crack encryption key even for networks without clients connected.
+    This allows to crack the encryption key even for networks without clients connected.
 
 - question: How can the deauth frame be used to gather full handshake from connected clients?
   answer: By deauthing them, the client will reconnect automatically and the handshake can be captured via sniffing.
