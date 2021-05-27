@@ -120,3 +120,14 @@
 
 - question: How wide are the 2.4GHz WiFi channels?
   answer: 20MHz
+
+- question: What factors do affect wireless reach in practice?
+  answer: |
+    - obstruction
+    - diffraction
+    - reflection
+
+- question: Explain the term 64-QAM
+  answer: |
+    Quadrature Amplitude Modulation is a analog modulation widely used in telecommunications.
+    The higher the number, the more bits per symbol are used, which results in higher data rates but is more sensible to noise.

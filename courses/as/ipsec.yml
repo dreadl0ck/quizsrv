@@ -1,7 +1,7 @@
 - question: On which layer does TLS operate in the OSI model?
   answer: Application Layer
 
-- question: On which layer does TLS operate in the OSI model?
+- question: On which layer does IPSec operate in the OSI model?
   answer: Network layer
 
 - question: Is IPSec transparent or opague to applications?
@@ -128,3 +128,37 @@
 
 - question: Why can't all IP header fields be protected by the AH?
   answer: Because some fields like the TTL change at every hop.
+
+- question: What is a major problem with Diffie Hellmann?
+  answer: |
+    Man in the middle attacks!
+    Diffie-Hellman is a key exchange protocol but does nothing about authentication.
+    In order to implement authentication as well, a Public Key Infrastructure could be used.
+
+- question: What advantage is provided by Ephemeral Diffie Hellmann?
+  answer: |
+    Forward Secrecy.
+    Each session will use a new symmetric encryption key, so that obtaining a session key cannot be used to decrypt the entire communication stream.
+
+- question: What is a problem with the IPSec main mode?
+  answer: |
+    Designed to provide anonymity for plausible deniability, but fails to provide anonymity in an active attacker scenario.
+    Since it uses 6 packets instead of 3 for aggressive mode, it is also much slower.
+
+- question: Name an IPSec deployment scenario where plausible deniability is undesirable
+  answer: |
+    Consider a banking scenario: Identifying users that carried out transaction is of utmost importance.
+
+- question: What is a major problem with IPSec?
+  answer: |
+    Overly complex, overengineered protocol, with plenty of unused features.
+    Implementation errors are common.
+
+- question: Which IPSec mode would you recommend _against_ using and why?
+  answer: |
+    Symmetric key main mode: does not fully conceal identidy against an active attacker, slower because it uses 6 packets for main mode instead of 3 for aggressive mode.
+
+- question: Compare main and aggressive mode with regard to the provided level of anonymity
+  answer: |
+    In practice, but deliver the same amount of privacy.
+    Main mode tries to conceal identities but fails in an active attacker scenario.
