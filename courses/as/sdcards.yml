@@ -6,7 +6,7 @@
     LDPC (Low Density Parity Check)
     More efficient, because less space needed for error correction code.
 
-- question: Who decided how much space is used for error correction and based on what criteria?
+- question: Who decides how much space is used for error correction and based on what criteria?
   answer: Decided by the controller vendor, based on their requirements for the amount of errors that shall be correctable.
 
 - question: What is the layout on an 8K flash memory page, when having 2048 bytes of data and using ECC?
@@ -49,7 +49,7 @@
 - question: What is the reason that data can often be recovered from flash devices?
   answer: Error correction codes, shadow copies made by the flash controller, or damaged pages that still contain old information and have been abandoned.
 
-- question: What is a name of the strategy a scrambler applies to obfuscate the data?
+- question: What is the name of the strategy a scrambler applies to obfuscate the data?
   answer: One Time Pad (XOR input data with random bytes)
 
 - question: Explain what wear leveling is and why it's needed
