@@ -23,8 +23,8 @@
 - question: What is the LAP used for in Bluetooth and how many bytes is it?
   answer: |
     Lower Address Part (3 bytes).
-    This portion of Bluetooth Address is allocated by the vendor of device.
-    The LAP value uniquely identifies a Bluetooth device as part of the Access Code in every transmitted frame.
+    This portion of the bluetooth address is allocated by the vendor of device.
+    The LAP value uniquely identifies a Bluetooth device as part of the access code in every transmitted frame.
 
 - question: What is the UAP used for in Bluetooth and how many bytes is it?
   answer: |
@@ -144,7 +144,7 @@
     - Blueborne: Bufferoverflow in firmware
     - Bluesnarfing: legitimate pairing, but UI does not give the user a notification
 - question: What kind of modulation does bluetooth use?
-  answer: Older version use Gaussian Frequency Shift-Keying (GFSK). Newer versions support Differential Phase Shift-Keying (DPSK)
+  answer: Older versions use Gaussian Frequency Shift-Keying (GFSK). Newer versions support Differential Phase Shift-Keying (DPSK).
 
 - question: Why is Gaussian Frequency Shift-Keying (GFSK) used instead of Frequency Shift-Keying (FSK)?
   answer: Applying a gaussian filter to the frequency allows for smoother frequency transition which in turn reduces interference from neighboring devices

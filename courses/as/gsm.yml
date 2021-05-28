@@ -52,7 +52,7 @@
   answer: |
     - IMSI (International Mobile Subscriber Identity) to identify caller
     - TMSI (Temporary Mobile Subscriber Identity), changed frequently
-    in general: no strong anonymity guarantess.
+    in general: no strong anonymity guarantees.
 
 - question: How is confidentiality ensured in GSM?
   answer: |
@@ -74,7 +74,7 @@
 
 - question: What are known security problems with GSM?
   answer: |
-    - Hash (A3/A8) is brokem, Ki can be obtained in 2 to 10 hours with the SIM
+    - Hash (A3/A8) is broken, Ki can be obtained in 2 to 10 hours with the SIM
     - No encryption from base station to base station controller
     - Encryption algorithm A5/1 broken with known plaintext
     - Fake base station attacks
@@ -103,8 +103,8 @@
     - Used in GSM (A5/3) and in GPRS (GEA3 key stream generator)
     It is stored as a 64-bit field and is sent by the mobile device to the network
 
-- question: What are the security goals of the Subscriber Identity Module (SIM) card
-  answer: It provides a tamper & cloning resistant chip
+- question: What are the security goals of the Subscriber Identity Module (SIM)?
+  answer: It provides a tamper & cloning resistant chip that stores the subscriber identity.
 
 - question: How many bits is the private key _Ki_ that's stored in the SIM card?
   answer: 128 bits
@@ -115,8 +115,8 @@
 - question: What is the issue with 2G cryptography? Was this solved in 3G and if so, how?
   answer: 2G used proprietary cryptography A5/1 which has been shown to be broken. 3G fixed this by moving to AES
 
-- question: Which of authentication, anonimity or confidentiality is the most important to phone companies, and why?
-  answer: Authentication sinces it's necessary for proper billing. Anonimity is not seriously considered (although an attempt was made with TMSI) and confidentiality is only important as a selling point
+- question: Which of authentication, anonymity or confidentiality is the most important to phone companies, and why?
+  answer: Authentication since it's necessary for proper billing. Anonymity is not seriously considered (although an attempt was made with TMSI) and confidentiality is only important as a selling point
 
 - question: What makes fake GSM base stations possible?
   answer: The base station is not authenticated (only the user is)
