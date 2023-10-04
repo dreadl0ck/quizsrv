@@ -2,6 +2,9 @@ docker/static
 docker/files
 docker/courses
 docker/pages
-zeus/dumps/error_dump.sh
 files/anki
 courses/inr/Anki
+.DS_Store
+.idea
+zeus/dumps
+zeus/.history
