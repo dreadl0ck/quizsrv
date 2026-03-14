@@ -14,7 +14,7 @@ language: bash
 
 # globals for all commands
 globals:
-    VERSION: v0.3.10
+    VERSION: v0.3.11
 
 # command data
 commands:

@@ -337,7 +337,7 @@ window.addEventListener("load", function (evt) {
       }
     };
     ws.onerror = function (evt) {
-      print("ERROR: " + evt.data);
+      console.error("ERROR: " + evt.data);
     };
 
     document.addEventListener('swiped-right', previous);

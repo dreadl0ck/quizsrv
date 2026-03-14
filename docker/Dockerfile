@@ -10,11 +10,11 @@ COPY files /etc/quizsrv/files
 COPY pages /etc/quizsrv/pages
 COPY courses /etc/quizsrv/courses
 
-EXPOSE 443
+#EXPOSE 443
 EXPOSE 80
 
 ARG VERSION
 ENV cacheBUSTER VERSION
 
 # start quizsrv
-ENTRYPOINT ["/usr/sbin/quizsrv", "-c=/etc/quizsrv", "-addr=:443", "-tls"]
+ENTRYPOINT ["/usr/sbin/quizsrv", "-c=/etc/quizsrv", "-addr=:80", "-tls=false"]
