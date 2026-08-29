@@ -17,7 +17,7 @@ globals:
     # Keep in step with the image tag the Dokploy application pulls. This is a
     # docker-source application: a git push deploys nothing, so the sequence is
     # bump VERSION -> zeus make-docker -> point Dokploy at the new tag.
-    VERSION: v0.3.16
+    VERSION: v0.3.17
     # The build previously tagged dreadl0ck/quizsrv, which is Docker Hub and is
     # not where anything deploys from. sne.dreadl0ck.net pulls this:
     IMAGE: registry.amsterdam-technologies.com/library/quizsrv
