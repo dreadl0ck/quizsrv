@@ -14,7 +14,13 @@ language: bash
 
 # globals for all commands
 globals:
-    VERSION: v0.3.11
+    # Keep in step with the image tag the Dokploy application pulls. This is a
+    # docker-source application: a git push deploys nothing, so the sequence is
+    # bump VERSION -> zeus make-docker -> point Dokploy at the new tag.
+    VERSION: v0.3.16
+    # The build previously tagged dreadl0ck/quizsrv, which is Docker Hub and is
+    # not where anything deploys from. sne.dreadl0ck.net pulls this:
+    IMAGE: registry.amsterdam-technologies.com/library/quizsrv
 
 # command data
 commands:
@@ -49,9 +55,16 @@ commands:
         description: build docker container
         exec: |
             cp -rf courses files pages docker
+            # Strip AppleDouble sidecars before they reach the build context.
+            # On macOS, tar and cp materialise ._* companions from extended
+            # attributes; the server then parses ._course.yml as YAML, dies with
+            # "control characters are not allowed", and swarm rolls the task
+            # back to the previous tag while the deploy still reports success.
+            find docker \( -name '._*' -o -name '.DS_Store' \) -delete
             GOARCH=amd64 GOOS=linux CGO_ENABLED=0 go build -ldflags "-X main.Version=${VERSION}" -o docker/quizsrv *.go
-            docker build --build-arg VERSION=${VERSION} -t dreadl0ck/quizsrv:${VERSION} docker
+            docker build --platform=linux/amd64 --build-arg VERSION=${VERSION} -t ${IMAGE}:${VERSION} docker
             rm -vf docker/quizsrv
+            docker push ${IMAGE}:${VERSION}
     push-docker:
         exec: |
-            docker push dreadl0ck/quizsrv:${VERSION}
+            docker push ${IMAGE}:${VERSION}
