@@ -66,6 +66,9 @@ func main() {
 	fmt.Println("will serve files from", filepath.Join(*configFolder, "files"))
 
 	http.HandleFunc("/mkexam", genExam)
+	http.HandleFunc("/source", sourceHandler)
+	http.HandleFunc("/source/", sourceHandler)
+	http.HandleFunc("/api/source", sourceHandler)
 	http.HandleFunc("/mkexamAll", genAllExams)
 	http.HandleFunc("/mkexamAllInOne", genExamAllInOne)
 	http.HandleFunc("/mkexamCategories", genExamCategories)

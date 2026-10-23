@@ -30,11 +30,12 @@
     }
 
     @font-face {
-      font-family: "SF Pro Text Regular";
-      src: url("/files/FontsFree-Net-SFProText-Regular.ttf") format("truetype");
+      font-family: "Inter";
+      src: url("/files/Inter.woff2") format("woff2");
+      font-display: swap;
     }
     * {
-      font-family: "SF Pro Text Regular", sans-serif;
+        font-family: "Inter", sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -475,6 +476,7 @@
     <div id="version" class="version noselect">{{.Version}}</div>
 
     <div class="fullscreen icon" id="fullscreen"></div>
+    <footer><a href="/source">Matching server source (GPL/AGPL)</a> · <a href="/files/Inter-OFL.txt">Inter font license</a></footer>
   </body>
   <button class='button' id="play"></button>
 </html>

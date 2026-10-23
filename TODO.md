@@ -1,5 +1,16 @@
 # TODOs
 
+## Source and font delivery
+
+- [ ] Identify deployed `library/quizsrv:v0.3.18` binary, Anki linkage and matching source.
+- [ ] Resolve actually delivered mdtopdf identity/license/source requirements.
+- [ ] Package committed covered code/dependencies and safe build/config templates without course/private data.
+- [ ] Deliver anonymous matching source offer with revision/archive hash and preserved GPL/AGPL terms.
+- [ ] Replace SF Pro with unchanged reviewed Inter/OFL in templates and image context.
+- [ ] Test archive builds, source links, fonts and negative gates; publish source first and verify image/deployment.
+
+## Features
+
 - tap to restart
 - calculate wait time based on number of words and make it configurable
 - show countdown timer until next question or answer

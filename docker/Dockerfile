@@ -9,6 +9,9 @@ COPY quizsrv /usr/sbin/quizsrv
 COPY files /etc/quizsrv/files
 COPY pages /etc/quizsrv/pages
 COPY courses /etc/quizsrv/courses
+COPY source /etc/quizsrv/source
+COPY licenses /etc/quizsrv/licenses
+COPY LICENSE SOURCE-BUILD.md /etc/quizsrv/
 
 # Run as a non-root user on an unprivileged port.
 #

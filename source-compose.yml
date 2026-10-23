@@ -1,0 +1,22 @@
+services:
+  source:
+    image: nginx:1.31.5-alpine
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+    volumes:
+      - ${SOURCE_DIRECTORY:?}:/usr/share/nginx/html/legal/source:ro
+    networks:
+      - dokploy-network
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.quizsrv-source.rule=Host(`sne.dreadl0ck.net`) && PathPrefix(`/legal/source/`)
+      - traefik.http.routers.quizsrv-source.priority=200
+      - traefik.http.routers.quizsrv-source.entrypoints=websecure
+      - traefik.http.routers.quizsrv-source.tls.certresolver=letsencrypt
+      - traefik.http.services.quizsrv-source.loadbalancer.server.port=80
+networks:
+  dokploy-network:
+    external: true
