@@ -8,3 +8,4 @@ courses/inr/Anki
 .idea
 zeus/dumps
 zeus/.history
+__pycache__/

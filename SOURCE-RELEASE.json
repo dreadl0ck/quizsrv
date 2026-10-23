@@ -1,0 +1,20 @@
+{
+  "version": "v0.3.20",
+  "revision": "bec0bed8cc5805c3cac6befef601c9a84843c039",
+  "image": "registry.amsterdam-technologies.com/library/quizsrv:v0.3.20@sha256:02ee1800b4f0455a5de82d5f7756e7e62b60b7f70a57811a44e048ec3f0bf63e",
+  "runningImageId": "sha256:bc5337be5151b155daf682c85bf7aee6e2789f466e78f65595dee05b7c98a6b9",
+  "serverSHA256": "c804f5e949028f4087786edd3bb94bebcec44bcaaa7b4d2c2c0adadfa72b7663",
+  "helperSHA256": "8710885321501147d34f4e79ed0b5e248d36a5ae737cfffafac5e08d69c991f4",
+  "sourcePage": "https://sne.dreadl0ck.net/source",
+  "sourceArchive": "https://sne.dreadl0ck.net/legal/source/bec0bed8cc5805c3cac6befef601c9a84843c039.tar.gz",
+  "sourceSHA256": "fe271dedb1efdac19e82736b17bb8042e8e745047eef98ee4ab39e8db1a8c379",
+  "sourceFiles": 9215,
+  "sourcePublishedAndAnonymousHashVerifiedBeforeRuntime": true,
+  "deploymentId": "-rEsEkU5BgzhZ_WX3GGkR",
+  "applicationId": "d2mHSSYYUK20sV3FhInzK",
+  "userBoundary": "Anonymous remote users of quizsrv at sne.dreadl0ck.net; this is not a verified sne-ix deployment. No customer image/binary recipients were established by this review.",
+  "licenses": "GPLv3 application plus AGPLv3-or-later Anki; full original component terms and vendored covered source retained. Separate helper uses pinned mandolyte/mdtopdf v1.0.0 with original MIT terms.",
+  "tests": {"goRace": 2, "packaging": 3, "imageSourceAndSyntheticPDF": 9, "browser": 6, "imageLayersWithoutOldFont": 9},
+  "sourceExclusions": ["course datasets", "course PDFs", "Anki decks", "generated exams", "production records", "environment credentials"],
+  "historicalFulfillment": "Unresolved: former helper has no exact version receipt; former server has no VCS revision binding. No historical evidence was deleted."
+}
