@@ -61,6 +61,8 @@ if __name__ == '__main__':
     (context / 'static').mkdir()
     goroot = Path(subprocess.check_output(['go', 'env', 'GOROOT']).decode().strip())
     shutil.copy2(goroot / 'lib/time/zoneinfo.zip', context / 'static/zoneinfo.zip')
-    shutil.copy2(goroot / 'LICENSE', context / 'licenses/Go-LICENSE.txt')
+    go_license = goroot / 'LICENSE'
+    if not go_license.exists(): go_license = goroot.parent / 'LICENSE'
+    shutil.copy2(go_license, context / 'licenses/Go-LICENSE.txt')
     run('docker', 'build', '--platform=linux/amd64', '--label', 'org.opencontainers.image.revision='+m['revision'], '--label', 'com.amsterdam-technologies.source.sha256='+m['sha256'], '-t', a.image, str(context))
     print(json.dumps({'image': a.image, 'revision': m['revision'], 'sourceSHA256': m['sha256']}))
