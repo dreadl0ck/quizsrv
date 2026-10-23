@@ -2,10 +2,17 @@ services:
   source:
     image: nginx:1.31.5-alpine
     restart: unless-stopped
+    user: '101:101'
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 64
+    mem_limit: 64m
+    sysctls:
+      net.ipv4.ip_unprivileged_port_start: 0
     read_only: true
     tmpfs:
-      - /var/cache/nginx
-      - /var/run
+      - /var/cache/nginx:mode=1777
+      - /var/run:mode=1777
     volumes:
       - ${SOURCE_DIRECTORY:?}:/usr/share/nginx/html/legal/source:ro
     networks:

@@ -36,7 +36,7 @@ if __name__ == '__main__':
     context = a.output / 'context'
     context.mkdir()
     env = dict(os.environ, GOOS='linux', GOARCH='amd64', CGO_ENABLED='0', GOPROXY='off', GOSUMDB='off')
-    flags = f"-X main.SourceRevision={m['revision']} -X main.SourceSHA256={m['sha256']}"
+    flags = f"-X main.Version={a.image.rsplit(':', 1)[-1]} -X main.SourceRevision={m['revision']} -X main.SourceSHA256={m['sha256']}"
     run('go', 'build', '-mod=vendor', '-trimpath', '-ldflags', flags, '-o', str(context / 'quizsrv'), '.', cwd=source, env=env)
     run('go', 'build', '-mod=vendor', '-trimpath', '-o', str(context / 'mdtopdf'), './cmd/mdtopdf', cwd=source, env=env)
     for directory in ['pages', 'files', 'courses']:
