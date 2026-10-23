@@ -2,7 +2,7 @@ FROM scratch
 
 # timezone setup
 ENV ZONEINFO /zoneinfo.zip
-ADD static /zoneinfo.zip
+COPY static/zoneinfo.zip /zoneinfo.zip
 
 COPY mdtopdf /usr/bin/mdtopdf
 COPY quizsrv /usr/sbin/quizsrv

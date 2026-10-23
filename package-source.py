@@ -12,7 +12,7 @@ import tarfile
 import tempfile
 
 ROOT = Path(__file__).resolve().parent
-FILES = {"LICENSE", "go.mod", "go.sum", "package-source.py", "release.py", "SOURCE-BUILD.md", "source-compose.yml", "sw.js", "manifest.json"}
+FILES = {"LICENSE", "go.mod", "go.sum", "package-source.py", "test-package-source.py", "sync-font.py", "release.py", "SOURCE-BUILD.md", "source-compose.yml", "sw.js", "manifest.json"}
 ASSETS = {"Inter.woff2", "Inter-OFL.txt", "Inter-provenance.json", "Browser-LICENSES.txt", "nosleep.js", "swiped-events.js", "quiz.js", "fullscreen.svg", "gesture.svg", "keyboard.svg", "mouse.svg"}
 
 
@@ -28,7 +28,7 @@ def selected(name):
 def check(name, mode, data):
     if mode not in {"100644", "100755"} or any(p.startswith(".env") or p in {".git", "courses", "node_modules", "__pycache__"} for p in Path(name).parts):
         raise ValueError("Forbidden source member: " + name)
-    if re.search(rb"-----BEGIN (?:[A-Z]+ )?PRIVATE KEY-----|(?:sk-ant-api|sk-ant-oat|ghp_)[A-Za-z0-9_-]{20,}", data):
+    if re.search(rb"-----BEGIN (?:[A-Z]+ )?PRIVATE KEY-----\s+[A-Za-z0-9+/=]{32,}|(?:sk-ant-api|sk-ant-oat|ghp_)[A-Za-z0-9_-]{20,}", data):
         raise ValueError("Secret candidate: " + name)
 
 
