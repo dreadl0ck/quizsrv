@@ -14,7 +14,10 @@
   "applicationId": "d2mHSSYYUK20sV3FhInzK",
   "userBoundary": "Anonymous remote users of quizsrv at sne.dreadl0ck.net; this is not a verified sne-ix deployment. No customer image/binary recipients were established by this review.",
   "licenses": "GPLv3 application plus AGPLv3-or-later Anki; full original component terms and vendored covered source retained. Separate helper uses pinned mandolyte/mdtopdf v1.0.0 with original MIT terms.",
-  "tests": {"goRace": 2, "packaging": 3, "imageSourceAndSyntheticPDF": 9, "browser": 6, "imageLayersWithoutOldFont": 9},
+  "publicSourceOfflineRebuildMatchesRunningBinaries": true,
+  "sourceArchiveReproducedFromCommittedPackager": true,
+  "buildToolchain": "go1.26.5 linux/amd64 CGO_ENABLED=0",
+  "tests": {"goRace": 2, "packagingAndPublication": 6, "nativeZeusFailClosed": 2, "imageSourceAndSyntheticPDF": 9, "browser": 6, "imageLayersWithoutOldFont": 9},
   "sourceExclusions": ["course datasets", "course PDFs", "Anki decks", "generated exams", "production records", "environment credentials"],
   "historicalFulfillment": "Unresolved: former helper has no exact version receipt; former server has no VCS revision binding. No historical evidence was deleted."
 }

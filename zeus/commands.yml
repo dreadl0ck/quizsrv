@@ -14,10 +14,9 @@ language: bash
 
 # globals for all commands
 globals:
-    # Keep in step with the image tag the Dokploy application pulls. This is a
-    # docker-source application: a git push deploys nothing, so the sequence is
-    # bump VERSION -> zeus make-docker -> point Dokploy at the new tag.
-    VERSION: v0.3.17
+    # Current deployment; image targets require explicit source/release inputs.
+    # A git push does not deploy this docker-source application.
+    VERSION: v0.3.20
     # The build previously tagged dreadl0ck/quizsrv, which is Docker Hub and is
     # not where anything deploys from. sne.dreadl0ck.net pulls this:
     IMAGE: registry.amsterdam-technologies.com/library/quizsrv
@@ -36,7 +35,7 @@ commands:
 
     run-local:
         description: run the server locally
-        exec: go run *.go
+        exec: go run .
 
     # clean up the mess
     clean:
@@ -50,21 +49,17 @@ commands:
         exec: echo done
 
     build-docker:
-        dependencies:
-            - clean
         description: build docker container
         exec: |
-            cp -rf courses files pages docker
-            # Strip AppleDouble sidecars before they reach the build context.
-            # On macOS, tar and cp materialise ._* companions from extended
-            # attributes; the server then parses ._course.yml as YAML, dies with
-            # "control characters are not allowed", and swarm rolls the task
-            # back to the previous tag while the deploy still reports success.
-            find docker \( -name '._*' -o -name '.DS_Store' \) -delete
-            GOARCH=amd64 GOOS=linux CGO_ENABLED=0 go build -ldflags "-X main.Version=${VERSION}" -o docker/quizsrv *.go
-            docker build --platform=linux/amd64 --build-arg VERSION=${VERSION} -t ${IMAGE}:${VERSION} docker
-            rm -vf docker/quizsrv
-            docker push ${IMAGE}:${VERSION}
+            set -eu
+            : "${SOURCE_MANIFEST:?package committed source first}"
+            : "${RELEASE_OUTPUT:?select a new output directory}"
+            : "${RELEASE_IMAGE:?select an explicit new release tag}"
+            python3 release.py "$SOURCE_MANIFEST" "$RELEASE_OUTPUT" "$RELEASE_IMAGE"
     push-docker:
         exec: |
-            docker push ${IMAGE}:${VERSION}
+            set -eu
+            : "${SOURCE_MANIFEST:?package committed source first}"
+            : "${SOURCE_PUBLIC_URL:?publish matching source first}"
+            : "${RELEASE_IMAGE:?select the verified image}"
+            python3 publish-release.py "$SOURCE_MANIFEST" "$RELEASE_IMAGE" --source-url "$SOURCE_PUBLIC_URL"

@@ -7,7 +7,8 @@
 - [x] Package committed covered code/dependencies and safe build/config templates without course/private data.
 - [x] Deliver anonymous matching source offer with revision/archive hash and preserved GPL/AGPL terms.
 - [x] Replace SF Pro with unchanged reviewed Inter/OFL in templates and image context.
-- [x] Verify offline archive builds, 2 Go race tests, 3 packaging tests, 9 image checks and 6 browser journeys; source-first deployment `-rEsEkU5BgzhZ_WX3GGkR`.
+- [x] Verify public-source offline rebuilds byte-for-byte against running binaries, 2 Go race tests, 6 packaging/publication tests, 9 image checks and 6 browser journeys; source-first deployment `-rEsEkU5BgzhZ_WX3GGkR`.
+- [x] Route native Zeus image targets through source-manifest builds and anonymous source/embedded-archive publication gates; old direct pushes are removed.
 - [ ] Recover historical helper version/grant and pre-receipt executable/source identities; current fulfillment does not establish historical clearance. No history/image deletion authorized.
 
 Pitfalls: quiz menus intercepted an unpositioned footer; the fixed footer is

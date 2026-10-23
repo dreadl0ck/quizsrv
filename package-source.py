@@ -12,7 +12,7 @@ import tarfile
 import tempfile
 
 ROOT = Path(__file__).resolve().parent
-FILES = {"LICENSE", "go.mod", "go.sum", "package-source.py", "test-package-source.py", "sync-font.py", "release.py", "SOURCE-BUILD.md", "source-compose.yml", "sw.js", "manifest.json"}
+FILES = {"LICENSE", "go.mod", "go.sum", "package-source.py", "test-package-source.py", "sync-font.py", "release.py", "publish-release.py", "verify-release.py", "browser-source.mjs", "zeus/commands.yml", "SOURCE-BUILD.md", "source-compose.yml", "sw.js", "manifest.json"}
 ASSETS = {"Inter.woff2", "Inter-OFL.txt", "Inter-provenance.json", "Browser-LICENSES.txt", "nosleep.js", "swiped-events.js", "quiz.js", "fullscreen.svg", "gesture.svg", "keyboard.svg", "mouse.svg"}
 
 
@@ -34,6 +34,8 @@ def check(name, mode, data):
 
 def package(revision, output):
     revision = git("rev-parse", "--verify", revision + "^{commit}").decode().strip()
+    if git('show', revision+':package-source.py') != Path(__file__).read_bytes():
+        raise ValueError('Use the packager committed at the requested revision')
     members = []
     with tempfile.TemporaryDirectory() as temp:
         root = Path(temp)

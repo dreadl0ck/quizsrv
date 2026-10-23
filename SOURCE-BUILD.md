@@ -24,6 +24,15 @@ own licensed course YAML at `/etc/quizsrv/courses`; an empty directory permits
 an empty catalog. Templates and reviewed browser/font assets are included.
 No service credentials are needed for the HTTP server build or startup.
 SourceRevision/SourceSHA256 are linker values bound to the published archive.
+Standalone binaries above build directly from the archive without Git/network.
+Release scripts expect a Git checkout of the revision being packaged.
+
+`zeus build-docker` requires `SOURCE_MANIFEST`, a fresh `RELEASE_OUTPUT` and an
+explicit `RELEASE_IMAGE`. `zeus push-docker` also requires `SOURCE_PUBLIC_URL`;
+`publish-release.py` checks its anonymous HTTPS hash and the image's embedded
+archive before pushing. Add `--check` to the Python publisher to verify without
+pushing. Historical exports must use that revision's committed packager.
+No CI workflow was present or added.
 
 The former opaque mdtopdf binary has SHA-256
 `ddbfa9295c495cc037ea9fada7c55a8c471a3e280a17d915f55eda945fdf680e`.
