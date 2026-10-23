@@ -15,7 +15,7 @@ publish_spec.loader.exec_module(publisher)
 
 class SourceSafety(unittest.TestCase):
     def test_excludes_course_and_generated_material(self):
-        for name in ['courses/inr/deck.apkg', 'courses/inr/questions.yml', 'files/exam.pdf', 'docker/mdtopdf', '.env', 'files/FontsFree-Net-SFProText-Regular.ttf']:
+        for name in ['courses/inr/deck.apkg', 'courses/inr/questions.yml', 'files/exam.pdf', 'files/anki/quiz.js', 'files/uploads/Inter.woff2', 'docker/mdtopdf', '.env', 'files/FontsFree-Net-SFProText-Regular.ttf']:
             self.assertFalse(packager.selected(name), name)
 
     def test_rejects_secret_and_nonregular_source(self):

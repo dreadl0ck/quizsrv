@@ -22,7 +22,7 @@ def git(*args):
 
 def selected(name):
     p = Path(name)
-    return name in FILES or (len(p.parts) == 1 and p.suffix == ".go") or p.parts[0] in {"cmd", "licenses"} or (p.parts[0] == "pages" and p.suffix == ".html") or (p.parts[0] == "files" and p.name in ASSETS) or name == "docker/Dockerfile"
+    return name in FILES or (len(p.parts) == 1 and p.suffix == ".go") or p.parts[0] in {"cmd", "licenses"} or (p.parts[0] == "pages" and p.suffix == ".html") or (len(p.parts) == 2 and p.parts[0] == "files" and p.name in ASSETS) or name == "docker/Dockerfile"
 
 
 def check(name, mode, data):
