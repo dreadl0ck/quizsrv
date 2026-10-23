@@ -54,6 +54,7 @@ def package(revision, output):
         for path in sorted((root / "vendor").rglob("*")):
             if not path.is_file(): continue
             if path.is_symlink(): raise ValueError("Vendored symlink")
+            if any(p.startswith('.env') for p in path.relative_to(root / 'vendor').parts): continue
             name, data = path.relative_to(root).as_posix(), path.read_bytes()
             check(name, "100644", data)
             members.append((name, "100644", data))
