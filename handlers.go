@@ -31,7 +31,7 @@ func courseHandler(w http.ResponseWriter, r *http.Request) {
 		total      int
 	)
 
-	cou, ok := data.Courses[strings.ToLower(filepath.Base(r.RequestURI))]
+	cou, ok := data.Courses[strings.ToLower(filepath.Base(r.URL.Path))]
 	if !ok {
 		http.Error(w, "invalid course name", http.StatusBadRequest)
 		return
@@ -56,7 +56,7 @@ func courseHandler(w http.ResponseWriter, r *http.Request) {
 		courseNames = append(courseNames, n)
 	}
 
-	courseID := filepath.Base(r.RequestURI)
+	courseID := filepath.Base(r.URL.Path)
 	courseTemplate := template.Must(template.ParseFiles(filepath.Join(*configFolder, "pages/course.html")))
 	err := courseTemplate.Execute(w, &TemplateData{
 		Categories:  categories,
@@ -75,6 +75,14 @@ func courseHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path == "/courses" {
+		http.Redirect(w, r, "/", http.StatusMovedPermanently)
+		return
+	}
+	if r.URL.Path != "/" {
+		http.NotFound(w, r)
+		return
+	}
 	fmt.Println(r.RemoteAddr, "home")
 	var (
 		//slides     []string
@@ -122,9 +130,13 @@ func home(w http.ResponseWriter, r *http.Request) {
 }
 
 func nobots(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(`User-agent: *
-Disallow: /
+Allow: /
+Disallow: /mkexam
+Disallow: /connect
+Sitemap: https://sne.dreadl0ck.net/sitemap.xml
 	`))
 }
 

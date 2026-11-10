@@ -77,6 +77,7 @@ func main() {
 	http.HandleFunc("/cia", http.RedirectHandler("/courses/cia", http.StatusMovedPermanently).ServeHTTP)
 	http.HandleFunc("/courses", home)
 	http.HandleFunc("/robots.txt", nobots)
+	http.HandleFunc("/sitemap.xml", sitemap)
 	http.HandleFunc("/", home)
 
 	fmt.Println("serving at", *addr)
