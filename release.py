@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-"""Build only from a verified source archive; assemble a fresh scratch context."""
+"""Verify published corresponding source and queue its build in Dokploy."""
 import argparse
 import hashlib
 import json
 import os
 from pathlib import Path
-import shutil
 import subprocess
-import tarfile
+import re
+import urllib.error
+import urllib.parse
+import urllib.request
 
 ROOT = Path(__file__).resolve().parent
 
@@ -16,55 +18,87 @@ def run(*args, **kwargs):
     subprocess.run(args, check=True, **kwargs)
 
 
+def api(endpoint, data=None, **query):
+    base = os.environ['DOKPLOY_URL'].rstrip('/')
+    if not base.startswith('https://'):
+        raise ValueError('DOKPLOY_URL must use HTTPS')
+    url = base + '/api/' + endpoint
+    if query:
+        url += '?' + urllib.parse.urlencode(query)
+    request = urllib.request.Request(url, data=None if data is None else json.dumps(data).encode(),
+        headers={'x-api-key': os.environ['DOKPLOY_API_KEY'], 'Content-Type': 'application/json'})
+    try:
+        with urllib.request.urlopen(request, timeout=60) as response:
+            body = response.read()
+            return json.loads(body) if body else None
+    except urllib.error.HTTPError as error:
+        raise RuntimeError(f'Dokploy {endpoint}: HTTP {error.code}') from None
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('manifest', type=Path)
+    args = parser.parse_args()
+    manifest = json.loads(args.manifest.read_text())
+    revision, digest = manifest['revision'], manifest['sha256']
+    if not re.fullmatch(r'[0-9a-f]{40}', revision) or not re.fullmatch(r'[0-9a-f]{64}', digest):
+        raise ValueError('Invalid source identity')
+    if subprocess.check_output(['git', 'branch', '--show-current'], cwd=ROOT, text=True).strip() != 'main':
+        raise ValueError('Release from main only')
+    run('git', 'merge-base', '--is-ancestor', revision, 'origin/main', cwd=ROOT)
+    remote = subprocess.check_output(['git', 'remote', 'get-url', 'origin'], cwd=ROOT, text=True).strip()
+    match = re.search(r'/(learn|quizsrv)(?:\.git)?$', remote)
+    if not match:
+        raise ValueError('Unrecognized release repository')
+    repo = match[1]
+    identifier, domain = {'learn': ('ygoAInafQA5w-dGbKznyl', 'learn.dreadl0ck.net'),
+        'quizsrv': ('d2mHSSYYUK20sV3FhInzK', 'sne.dreadl0ck.net')}[repo]
+    url = f'https://{domain}/legal/source/{revision}.tar.gz'
+    hashed = hashlib.sha256()
+    with urllib.request.urlopen(url, timeout=120) as response:
+        if response.url != url or response.status != 200:
+            raise ValueError('Source must be anonymously available without redirect')
+        while block := response.read(1024 * 1024):
+            hashed.update(block)
+    if hashed.hexdigest() != digest:
+        raise ValueError('Public source hash mismatch')
+    tag = 'dokploy-source-' + revision[:12]
+    exists = subprocess.run(['git', 'show-ref', '--verify', '--quiet', 'refs/tags/' + tag], cwd=ROOT).returncode == 0
+    if exists:
+        if subprocess.check_output(['git', 'rev-parse', tag + '^{commit}'], cwd=ROOT, text=True).strip() != revision:
+            raise ValueError('Release tag already names different source')
+    else:
+        run('git', 'tag', '-a', tag, revision, '-m', 'Dokploy source build', cwd=ROOT)
+    run('git', 'push', 'origin', 'refs/tags/' + tag, cwd=ROOT)
+    current = api('application.one', applicationId=identifier)
+    if not any(d['host'] == domain for d in current['domains']):
+        raise ValueError('Unexpected deployment domain')
+    original_env, original_args = current.get('env'), current.get('buildArgs') or ''
+    if original_args == '[REDACTED]':
+        raise ValueError('Unredacted build arguments required')
+    updated = original_args
+    for key, value in {'SOURCE_REVISION': revision, 'SOURCE_SHA256': digest, 'VERSION': tag}.items():
+        pattern = r'(?m)^' + key + r'=[^\r\n]*'
+        if len(re.findall(pattern, updated)) > 1:
+            raise ValueError('Duplicate source build argument')
+        if re.search(pattern, updated):
+            updated = re.sub(pattern, key + '=' + value, updated)
+        else:
+            updated += ('' if not updated or updated.endswith('\n') else '\n') + key + '=' + value + '\n'
+    fresh = api('application.one', applicationId=identifier)
+    if fresh.get('env') != original_env or (fresh.get('buildArgs') or '') != original_args:
+        raise ValueError('Deployment configuration changed concurrently')
+    api('application.update', {'applicationId': identifier, 'sourceType': 'github', 'owner': 'dreadl0ck',
+        'repository': repo, 'githubId': os.environ.get('DOKPLOY_GITHUB_ID') or 'fCiPttXtULsq7nqK-Nf6E',
+        'branch': tag, 'buildPath': '/', 'buildType': 'dockerfile', 'dockerfile': 'Dockerfile',
+        'dockerContextPath': '.', 'buildArgs': updated, 'autoDeploy': False, 'triggerType': 'tag'})
+    saved = api('application.one', applicationId=identifier)
+    if saved.get('env') != original_env or saved['buildArgs'] != updated or saved['branch'] != tag:
+        raise ValueError('Application environment/source configuration changed unexpectedly')
+    api('application.deploy', {'applicationId': identifier, 'title': 'Dokploy source build ' + tag})
+    print(json.dumps({'applicationId': identifier, 'repository': repo, 'sourceTag': tag,
+        'sourceSHA256': digest, 'environmentPreserved': True, 'buildLocation': 'Dokploy estate server'}))
+
+
 if __name__ == '__main__':
-    p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('manifest', type=Path)
-    p.add_argument('output', type=Path)
-    p.add_argument('image')
-    p.add_argument('--context-only', action='store_true', help='Prepare verified image inputs without requiring a Docker socket in the compiler sandbox')
-    a = p.parse_args()
-    m = json.loads(a.manifest.read_text())
-    archive = a.manifest.parent / (m['revision'] + '.tar.gz')
-    assert hashlib.sha256(archive.read_bytes()).hexdigest() == m['sha256']
-    assert subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT).decode().strip() == m['revision']
-    run('git', 'diff', '--exit-code', 'HEAD', '--', '*.go', 'go.mod', 'go.sum', 'pages', 'files', 'courses', 'cmd', cwd=ROOT)
-    a.output.mkdir(parents=True, exist_ok=False)
-    source = a.output / 'source'
-    source.mkdir()
-    with tarfile.open(archive) as t:
-        t.extractall(source, filter='data')
-    source = next(source.iterdir())
-    context = a.output / 'context'
-    context.mkdir()
-    env = dict(os.environ, GOOS='linux', GOARCH='amd64', CGO_ENABLED='0', GOPROXY='off', GOSUMDB='off')
-    flags = f"-X main.Version={a.image.rsplit(':', 1)[-1]} -X main.SourceRevision={m['revision']} -X main.SourceSHA256={m['sha256']}"
-    run('go', 'build', '-mod=vendor', '-trimpath', '-ldflags', flags, '-o', str(context / 'quizsrv'), '.', cwd=source, env=env)
-    run('go', 'build', '-mod=vendor', '-trimpath', '-o', str(context / 'mdtopdf'), './cmd/mdtopdf', cwd=source, env=env)
-    for directory in ['pages', 'files', 'courses']:
-        (context / directory).mkdir()
-        names = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', m['revision'], directory], cwd=ROOT).decode().splitlines()
-        for name in names:
-            path = Path(name)
-            if any(p.startswith('._') or p == '.DS_Store' or 'SFPro' in p for p in path.parts): continue
-            target = context / path
-            target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_bytes(subprocess.check_output(['git', 'show', m['revision']+':'+name], cwd=ROOT))
-    (context / 'source').mkdir()
-    shutil.copy2(archive, context / 'source' / archive.name)
-    for path in (source / 'vendor').rglob('*'):
-        if path.is_file() and path.name.lower().startswith(('license', 'copying', 'notice', 'authors')):
-            target = context / 'licenses' / path.relative_to(source / 'vendor')
-            target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(path, target)
-    for name in ['LICENSE', 'SOURCE-BUILD.md', 'sw.js', 'manifest.json']:
-        if (source / name).exists(): shutil.copy2(source / name, context / name)
-    shutil.copy2(ROOT / 'docker/Dockerfile', context / 'Dockerfile')
-    (context / 'static').mkdir()
-    goroot = Path(subprocess.check_output(['go', 'env', 'GOROOT']).decode().strip())
-    shutil.copy2(goroot / 'lib/time/zoneinfo.zip', context / 'static/zoneinfo.zip')
-    go_license = goroot / 'LICENSE'
-    if not go_license.exists(): go_license = goroot.parent / 'LICENSE'
-    shutil.copy2(go_license, context / 'licenses/Go-LICENSE.txt')
-    if not a.context_only:
-        run('docker', 'build', '--platform=linux/amd64', '--label', 'org.opencontainers.image.revision='+m['revision'], '--label', 'com.amsterdam-technologies.source.sha256='+m['sha256'], '-t', a.image, str(context))
-    print(json.dumps({'image': a.image, 'revision': m['revision'], 'sourceSHA256': m['sha256']}))
+    main()

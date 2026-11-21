@@ -14,8 +14,7 @@ language: bash
 
 # globals for all commands
 globals:
-    # Current deployment; image targets require explicit source/release inputs.
-    # A git push does not deploy this docker-source application.
+    # Production compilation runs in Dokploy from a published source archive.
     VERSION: v0.3.20
     # The build previously tagged dreadl0ck/quizsrv, which is Docker Hub and is
     # not where anything deploys from. sne.dreadl0ck.net pulls this:
@@ -45,21 +44,16 @@ commands:
     make-docker:
         dependencies:
             - build-docker
-            - push-docker
         exec: echo done
 
     build-docker:
-        description: build docker container
+        description: queue the Dokploy source build
         exec: |
             set -eu
             : "${SOURCE_MANIFEST:?package committed source first}"
-            : "${RELEASE_OUTPUT:?select a new output directory}"
-            : "${RELEASE_IMAGE:?select an explicit new release tag}"
-            python3 release.py "$SOURCE_MANIFEST" "$RELEASE_OUTPUT" "$RELEASE_IMAGE"
+            python3 release.py "$SOURCE_MANIFEST"
     push-docker:
         exec: |
             set -eu
-            : "${SOURCE_MANIFEST:?package committed source first}"
-            : "${SOURCE_PUBLIC_URL:?publish matching source first}"
-            : "${RELEASE_IMAGE:?select the verified image}"
-            python3 publish-release.py "$SOURCE_MANIFEST" "$RELEASE_IMAGE" --source-url "$SOURCE_PUBLIC_URL"
+            printf '%s\n' 'Image publication is handled by Dokploy; use zeus build-docker.' >&2
+            exit 1

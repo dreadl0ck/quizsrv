@@ -52,6 +52,8 @@ if __name__ == '__main__':
     p.add_argument('--source-url', required=True)
     p.add_argument('--check', action='store_true')
     args = p.parse_args()
+    if not args.check:
+        raise ValueError('Workstation image publication is retired; use release.py to request a Dokploy source build')
     m = json.loads(args.manifest.read_text())
     if not re.fullmatch('[0-9a-f]{40}', m['revision']) or not re.fullmatch('[0-9a-f]{64}', m['sha256']):
         raise ValueError('Invalid source identity')
@@ -59,6 +61,4 @@ if __name__ == '__main__':
     identity = verify_image(args.image, m['revision'], m['sha256'])
     if json.loads(subprocess.check_output(['docker', 'image', 'inspect', args.image]))[0]['Id'] != identity:
         raise ValueError('Image changed during verification')
-    if not args.check:
-        subprocess.run(['docker', 'push', args.image], check=True)
     print(json.dumps({'image': args.image, 'imageId': identity, 'revision': m['revision'], 'sourceSHA256': m['sha256'], 'sourceFirstVerified': True, 'pushed': not args.check}))

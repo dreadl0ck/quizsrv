@@ -1,0 +1,12 @@
+**
+!Dockerfile
+!.dockerignore
+!pages/
+!pages/**
+!files/
+!files/**
+!courses/
+!courses/**
+**/.DS_Store
+**/._*
+**/*SFPro*

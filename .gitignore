@@ -9,3 +9,4 @@ courses/inr/Anki
 zeus/dumps
 zeus/.history
 __pycache__/
+.source-release/

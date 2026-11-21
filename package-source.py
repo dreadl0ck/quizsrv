@@ -12,7 +12,7 @@ import tarfile
 import tempfile
 
 ROOT = Path(__file__).resolve().parent
-FILES = {"LICENSE", "go.mod", "go.sum", "package-source.py", "test-package-source.py", "sync-font.py", "release.py", "publish-release.py", "verify-release.py", "browser-source.mjs", "zeus/commands.yml", "SOURCE-BUILD.md", "source-compose.yml", "sw.js", "manifest.json"}
+FILES = {"Dockerfile", ".dockerignore", "LICENSE", "go.mod", "go.sum", "package-source.py", "test-package-source.py", "sync-font.py", "release.py", "publish-release.py", "verify-release.py", "browser-source.mjs", "zeus/commands.yml", "SOURCE-BUILD.md", "source-compose.yml", "sw.js", "manifest.json"}
 ASSETS = {"Inter.woff2", "Inter-OFL.txt", "Inter-provenance.json", "Browser-LICENSES.txt", "nosleep.js", "swiped-events.js", "quiz.js", "fullscreen.svg", "gesture.svg", "keyboard.svg", "mouse.svg"}
 
 
