@@ -21,6 +21,7 @@ if __name__ == '__main__':
     p.add_argument('manifest', type=Path)
     p.add_argument('output', type=Path)
     p.add_argument('image')
+    p.add_argument('--context-only', action='store_true', help='Prepare verified image inputs without requiring a Docker socket in the compiler sandbox')
     a = p.parse_args()
     m = json.loads(a.manifest.read_text())
     archive = a.manifest.parent / (m['revision'] + '.tar.gz')
@@ -64,5 +65,6 @@ if __name__ == '__main__':
     go_license = goroot / 'LICENSE'
     if not go_license.exists(): go_license = goroot.parent / 'LICENSE'
     shutil.copy2(go_license, context / 'licenses/Go-LICENSE.txt')
-    run('docker', 'build', '--platform=linux/amd64', '--label', 'org.opencontainers.image.revision='+m['revision'], '--label', 'com.amsterdam-technologies.source.sha256='+m['sha256'], '-t', a.image, str(context))
+    if not a.context_only:
+        run('docker', 'build', '--platform=linux/amd64', '--label', 'org.opencontainers.image.revision='+m['revision'], '--label', 'com.amsterdam-technologies.source.sha256='+m['sha256'], '-t', a.image, str(context))
     print(json.dumps({'image': a.image, 'revision': m['revision'], 'sourceSHA256': m['sha256']}))
