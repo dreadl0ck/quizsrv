@@ -10,7 +10,7 @@ RUN --network=none CGO_ENABLED=0 go build -mod=vendor -trimpath -ldflags="-s -w 
 COPY pages /payload/pages
 COPY files /payload/files
 COPY courses /payload/courses
-RUN mkdir -p /payload/source /payload/licenses && cp /source.tar.gz /payload/source/${SOURCE_REVISION}.tar.gz && cp LICENSE SOURCE-BUILD.md sw.js manifest.json /payload/ && cp /usr/local/go/lib/time/zoneinfo.zip /payload/zoneinfo.zip && cp /usr/local/go/LICENSE /payload/licenses/Go-LICENSE.txt && find vendor -type f \( -iname 'license*' -o -iname 'copying*' -o -iname 'notice*' -o -iname 'authors*' \) -exec sh -c 'for file do mkdir -p "/payload/licenses/$(dirname "$file")"; cp "$file" "/payload/licenses/$file"; done' sh '{}' +
+RUN mkdir -p /payload/source /payload/licenses && cp /source.tar.gz /payload/source/${SOURCE_REVISION}.tar.gz && cp LICENSE SOURCE-BUILD.md /payload/ && cp /usr/local/go/lib/time/zoneinfo.zip /payload/zoneinfo.zip && cp /usr/local/go/LICENSE /payload/licenses/Go-LICENSE.txt && find vendor -type f \( -iname 'license*' -o -iname 'copying*' -o -iname 'notice*' -o -iname 'authors*' \) -exec sh -c 'for file do mkdir -p "/payload/licenses/$(dirname "$file")"; cp "$file" "/payload/licenses/$file"; done' sh '{}' +
 
 FROM scratch
 ARG SOURCE_REVISION
@@ -25,7 +25,7 @@ COPY --from=build /payload/files /etc/quizsrv/files
 COPY --from=build /payload/courses /etc/quizsrv/courses
 COPY --from=build /payload/source /etc/quizsrv/source
 COPY --from=build /payload/licenses /etc/quizsrv/licenses
-COPY --from=build /payload/LICENSE /payload/SOURCE-BUILD.md /payload/sw.js /payload/manifest.json /etc/quizsrv/
+COPY --from=build /payload/LICENSE /payload/SOURCE-BUILD.md /etc/quizsrv/
 USER 65532:65532
 EXPOSE 8080
 ENTRYPOINT ["/usr/sbin/quizsrv", "-c=/etc/quizsrv", "-addr=:8080", "-tls=false"]
